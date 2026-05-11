@@ -19,14 +19,12 @@
             line-height: 1.6;
         }
 
-        /* NAV */
         nav {
             background: var(--red);
             padding: 18px 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(227,6,19,0.3);
         }
         .nav-content {
             max-width: 1400px;
@@ -48,7 +46,6 @@
         }
         .telecel-play span { color: #60a5fa; }
 
-        /* HERO */
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
@@ -62,7 +59,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* SECTIONS */
         .section {
             padding: 90px 5%;
             max-width: 1400px;
@@ -88,11 +84,11 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.7);
             transition: all 0.4s;
         }
-        .tier-card:hover { transform: translateY(-15px); }
+        .tier-card:hover { transform: translateY(-12px); }
         .tier-card h3 {
             text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.55rem;
+            margin-bottom: 25px;
             color: #f1f5f9;
         }
 
@@ -100,31 +96,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 18px;
-            margin: 8px 0;
+            padding: 18px 20px;
+            margin: 10px 0;
             background: #1a1a1a;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
         }
-        .offer:hover { background: #222; transform: scale(1.03); }
-        .offer strong { font-size: 1.3rem; color: var(--accent); }
-        .price-tag { font-size: 1.45rem; font-weight: 700; color: #E30613; }
-
-        .subscribe-btn {
-            width: 100%;
-            background: linear-gradient(90deg, #E30613, #f87171);
-            color: white;
-            border: none;
-            padding: 18px;
-            border-radius: 50px;
+        .offer:hover {
+            background: #222;
+            transform: scale(1.04);
+        }
+        .offer strong {
+            font-size: 1.32rem;
+            color: var(--accent);
+        }
+        .price-tag {
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.15rem;
-            margin-top: 20px;
-            cursor: pointer;
+            color: #E30613;
         }
 
-        /* Testimonials */
+        /* Testimonials, FAQ, Footer */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -137,7 +130,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* FAQ */
         .faq-item {
             background: #f8fafc;
             margin-bottom: 16px;
@@ -151,7 +143,6 @@
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
         .faq-answer {
             padding: 0 24px 24px;
@@ -215,7 +206,7 @@
     <!-- HERO -->
     <section class="hero">
         <h1>Telecel Unlimited Data Offer</h1>
-        <p style="font-size:1.4rem; margin:25px 0 40px;">Data Never Expires • Instant Activation • Only for Telecel Users</p>
+        <p style="font-size:1.4rem; margin:25px 0 40px;">Data Never Expires • Instant Activation • Best Value in Ghana</p>
         <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })" 
                 style="background:white;color:var(--red);padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.3rem;border:none;cursor:pointer;">
             Unlock All Plans Now →
@@ -227,64 +218,58 @@
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
 
-            <!-- Starter -->
+            <!-- STARTER -->
             <div class="tier-card">
                 <h3>STARTER</h3>
                 <div class="offer" onclick="showOffer('Starter', '10GB', 10)"><div><strong>10GB</strong></div><div class="price-tag">GHS 10</div></div>
                 <div class="offer" onclick="showOffer('Starter', '25GB', 20)"><div><strong>25GB</strong></div><div class="price-tag">GHS 20</div></div>
                 <div class="offer" onclick="showOffer('Starter', '40GB', 30)"><div><strong>40GB</strong></div><div class="price-tag">GHS 30</div></div>
                 <div class="offer" onclick="showOffer('Starter', '70GB', 50)"><div><strong>70GB</strong></div><div class="price-tag">GHS 50</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Starter', 'All Starter Bundles', 0)">Get Offer</button>
             </div>
 
-            <!-- Bronze -->
+            <!-- BRONZE -->
             <div class="tier-card">
                 <h3>BRONZE</h3>
                 <div class="offer" onclick="showOffer('Bronze', '70GB', 30)"><div><strong>70GB</strong></div><div class="price-tag">GHS 30</div></div>
                 <div class="offer" onclick="showOffer('Bronze', '120GB', 50)"><div><strong>120GB</strong></div><div class="price-tag">GHS 50</div></div>
                 <div class="offer" onclick="showOffer('Bronze', '200GB', 80)"><div><strong>200GB</strong></div><div class="price-tag">GHS 80</div></div>
                 <div class="offer" onclick="showOffer('Bronze', '350GB', 120)"><div><strong>350GB</strong></div><div class="price-tag">GHS 120</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Bronze', 'All Bronze Bundles', 0)">Get Offer</button>
             </div>
 
-            <!-- Silver -->
+            <!-- SILVER -->
             <div class="tier-card">
                 <h3>SILVER</h3>
                 <div class="offer" onclick="showOffer('Silver', '250GB', 80)"><div><strong>250GB</strong></div><div class="price-tag">GHS 80</div></div>
                 <div class="offer" onclick="showOffer('Silver', '400GB', 120)"><div><strong>400GB</strong></div><div class="price-tag">GHS 120</div></div>
                 <div class="offer" onclick="showOffer('Silver', '600GB', 180)"><div><strong>600GB</strong></div><div class="price-tag">GHS 180</div></div>
                 <div class="offer" onclick="showOffer('Silver', '900GB', 250)"><div><strong>900GB</strong></div><div class="price-tag">GHS 250</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Silver', 'All Silver Bundles', 0)">Get Offer</button>
             </div>
 
-            <!-- Gold -->
+            <!-- GOLD -->
             <div class="tier-card">
                 <h3>GOLD <span style="background:var(--red);color:white;font-size:0.85rem;padding:4px 14px;border-radius:999px;">POPULAR</span></h3>
                 <div class="offer" onclick="showOffer('Gold', '900GB', 220)"><div><strong>900GB</strong></div><div class="price-tag">GHS 220</div></div>
                 <div class="offer" onclick="showOffer('Gold', '1.5TB', 350)"><div><strong>1.5TB</strong></div><div class="price-tag">GHS 350</div></div>
                 <div class="offer" onclick="showOffer('Gold', '2.5TB', 550)"><div><strong>2.5TB</strong></div><div class="price-tag">GHS 550</div></div>
                 <div class="offer" onclick="showOffer('Gold', '4TB', 750)"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Gold', 'All Gold Bundles', 0)">Get Offer</button>
             </div>
 
-            <!-- Platinum -->
+            <!-- PLATINUM -->
             <div class="tier-card">
                 <h3>PLATINUM</h3>
                 <div class="offer" onclick="showOffer('Platinum', '4TB', 750)"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div></div>
                 <div class="offer" onclick="showOffer('Platinum', '7TB', 1200)"><div><strong>7TB</strong></div><div class="price-tag">GHS 1200</div></div>
                 <div class="offer" onclick="showOffer('Platinum', '12TB', 1800)"><div><strong>12TB</strong></div><div class="price-tag">GHS 1800</div></div>
                 <div class="offer" onclick="showOffer('Platinum', 'Unlimited', 2500)"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Platinum', 'All Platinum Bundles', 0)">Get Offer</button>
             </div>
 
-            <!-- Diamond -->
+            <!-- DIAMOND -->
             <div class="tier-card">
                 <h3>DIAMOND</h3>
                 <div class="offer" onclick="showOffer('Diamond', 'Unlimited', 2500)"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div></div>
                 <div class="offer" onclick="showOffer('Diamond', 'Unlimited Priority', 3500)"><div><strong>Unlimited + Priority</strong></div><div class="price-tag">GHS 3500</div></div>
                 <div class="offer" onclick="showOffer('Diamond', 'Family Unlimited', 5000)"><div><strong>Family Unlimited</strong></div><div class="price-tag">GHS 5000</div></div>
                 <div class="offer" onclick="showOffer('Diamond', 'Enterprise Unlimited', 8000)"><div><strong>Enterprise Unlimited</strong></div><div class="price-tag">GHS 8000</div></div>
-                <button class="subscribe-btn" onclick="showOffer('Diamond', 'All Diamond Bundles', 0)">Get Offer</button>
             </div>
         </div>
     </section>
@@ -293,22 +278,10 @@
     <section class="section testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <strong>“Best data bundles in Ghana! Data never expires.”</strong><br><br>
-                — Ama Mensah, Accra
-            </div>
-            <div class="testimonial-card">
-                <strong>“I bought the Gold plan and still have data after 3 weeks. Amazing!”</strong><br><br>
-                — Kofi Boateng, Kumasi
-            </div>
-            <div class="testimonial-card">
-                <strong>“Super fast activation. Subscribed at midnight and it worked instantly.”</strong><br><br>
-                — Abena Osei, Takoradi
-            </div>
-            <div class="testimonial-card">
-                <strong>“Perfect for Netflix and TikTok. The Platinum plan is worth every cedi.”</strong><br><br>
-                — Kwame Asante, Tema
-            </div>
+            <div class="testimonial-card"><strong>“Best data bundles in Ghana! Data never expires.”</strong><br><br>— Ama Mensah, Accra</div>
+            <div class="testimonial-card"><strong>“I bought the Gold plan and still have data after 3 weeks. Amazing!”</strong><br><br>— Kofi Boateng, Kumasi</div>
+            <div class="testimonial-card"><strong>“Super fast activation. Subscribed at midnight and it worked instantly.”</strong><br><br>— Abena Osei, Takoradi</div>
+            <div class="testimonial-card"><strong>“Perfect for Netflix and TikTok. The Platinum plan is worth every cedi.”</strong><br><br>— Kwame Asante, Tema</div>
         </div>
     </section>
 
@@ -339,7 +312,7 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div class="logo" style="justify-content:center; margin-bottom:15px;">
+                <div class="logo" style="justify-content:center;">
                     <svg width="70" height="70" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="48" cy="48" r="46" fill="white"/>
                         <text x="48" y="53" font-family="Arial Black, sans-serif" font-size="54" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
@@ -347,10 +320,10 @@
                 </div>
             </div>
             <div><h4 style="color:white;">Telecel Ghana</h4><p>Connecting Ghana Better</p></div>
-            <div><h4 style="color:white;">Support</h4><p>Call 100</p><p>support@telecel.com.gh</p></div>
-            <div><h4 style="color:white;">Quick Links</h4><p>Coverage • Terms • Privacy Policy</p></div>
+            <div><h4 style="color:white;">Support</h4><p>100</p><p>support@telecel.com.gh</p></div>
+            <div><h4 style="color:white;">Quick Links</h4><p>Coverage • Terms • Privacy</p></div>
         </div>
-        <p style="text-align:center; margin-top:70px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+        <p style="text-align:center;margin-top:70px;opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
 
     <!-- MODAL -->
@@ -372,11 +345,11 @@
 
         function showOffer(tier, data, price) {
             currentOffer = {tier, data, price};
-            document.getElementById('modalTitle').innerHTML = `${tier} - ${data}`;
+            document.getElementById('modalTitle').innerHTML = `${tier} Plan - <strong>${data}</strong>`;
             document.getElementById('modalBody').innerHTML = `
                 <strong style="font-size:2.8rem; color:#22c55e;">GHS ${price}</strong><br><br>
-                <span style="color:#22c55e; font-size:1.25rem;">✅ Data Never Expires</span><br>
-                <span style="color:#22c55e; font-size:1.25rem;">✅ Instant Activation</span><br><br>
+                <span style="color:#22c55e">✅ Data Never Expires</span><br>
+                <span style="color:#22c55e">✅ Instant Activation</span><br><br>
                 <strong>We will verify your Telecel number before unlocking this offer.</strong>
             `;
             document.getElementById('offerModal').style.display = 'flex';
