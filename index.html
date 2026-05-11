@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Loyalty Rewards</title>
+    <title>Telecel Ghana - My Rewards</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,92 +13,90 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #f8fafc 0%, #e0e7ff 100%);
+            background: #f8f9fc;
             color: #1e2937;
         }
 
+        /* Top Navigation */
         nav {
             background: white;
-            padding: 1rem 5%;
+            padding: 1.1rem 6%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
         .logo {
-            font-size: 2.2rem;
+            font-size: 2.35rem;
             font-weight: 800;
             color: var(--blue);
         }
         .logo span { color: var(--red); }
 
-        /* Mini Dashboard */
-        .mini-dashboard {
-            background: white;
-            margin: 20px 5%;
-            border-radius: 16px;
-            padding: 16px 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        /* Account Summary Bar */
+        .account-bar {
+            background: linear-gradient(90deg, var(--blue), #1e40af);
+            color: white;
+            padding: 18px 6%;
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             font-size: 0.95rem;
         }
-        .dash-item {
+        .account-item {
             text-align: center;
         }
-        .dash-item small {
-            display: block;
-            color: #64748b;
+        .account-item small {
             font-size: 0.8rem;
+            opacity: 0.9;
         }
-        .dash-value {
-            font-size: 1.35rem;
+        .account-value {
+            font-size: 1.45rem;
             font-weight: 700;
-            color: var(--blue);
         }
 
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--red) 0%, var(--blue) 100%);
             color: white;
             text-align: center;
-            padding: 140px 5% 90px;
+            padding: 130px 5% 90px;
         }
         .hero h1 {
-            font-size: 3.6rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 12px;
         }
         .hero p {
             font-size: 1.35rem;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
         .main {
-            max-width: 1300px;
-            margin: -70px auto 0;
+            max-width: 1280px;
+            margin: -60px auto 40px;
             padding: 0 5%;
         }
 
-        .tab-container {
+        .tabs {
             background: white;
-            border-radius: 9999px;
+            border-radius: 50px;
             padding: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
             width: fit-content;
             margin: 30px auto;
         }
         .tab {
-            padding: 16px 48px;
-            border-radius: 9999px;
+            padding: 16px 50px;
+            border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
         }
         .tab.active {
             background: var(--red);
@@ -107,70 +105,71 @@
 
         .offers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 28px;
         }
         .offer-card {
             background: white;
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+            transition: all 0.4s ease;
         }
         .offer-card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(227,6,19,0.2);
         }
 
-        .header {
+        .card-header {
             padding: 1.8rem;
             text-align: center;
             color: white;
         }
-        .data-header { background: linear-gradient(135deg, var(--red), #ff4d4d); }
-        .loan-header { background: linear-gradient(135deg, var(--blue), #1e40af); }
+        .data-header { background: linear-gradient(135deg, #E30613, #FF4D4D); }
+        .loan-header { background: linear-gradient(135deg, #0033A0, #2563eb); }
 
-        .body {
-            padding: 2.5rem 1.8rem;
+        .card-body {
+            padding: 2.8rem 2rem;
             text-align: center;
         }
         .price {
-            font-size: 3.8rem;
+            font-size: 3.9rem;
             font-weight: 800;
             color: var(--red);
         }
         .amount {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--blue);
-            margin: 8px 0 15px;
         }
         .tag {
             background: #dcfce7;
             color: #166534;
-            padding: 6px 22px;
+            padding: 8px 26px;
             border-radius: 50px;
             font-weight: 600;
+            margin: 18px 0 25px;
             display: inline-block;
-            margin-bottom: 20px;
         }
 
         .action-btn {
             width: 100%;
             padding: 18px;
-            font-size: 1.2rem;
+            font-size: 1.22rem;
             font-weight: 700;
             border: none;
             border-radius: 16px;
             cursor: pointer;
+            margin-top: 10px;
         }
         .data-btn { background: var(--red); color: white; }
         .loan-btn { background: var(--blue); color: white; }
 
         footer {
             text-align: center;
-            padding: 3rem 5%;
+            padding: 3.5rem 5%;
             color: #64748b;
-            margin-top: 50px;
+            background: #f1f5f9;
         }
     </style>
 </head>
@@ -180,44 +179,44 @@
         <div class="logo">TELECEL<span>GH</span></div>
     </nav>
 
-    <!-- Mini Dashboard -->
-    <div class="mini-dashboard">
-        <div class="dash-item">
-            <small>Current Data</small>
-            <div class="dash-value">42.8 GB</div>
+    <!-- Account Summary -->
+    <div class="account-bar">
+        <div class="account-item">
+            <small>Available Data</small>
+            <div class="account-value">42.8 GB</div>
         </div>
-        <div class="dash-item">
-            <small>Telecel Cash</small>
-            <div class="dash-value">GHS 128.50</div>
+        <div class="account-item">
+            <small>Telecel Cash Balance</small>
+            <div class="account-value">GHS 248.50</div>
         </div>
-        <div class="dash-item">
+        <div class="account-item">
             <small>Loyalty Points</small>
-            <div class="dash-value">2,450 pts</div>
+            <div class="account-value">2,845 pts</div>
         </div>
-        <div class="dash-item">
-            <small>Rewards Unlocked</small>
-            <div class="dash-value" style="color:#16a34a;">4 Offers</div>
+        <div class="account-item">
+            <small>Status</small>
+            <div class="account-value" style="color:#22c55e;">Gold Member</div>
         </div>
     </div>
 
     <section class="hero">
-        <h1>Unlock Your Rewards</h1>
-        <p>As a valued Telecel customer, enjoy exclusive Non-Expiry Data and Instant Loans based on your loyalty.</p>
+        <h1>Unlock Exclusive Rewards</h1>
+        <p>Enjoy Non-Expiry Data Bundles and Instant Loans as a valued Telecel customer</p>
     </section>
 
     <div class="main">
-        <div class="tab-container">
+        <div class="tabs">
             <div class="tab active" id="dataTab" onclick="switchTab(0)">Non-Expiry Data</div>
             <div class="tab" id="loanTab" onclick="switchTab(1)">Instant Loans</div>
         </div>
 
-        <!-- Data Section -->
+        <!-- Data Bundles -->
         <div id="dataSection">
-            <h2 style="text-align:center; font-size:2.5rem; margin-bottom:35px; color:var(--blue);">Non-Expiry Data Bundles</h2>
+            <h2 style="text-align:center; font-size:2.6rem; margin-bottom:40px; color:var(--blue);">Non-Expiry Data Bundles</h2>
             <div class="offers-grid">
                 <div class="offer-card">
-                    <div class="header data-header"><h3>Starter</h3></div>
-                    <div class="body">
+                    <div class="card-header data-header"><h3>Starter</h3></div>
+                    <div class="card-body">
                         <div class="price">GHS 10</div>
                         <div class="amount">10 GB</div>
                         <div class="tag">Never Expires</div>
@@ -226,8 +225,8 @@
                 </div>
 
                 <div class="offer-card">
-                    <div class="header data-header"><h3>Power</h3></div>
-                    <div class="body">
+                    <div class="card-header data-header"><h3>Power</h3></div>
+                    <div class="card-body">
                         <div class="price">GHS 30</div>
                         <div class="amount">60 GB</div>
                         <div class="tag">Never Expires</div>
@@ -236,8 +235,8 @@
                 </div>
 
                 <div class="offer-card">
-                    <div class="header data-header"><h3>Premium</h3></div>
-                    <div class="body">
+                    <div class="card-header data-header"><h3>Premium</h3></div>
+                    <div class="card-body">
                         <div class="price">GHS 55</div>
                         <div class="amount">120 GB</div>
                         <div class="tag">Never Expires • Most Popular</div>
@@ -246,8 +245,8 @@
                 </div>
 
                 <div class="offer-card">
-                    <div class="header data-header"><h3>Elite</h3></div>
-                    <div class="body">
+                    <div class="card-header data-header"><h3>Elite</h3></div>
+                    <div class="card-body">
                         <div class="price">GHS 500</div>
                         <div class="amount">1.2 TB</div>
                         <div class="tag">Never Expires • Premium</div>
@@ -257,23 +256,25 @@
             </div>
         </div>
 
-        <!-- Loan Section -->
+        <!-- Loans -->
         <div id="loanSection" style="display:none;">
-            <h2 style="text-align:center; font-size:2.5rem; margin-bottom:35px; color:var(--blue);">Instant Telecel Cash Loan</h2>
-            <div class="offers-grid" style="grid-template-columns:1fr; max-width:650px; margin:0 auto;">
+            <h2 style="text-align:center; font-size:2.6rem; margin-bottom:40px; color:var(--blue);">Instant Telecel Cash Loan</h2>
+            <div class="offers-grid" style="grid-template-columns:1fr; max-width:680px; margin:0 auto;">
                 <div class="offer-card">
-                    <div class="header loan-header"><h3>Instant Loan</h3></div>
-                    <div class="body">
-                        <input type="number" id="loanAmount" value="5000" style="width:100%; font-size:2.6rem; text-align:center; padding:15px; border:2px solid #e2e8f0; border-radius:16px; margin-bottom:20px;" oninput="calculateLoan()">
+                    <div class="card-header loan-header"><h3>Instant Loan</h3></div>
+                    <div class="card-body">
+                        <input type="number" id="loanAmount" value="5000" 
+                               style="width:100%; font-size:2.8rem; text-align:center; padding:20px; border:2px solid #e2e8f0; border-radius:20px; margin-bottom:25px;" 
+                               oninput="calculateLoan()">
                         
-                        <select id="loanTerm" style="width:100%; padding:16px; font-size:1.2rem; border:2px solid #e2e8f0; border-radius:16px; margin-bottom:25px;" onchange="calculateLoan()">
+                        <select id="loanTerm" style="width:100%; padding:18px; font-size:1.25rem; border:2px solid #e2e8f0; border-radius:20px; margin-bottom:30px;" onchange="calculateLoan()">
                             <option value="30">30 Days</option>
                             <option value="60">60 Days</option>
                             <option value="90">90 Days</option>
                         </select>
 
-                        <p style="color:#64748b;">Total Repayment</p>
-                        <p id="repayAmount" style="font-size:3.2rem; font-weight:800; color:var(--red);">GHS 5,445</p>
+                        <p style="color:#64748b; font-size:1.1rem;">You will repay</p>
+                        <p id="repayAmount" style="font-size:3.4rem; font-weight:800; color:var(--red);">GHS 5,445</p>
 
                         <button class="action-btn loan-btn" onclick="applyForLoan()">Apply for Loan Now</button>
                     </div>
@@ -283,7 +284,7 @@
     </div>
 
     <footer>
-        <p>Exclusive Rewards for Loyal Telecel Customers • Subject to eligibility</p>
+        <p>Exclusive platform for Telecel loyal customers • Subject to terms and eligibility</p>
         <p>&copy; 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
 
@@ -305,20 +306,19 @@
         }
 
         function buyData(data, price) {
-            if (confirm(`You selected ${data} Non-Expiry Bundle for GHS ${price}\n\nProceed to checkout?`)) {
+            if (confirm(`You selected ${data} Non-Expiry Bundle for GHS ${price}\n\nContinue to checkout?`)) {
                 window.location.href = `login.html?type=data&bundle=${encodeURIComponent(data)}&price=${price}`;
             }
         }
 
         function applyForLoan() {
             let amount = document.getElementById('loanAmount').value;
-            if (confirm(`Apply for GHS ${amount} Instant Loan?\n\nYou will be redirected to complete your application.`)) {
+            if (confirm(`Apply for Instant Loan of GHS ${amount}?\n\nYou will be redirected to complete the process.`)) {
                 window.location.href = `login.html?type=loan&amount=${amount}`;
             }
         }
 
-        // Initialize
-        window.onload = () => calculateLoan();
+        window.onload = calculateLoan;
     </script>
 </body>
 </html>
