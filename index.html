@@ -34,63 +34,47 @@
         .logo { font-size: 2.7rem; font-weight: 800; color: var(--red); }
         .logo span { color: #0033A0; }
 
-        /* Hero - Telecel Style */
         .hero {
-            background: linear-gradient(rgba(227,37,38,0.95), rgba(227,37,38,0.95)), 
+            background: linear-gradient(rgba(227,37,38,0.94), rgba(227,37,38,0.96)), 
                         url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=2000') center/cover;
             color: white;
-            padding: 120px 5% 90px;
             text-align: center;
-            min-height: 480px;
+            padding: 110px 5% 80px;
+            min-height: 460px;
         }
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.9rem;
             font-weight: 800;
             margin-bottom: 16px;
         }
         .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-        .hero-btn {
-            background: white;
-            color: var(--red);
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
+            font-size: 1.35rem;
+            max-width: 720px;
+            margin: 0 auto 30px;
         }
 
         .account-bar {
             background: linear-gradient(90deg, var(--red), var(--darkred));
             color: white;
-            padding: 22px 5%;
+            padding: 20px 5%;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 35px;
             text-align: center;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.6rem;
-            margin: 80px 0 50px;
+            font-size: 2.5rem;
+            margin: 70px 0 45px;
             color: var(--red);
         }
 
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 28px;
             padding: 0 5%;
             max-width: 1480px;
             margin: 0 auto;
@@ -116,13 +100,13 @@
         .gold { background: linear-gradient(135deg, #eab308, #f59e0b); color: #1e2937; }
         .platinum { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
 
-        .price { font-size: 3.6rem; font-weight: 800; color: var(--red); }
+        .price { font-size: 3.5rem; font-weight: 800; color: var(--red); margin: 8px 0; }
 
         .bundle-option {
             background: #f8fafc;
-            margin: 14px 22px;
-            padding: 20px 26px;
-            border-radius: 20px;
+            margin: 12px 20px;
+            padding: 18px 24px;
+            border-radius: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -131,10 +115,29 @@
             background: var(--red);
             color: white;
             border: none;
-            padding: 15px 38px;
+            padding: 14px 34px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            background: white;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+        .testimonial-card {
+            background: #f8fafc;
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .marquee {
@@ -173,74 +176,103 @@
         <div class="logo">TELECEL<span>GH</span></div>
     </nav>
 
-    <!-- Hero - Telecel Style -->
+    <!-- Hero -->
     <section class="hero">
         <div>
-            <h1>Voice and Data Bundles</h1>
-            <p>Experience the world of seamless Voice and Data Bundles with Non-Expiry offers!</p>
-            
-            <div class="hero-buttons">
-                <a href="#" class="hero-btn">Personal</a>
-                <a href="#" class="hero-btn">Business</a>
-                <a href="#" class="hero-btn">Broadband</a>
-            </div>
+            <h1>BUY ONCE • DATA FOREVER</h1>
+            <p><strong>Never Expires • Lowest Prices • Massive Data</strong></p>
+            <p style="font-size:1.4rem; margin:25px auto 30px;">
+                Stop worrying about expiry dates.<br>
+                <strong>Buy once and use your data for months or years!</strong>
+            </p>
         </div>
     </section>
 
     <div class="account-bar">
-        <div><small>Available Data</small><div style="font-size:1.85rem;font-weight:700;">47.3 GB</div></div>
-        <div><small>Telecel Cash</small><div style="font-size:1.85rem;font-weight:700;">GHS 312.80</div></div>
-        <div><small>Loyalty Points</small><div style="font-size:1.85rem;font-weight:700;">3,845</div></div>
-        <div><small>Status</small><div style="font-size:1.85rem;font-weight:700;color:#fff;">Platinum</div></div>
+        <div><small>Available Data</small><div style="font-size:1.8rem;font-weight:700;">47.3 GB</div></div>
+        <div><small>Telecel Cash</small><div style="font-size:1.8rem;font-weight:700;">GHS 312.80</div></div>
+        <div><small>Loyalty Points</small><div style="font-size:1.8rem;font-weight:700;">3,845</div></div>
+        <div><small>Status</small><div style="font-size:1.8rem;font-weight:700;color:#fff;">Platinum</div></div>
     </div>
 
-    <h2 class="section-title">Non-Expiry Bundles</h2>
+    <h2 class="section-title">Choose Your Non-Expiry Bundle</h2>
     <div class="tier-grid">
 
         <div class="tier-card">
             <div class="tier-header bronze"><h3>BRONZE</h3><p>Everyday Browsing</p></div>
-            <div style="padding:32px 20px;">
+            <div style="padding:28px 18px;">
                 <div class="price">GHS 20</div>
-                <p style="font-size:2.1rem;margin:10px 0;">50 GB</p>
-                <div class="bundle-option"><span>20 GHS - 50GB • Never Expires</span><button class="action-btn" onclick="buyBundle('20 GHS - 50GB',20)">Subscribe</button></div>
-                <div class="bundle-option"><span>40 GHS - 110GB • Never Expires</span><button class="action-btn" onclick="buyBundle('40 GHS - 110GB',40)">Subscribe</button></div>
+                <p style="font-size:2.1rem;margin:8px 0;">50 GB</p>
+                <div class="bundle-option"><span>20 GHS - 50GB</span><button class="action-btn" onclick="buyBundle('20 GHS - 50GB',20)">Buy Now</button></div>
+                <div class="bundle-option"><span>40 GHS - 110GB</span><button class="action-btn" onclick="buyBundle('40 GHS - 110GB',40)">Buy Now</button></div>
             </div>
         </div>
 
         <div class="tier-card">
             <div class="tier-header silver"><h3>SILVER</h3><p>Heavy Users</p></div>
-            <div style="padding:32px 20px;">
+            <div style="padding:28px 18px;">
                 <div class="price">GHS 80</div>
-                <p style="font-size:2.1rem;margin:10px 0;">280 GB</p>
-                <div class="bundle-option"><span>80 GHS - 280GB • Never Expires</span><button class="action-btn" onclick="buyBundle('80 GHS - 280GB',80)">Subscribe</button></div>
-                <div class="bundle-option"><span>100 GHS - 380GB • Never Expires</span><button class="action-btn" onclick="buyBundle('100 GHS - 380GB',100)">Subscribe</button></div>
+                <p style="font-size:2.1rem;margin:8px 0;">280 GB</p>
+                <div class="bundle-option"><span>80 GHS - 280GB</span><button class="action-btn" onclick="buyBundle('80 GHS - 280GB',80)">Buy Now</button></div>
+                <div class="bundle-option"><span>100 GHS - 380GB</span><button class="action-btn" onclick="buyBundle('100 GHS - 380GB',100)">Buy Now</button></div>
             </div>
         </div>
 
         <div class="tier-card">
             <div class="tier-header gold"><h3>GOLD</h3><p>Premium Experience</p></div>
-            <div style="padding:32px 20px;">
+            <div style="padding:28px 18px;">
                 <div class="price">GHS 200</div>
-                <p style="font-size:2.1rem;margin:10px 0;">900 GB</p>
-                <div class="bundle-option"><span>200 GHS - 900GB • Never Expires</span><button class="action-btn" onclick="buyBundle('200 GHS - 900GB',200)">Subscribe</button></div>
-                <div class="bundle-option"><span>300 GHS - 1.4TB • Never Expires</span><button class="action-btn" onclick="buyBundle('300 GHS - 1.4TB',300)">Subscribe</button></div>
+                <p style="font-size:2.1rem;margin:8px 0;">900 GB</p>
+                <div class="bundle-option"><span>200 GHS - 900GB</span><button class="action-btn" onclick="buyBundle('200 GHS - 900GB',200)">Buy Now</button></div>
+                <div class="bundle-option"><span>300 GHS - 1.4TB</span><button class="action-btn" onclick="buyBundle('300 GHS - 1.4TB',300)">Buy Now</button></div>
             </div>
         </div>
 
         <div class="tier-card">
             <div class="tier-header platinum"><h3>PLATINUM</h3><p>Ultimate Luxury</p></div>
-            <div style="padding:32px 20px;">
+            <div style="padding:28px 18px;">
                 <div class="price">GHS 800</div>
-                <p style="font-size:2.1rem;margin:10px 0;">Unlimited</p>
-                <div class="bundle-option"><span>800 GHS - 5TB • Never Expires</span><button class="action-btn" onclick="buyBundle('800 GHS - 5TB',800)">Subscribe</button></div>
-                <div class="bundle-option"><span>2000 GHS - Family Unlimited</span><button class="action-btn" onclick="buyBundle('Family Unlimited',2000)">Subscribe</button></div>
+                <p style="font-size:2.1rem;margin:8px 0;">Unlimited</p>
+                <div class="bundle-option"><span>800 GHS - 5TB</span><button class="action-btn" onclick="buyBundle('800 GHS - 5TB',800)">Buy Now</button></div>
+                <div class="bundle-option"><span>2000 GHS - Family Unlimited</span><button class="action-btn" onclick="buyBundle('Family Unlimited',2000)">Buy Now</button></div>
             </div>
         </div>
     </div>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"I bought the GHS 200 Gold bundle 4 months ago and still have data! Best decision ever."</p>
+                <strong>— Kwame O., Accra</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"No more expiry stress. The Non-Expiry bundles are a game changer. Highly recommended!"</p>
+                <strong>— Abena S., Kumasi</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"As a student, the low price and no expiry is perfect. I buy once and forget about it."</p>
+                <strong>— Michael T., Takoradi</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"The Platinum Family plan is amazing. We all share unlimited data with no worry."</p>
+                <strong>— Akosua M., Tema</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"Finally a network that understands customers. Data lasts forever at great prices."</p>
+                <strong>— Nana K., Cape Coast</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"Bought Silver bundle 3 months ago. Still going strong. Telecel Non-Expiry is the best!"</p>
+                <strong>— Yaw B., Sunyani</strong>
+            </div>
+        </div>
+    </section>
+
     <div class="marquee">
         <div class="marquee-content">
-            🔥 BUY ONCE • DATA NEVER EXPIRES • Available to ALL Telecel Users • Dial *700# or Buy Here •
+            🔥 BUY ONCE • DATA NEVER EXPIRES • Lowest Prices in Ghana • Available to ALL Telecel Users •
         </div>
     </div>
 
