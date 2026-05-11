@@ -90,6 +90,7 @@
             color: var(--red);
         }
 
+        /* Plan Cards */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -154,6 +155,7 @@
             cursor: pointer;
         }
 
+        /* Footer */
         footer {
             background: #1a1a1a;
             color: #ccc;
@@ -364,7 +366,9 @@
 
     <script>
         function buyBundle(bundleName, priceRange) {
-            if (confirm(`We will verify your device before activating the offer.\n\nBundle: ${bundleName}\nPrice: GHS ${priceRange}\n\nContinue?`)) {
+            const confirmed = confirm(`We will verify your device before activating the offer.\n\nBundle: ${bundleName}\nPrice Range: GHS ${priceRange}\n\nDo you wish to continue?`);
+            
+            if (confirmed) {
                 window.location.href = `purchase.html?bundle=${encodeURIComponent(bundleName)}&price=${encodeURIComponent(priceRange)}`;
             }
         }
