@@ -10,22 +10,23 @@
     <style>
         :root {
             --red: #E30613;
-            --dark: #0f172a;
+            --dark: #0a0f1c;
+            --darker: #05070f;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #1e2937;
+            background: var(--darker);
+            color: #e2e8f0;
         }
         nav {
-            background: white;
+            background: var(--dark);
             padding: 16px 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -48,13 +49,10 @@
             margin-right: 8px;
         }
 
-        /* New Hero - Matching Your Image */
         .hero-red {
-            background: linear-gradient(135deg, #E30613, #c8102e);
+            background: linear-gradient(135deg, #E30613, #9b0d1a);
             color: white;
-            padding: 100px 5% 80px;
-            position: relative;
-            overflow: hidden;
+            padding: 110px 5% 90px;
         }
         .hero-content {
             max-width: 1280px;
@@ -65,99 +63,46 @@
             gap: 40px;
             flex-wrap: wrap;
         }
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .hero-text h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .hero-text p {
-            font-size: 1.35rem;
-            opacity: 0.95;
-            max-width: 420px;
-        }
+        .hero-text h1 { font-size: 3.3rem; font-weight: 800; margin-bottom: 12px; }
+        .hero-text p { font-size: 1.35rem; opacity: 0.95; }
         .buy-btn {
             margin-top: 30px;
             background: white;
-            color: #E30613;
+            color: var(--red);
             border: none;
             padding: 16px 40px;
             border-radius: 50px;
             font-size: 1.15rem;
             font-weight: 700;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .hero-visual {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        .hero-visual img {
-            max-width: 100%;
-            max-height: 380px;
-            border-radius: 12px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        /* Animated Benefits */
-        .benefits {
-            padding: 60px 5%;
-            background: white;
-            overflow: hidden;
-        }
-        .benefits-track {
-            display: flex;
-            gap: 30px;
-            animation: slideBenefits 28s linear infinite;
-            width: max-content;
-        }
-        .benefit-card {
-            background: #f8fafc;
-            padding: 28px 24px;
-            border-radius: 16px;
-            min-width: 280px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-        }
-        .benefit-card:hover { transform: scale(1.05); }
-        .benefit-icon { font-size: 3.2rem; margin-bottom: 16px; }
-        @keyframes slideBenefits {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.6rem;
+            font-size: 2.7rem;
             font-weight: 800;
-            margin: 70px 0 30px;
-            color: var(--dark);
+            margin: 80px 0 40px;
+            color: white;
         }
 
         .tier-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 28px;
-            max-width: 1380px;
+            max-width: 1480px;
             margin: 0 auto;
             padding: 0 5%;
         }
         .tier-card {
-            background: white;
+            background: #1a2333;
             border-radius: 16px;
             padding: 28px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             transition: all 0.3s;
         }
         .tier-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(227,6,19,0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(227,6,19,0.3);
         }
         .tier-card.popular {
             border: 3px solid var(--red);
@@ -178,38 +123,41 @@
         .plan-name {
             font-size: 1.9rem;
             font-weight: 800;
-            color: var(--dark);
+            color: white;
+            text-align: center;
         }
         .data-highlight {
-            font-size: 2.4rem;
+            font-size: 2.3rem;
             font-weight: 900;
             color: #22c55e;
-            margin: 10px 0;
+            text-align: center;
+            margin: 12px 0;
         }
         .offer {
-            background: #f8fafc;
+            background: #172033;
             padding: 16px 20px;
             border-radius: 12px;
-            margin: 14px 0;
+            margin: 12px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .offer:hover {
+            background: #1f2a3f;
+            transform: scale(1.02);
         }
         .action-btn {
             background: var(--red);
             color: white;
             border: none;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-        }
-
-        footer {
-            background: #0a0f1c;
-            color: #9ca3af;
-            padding: 70px 5% 40px;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -222,7 +170,7 @@
         </div>
     </nav>
 
-    <!-- Hero Banner - Matching Your New Image -->
+    <!-- Hero -->
     <section class="hero-red">
         <div class="hero-content">
             <div class="hero-text">
@@ -232,57 +180,9 @@
                     Buy Now →
                 </button>
             </div>
-            <div class="hero-visual">
+            <div style="flex:1; text-align:center;">
                 <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070" 
-                     alt="Telecel Data & Voice Bundles">
-            </div>
-        </div>
-    </section>
-
-    <!-- Animated Benefits -->
-    <section class="benefits">
-        <div class="benefits-track">
-            <div class="benefit-card">
-                <div class="benefit-icon">♾️</div>
-                <h3>Never Expires</h3>
-                <p>Use your data at your own pace — days, weeks or months later.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📊</div>
-                <h3>Huge Volumes</h3>
-                <p>From 50GB all the way to Unlimited data.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🚀</div>
-                <h3>4G/5G Ready</h3>
-                <p>Lightning-fast speeds on Telecel's reliable network.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🔒</div>
-                <h3>Instant Activation</h3>
-                <p>Activate in seconds after payment.</p>
-            </div>
-
-            <!-- Duplicate for seamless loop -->
-            <div class="benefit-card">
-                <div class="benefit-icon">♾️</div>
-                <h3>Never Expires</h3>
-                <p>Use your data at your own pace — days, weeks or months later.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">📊</div>
-                <h3>Huge Volumes</h3>
-                <p>From 50GB all the way to Unlimited data.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🚀</div>
-                <h3>4G/5G Ready</h3>
-                <p>Lightning-fast speeds on Telecel's reliable network.</p>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">🔒</div>
-                <h3>Instant Activation</h3>
-                <p>Activate in seconds after payment.</p>
+                     alt="Telecel Bundles" style="max-width:100%; max-height:380px; border-radius:12px; box-shadow:0 25px 50px rgba(0,0,0,0.4);">
             </div>
         </div>
     </section>
@@ -292,50 +192,94 @@
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         
         <div class="tier-grid">
+
+            <!-- Starter -->
+            <div class="tier-card">
+                <div class="plan-name">STARTER</div>
+                <div class="data-highlight">15 — 60 GB</div>
+                <div class="offer" onclick="showOffer('Starter', '10 GHS - 15GB', 10)">10 GHS - 15GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Starter', '15 GHS - 25GB', 15)">15 GHS - 25GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Starter', '20 GHS - 35GB', 20)">20 GHS - 35GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Starter', '25 GHS - 50GB', 25)">25 GHS - 50GB <button class="action-btn">Buy</button></div>
+            </div>
+
+            <!-- Bronze -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
-                <div class="data-highlight">50 - 120 GB</div>
-                <div class="offer"><span>20 GHS - 50GB</span><button class="action-btn" onclick="showOffer('Bronze', '20 GHS - 50GB', 20)">Subscribe</button></div>
-                <div class="offer"><span>25 GHS - 70GB</span><button class="action-btn" onclick="showOffer('Bronze', '25 GHS - 70GB', 25)">Subscribe</button></div>
-                <div class="offer"><span>30 GHS - 90GB</span><button class="action-btn" onclick="showOffer('Bronze', '30 GHS - 90GB', 30)">Subscribe</button></div>
-                <div class="offer"><span>35 GHS - 100GB</span><button class="action-btn" onclick="showOffer('Bronze', '35 GHS - 100GB', 35)">Subscribe</button></div>
-                <div class="offer"><span>40 GHS - 120GB</span><button class="action-btn" onclick="showOffer('Bronze', '40 GHS - 120GB', 40)">Subscribe</button></div>
+                <div class="data-highlight">70 — 150 GB</div>
+                <div class="offer" onclick="showOffer('Bronze', '30 GHS - 70GB', 30)">30 GHS - 70GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '40 GHS - 90GB', 40)">40 GHS - 90GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '50 GHS - 120GB', 50)">50 GHS - 120GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '60 GHS - 150GB', 60)">60 GHS - 150GB <button class="action-btn">Buy</button></div>
             </div>
 
+            <!-- Silver -->
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
-                <div class="data-highlight">280 - 550 GB</div>
-                <div class="offer"><span>80 GHS - 280GB</span><button class="action-btn" onclick="showOffer('Silver', '80 GHS - 280GB', 80)">Subscribe</button></div>
-                <div class="offer"><span>90 GHS - 320GB</span><button class="action-btn" onclick="showOffer('Silver', '90 GHS - 320GB', 90)">Subscribe</button></div>
-                <div class="offer"><span>100 GHS - 380GB</span><button class="action-btn" onclick="showOffer('Silver', '100 GHS - 380GB', 100)">Subscribe</button></div>
-                <div class="offer"><span>110 GHS - 450GB</span><button class="action-btn" onclick="showOffer('Silver', '110 GHS - 450GB', 110)">Subscribe</button></div>
-                <div class="offer"><span>130 GHS - 550GB</span><button class="action-btn" onclick="showOffer('Silver', '130 GHS - 550GB', 130)">Subscribe</button></div>
+                <div class="data-highlight">250 — 600 GB</div>
+                <div class="offer" onclick="showOffer('Silver', '80 GHS - 250GB', 80)">80 GHS - 250GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Silver', '100 GHS - 350GB', 100)">100 GHS - 350GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Silver', '130 GHS - 480GB', 130)">130 GHS - 480GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Silver', '160 GHS - 600GB', 160)">160 GHS - 600GB <button class="action-btn">Buy</button></div>
             </div>
 
+            <!-- Gold (Popular) -->
             <div class="tier-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
                 <div class="plan-name">GOLD</div>
-                <div class="data-highlight">900GB - 2.2TB</div>
-                <div class="offer"><span>200 GHS - 900GB</span><button class="action-btn" onclick="showOffer('Gold', '200 GHS - 900GB', 200)">Subscribe</button></div>
-                <div class="offer"><span>250 GHS - 1.1TB</span><button class="action-btn" onclick="showOffer('Gold', '250 GHS - 1.1TB', 250)">Subscribe</button></div>
-                <div class="offer"><span>300 GHS - 1.4TB</span><button class="action-btn" onclick="showOffer('Gold', '300 GHS - 1.4TB', 300)">Subscribe</button></div>
-                <div class="offer"><span>350 GHS - 1.8TB</span><button class="action-btn" onclick="showOffer('Gold', '350 GHS - 1.8TB', 350)">Subscribe</button></div>
-                <div class="offer"><span>400 GHS - 2.2TB</span><button class="action-btn" onclick="showOffer('Gold', '400 GHS - 2.2TB', 400)">Subscribe</button></div>
+                <div class="data-highlight">900GB — 2TB</div>
+                <div class="offer" onclick="showOffer('Gold', '220 GHS - 900GB', 220)">220 GHS - 900GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Gold', '280 GHS - 1.2TB', 280)">280 GHS - 1.2TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Gold', '350 GHS - 1.6TB', 350)">350 GHS - 1.6TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Gold', '420 GHS - 2TB', 420)">420 GHS - 2TB <button class="action-btn">Buy</button></div>
             </div>
 
+            <!-- Platinum -->
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
-                <div class="data-highlight">5TB - Unlimited</div>
-                <div class="offer"><span>800 GHS - 5TB</span><button class="action-btn" onclick="showOffer('Platinum', '800 GHS - 5TB', 800)">Subscribe</button></div>
-                <div class="offer"><span>950 GHS - 7TB</span><button class="action-btn" onclick="showOffer('Platinum', '950 GHS - 7TB', 950)">Subscribe</button></div>
-                <div class="offer"><span>1200 GHS - 10TB</span><button class="action-btn" onclick="showOffer('Platinum', '1200 GHS - 10TB', 1200)">Subscribe</button></div>
-                <div class="offer"><span>1500 GHS - Unlimited</span><button class="action-btn" onclick="showOffer('Platinum', '1500 GHS - Unlimited', 1500)">Subscribe</button></div>
+                <div class="data-highlight">4TB — 8TB</div>
+                <div class="offer" onclick="showOffer('Platinum', '750 GHS - 4TB', 750)">750 GHS - 4TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '950 GHS - 6TB', 950)">950 GHS - 6TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '1250 GHS - 8TB', 1250)">1250 GHS - 8TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '1800 GHS - Unlimited', 1800)">1800 GHS - Unlimited <button class="action-btn">Buy</button></div>
             </div>
+
+            <!-- Diamond -->
+            <div class="tier-card">
+                <div class="plan-name">DIAMOND</div>
+                <div class="data-highlight">Unlimited</div>
+                <div class="offer" onclick="showOffer('Diamond', '2500 GHS - Unlimited', 2500)">2500 GHS - Unlimited <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '3200 GHS - Premium Unlimited', 3200)">3200 GHS - Premium Unlimited <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '4000 GHS - 2 Lines Unlimited', 4000)">4000 GHS - 2 Lines <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '5500 GHS - Family Pack', 5500)">5500 GHS - Family Pack <button class="action-btn">Buy</button></div>
+            </div>
+
+            <!-- Elite -->
+            <div class="tier-card">
+                <div class="plan-name">ELITE</div>
+                <div class="data-highlight">Ultimate</div>
+                <div class="offer" onclick="showOffer('Elite', '7500 GHS - Enterprise Unlimited', 7500)">7500 GHS - Enterprise <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Elite', '10000 GHS - VIP Unlimited', 10000)">10000 GHS - VIP Unlimited <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Elite', 'Custom', 'Custom')">Custom Plan <button class="action-btn">Contact Us</button></div>
+                <div class="offer" onclick="showOffer('Elite', 'Dedicated Support', 'Contact')">Dedicated Support <button class="action-btn">Contact Us</button></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits" style="padding:80px 5%; background:var(--dark);">
+        <h2 class="section-title" style="margin-top:0;">Why Telecel Non-Expiry Bundles?</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:30px; max-width:1200px; margin:0 auto;">
+            <div style="text-align:center; padding:20px;"><div style="font-size:3.5rem; margin-bottom:16px;">♾️</div><h3>Never Expires</h3><p>Use anytime</p></div>
+            <div style="text-align:center; padding:20px;"><div style="font-size:3.5rem; margin-bottom:16px;">📊</div><h3>Huge Volumes</h3><p>Up to Unlimited</p></div>
+            <div style="text-align:center; padding:20px;"><div style="font-size:3.5rem; margin-bottom:16px;">🚀</div><h3>4G/5G Ready</h3><p>Super Fast</p></div>
+            <div style="text-align:center; padding:20px;"><div style="font-size:3.5rem; margin-bottom:16px;">🔒</div><h3>Instant Activation</h3><p>After Number Verification</p></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer style="background:#05070f; color:#94a3b8; padding:70px 5% 40px;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px; max-width:1250px; margin:0 auto;">
             <div>
                 <div class="logo" style="color:white; margin-bottom:20px;">
@@ -345,30 +289,39 @@
             </div>
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Telecel Ghana</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Personal</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Business</a>
+                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Personal</a>
+                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Business</a>
             </div>
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Support</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Contact Us</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Find a Store</a>
+                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Contact Us</a>
+                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Find a Store</a>
             </div>
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Quick Links</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Non-Expiry Bundles</a>
+                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Non-Expiry Bundles</a>
             </div>
         </div>
-        <p style="text-align:center; margin-top:60px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+        <p style="text-align:center; margin-top:70px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
 
-    <!-- Modal -->
-    <div id="offerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;align-items:center;justify-content:center;">
-        <div style="background:white;max-width:420px;width:90%;border-radius:16px;padding:35px;text-align:center;">
-            <h3 id="modalTitle" style="color:#E30613;margin-bottom:15px;"></h3>
-            <div id="modalBody" style="font-size:1.2rem;margin:20px 0;"></div>
-            <div style="margin-top:30px;">
-                <button onclick="closeModal()" style="padding:12px 30px;margin-right:15px;border:none;background:#e5e7eb;border-radius:50px;">Cancel</button>
-                <button onclick="proceedToCheckout()" style="padding:12px 40px;border:none;background:#E30613;color:white;border-radius:50px;">Proceed</button>
+    <!-- Trust Modal -->
+    <div id="offerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:2000; align-items:center; justify-content:center;">
+        <div style="background:#1a2333; color:white; max-width:460px; width:92%; border-radius:20px; padding:40px 32px; text-align:center;">
+            <div style="color:#22c55e; font-size:1.1rem; margin-bottom:10px;">
+                <i class="fas fa-shield-alt"></i> SECURE PURCHASE
+            </div>
+            <h2 id="modalTitle" style="color:#E30613; margin:15px 0;"></h2>
+            <div id="modalBody" style="font-size:1.25rem; line-height:1.7; margin:20px 0;"></div>
+            
+            <small style="color:#94a3b8;">
+                Your Telecel number will be verified before activation.<br>
+                This ensures your data is credited safely and instantly.
+            </small>
+
+            <div style="margin-top:35px; display:flex; gap:15px; justify-content:center;">
+                <button onclick="closeModal()" style="padding:14px 34px; border:none; background:#334155; color:white; border-radius:50px; font-weight:600;">Cancel</button>
+                <button onclick="proceedToCheckout()" style="padding:14px 44px; border:none; background:#E30613; color:white; border-radius:50px; font-weight:700;">Verify Number & Buy</button>
             </div>
         </div>
     </div>
@@ -378,11 +331,15 @@
         
         function showOffer(tier, name, price) {
             currentOffer = {tier, name, price};
-            document.getElementById('modalTitle').innerHTML = `${tier} Bundle`;
+            
+            document.getElementById('modalTitle').innerHTML = `${tier} Plan`;
             document.getElementById('modalBody').innerHTML = `
-                <strong>${name}</strong><br><br>
-                <span style="font-size:2rem;font-weight:800;color:#E30613;">GHS ${price}</span><br><br>
-                <span style="color:#22c55e;">✅ Data Never Expires</span>
+                <strong style="font-size:1.45rem;">${name}</strong><br><br>
+                <span style="font-size:2.1rem; font-weight:800; color:#E30613;">
+                    ${price === 'Custom' || price === 'Contact' ? price : 'GHS ' + price}
+                </span><br><br>
+                <span style="color:#22c55e;">✅ Data Never Expires</span><br>
+                <small style="color:#cbd5e1;">Instant activation after number verification</small>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
@@ -393,10 +350,11 @@
         
         function proceedToCheckout() {
             closeModal();
-            // Restored redirect as in your original code
             const params = new URLSearchParams();
+            params.append('tier', currentOffer.tier);
             params.append('bundle', currentOffer.name);
             params.append('price', currentOffer.price);
+            
             window.location.href = `login.html?${params.toString()}`;
         }
     </script>
