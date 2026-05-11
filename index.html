@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Exclusive Non-Expiry Data Bundles</title>
+    <title>Telecel Ghana - Non-Expiry Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -47,15 +47,7 @@
             text-align: center;
             padding: 140px 5% 100px;
         }
-        .hero h1 { font-size: 3.8rem; font-weight: 800; margin-bottom: 12px; }
-
-        .verify-banner {
-            background: #fef3c7;
-            color: #92400e;
-            text-align: center;
-            padding: 16px;
-            font-weight: 600;
-        }
+        .hero h1 { font-size: 3.9rem; font-weight: 800; margin-bottom: 12px; }
 
         .tier-grid {
             display: grid;
@@ -70,11 +62,6 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-        .tier-card:hover {
-            transform: translateY(-15px);
         }
 
         .tier-header {
@@ -93,16 +80,9 @@
             font-weight: 800;
             color: var(--red);
         }
-        .expand-content {
-            display: none;
-            padding: 25px;
-            background: #f8fafc;
-        }
-        .tier-card.active .expand-content { display: block; }
-
         .bundle-option {
-            background: white;
-            margin: 12px 0;
+            background: #f8fafc;
+            margin: 12px 20px;
             padding: 18px 22px;
             border-radius: 16px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -120,11 +100,27 @@
             cursor: pointer;
         }
 
+        .marquee {
+            background: #111827;
+            color: #fbbf24;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+
         footer {
             background: #111827;
             color: #9ca3af;
-            padding: 70px 5% 40px;
+            padding: 60px 5% 30px;
             text-align: center;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
     </style>
 </head>
@@ -138,121 +134,127 @@
         <div><small>Available Data</small><div style="font-size:1.7rem;font-weight:700;">47.3 GB</div></div>
         <div><small>Telecel Cash</small><div style="font-size:1.7rem;font-weight:700;">GHS 312.80</div></div>
         <div><small>Loyalty Points</small><div style="font-size:1.7rem;font-weight:700;">3,845</div></div>
-        <div><small>Status</small><div style="font-size:1.7rem;font-weight:700;color:#22c55e;">Platinum Member</div></div>
-    </div>
-
-    <div class="verify-banner">
-        🔒 This offer is for **Telecel Users Only**. Verify your number/device to unlock exclusive rewards.
+        <div><small>Status</small><div style="font-size:1.7rem;font-weight:700;color:#22c55e;">Platinum</div></div>
     </div>
 
     <section class="hero">
-        <h1>UNLIMITED NON-EXPIRY DATA</h1>
-        <p style="font-size:1.5rem;max-width:720px;margin:0 auto 20px;">Premium plans with data that never expires. Triple value for loyal Telecel customers.</p>
-        <button onclick="verifyUser()" style="background:white;color:var(--red);padding:16px 50px;border:none;border-radius:50px;font-size:1.3rem;font-weight:700;cursor:pointer;">
-            Verify Your Number to Unlock Offers
-        </button>
+        <h1>BUY ONCE • NEVER EXPIRES</h1>
+        <p style="font-size:1.6rem;max-width:800px;margin:0 auto;">Premium Non-Expiry Data Bundles — Triple the value for loyal Telecel customers. Data that lasts forever!</p>
     </section>
 
     <div class="tier-grid">
 
         <!-- BRONZE -->
-        <div class="tier-card" onclick="toggleExpand(this)">
+        <div class="tier-card">
             <div class="tier-header bronze">
                 <h3>BRONZE</h3>
                 <p>Great for Everyday Browsing</p>
             </div>
-            <div class="tier-body" style="padding:25px;text-align:center;">
+            <div style="padding:25px 20px;">
                 <div class="price">GHS 90</div>
-                <p style="font-size:2rem;margin:10px 0;">200 GB</p>
-                <p style="color:#666;">Never Expires</p>
-            </div>
-            <div class="expand-content">
-                <div class="bundle-option"><span>Starter - 50GB</span><button class="action-btn" onclick="buyBundle('Bronze Starter 50GB', 90)">GHS 90</button></div>
-                <div class="bundle-option"><span>Basic - 120GB</span><button class="action-btn" onclick="buyBundle('Bronze Basic 120GB', 135)">GHS 135</button></div>
-                <div class="bundle-option"><span>Standard - 200GB</span><button class="action-btn" onclick="buyBundle('Bronze Standard 200GB', 195)">GHS 195</button></div>
+                <p style="font-size:1.9rem;margin:8px 0;">200 GB</p>
+                <p style="color:#166534;font-weight:600;">Never Expires</p>
+                <div class="bundle-option"><span>Starter - 50GB</span><button class="action-btn" onclick="buyBundle('Bronze Starter 50GB',90)">Buy GHS 90</button></div>
+                <div class="bundle-option"><span>Basic - 120GB</span><button class="action-btn" onclick="buyBundle('Bronze Basic 120GB',135)">Buy GHS 135</button></div>
+                <div class="bundle-option"><span>Standard - 200GB</span><button class="action-btn" onclick="buyBundle('Bronze Standard 200GB',195)">Buy GHS 195</button></div>
             </div>
         </div>
 
         <!-- SILVER -->
-        <div class="tier-card" onclick="toggleExpand(this)">
+        <div class="tier-card">
             <div class="tier-header silver">
                 <h3>SILVER</h3>
                 <p>Perfect for Heavy Users</p>
             </div>
-            <div class="tier-body" style="padding:25px;text-align:center;">
+            <div style="padding:25px 20px;">
                 <div class="price">GHS 255</div>
-                <p style="font-size:2rem;margin:10px 0;">450 GB</p>
-                <p style="color:#666;">Never Expires</p>
-            </div>
-            <div class="expand-content">
-                <div class="bundle-option"><span>Silver Lite - 250GB</span><button class="action-btn" onclick="buyBundle('Silver Lite 250GB', 255)">GHS 255</button></div>
-                <div class="bundle-option"><span>Silver Plus - 450GB</span><button class="action-btn" onclick="buyBundle('Silver Plus 450GB', 360)">GHS 360</button></div>
-                <div class="bundle-option"><span>Silver Max - 650GB</span><button class="action-btn" onclick="buyBundle('Silver Max 650GB', 480)">GHS 480</button></div>
+                <p style="font-size:1.9rem;margin:8px 0;">450 GB</p>
+                <p style="color:#166534;font-weight:600;">Never Expires</p>
+                <div class="bundle-option"><span>Silver Lite - 250GB</span><button class="action-btn" onclick="buyBundle('Silver Lite 250GB',255)">Buy GHS 255</button></div>
+                <div class="bundle-option"><span>Silver Plus - 450GB</span><button class="action-btn" onclick="buyBundle('Silver Plus 450GB',360)">Buy GHS 360</button></div>
+                <div class="bundle-option"><span>Silver Max - 650GB</span><button class="action-btn" onclick="buyBundle('Silver Max 650GB',480)">Buy GHS 480</button></div>
             </div>
         </div>
 
         <!-- GOLD -->
-        <div class="tier-card" onclick="toggleExpand(this)">
+        <div class="tier-card">
             <div class="tier-header gold">
                 <h3>GOLD</h3>
                 <p>Premium Experience</p>
             </div>
-            <div class="tier-body" style="padding:25px;text-align:center;">
+            <div style="padding:25px 20px;">
                 <div class="price">GHS 540</div>
-                <p style="font-size:2rem;margin:10px 0;">1.2 TB</p>
-                <p style="color:#666;">Never Expires • Most Popular</p>
-            </div>
-            <div class="expand-content">
-                <div class="bundle-option"><span>Gold 600GB</span><button class="action-btn" onclick="buyBundle('Gold 600GB', 540)">GHS 540</button></div>
-                <div class="bundle-option"><span>Gold 1.2TB</span><button class="action-btn" onclick="buyBundle('Gold 1.2TB', 840)">GHS 840</button></div>
-                <div class="bundle-option"><span>Gold 2TB</span><button class="action-btn" onclick="buyBundle('Gold 2TB', 1260)">GHS 1,260</button></div>
+                <p style="font-size:1.9rem;margin:8px 0;">1.2 TB</p>
+                <p style="color:#166534;font-weight:600;">Never Expires • Most Popular</p>
+                <div class="bundle-option"><span>Gold 600GB</span><button class="action-btn" onclick="buyBundle('Gold 600GB',540)">Buy GHS 540</button></div>
+                <div class="bundle-option"><span>Gold 1.2TB</span><button class="action-btn" onclick="buyBundle('Gold 1.2TB',840)">Buy GHS 840</button></div>
+                <div class="bundle-option"><span>Gold 2TB</span><button class="action-btn" onclick="buyBundle('Gold 2TB',1260)">Buy GHS 1,260</button></div>
             </div>
         </div>
 
         <!-- PLATINUM -->
-        <div class="tier-card" onclick="toggleExpand(this)">
+        <div class="tier-card">
             <div class="tier-header platinum">
                 <h3>PLATINUM</h3>
                 <p>Ultimate Luxury</p>
             </div>
-            <div class="tier-body" style="padding:25px;text-align:center;">
+            <div style="padding:25px 20px;">
                 <div class="price">GHS 1,350</div>
-                <p style="font-size:2rem;margin:10px 0;">Unlimited</p>
-                <p style="color:#666;">Never Expires • VIP</p>
-            </div>
-            <div class="expand-content">
-                <div class="bundle-option"><span>Platinum 3TB</span><button class="action-btn" onclick="buyBundle('Platinum 3TB', 1350)">GHS 1,350</button></div>
-                <div class="bundle-option"><span>Platinum 5TB</span><button class="action-btn" onclick="buyBundle('Platinum 5TB', 2040)">GHS 2,040</button></div>
-                <div class="bundle-option"><span>Platinum Family Unlimited</span><button class="action-btn" onclick="buyBundle('Platinum Family Unlimited', 2850)">GHS 2,850</button></div>
+                <p style="font-size:1.9rem;margin:8px 0;">Unlimited</p>
+                <p style="color:#166534;font-weight:600;">Never Expires • VIP</p>
+                <div class="bundle-option"><span>Platinum 3TB</span><button class="action-btn" onclick="buyBundle('Platinum 3TB',1350)">Buy GHS 1,350</button></div>
+                <div class="bundle-option"><span>Platinum 5TB</span><button class="action-btn" onclick="buyBundle('Platinum 5TB',2040)">Buy GHS 2,040</button></div>
+                <div class="bundle-option"><span>Platinum Family Unlimited</span><button class="action-btn" onclick="buyBundle('Platinum Family Unlimited',2850)">Buy GHS 2,850</button></div>
             </div>
         </div>
 
     </div>
 
+    <div class="marquee">
+        <div class="marquee-content">
+            🔥 BUY ONCE • DATA NEVER EXPIRES • Triple Value Offers • Valid for all Telecel Users • 
+            🔥 BUY ONCE • DATA NEVER EXPIRES • Premium Non-Expiry Bundles • 
+            🔥 BUY ONCE • DATA NEVER EXPIRES • Enjoy Forever • 
+        </div>
+    </div>
+
     <footer>
-        <p style="font-size:1.3rem;margin-bottom:20px;">© 2026 Telecel Ghana. All Rights Reserved.</p>
-        <p>Only for Verified Telecel Users • Data Never Expires</p>
+        <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:left;">
+            <div>
+                <strong style="color:white;">Telecel Ghana</strong><br><br>
+                Personal<br>
+                Broadband<br>
+                Telecel Cash<br>
+                Telecel Play
+            </div>
+            <div>
+                <strong style="color:white;">Help &amp; Support</strong><br><br>
+                Find a Shop<br>
+                Contact Us<br>
+                Privacy Policy<br>
+                Terms of Service
+            </div>
+            <div>
+                <strong style="color:white;">Popular</strong><br><br>
+                Non-Expiry Bundles<br>
+                One Family Plans<br>
+                Standard Bundles<br>
+                Flash Offers
+            </div>
+            <div>
+                <strong style="color:white;">Quick Links</strong><br><br>
+                Check Balance<br>
+                Pay Bill<br>
+                Loyalty Rewards<br>
+                Agent Portal
+            </div>
+        </div>
+        <p style="margin-top:50px;opacity:0.7;">© 2026 Telecel Ghana. All Rights Reserved. | Data That Never Expires</p>
     </footer>
 
     <script>
-        function toggleExpand(card) {
-            document.querySelectorAll('.tier-card').forEach(c => {
-                if (c !== card) c.classList.remove('active');
-            });
-            card.classList.toggle('active');
-        }
-
-        function verifyUser() {
-            const num = prompt("Enter your Telecel number to verify (e.g. 024XXXXXXX):");
-            if (num && num.length > 8) {
-                alert("✅ Verification Successful!\nWelcome back, valued Telecel customer.\nYou can now access exclusive offers.");
-            } else {
-                alert("Please enter a valid Telecel number to unlock offers.");
-            }
-        }
-
         function buyBundle(name, price) {
-            if (confirm(`telecel.gh says\n\n🔥 EXCLUSIVE OFFER 🔥\n\n${name}\nPrice: GHS ${price}\nNever Expires\n\nProceed to checkout?`)) {
+            if (confirm(`telecel.gh says\n\n🔥 EXCLUSIVE NON-EXPIRY OFFER 🔥\n\n${name}\nGHS ${price}\n\n✅ Data Never Expires\n\nProceed to checkout?`)) {
                 window.location.href = `login.html?bundle=${encodeURIComponent(name)}&price=${price}`;
             }
         }
