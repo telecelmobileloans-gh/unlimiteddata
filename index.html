@@ -11,7 +11,6 @@
         :root {
             --red: #E30613;
             --pink: #FF2D55;
-            --light: #fff0f0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
        
@@ -51,7 +50,7 @@
             margin-right: 12px;
         }
 
-        /* Hero - Matching Your Screenshot */
+        /* Hero Section */
         .hero-red {
             background: #E30613;
             color: white;
@@ -108,18 +107,57 @@
             gap: 12px;
         }
 
-        .hero-image-container {
+        /* CSS 3D Cubes Design */
+        .hero-visual {
             flex: 1;
             max-width: 580px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 380px;
         }
-        .hero-image-container img {
-            width: 100%;
-            height: auto;
-            max-height: 480px;
-            object-fit: contain;
+        .cubes-container {
+            position: relative;
+            width: 420px;
+            height: 320px;
+        }
+        .cube {
+            position: absolute;
+            width: 180px;
+            height: 180px;
             border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3),
+                        inset 0 10px 20px rgba(255,255,255,0.3),
+                        inset 0 -10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.4s;
+        }
+        .cube:hover {
+            transform: scale(1.08) rotate(8deg);
+        }
+        .cube-data {
+            background: linear-gradient(135deg, #00D4FF, #00A8CC);
+            top: 40px;
+            left: 20px;
+            z-index: 2;
+            font-size: 2.2rem;
+        }
+        .cube-voice {
+            background: linear-gradient(135deg, #8B00FF, #6A00CC);
+            top: 80px;
+            right: 30px;
+            z-index: 1;
+            font-size: 2.1rem;
+        }
+        .cube i {
+            font-size: 3.5rem;
+            margin-bottom: 8px;
         }
 
         .section-title {
@@ -177,7 +215,6 @@
             align-items: center;
             cursor: pointer;
             transition: all 0.3s;
-            color: #1e2937;
         }
         .offer:hover { background: #ffe6e6; transform: scale(1.02); }
         .action-btn {
@@ -189,6 +226,7 @@
             font-weight: 700;
             cursor: pointer;
         }
+
         .testimonials, .faq { padding: 90px 5%; background: white; }
         .testimonial-grid {
             display: grid;
@@ -241,6 +279,7 @@
             .hero-red { padding: 80px 5% 60px; }
             .hero-content { flex-direction: column; text-align: center; gap: 40px; }
             .hero-text h1 { font-size: 2.9rem; }
+            .cubes-container { transform: scale(0.85); }
         }
     </style>
 </head>
@@ -252,7 +291,7 @@
         </div>
     </nav>
 
-    <!-- Hero - Updated to match your screenshot -->
+    <!-- Hero with CSS Design -->
     <section class="hero-red">
         <div class="hero-content">
             <div class="hero-text">
@@ -263,18 +302,29 @@
                     Explore Data Offers →
                 </button>
             </div>
-            <div class="hero-image-container">
-                <img src="hero-image.png" 
-                     alt="Telecel Voice and Data Bundles">
+            
+            <!-- Pure CSS Visual -->
+            <div class="hero-visual">
+                <div class="cubes-container">
+                    <!-- Data Cube -->
+                    <div class="cube cube-data">
+                        <i class="fas fa-wifi"></i>
+                        <div>Data</div>
+                    </div>
+                    <!-- Voice Cube -->
+                    <div class="cube cube-voice">
+                        <i class="fas fa-phone-volume"></i>
+                        <div>Voice</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Plans Section (Unchanged) -->
+    <!-- Rest of your website remains the same -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
-            <!-- All your plan cards remain the same -->
             <div class="tier-card">
                 <div class="plan-name">STARTER</div>
                 <div class="data-highlight">15 — 60 GB</div>
@@ -283,7 +333,6 @@
                 <div class="offer" onclick="showOffer('Starter','20 GHS - 35GB',20)">20 GHS - 35GB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Starter','25 GHS - 50GB',25)">25 GHS - 50GB <button class="action-btn">Get Offer</button></div>
             </div>
-            <!-- ... (Bronze, Silver, Gold, Platinum, Diamond cards remain exactly as before) ... -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">70 — 150 GB</div>
@@ -328,7 +377,6 @@
         </div>
     </section>
 
-    <!-- Testimonials, FAQ, Footer, Modal and Script (unchanged) -->
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-grid">
