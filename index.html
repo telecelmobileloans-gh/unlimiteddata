@@ -35,27 +35,28 @@
         .logo {
             display: flex;
             align-items: center;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 800;
+            color: white;
         }
         .logo-circle {
-            width: 48px; height: 48px;
+            width: 52px; height: 52px;
             background: var(--red);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            margin-right: 8px;
+            font-size: 2rem;
+            margin-right: 10px;
+            box-shadow: 0 4px 10px rgba(227,6,19,0.4);
         }
 
-        /* Official Style Hero */
+        /* Hero - Exact Telecel Style */
         .hero-red {
             background: #E30613;
             color: white;
-            padding: 120px 5% 90px;
-            position: relative;
+            padding: 110px 5% 90px;
             min-height: 520px;
             display: flex;
             align-items: center;
@@ -69,10 +70,6 @@
             gap: 40px;
             flex-wrap: wrap;
         }
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-        }
         .hero-text h1 {
             font-size: 3.2rem;
             font-weight: 800;
@@ -80,22 +77,22 @@
         }
         .hero-text p {
             font-size: 1.25rem;
-            opacity: 0.95;
             max-width: 520px;
+            opacity: 0.95;
         }
         .explore-btn {
             margin-top: 30px;
             background: white;
             color: var(--red);
             border: none;
-            padding: 16px 40px;
+            padding: 16px 42px;
             border-radius: 50px;
             font-size: 1.15rem;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .section-title {
@@ -141,19 +138,8 @@
             font-size: 0.95rem;
             font-weight: 700;
         }
-        .plan-name {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: white;
-            text-align: center;
-        }
-        .data-highlight {
-            font-size: 2.3rem;
-            font-weight: 900;
-            color: #22c55e;
-            text-align: center;
-            margin: 12px 0;
-        }
+        .plan-name { font-size: 1.9rem; font-weight: 800; text-align: center; color: white; }
+        .data-highlight { font-size: 2.3rem; font-weight: 900; color: #22c55e; text-align: center; margin: 12px 0; }
         .offer {
             background: #172033;
             padding: 16px 20px;
@@ -162,14 +148,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
         }
-        .offer:hover {
-            background: #1f2a3f;
-            transform: scale(1.02);
-        }
+        .offer:hover { background: #1f2a3f; transform: scale(1.02); }
         .action-btn {
             background: var(--red);
             color: white;
@@ -178,19 +160,62 @@
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 0.95rem;
         }
 
-        /* Testimonials & Others remain the same */
-        .testimonials, .faq { padding: 80px 5%; }
-        .testimonial-card { cursor: pointer; }
-        .testimonial-body { display: none; }
-        .testimonial-card.active .testimonial-body { display: block; }
+        /* Testimonials - Compact Grid */
+        .testimonials {
+            padding: 80px 5%;
+            background: var(--dark);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: #1a2333;
+            padding: 20px;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 5%;
+            background: var(--darker);
+        }
+        .faq-item {
+            background: #1a2333;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 18px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer {
+            background: #05070f;
+            color: #94a3b8;
+            padding: 80px 5% 50px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top Nav with Logo -->
     <nav>
         <div class="logo">
             <div class="logo-circle">t</div>
@@ -198,7 +223,7 @@
         </div>
     </nav>
 
-    <!-- Official Style Hero -->
+    <!-- Hero -->
     <section class="hero-red">
         <div class="hero-content">
             <div class="hero-text">
@@ -208,122 +233,129 @@
                     Explore Data Offers →
                 </button>
             </div>
-            
-            <!-- Right side image / visual space -->
-            <div style="flex:1; text-align:center; min-width:300px;">
+            <div style="flex:1; text-align:center;">
                 <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070" 
-                     alt="Telecel Bundles" 
-                     style="max-width:100%; max-height:420px; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,0.4);">
+                     alt="Telecel Bundles" style="max-width:100%; max-height:420px; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,0.4);">
             </div>
         </div>
     </section>
 
-    <!-- Plans Section -->
+    <!-- Plans -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
-            <!-- Starter -->
             <div class="tier-card">
                 <div class="plan-name">STARTER</div>
                 <div class="data-highlight">15 — 60 GB</div>
-                <div class="offer" onclick="showOffer('Starter', '10 GHS - 15GB', 10)">10 GHS - 15GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Starter', '15 GHS - 25GB', 15)">15 GHS - 25GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Starter', '20 GHS - 35GB', 20)">20 GHS - 35GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Starter', '25 GHS - 50GB', 25)">25 GHS - 50GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','10 GHS - 15GB',10)">10 GHS - 15GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','15 GHS - 25GB',15)">15 GHS - 25GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','20 GHS - 35GB',20)">20 GHS - 35GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','25 GHS - 50GB',25)">25 GHS - 50GB <button class="action-btn">Get Offer</button></div>
             </div>
 
-            <!-- Bronze -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">70 — 150 GB</div>
-                <div class="offer" onclick="showOffer('Bronze', '30 GHS - 70GB', 30)">30 GHS - 70GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '40 GHS - 90GB', 40)">40 GHS - 90GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '50 GHS - 120GB', 50)">50 GHS - 120GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '60 GHS - 150GB', 60)">60 GHS - 150GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','30 GHS - 70GB',30)">30 GHS - 70GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','40 GHS - 90GB',40)">40 GHS - 90GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','50 GHS - 120GB',50)">50 GHS - 120GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','60 GHS - 150GB',60)">60 GHS - 150GB <button class="action-btn">Get Offer</button></div>
             </div>
 
-            <!-- Silver -->
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
                 <div class="data-highlight">250 — 600 GB</div>
-                <div class="offer" onclick="showOffer('Silver', '80 GHS - 250GB', 80)">80 GHS - 250GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Silver', '100 GHS - 350GB', 100)">100 GHS - 350GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Silver', '130 GHS - 480GB', 130)">130 GHS - 480GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Silver', '160 GHS - 600GB', 160)">160 GHS - 600GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','80 GHS - 250GB',80)">80 GHS - 250GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','100 GHS - 350GB',100)">100 GHS - 350GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','130 GHS - 480GB',130)">130 GHS - 480GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','160 GHS - 600GB',160)">160 GHS - 600GB <button class="action-btn">Get Offer</button></div>
             </div>
 
-            <!-- Gold -->
             <div class="tier-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
                 <div class="plan-name">GOLD</div>
                 <div class="data-highlight">900GB — 2TB</div>
-                <div class="offer" onclick="showOffer('Gold', '220 GHS - 900GB', 220)">220 GHS - 900GB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Gold', '280 GHS - 1.2TB', 280)">280 GHS - 1.2TB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Gold', '350 GHS - 1.6TB', 350)">350 GHS - 1.6TB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Gold', '420 GHS - 2TB', 420)">420 GHS - 2TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','220 GHS - 900GB',220)">220 GHS - 900GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','280 GHS - 1.2TB',280)">280 GHS - 1.2TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','350 GHS - 1.6TB',350)">350 GHS - 1.6TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','420 GHS - 2TB',420)">420 GHS - 2TB <button class="action-btn">Get Offer</button></div>
             </div>
 
-            <!-- Platinum -->
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
                 <div class="data-highlight">4TB — Unlimited</div>
-                <div class="offer" onclick="showOffer('Platinum', '750 GHS - 4TB', 750)">750 GHS - 4TB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '950 GHS - 6TB', 950)">950 GHS - 6TB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '1250 GHS - 8TB', 1250)">1250 GHS - 8TB <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '1800 GHS - Unlimited', 1800)">1800 GHS - Unlimited <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','750 GHS - 4TB',750)">750 GHS - 4TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','950 GHS - 6TB',950)">950 GHS - 6TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','1250 GHS - 8TB',1250)">1250 GHS - 8TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','1800 GHS - Unlimited',1800)">1800 GHS - Unlimited <button class="action-btn">Get Offer</button></div>
             </div>
 
-            <!-- Diamond -->
             <div class="tier-card">
                 <div class="plan-name">DIAMOND</div>
                 <div class="data-highlight">Unlimited</div>
-                <div class="offer" onclick="showOffer('Diamond', '2500 GHS - Unlimited', 2500)">2500 GHS - Unlimited <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '3200 GHS - Premium', 3200)">3200 GHS - Premium <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '4000 GHS - 2 Lines', 4000)">4000 GHS - 2 Lines <button class="action-btn">Get the Data Offer</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '5500 GHS - Family', 5500)">5500 GHS - Family <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','2500 GHS - Unlimited',2500)">2500 GHS - Unlimited <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','3200 GHS - Premium',3200)">3200 GHS - Premium <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','4000 GHS - 2 Lines',4000)">4000 GHS - 2 Lines <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','5500 GHS - Family',5500)">5500 GHS - Family <button class="action-btn">Get Offer</button></div>
             </div>
         </div>
     </section>
-
-    <!-- Testimonials, FAQ, Footer and Modal remain unchanged from previous version -->
-    <!-- (Testimonials are collapsible, FAQ is present, etc.) -->
 
     <!-- Testimonials -->
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
-        <div class="testimonial-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:20px; max-width:1300px; margin:0 auto;">
-            <div class="testimonial-card" onclick="this.classList.toggle('active')">
-                <div class="testimonial-header" style="padding:20px; background:#172033; font-weight:600;">“Best decision ever!” — Ama Mensah, Accra</div>
-                <div class="testimonial-body" style="padding:0 20px 20px;">I bought the Gold plan 3 months ago and still have plenty of data. No expiry stress at all.</div>
-            </div>
-            <div class="testimonial-card" onclick="this.classList.toggle('active')">
-                <div class="testimonial-header" style="padding:20px; background:#172033; font-weight:600;">“Data never finishes” — Kofi Boateng, Kumasi</div>
-                <div class="testimonial-body" style="padding:0 20px 20px;">The non-expiry feature is a game changer.</div>
-            </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><div style="padding:18px 20px;background:#172033;font-weight:600;">“Best non-expiry bundles!” — Ama Mensah</div><div style="padding:15px 20px;display:none;" class="body">I still have data from 2 months ago. Amazing!</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><div style="padding:18px 20px;background:#172033;font-weight:600;">“Super reliable” — Kofi Boateng</div><div style="padding:15px 20px;display:none;" class="body">Gold plan is perfect for daily use.</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><div style="padding:18px 20px;background:#172033;font-weight:600;">“Instant activation” — Abena Osei</div><div style="padding:15px 20px;display:none;" class="body">Verified and got data in seconds.</div></div>
+            <!-- More can be added easily -->
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="background:#05070f; color:#94a3b8; padding:70px 5% 40px;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px; max-width:1250px; margin:0 auto;">
+    <!-- FAQ -->
+    <section class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width:800px;margin:0 auto;">
+            <div class="faq-item" onclick="this.querySelector('.answer').style.display = this.querySelector('.answer').style.display==='block'?'none':'block'">
+                <div class="faq-question">Does data really never expire? <span style="float:right;">▼</span></div>
+                <div class="answer" style="padding:0 24px 20px;display:none;">Yes, your data stays until you use it all.</div>
+            </div>
+            <div class="faq-item" onclick="this.querySelector('.answer').style.display = this.querySelector('.answer').style.display==='block'?'none':'block'">
+                <div class="faq-question">Do I need a Telecel SIM? <span style="float:right;">▼</span></div>
+                <div class="answer" style="padding:0 24px 20px;display:none;">Yes, this offer is only for Telecel numbers.</div>
+            </div>
+            <!-- More FAQs can be added -->
+        </div>
+    </section>
+
+    <!-- Footer - Mimicking Telecel -->
+    <footer>
+        <div class="footer-grid">
             <div>
-                <div class="logo" style="color:white; margin-bottom:20px;">
+                <div class="logo" style="margin-bottom:20px;">
                     <div class="logo-circle" style="width:42px;height:42px;font-size:1.6rem;">t</div>
                     <span>telecel</span>
                 </div>
+                <p>Connecting Energies Across Ghana</p>
             </div>
             <div>
-                <h4 style="color:white; margin-bottom:15px;">Telecel Ghana</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Personal</a>
-                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Business</a>
+                <h4 style="color:white;margin-bottom:15px;">Telecel Ghana</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Personal</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Business</a>
             </div>
             <div>
-                <h4 style="color:white; margin-bottom:15px;">Support</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Contact Us</a>
-                <a href="#" style="display:block; margin:8px 0; color:#94a3b8; text-decoration:none;">Find a Store</a>
+                <h4 style="color:white;margin-bottom:15px;">Support</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Contact Us</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Find a Store</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">FAQs</a>
+            </div>
+            <div>
+                <h4 style="color:white;margin-bottom:15px;">Quick Links</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Non-Expiry Bundles</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Telecel Cash</a>
             </div>
         </div>
-        <p style="text-align:center; margin-top:70px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+        <p style="text-align:center; margin-top:70px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies</p>
     </footer>
 
     <!-- Modal -->
@@ -332,7 +364,7 @@
             <div style="color:#22c55e;font-size:1.1rem;margin-bottom:10px;"><i class="fas fa-shield-alt"></i> SECURE PURCHASE</div>
             <h2 id="modalTitle" style="color:#E30613;margin:15px 0;"></h2>
             <div id="modalBody" style="font-size:1.25rem;line-height:1.7;margin:20px 0;"></div>
-            <small style="color:#94a3b8;">Your Telecel number will be verified before activation.</small>
+            <small style="color:#94a3b8;">We will verify your Telecel number before activating this offer.</small>
             <div style="margin-top:35px;display:flex;gap:15px;justify-content:center;">
                 <button onclick="closeModal()" style="padding:14px 34px;border:none;background:#334155;color:white;border-radius:50px;font-weight:600;">Cancel</button>
                 <button onclick="proceedToCheckout()" style="padding:14px 44px;border:none;background:#E30613;color:white;border-radius:50px;font-weight:700;">Verify Number & Buy</button>
