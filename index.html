@@ -88,12 +88,7 @@
             border: 2px solid #374151;
         }
         .tier-card:hover { border-color: var(--red); }
-        .plan-name {
-            font-size: 1.7rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #e5e7eb;
-        }
+        .plan-name { font-size: 1.7rem; font-weight: 700; margin-bottom: 15px; color: #e5e7eb; }
         .offer {
             background: #374151;
             margin: 12px 0;
@@ -111,6 +106,51 @@
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
+        }
+
+        /* Success Dashboard */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-content {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            width: 90%;
+            max-width: 480px;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .success-content::before {
+            content: '🎉';
+            font-size: 120px;
+            position: absolute;
+            top: -40px;
+            right: -30px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .happy-person {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 6px solid #E30613;
+            background: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800') center/cover;
+            animation: celebrate 2s infinite alternate;
+        }
+        @keyframes celebrate {
+            from { transform: scale(1) rotate(-5deg); }
+            to { transform: scale(1.08) rotate(5deg); }
         }
 
         /* Modal */
@@ -132,23 +172,6 @@
             padding: 25px;
             text-align: center;
         }
-        .modal-header { font-size: 1.35rem; margin-bottom: 20px; }
-        .modal-body { line-height: 1.7; color: #374151; margin: 20px 0; }
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 25px;
-        }
-        .modal-btn {
-            flex: 1;
-            padding: 15px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-ok { background: #2563eb; color: white; }
-        .btn-cancel { background: #e5e7eb; color: #1f2937; }
     </style>
 </head>
 <body>
@@ -189,7 +212,7 @@
                 <div class="offer"><span>40 GHS - 120GB</span><button class="action-btn" onclick="showOffer('Bronze', '40 GHS - 120GB', 40)">Subscribe Now</button></div>
             </div>
 
-            <!-- SILVER -->
+            <!-- SILVER, GOLD, PLATINUM (same as before) -->
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
                 <div class="offer"><span>80 GHS - 280GB</span><button class="action-btn" onclick="showOffer('Silver', '80 GHS - 280GB', 80)">Subscribe Now</button></div>
@@ -199,7 +222,6 @@
                 <div class="offer"><span>130 GHS - 550GB</span><button class="action-btn" onclick="showOffer('Silver', '130 GHS - 550GB', 130)">Subscribe Now</button></div>
             </div>
 
-            <!-- GOLD -->
             <div class="tier-card">
                 <div class="plan-name">GOLD</div>
                 <div class="offer"><span>200 GHS - 900GB</span><button class="action-btn" onclick="showOffer('Gold', '200 GHS - 900GB', 200)">Subscribe Now</button></div>
@@ -209,7 +231,6 @@
                 <div class="offer"><span>400 GHS - 2.2TB</span><button class="action-btn" onclick="showOffer('Gold', '400 GHS - 2.2TB', 400)">Subscribe Now</button></div>
             </div>
 
-            <!-- PLATINUM -->
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
                 <div class="offer"><span>800 GHS - 5TB</span><button class="action-btn" onclick="showOffer('Platinum', '800 GHS - 5TB', 800)">Subscribe Now</button></div>
@@ -225,43 +246,36 @@
     <!-- Confirmation Modal -->
     <div id="offerModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                🔥 TELECEL NON-EXPIRY OFFER 🔥
-            </div>
+            <div class="modal-header">🔥 TELECEL NON-EXPIRY OFFER 🔥</div>
             <div class="modal-body" id="modalBody"></div>
-            <div class="modal-buttons">
-                <button class="modal-btn btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="modal-btn btn-ok" onclick="proceedToCheckout()">OK</button>
+            <div style="margin-top:25px;">
+                <button onclick="closeModal()" style="background:#e5e7eb; padding:12px 30px; border:none; border-radius:50px; margin-right:10px;">Cancel</button>
+                <button onclick="proceedToCheckout()" style="background:#E30613; color:white; padding:12px 40px; border:none; border-radius:50px;">OK</button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="logo" style="color:white; margin-bottom:20px;">
-                    <div class="logo-circle" style="width:40px;height:40px;font-size:1.5rem;">t</div>
-                    <span>telecel</span>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Telecel Ghana</h4>
-                <a href="#">Personal</a>
-                <a href="#">Business</a>
-                <a href="#">About Us</a>
-            </div>
-            <div class="footer-col">
-                <h4>Help & Support</h4>
-                <a href="#">Find a shop</a>
-                <a href="#">Contact us</a>
-            </div>
-            <div class="footer-col">
-                <h4>Popular</h4>
-                <a href="#">Non-Expiry Bundles</a>
-                <a href="#">Mobile Bundles</a>
-            </div>
+    <!-- Success Dashboard -->
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            <h2 style="color:#4ade80;">🎉 Congratulations!</h2>
+            <p>Your Non-Expiry Data Bundle is now active!</p>
+            
+            <div class="happy-person"></div>
+            
+            <h3 style="margin:15px 0; color:#E30613;">Welcome to Unlimited Freedom!</h3>
+            <p style="margin-bottom:25px;">Data Never Expires • Enjoy your bundle</p>
+            
+            <button onclick="closeSuccess()" style="background:white; color:var(--red); padding:14px 40px; border:none; border-radius:50px; font-weight:bold;">
+                Continue Browsing
+            </button>
         </div>
-        <p style="text-align:center; margin-top:50px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+    </div>
+
+    <footer>
+        <p style="text-align:center; padding:40px; background:#0a0f1c; color:#666; margin-top:50px;">
+            © 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies
+        </p>
     </footer>
 
     <script>
@@ -269,13 +283,12 @@
 
         function showOffer(tier, name, price) {
             currentOffer = { tier, name, price };
-
             document.getElementById('modalBody').innerHTML = `
-                <strong>${tier} Offer</strong><br><br>
+                <strong>${tier}</strong><br>
                 <strong>${name}</strong><br>
                 GHS ${price}<br><br>
-                <span style="color:#16a34a; font-size:1.1rem;">✅ Data Never Expires</span><br><br>
-                <small>To activate this offer, you will need to verify your Telecel number.</small>
+                <span style="color:#16a34a;">✅ Data Never Expires</span><br><br>
+                <small>You will need to verify your Telecel number to activate this offer.</small>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
@@ -286,11 +299,12 @@
 
         function proceedToCheckout() {
             closeModal();
-            alert(`✅ Success!\n\nYour ${currentOffer.name} Non-Expiry bundle has been selected.\n\nPlease verify your Telecel number to unlock and activate the data.`);
+            // Show success dashboard
+            document.getElementById('successModal').style.display = 'flex';
         }
 
-        window.onclick = function(event) {
-            if (event.target.id === 'offerModal') closeModal();
+        function closeSuccess() {
+            document.getElementById('successModal').style.display = 'none';
         }
     </script>
 </body>
