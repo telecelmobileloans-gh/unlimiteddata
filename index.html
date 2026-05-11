@@ -48,7 +48,7 @@
             margin-right: 8px;
         }
 
-        /* Simple Hero Banner */
+        /* Hero Banner */
         .banner-wrapper {
             background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.75)), 
                         url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070') center/cover;
@@ -80,7 +80,6 @@
         .banner-text p {
             font-size: 1.25rem;
             opacity: 0.95;
-            max-width: 420px;
         }
         .banner-btn {
             margin-top: 28px;
@@ -96,23 +95,45 @@
             align-items: center;
             gap: 10px;
         }
-        .banner-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
+
+        /* Animated Benefits Section */
+        .benefits {
+            padding: 60px 5%;
+            background: white;
+            overflow: hidden;
         }
-        .banner-image img {
-            max-width: 100%;
-            max-height: 420px;
+        .benefits-track {
+            display: flex;
+            gap: 30px;
+            animation: slideBenefits 25s linear infinite;
+            width: max-content;
+        }
+        .benefit-card {
+            background: #f8fafc;
+            padding: 28px 24px;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            min-width: 280px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+        .benefit-card:hover {
+            transform: scale(1.05);
+        }
+        .benefit-icon {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+        }
+        @keyframes slideBenefits {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
         .section-title {
             text-align: center;
             font-size: 2.6rem;
             font-weight: 800;
-            margin: 80px 0 20px;
+            margin: 70px 0 30px;
             color: var(--dark);
         }
 
@@ -155,12 +176,12 @@
             font-size: 1.9rem;
             font-weight: 800;
             color: var(--dark);
-            margin-bottom: 8px;
         }
         .data-highlight {
             font-size: 2.4rem;
             font-weight: 900;
             color: #22c55e;
+            margin: 10px 0;
         }
         .offer {
             background: #f8fafc;
@@ -182,24 +203,6 @@
             cursor: pointer;
         }
 
-        /* Testimonials & FAQ */
-        .testimonials, .faq {
-            padding: 80px 5%;
-            background: white;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto 0;
-        }
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 20px;
-        }
-
         footer {
             background: #0a0f1c;
             color: #9ca3af;
@@ -216,30 +219,77 @@
         </div>
     </nav>
 
-    <!-- Simple Banner -->
+    <!-- Hero Banner -->
     <div class="banner-wrapper">
         <div class="banner-content">
             <div class="banner-text">
                 <h1>Stay Connected</h1>
-                <p>With massive Non-Expiry Data Bundles. Buy once. Use anytime.</p>
+                <p>With massive Non-Expiry Data Bundles.<br>Buy once. Use anytime.</p>
                 <button class="banner-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
-                    Buy Now 
-                    <i class="fas fa-arrow-right"></i>
+                    Buy Now <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
-            <div class="banner-image">
+            <div class="banner-image" style="flex:1; text-align:center;">
                 <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070" 
-                     alt="Telecel Non-Expiry Data">
+                     alt="Telecel Non-Expiry" style="max-width:100%; max-height:420px; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
             </div>
         </div>
     </div>
 
-    <!-- Plans Section -->
+    <!-- Animated Benefits (Live Video Style) -->
+    <section class="benefits">
+        <div class="benefits-track">
+            <!-- Duplicated for seamless loop -->
+            <div class="benefit-card">
+                <div class="benefit-icon">♾️</div>
+                <h3>Never Expires</h3>
+                <p>Use your data at your own pace — days, weeks or months later.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3>Huge Volumes</h3>
+                <p>From 50GB all the way to Unlimited data.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <h3>4G/5G Ready</h3>
+                <p>Lightning-fast speeds on Telecel's reliable network.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🔒</div>
+                <h3>Instant Activation</h3>
+                <p>Activate in seconds after payment.</p>
+            </div>
+
+            <!-- Duplicate for smooth infinite scroll -->
+            <div class="benefit-card">
+                <div class="benefit-icon">♾️</div>
+                <h3>Never Expires</h3>
+                <p>Use your data at your own pace — days, weeks or months later.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3>Huge Volumes</h3>
+                <p>From 50GB all the way to Unlimited data.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <h3>4G/5G Ready</h3>
+                <p>Lightning-fast speeds on Telecel's reliable network.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🔒</div>
+                <h3>Instant Activation</h3>
+                <p>Activate in seconds after payment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         
         <div class="tier-grid">
-            <!-- Bronze -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">50 - 120 GB</div>
@@ -250,7 +300,6 @@
                 <div class="offer"><span>40 GHS - 120GB</span><button class="action-btn" onclick="showOffer('Bronze', '40 GHS - 120GB', 40)">Subscribe</button></div>
             </div>
 
-            <!-- Silver -->
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
                 <div class="data-highlight">280 - 550 GB</div>
@@ -261,7 +310,6 @@
                 <div class="offer"><span>130 GHS - 550GB</span><button class="action-btn" onclick="showOffer('Silver', '130 GHS - 550GB', 130)">Subscribe</button></div>
             </div>
 
-            <!-- Gold (Popular) -->
             <div class="tier-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
                 <div class="plan-name">GOLD</div>
@@ -273,7 +321,6 @@
                 <div class="offer"><span>400 GHS - 2.2TB</span><button class="action-btn" onclick="showOffer('Gold', '400 GHS - 2.2TB', 400)">Subscribe</button></div>
             </div>
 
-            <!-- Platinum -->
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
                 <div class="data-highlight">5TB - Unlimited</div>
@@ -282,31 +329,6 @@
                 <div class="offer"><span>1200 GHS - 10TB</span><button class="action-btn" onclick="showOffer('Platinum', '1200 GHS - 10TB', 1200)">Subscribe</button></div>
                 <div class="offer"><span>1500 GHS - Unlimited</span><button class="action-btn" onclick="showOffer('Platinum', '1500 GHS - Unlimited', 1500)">Subscribe</button></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <h2 class="section-title">What Our Customers Say</h2>
-        <div class="testimonial-grid">
-            <div style="background:#f8fafc; padding:28px; border-radius:16px;">
-                <p>"Best decision ever! I bought 1.1TB in February and still have data till now. No expiry stress."</p>
-                <strong style="margin-top:20px;display:block;">— Akosua Mensah</strong>
-            </div>
-            <div style="background:#f8fafc; padding:28px; border-radius:16px;">
-                <p>"The Gold plan is insane. I use it for my business and it never finishes. Highly recommend!"</p>
-                <strong style="margin-top:20px;display:block;">— Kwame Osei</strong>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width:800px; margin:40px auto;">
-            <div class="faq-item"><strong>Does the data really never expire?</strong><p>Yes. Once purchased, your data remains valid until you use it all.</p></div>
-            <div class="faq-item"><strong>Can I use it on any network?</strong><p>No. This is only for Telecel numbers.</p></div>
-            <div class="faq-item"><strong>How fast is the internet?</strong><p>Up to 5G speeds where available.</p></div>
         </div>
     </section>
 
@@ -332,20 +354,19 @@
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Quick Links</h4>
                 <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Non-Expiry Bundles</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Telecel Cash</a>
             </div>
         </div>
         <p style="text-align:center; margin-top:60px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
 
     <!-- Modal -->
-    <div id="offerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center;">
-        <div style="background:white; max-width:420px; width:90%; border-radius:16px; padding:35px; text-align:center;">
-            <h3 id="modalTitle" style="color:#E30613; margin-bottom:15px;"></h3>
-            <div id="modalBody" style="font-size:1.2rem; margin:20px 0;"></div>
+    <div id="offerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;max-width:420px;width:90%;border-radius:16px;padding:35px;text-align:center;">
+            <h3 id="modalTitle" style="color:#E30613;margin-bottom:15px;"></h3>
+            <div id="modalBody" style="font-size:1.2rem;margin:20px 0;"></div>
             <div style="margin-top:30px;">
-                <button onclick="closeModal()" style="padding:12px 30px; margin-right:15px; border:none; background:#e5e7eb; border-radius:50px;">Cancel</button>
-                <button onclick="proceedToCheckout()" style="padding:12px 40px; border:none; background:#E30613; color:white; border-radius:50px;">Proceed</button>
+                <button onclick="closeModal()" style="padding:12px 30px;margin-right:15px;border:none;background:#e5e7eb;border-radius:50px;">Cancel</button>
+                <button onclick="proceedToCheckout()" style="padding:12px 40px;border:none;background:#E30613;color:white;border-radius:50px;">Proceed</button>
             </div>
         </div>
     </div>
@@ -357,7 +378,7 @@
             document.getElementById('modalTitle').innerHTML = `${tier} Bundle`;
             document.getElementById('modalBody').innerHTML = `
                 <strong>${name}</strong><br><br>
-                <span style="font-size:2rem; font-weight:800; color:#E30613;">GHS ${price}</span><br><br>
+                <span style="font-size:2rem;font-weight:800;color:#E30613;">GHS ${price}</span><br><br>
                 <span style="color:#22c55e;">✅ Data Never Expires</span>
             `;
             document.getElementById('offerModal').style.display = 'flex';
@@ -367,7 +388,7 @@
         }
         function proceedToCheckout() {
             closeModal();
-            alert("Redirecting to payment page... (You can connect your real checkout here)");
+            alert("Redirecting to secure payment...");
         }
     </script>
 </body>
