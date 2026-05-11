@@ -106,7 +106,7 @@
             color: var(--red);
         }
 
-        /* Plan Cards */
+        /* ===================== NEW PLAN CARDS ===================== */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -141,19 +141,29 @@
             font-size: 0.95rem;
             font-weight: 700;
         }
+        .hourly-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
         .plan-price {
             font-size: 2.8rem;
             font-weight: 800;
-            margin: 8px 0;
+            margin-bottom: 8px;
         }
         .plan-name {
             font-size: 1.55rem;
             font-weight: 700;
             margin-bottom: 12px;
         }
+        .plan-desc {
+            opacity: 0.9;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
         .features {
             list-style: none;
-            margin: 24px 0;
+            margin-bottom: 30px;
         }
         .features li {
             padding: 10px 0;
@@ -177,52 +187,6 @@
             cursor: pointer;
         }
 
-        /* Testimonials */
-        .testimonials {
-            padding: 90px 5%;
-            background: white;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .testimonial-card {
-            background: #fff0f0;
-            padding: 24px;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .testimonial-name {
-            color: #22c55e;
-            font-weight: 700;
-            margin-top: 12px;
-        }
-
-        /* FAQ */
-        .faq {
-            padding: 90px 5%;
-            background: #f8fafc;
-        }
-        .faq-item {
-            background: white;
-            margin-bottom: 16px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #ffe6e6;
-        }
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            color: var(--red);
-        }
-
         /* Footer */
         footer {
             background: #1a1a1a;
@@ -235,6 +199,11 @@
             display: grid;
             grid-template-columns: 1.2fr repeat(3, 1fr);
             gap: 40px;
+        }
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         .footer-col h3 {
             color: white;
@@ -252,6 +221,9 @@
             color: #ccc;
             text-decoration: none;
         }
+        .footer-col ul li a:hover {
+            color: white;
+        }
         .chat-icon {
             width: 80px;
             height: 80px;
@@ -261,6 +233,7 @@
             align-items: center;
             justify-content: center;
             font-size: 45px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         @media (max-width: 992px) {
@@ -268,7 +241,6 @@
         }
         @media (max-width: 600px) {
             .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-text h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -294,11 +266,11 @@
             </div>
           
             <div class="hero-visual" style="position:relative; width:420px; height:320px;">
-                <div class="cube cube-data" style="top:40px; left:20px; background: linear-gradient(135deg, #00D4FF, #00A8CC);">
+                <div class="cube cube-data" style="top:40px; left:20px;">
                     <i class="fas fa-wifi"></i>
                     <div>Data</div>
                 </div>
-                <div class="cube cube-telecel" style="top:80px; right:30px; background: linear-gradient(135deg, #E30613, #0033A0);">
+                <div class="cube cube-telecel" style="top:80px; right:30px;">
                     <i class="fas fa-mobile-alt"></i>
                     <div>Telecel</div>
                 </div>
@@ -306,16 +278,17 @@
         </div>
     </section>
 
-    <!-- Plans -->
+    <!-- Plans Section -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
 
+            <!-- Starter -->
             <div class="plan-card">
-                <div class="popular-badge" style="display:none;"> </div>
-                <div style="font-size:0.9rem; opacity:0.8;">NON-EXPIRY</div>
+                <div class="hourly-label">NON-EXPIRY</div>
                 <div class="plan-price">GHS 10 - 28</div>
                 <div class="plan-name">Starter Bundle</div>
+                <div class="plan-desc">Perfect for light users. Enjoy reliable data that never expires.</div>
                 <ul class="features">
                     <li><i class="fas fa-check"></i> 2 - 7 GB Data</li>
                     <li><i class="fas fa-check"></i> No Expiry</li>
@@ -324,10 +297,12 @@
                 <button class="subscribe-btn" onclick="buyBundle('Starter Bundle', '10 - 28')">Subscribe Now</button>
             </div>
 
+            <!-- Basic -->
             <div class="plan-card">
-                <div style="font-size:0.9rem; opacity:0.8;">NON-EXPIRY</div>
+                <div class="hourly-label">NON-EXPIRY</div>
                 <div class="plan-price">GHS 35 - 65</div>
                 <div class="plan-name">Basic Bundle</div>
+                <div class="plan-desc">Great for everyday browsing and social media.</div>
                 <ul class="features">
                     <li><i class="fas fa-check"></i> 10 - 18 GB Data</li>
                     <li><i class="fas fa-check"></i> No Expiry</li>
@@ -336,23 +311,27 @@
                 <button class="subscribe-btn" onclick="buyBundle('Basic Bundle', '35 - 65')">Subscribe Now</button>
             </div>
 
+            <!-- Standard (Popular) -->
             <div class="plan-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
-                <div style="font-size:0.9rem; opacity:0.8;">NON-EXPIRY</div>
+                <div class="hourly-label">NON-EXPIRY</div>
                 <div class="plan-price">GHS 75 - 140</div>
                 <div class="plan-name">Standard Bundle</div>
+                <div class="plan-desc">Ideal for streaming, video calls & heavy usage.</div>
                 <ul class="features">
                     <li><i class="fas fa-check"></i> 20 - 35 GB Data</li>
                     <li><i class="fas fa-check"></i> No Expiry</li>
-                    <li><i class="fas fa-check"></i> Best for Streaming</li>
+                    <li><i class="fas fa-check"></i> Fastest Experience</li>
                 </ul>
                 <button class="subscribe-btn" onclick="buyBundle('Standard Bundle', '75 - 140')">Subscribe Now</button>
             </div>
 
+            <!-- Premium -->
             <div class="plan-card">
-                <div style="font-size:0.9rem; opacity:0.8;">NON-EXPIRY</div>
+                <div class="hourly-label">NON-EXPIRY</div>
                 <div class="plan-price">GHS 160 - 260</div>
                 <div class="plan-name">Premium Bundle</div>
+                <div class="plan-desc">For power users who need maximum data.</div>
                 <ul class="features">
                     <li><i class="fas fa-check"></i> 40 - 60 GB Data</li>
                     <li><i class="fas fa-check"></i> No Expiry</li>
@@ -361,22 +340,22 @@
                 <button class="subscribe-btn" onclick="buyBundle('Premium Bundle', '160 - 260')">Subscribe Now</button>
             </div>
 
+            <!-- Diamond -->
             <div class="plan-card">
-                <div style="font-size:0.9rem; opacity:0.8;">NON-EXPIRY</div>
+                <div class="hourly-label">NON-EXPIRY</div>
                 <div class="plan-price">GHS 320 - 520</div>
                 <div class="plan-name">Diamond Bundle</div>
+                <div class="plan-desc">Ultimate freedom with massive data volume.</div>
                 <ul class="features">
                     <li><i class="fas fa-check"></i> 80 - 120 GB Data</li>
                     <li><i class="fas fa-check"></i> No Expiry</li>
-                    <li><i class="fas fa-check"></i> Ultimate Freedom</li>
+                    <li><i class="fas fa-check"></i> Premium Experience</li>
                 </ul>
                 <button class="subscribe-btn" onclick="buyBundle('Diamond Bundle', '320 - 520')">Subscribe Now</button>
             </div>
 
         </div>
     </section>
-
-    <!-- Testimonials & FAQ can be added here if needed -->
 
     <!-- Footer -->
     <footer>
@@ -427,7 +406,7 @@
                 </ul>
             </div>
 
-            <div style="display:flex; justify-content:flex-end; align-items:flex-end;">
+            <div class="footer-right">
                 <div class="chat-icon">
                     <i class="fas fa-headset" style="color:#E30613;"></i>
                 </div>
