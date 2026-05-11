@@ -50,12 +50,10 @@
             margin-right: 8px;
         }
 
-        /* Hero */
         .hero-red {
             background: linear-gradient(135deg, #E30613, #9b0d1a);
             color: white;
             padding: 100px 5% 80px;
-            position: relative;
         }
         .hero-content {
             max-width: 1280px;
@@ -66,16 +64,9 @@
             gap: 40px;
             flex-wrap: wrap;
         }
-        .hero-text h1 {
-            font-size: 3.1rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .hero-text p {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            max-width: 500px;
-        }
+        .hero-text h1 { font-size: 3.1rem; font-weight: 800; margin-bottom: 12px; }
+        .hero-text p { font-size: 1.3rem; opacity: 0.95; }
+
         .buy-btn {
             margin-top: 25px;
             background: white;
@@ -96,7 +87,6 @@
             color: white;
         }
 
-        /* Plans */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -172,7 +162,7 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials */
+        /* Testimonials - Collapsible */
         .testimonials {
             padding: 80px 5%;
             background: var(--dark);
@@ -180,35 +170,32 @@
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
+            gap: 20px;
             max-width: 1300px;
             margin: 0 auto;
         }
         .testimonial-card {
             background: #1a2333;
-            padding: 28px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .testimonial-header {
+            padding: 20px;
+            background: #172033;
+            font-weight: 600;
+        }
+        .testimonial-body {
+            padding: 0 20px 20px;
+            display: none;
+        }
+        .testimonial-card.active .testimonial-body {
+            display: block;
         }
 
-        /* FAQ */
         .faq {
             padding: 80px 5%;
             background: var(--darker);
-        }
-        .faq-item {
-            background: #1a2333;
-            margin-bottom: 16px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .faq-question {
-            padding: 18px 24px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         footer {
@@ -269,116 +256,84 @@
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
-            <!-- Starter -->
+
             <div class="tier-card">
                 <div class="plan-name">STARTER</div>
                 <div class="data-highlight">15 — 60 GB</div>
-                <div class="offer" onclick="showOffer('Starter', '10 GHS - 15GB', 10)">10 GHS - 15GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Starter', '15 GHS - 25GB', 15)">15 GHS - 25GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Starter', '20 GHS - 35GB', 20)">20 GHS - 35GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Starter', '25 GHS - 50GB', 25)">25 GHS - 50GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Starter', '10 GHS - 15GB', 10)">10 GHS - 15GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter', '15 GHS - 25GB', 15)">15 GHS - 25GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter', '20 GHS - 35GB', 20)">20 GHS - 35GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter', '25 GHS - 50GB', 25)">25 GHS - 50GB <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
-            <!-- Bronze -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">70 — 150 GB</div>
-                <div class="offer" onclick="showOffer('Bronze', '30 GHS - 70GB', 30)">30 GHS - 70GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '40 GHS - 90GB', 40)">40 GHS - 90GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '50 GHS - 120GB', 50)">50 GHS - 120GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Bronze', '60 GHS - 150GB', 60)">60 GHS - 150GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '30 GHS - 70GB', 30)">30 GHS - 70GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '40 GHS - 90GB', 40)">40 GHS - 90GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '50 GHS - 120GB', 50)">50 GHS - 120GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze', '60 GHS - 150GB', 60)">60 GHS - 150GB <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
-            <!-- Silver -->
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
                 <div class="data-highlight">250 — 600 GB</div>
-                <div class="offer" onclick="showOffer('Silver', '80 GHS - 250GB', 80)">80 GHS - 250GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Silver', '100 GHS - 350GB', 100)">100 GHS - 350GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Silver', '130 GHS - 480GB', 130)">130 GHS - 480GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Silver', '160 GHS - 600GB', 160)">160 GHS - 600GB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Silver', '80 GHS - 250GB', 80)">80 GHS - 250GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver', '100 GHS - 350GB', 100)">100 GHS - 350GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver', '130 GHS - 480GB', 130)">130 GHS - 480GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver', '160 GHS - 600GB', 160)">160 GHS - 600GB <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
-            <!-- Gold -->
             <div class="tier-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
                 <div class="plan-name">GOLD</div>
                 <div class="data-highlight">900GB — 2TB</div>
-                <div class="offer" onclick="showOffer('Gold', '220 GHS - 900GB', 220)">220 GHS - 900GB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Gold', '280 GHS - 1.2TB', 280)">280 GHS - 1.2TB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Gold', '350 GHS - 1.6TB', 350)">350 GHS - 1.6TB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Gold', '420 GHS - 2TB', 420)">420 GHS - 2TB <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Gold', '220 GHS - 900GB', 220)">220 GHS - 900GB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold', '280 GHS - 1.2TB', 280)">280 GHS - 1.2TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold', '350 GHS - 1.6TB', 350)">350 GHS - 1.6TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold', '420 GHS - 2TB', 420)">420 GHS - 2TB <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
-            <!-- Platinum, Diamond, Elite (same as before) -->
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
                 <div class="data-highlight">4TB — Unlimited</div>
-                <div class="offer" onclick="showOffer('Platinum', '750 GHS - 4TB', 750)">750 GHS - 4TB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '950 GHS - 6TB', 950)">950 GHS - 6TB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '1250 GHS - 8TB', 1250)">1250 GHS - 8TB <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Platinum', '1800 GHS - Unlimited', 1800)">1800 GHS - Unlimited <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '750 GHS - 4TB', 750)">750 GHS - 4TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '950 GHS - 6TB', 950)">950 GHS - 6TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '1250 GHS - 8TB', 1250)">1250 GHS - 8TB <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum', '1800 GHS - Unlimited', 1800)">1800 GHS - Unlimited <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <div class="plan-name">DIAMOND</div>
                 <div class="data-highlight">Unlimited</div>
-                <div class="offer" onclick="showOffer('Diamond', '2500 GHS - Unlimited', 2500)">2500 GHS - Unlimited <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '3200 GHS - Premium', 3200)">3200 GHS - Premium <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '4000 GHS - 2 Lines', 4000)">4000 GHS - 2 Lines <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Diamond', '5500 GHS - Family', 5500)">5500 GHS - Family <button class="action-btn">Buy</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '2500 GHS - Unlimited', 2500)">2500 GHS - Unlimited <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '3200 GHS - Premium', 3200)">3200 GHS - Premium <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '4000 GHS - 2 Lines', 4000)">4000 GHS - 2 Lines <button class="action-btn">Get the Data Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond', '5500 GHS - Family', 5500)">5500 GHS - Family <button class="action-btn">Get the Data Offer</button></div>
             </div>
 
-            <div class="tier-card">
-                <div class="plan-name">ELITE</div>
-                <div class="data-highlight">Ultimate</div>
-                <div class="offer" onclick="showOffer('Elite', '7500 GHS - Enterprise', 7500)">7500 GHS - Enterprise <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Elite', '10000 GHS - VIP', 10000)">10000 GHS - VIP <button class="action-btn">Buy</button></div>
-                <div class="offer" onclick="showOffer('Elite', 'Custom', 'Custom')">Custom Plan <button class="action-btn">Contact</button></div>
-                <div class="offer" onclick="showOffer('Elite', 'Dedicated', 'Contact')">Dedicated Support <button class="action-btn">Contact</button></div>
-            </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials (Collapsible) -->
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p>"I bought the Gold plan 3 months ago and still have data. Best decision ever!"</p>
-                <strong>— Ama Mensah, Accra</strong>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')">
+                <div class="testimonial-header">“Best decision ever!” — Ama Mensah, Accra</div>
+                <div class="testimonial-body">I bought the Gold plan 3 months ago and still have plenty of data. No expiry stress at all.</div>
             </div>
-            <div class="testimonial-card">
-                <p>"No more expiry stress. The data just stays until I use it. Highly recommend!"</p>
-                <strong>— Kofi Boateng, Kumasi</strong>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')">
+                <div class="testimonial-header">“Data never finishes” — Kofi Boateng, Kumasi</div>
+                <div class="testimonial-body">The non-expiry feature is a game changer. I use it whenever I need it.</div>
             </div>
-            <div class="testimonial-card">
-                <p>"Platinum unlimited is perfect for my business. Fast and reliable."</p>
-                <strong>— Abena Osei, Takoradi</strong>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')">
+                <div class="testimonial-header">“Super fast activation” — Abena Osei</div>
+                <div class="testimonial-body">Verification was quick and data was credited instantly. Excellent service.</div>
             </div>
-            <!-- You can add more, but 6-8 visible is enough for professionalism -->
-            <div class="testimonial-card">
-                <p>"Verification was fast and data came immediately. Great service!"</p>
-                <strong>— Samuel Addo</strong>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width:800px; margin:0 auto;">
-            <div class="faq-item">
-                <div class="faq-question">Does the data really never expire? <span style="color:var(--red);">▼</span></div>
-                <div style="padding:0 24px 20px;">Yes. Once activated, your data remains valid until fully used.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Do I need a Telecel number? <span style="color:var(--red);">▼</span></div>
-                <div style="padding:0 24px 20px;">Yes. This offer is only for Telecel numbers.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How fast is the internet? <span style="color:var(--red);">▼</span></div>
-                <div style="padding:0 24px 20px;">Up to 5G speeds where available on our network.</div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')">
+                <div class="testimonial-header">“Perfect for business” — Samuel Addo</div>
+                <div class="testimonial-body">I use Platinum unlimited for my work. Very reliable and fast.</div>
             </div>
         </div>
     </section>
