@@ -108,8 +108,8 @@
             cursor: pointer;
         }
 
-        /* Modals */
-        .modal, .success-modal {
+        /* Confirmation Modal */
+        .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
@@ -119,31 +119,13 @@
             align-items: center;
             justify-content: center;
         }
-        .modal-content, .success-content {
+        .modal-content {
             background: white;
             width: 90%;
             max-width: 420px;
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
-        }
-        .success-content {
-            background: linear-gradient(135deg, #1f2937, #111827);
-            color: white;
-            max-width: 480px;
-        }
-        .happy-person {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 20px auto;
-            border: 6px solid #E30613;
-            background: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800') center/cover;
-            animation: celebrate 2.5s infinite alternate;
-        }
-        @keyframes celebrate {
-            from { transform: scale(1) rotate(-8deg); }
-            to { transform: scale(1.1) rotate(8deg); }
         }
     </style>
 </head>
@@ -214,73 +196,53 @@
         </div>
     </section>
 
-    <!-- Confirmation Modal -->
+    <!-- Confirmation Modal (Exactly like your screenshot) -->
     <div id="offerModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">🔥 TELECEL NON-EXPIRY OFFER 🔥</div>
-            <div class="modal-body" id="modalBody"></div>
+            <div style="font-size:1.4rem; margin-bottom:15px;">unlimiteddata.vercel.app says</div>
+            <div style="font-size:1.35rem; margin:15px 0;">🔥 TELECEL NON-EXPIRY OFFER 🔥</div>
+            <div id="modalBody" style="margin:20px 0; line-height:1.7;"></div>
             <div style="margin-top:25px;">
-                <button onclick="closeModal()" style="background:#e5e7eb;padding:12px 30px;border:none;border-radius:50px;margin-right:10px;">Cancel</button>
-                <button onclick="proceedToCheckout()" style="background:#E30613;color:white;padding:12px 40px;border:none;border-radius:50px;">OK</button>
+                <button onclick="closeModal()" style="background:#e5e7eb; padding:12px 30px; border:none; border-radius:50px; margin-right:12px;">Cancel</button>
+                <button onclick="proceedToCheckout()" style="background:#2563eb; color:white; padding:12px 40px; border:none; border-radius:50px;">OK</button>
             </div>
         </div>
     </div>
 
-    <!-- Success Dashboard -->
-    <div id="successModal" class="success-modal">
-        <div class="success-content">
-            <h2 style="color:#4ade80;">🎉 Congratulations!</h2>
-            <p>Your Non-Expiry Data Bundle is now active!</p>
-            <div class="happy-person"></div>
-            <h3 style="margin:15px 0; color:#E30613;">Enjoy Your Data - It Never Expires!</h3>
-            <button onclick="closeSuccess()" style="background:white; color:var(--red); padding:14px 40px; border:none; border-radius:50px; font-weight:bold;">
-                Continue Browsing
-            </button>
-        </div>
-    </div>
-
-    <!-- OFFICIAL TELECEL FOOTER -->
-    <footer style="background:#0a0f1c; color:#9ca3af; padding:60px 5% 30px;">
+    <!-- Official Telecel Footer -->
+    <footer style="background:#0a0f1c; color:#9ca3af; padding:60px 5% 40px;">
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px; max-width:1200px; margin:0 auto;">
-            
             <div>
                 <div class="logo" style="color:white; margin-bottom:20px;">
                     <div class="logo-circle" style="width:45px;height:45px;font-size:1.6rem;">t</div>
                     <span>telecel</span>
                 </div>
             </div>
-
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Telecel Ghana</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Personal</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Business</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">About Us</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Personal</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Business</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">About Us</a>
             </div>
-
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Help & Support</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Find a shop</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Contact us</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">FAQs</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Find a shop</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Contact us</a>
             </div>
-
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Popular</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Mobile Bundles</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Non-Expiry Bundles</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Apply for Broadband</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">2 Moorch Business</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Mobile Bundles</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Non-Expiry Bundles</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Apply for Broadband</a>
             </div>
-
             <div>
                 <h4 style="color:white; margin-bottom:15px;">Quicklinks</h4>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Telecel Play</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Pay Bill</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Telecel Cash</a>
-                <a href="#" style="display:block; margin:8px 0; color:#9ca3af; text-decoration:none;">Agent Portal</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Play</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Pay Bill</a>
+                <a href="#" style="display:block;margin:8px 0;color:#9ca3af;text-decoration:none;">Telecel Cash</a>
             </div>
         </div>
-        <p style="text-align:center; margin-top:50px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies</p>
+        <p style="text-align:center; margin-top:60px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies</p>
     </footer>
 
     <script>
@@ -288,12 +250,12 @@
 
         function showOffer(tier, name, price) {
             currentOffer = { tier, name, price };
+            
             document.getElementById('modalBody').innerHTML = `
-                <strong>${tier}</strong><br>
-                <strong>${name}</strong><br>
+                <strong>${tier} ${name}</strong><br>
                 GHS ${price}<br><br>
-                <span style="color:#16a34a;">✅ Data Never Expires</span><br><br>
-                <small>To unlock this offer, verify your Telecel number.</small>
+                <span style="color:#16a34a; font-size:1.1rem;">✅ Data Never Expires</span><br><br>
+                <small>You will need to verify your Telecel number to unlock and activate this offer.</small>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
@@ -304,11 +266,8 @@
 
         function proceedToCheckout() {
             closeModal();
-            document.getElementById('successModal').style.display = 'flex';
-        }
-
-        function closeSuccess() {
-            document.getElementById('successModal').style.display = 'none';
+            // Simple confirmation like "before"
+            alert(`✅ Offer Selected Successfully!\n\n${currentOffer.name}\nGHS ${currentOffer.price}\n\nYour Telecel number will be verified shortly to activate the Non-Expiry Data.`);
         }
     </script>
 </body>
