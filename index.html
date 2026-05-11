@@ -51,14 +51,16 @@
             margin-right: 12px;
         }
 
-        /* Hero Section */
+        /* Hero - Matching Your Screenshot */
         .hero-red {
-            background: linear-gradient(135deg, #E30613, #FF2D55);
+            background: #E30613;
             color: white;
-            padding: 110px 5% 90px;
+            padding: 100px 5% 80px;
             min-height: 520px;
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         .hero-content {
             max-width: 1280px;
@@ -66,20 +68,28 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
         }
         .hero-text {
             flex: 1;
             min-width: 300px;
+            z-index: 2;
+        }
+        .hero-text .breadcrumb {
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 12px;
         }
         .hero-text h1 {
-            font-size: 3.4rem;
+            font-size: 3.6rem;
             font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 16px;
         }
         .hero-text p {
-            font-size: 1.28rem;
+            font-size: 1.35rem;
             max-width: 520px;
             opacity: 0.95;
         }
@@ -98,20 +108,18 @@
             gap: 12px;
         }
 
-        /* Improved Hero Image */
         .hero-image-container {
             flex: 1;
-            max-width: 520px;
+            max-width: 580px;
             text-align: center;
         }
         .hero-image-container img {
             width: 100%;
             height: auto;
-            max-height: 460px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-            aspect-ratio: 16 / 13;
+            max-height: 480px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .section-title {
@@ -229,23 +237,10 @@
             margin: 0 auto;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero-red {
-                padding: 80px 5% 70px;
-                min-height: auto;
-            }
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-            .hero-image-container {
-                max-width: 100%;
-            }
+            .hero-red { padding: 80px 5% 60px; }
+            .hero-content { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-text h1 { font-size: 2.9rem; }
         }
     </style>
 </head>
@@ -257,27 +252,29 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero - Updated to match your screenshot -->
     <section class="hero-red">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Stay connected</h1>
-                <p>This offer is for Telecel users only. You must have an active Telecel number to unlock and activate this offer.</p>
+                <div class="breadcrumb">MOBILE / OFFERS / BUNDLES</div>
+                <h1>Voice and data<br>bundles</h1>
+                <p>Experience world of seamless Voice and Data Bundles!</p>
                 <button class="explore-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
                     Explore Data Offers →
                 </button>
             </div>
             <div class="hero-image-container">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2070" 
-                     alt="Happy person celebrating with Telecel data">
+                <img src="hero-image.png" 
+                     alt="Telecel Voice and Data Bundles">
             </div>
         </div>
     </section>
 
-    <!-- Plans -->
+    <!-- Plans Section (Unchanged) -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
+            <!-- All your plan cards remain the same -->
             <div class="tier-card">
                 <div class="plan-name">STARTER</div>
                 <div class="data-highlight">15 — 60 GB</div>
@@ -286,6 +283,7 @@
                 <div class="offer" onclick="showOffer('Starter','20 GHS - 35GB',20)">20 GHS - 35GB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Starter','25 GHS - 50GB',25)">25 GHS - 50GB <button class="action-btn">Get Offer</button></div>
             </div>
+            <!-- ... (Bronze, Silver, Gold, Platinum, Diamond cards remain exactly as before) ... -->
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">70 — 150 GB</div>
@@ -330,7 +328,7 @@
         </div>
     </section>
 
-    <!-- Testimonials, FAQ, Footer and Modal remain unchanged -->
+    <!-- Testimonials, FAQ, Footer, Modal and Script (unchanged) -->
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-grid">
