@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Unlimited Non-Expiry Data</title>
+    <title>Telecel Ghana - Unlimited Non-Expiry Data Offer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     
@@ -20,7 +20,6 @@
             color: #1e2937;
         }
 
-        /* Navigation */
         nav {
             background: white;
             padding: 1rem 5%;
@@ -33,34 +32,33 @@
             z-index: 1000;
         }
         .logo { 
-            font-size: 2.6rem; 
+            font-size: 2.65rem; 
             font-weight: 800; 
             color: var(--blue); 
             letter-spacing: -1.5px;
         }
         .logo span { color: var(--red); }
 
-        /* Hero */
         .hero {
             position: relative;
-            min-height: 480px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.75)), 
+            min-height: 460px;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.8)), 
                         url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=2000') center/cover;
             display: flex;
             align-items: center;
             color: white;
             text-align: center;
-            padding: 80px 5% 60px;
+            padding: 100px 5% 80px;
         }
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.7rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 16px;
         }
         .hero p {
             font-size: 1.25rem;
-            max-width: 700px;
+            max-width: 680px;
             margin: 0 auto 30px;
         }
 
@@ -73,14 +71,12 @@
         .hero-btn {
             background: white;
             color: var(--blue);
-            padding: 14px 28px;
+            padding: 13px 26px;
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
-            font-size: 1.05rem;
         }
 
-        /* Account Bar */
         .account-bar {
             background: linear-gradient(90deg, var(--blue), #1e40af);
             color: white;
@@ -88,14 +84,14 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 35px;
             text-align: center;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.4rem;
-            margin: 70px 0 40px;
+            font-size: 2.5rem;
+            margin: 70px 0 45px;
             color: var(--blue);
         }
 
@@ -104,7 +100,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             padding: 0 5%;
-            max-width: 1400px;
+            max-width: 1450px;
             margin: 0 auto;
         }
 
@@ -112,10 +108,10 @@
             background: white;
             border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 65px rgba(0,0,0,0.13);
             transition: all 0.4s;
         }
-        .tier-card:hover { transform: translateY(-15px); }
+        .tier-card:hover { transform: translateY(-18px); }
 
         .tier-header {
             padding: 30px 20px;
@@ -128,12 +124,12 @@
         .gold { background: linear-gradient(135deg, #eab308, #f59e0b); color: #1e2937; }
         .platinum { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
 
-        .price { font-size: 3.5rem; font-weight: 800; color: var(--red); }
+        .price { font-size: 3.6rem; font-weight: 800; color: var(--red); }
 
         .bundle-option {
             background: #f8fafc;
-            margin: 12px 20px;
-            padding: 18px 24px;
+            margin: 14px 22px;
+            padding: 20px 26px;
             border-radius: 20px;
             display: flex;
             justify-content: space-between;
@@ -143,10 +139,43 @@
             background: var(--red);
             color: white;
             border: none;
-            padding: 14px 32px;
+            padding: 15px 36px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .marquee {
+            background: #0f172a;
+            color: #fbbf24;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 28s linear infinite;
         }
 
         footer {
@@ -156,36 +185,20 @@
             text-align: center;
         }
 
-        .marquee {
-            background: #0f172a;
-            color: #fbbf24;
-            padding: 14px 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-        }
-
         @keyframes marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
-        /* Mobile Improvements */
         @media (max-width: 768px) {
-            .hero { min-height: 420px; padding: 60px 5% 50px; }
-            .hero h1 { font-size: 2.4rem; }
-            .hero p { font-size: 1.1rem; }
-            .account-bar { gap: 20px; padding: 18px 5%; }
+            .hero { min-height: 400px; padding: 80px 5% 60px; }
+            .hero h1 { font-size: 2.35rem; }
             .tier-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
         <div class="logo">TELECEL<span>GH</span></div>
     </nav>
@@ -194,7 +207,7 @@
     <section class="hero">
         <div>
             <h1>Telecel Unlimited Non-Expiry Data Offer</h1>
-            <p>Buy once and enjoy data that never expires. Available to all Telecel customers.</p>
+            <p>Buy once • Data never expires • Available to all Telecel customers</p>
             
             <div class="hero-buttons">
                 <a href="#" class="hero-btn">Personal</a>
@@ -207,75 +220,88 @@
 
     <!-- Account Bar -->
     <div class="account-bar">
-        <div><small>Available Data</small><div style="font-size:1.75rem;font-weight:700;">47.3 GB</div></div>
-        <div><small>Telecel Cash</small><div style="font-size:1.75rem;font-weight:700;">GHS 312.80</div></div>
-        <div><small>Loyalty Points</small><div style="font-size:1.75rem;font-weight:700;">3,845</div></div>
-        <div><small>Status</small><div style="font-size:1.75rem;font-weight:700;color:#86efac;">Platinum</div></div>
+        <div><small>Available Data</small><div style="font-size:1.8rem;font-weight:700;">47.3 GB</div></div>
+        <div><small>Telecel Cash</small><div style="font-size:1.8rem;font-weight:700;">GHS 312.80</div></div>
+        <div><small>Loyalty Points</small><div style="font-size:1.8rem;font-weight:700;">3,845</div></div>
+        <div><small>Status</small><div style="font-size:1.8rem;font-weight:700;color:#86efac;">Platinum</div></div>
     </div>
 
     <!-- Bundles -->
     <h2 class="section-title">Choose Your Non-Expiry Bundle</h2>
     <div class="tier-grid">
 
-        <!-- Bronze -->
         <div class="tier-card">
             <div class="tier-header bronze"><h3>BRONZE</h3><p>Everyday Browsing</p></div>
-            <div style="padding:30px 20px;">
+            <div style="padding:32px 20px;">
                 <div class="price">GHS 20</div>
-                <p style="font-size:2.1rem;margin:8px 0;">50 GB</p>
+                <p style="font-size:2.2rem;margin:10px 0;">50 GB</p>
                 <div class="bundle-option"><span>20 GHS - 50GB</span><button class="action-btn" onclick="buyBundle('20 GHS - 50GB',20)">Buy Now</button></div>
                 <div class="bundle-option"><span>40 GHS - 110GB</span><button class="action-btn" onclick="buyBundle('40 GHS - 110GB',40)">Buy Now</button></div>
             </div>
         </div>
 
-        <!-- Silver -->
         <div class="tier-card">
             <div class="tier-header silver"><h3>SILVER</h3><p>Heavy Users</p></div>
-            <div style="padding:30px 20px;">
+            <div style="padding:32px 20px;">
                 <div class="price">GHS 80</div>
-                <p style="font-size:2.1rem;margin:8px 0;">280 GB</p>
+                <p style="font-size:2.2rem;margin:10px 0;">280 GB</p>
                 <div class="bundle-option"><span>80 GHS - 280GB</span><button class="action-btn" onclick="buyBundle('80 GHS - 280GB',80)">Buy Now</button></div>
                 <div class="bundle-option"><span>100 GHS - 380GB</span><button class="action-btn" onclick="buyBundle('100 GHS - 380GB',100)">Buy Now</button></div>
             </div>
         </div>
 
-        <!-- Gold -->
         <div class="tier-card">
             <div class="tier-header gold"><h3>GOLD</h3><p>Premium Experience</p></div>
-            <div style="padding:30px 20px;">
+            <div style="padding:32px 20px;">
                 <div class="price">GHS 200</div>
-                <p style="font-size:2.1rem;margin:8px 0;">900 GB</p>
+                <p style="font-size:2.2rem;margin:10px 0;">900 GB</p>
                 <div class="bundle-option"><span>200 GHS - 900GB</span><button class="action-btn" onclick="buyBundle('200 GHS - 900GB',200)">Buy Now</button></div>
                 <div class="bundle-option"><span>300 GHS - 1.4TB</span><button class="action-btn" onclick="buyBundle('300 GHS - 1.4TB',300)">Buy Now</button></div>
             </div>
         </div>
 
-        <!-- Platinum -->
         <div class="tier-card">
             <div class="tier-header platinum"><h3>PLATINUM</h3><p>Unlimited Power</p></div>
-            <div style="padding:30px 20px;">
+            <div style="padding:32px 20px;">
                 <div class="price">GHS 800</div>
-                <p style="font-size:2.1rem;margin:8px 0;">Unlimited</p>
+                <p style="font-size:2.2rem;margin:10px 0;">Unlimited</p>
                 <div class="bundle-option"><span>800 GHS - 5TB</span><button class="action-btn" onclick="buyBundle('800 GHS - 5TB',800)">Buy Now</button></div>
-                <div class="bundle-option"><span>2000 GHS - Family</span><button class="action-btn" onclick="buyBundle('Family Unlimited',2000)">Buy Now</button></div>
+                <div class="bundle-option"><span>2000 GHS - Family Unlimited</span><button class="action-btn" onclick="buyBundle('Family Unlimited',2000)">Buy Now</button></div>
             </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+                Who can buy these Non-Expiry bundles? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div style="padding:0 25px 25px; display:none;">All Telecel customers are eligible. Just buy and enjoy forever.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">
+                Does the data really never expire? <i class="fas fa-chevron-down"></i>
+            </div>
+            <div style="padding:0 25px 25px; display:none;">Yes! Once purchased, your data remains valid until you use it all.</div>
         </div>
     </div>
 
     <div class="marquee">
         <div class="marquee-content">
-            🔥 BUY ONCE • DATA NEVER EXPIRES • Available to ALL Telecel Users • Complete Purchase to Unlock Instantly
+            🔥 BUY ONCE • DATA NEVER EXPIRES • Available to ALL Telecel Users • Complete Purchase to Unlock Instantly 🔥
         </div>
     </div>
 
     <footer>
-        <p style="margin-bottom:20px;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+        <p style="margin-bottom:15px;">© 2026 Telecel Ghana. All Rights Reserved.</p>
         <p>Connecting Energies</p>
     </footer>
 
     <script>
         function buyBundle(name, price) {
-            if (confirm(`🔥 TELECEL UNLIMITED OFFER 🔥\n\n${name}\nGHS ${price}\n\nData Never Expires\n\nProceed to complete purchase?`)) {
+            if (confirm(`🔥 TELECEL UNLIMITED NON-EXPIRY OFFER 🔥\n\n${name}\nGHS ${price}\n\n✅ Data Never Expires\n\nProceed to complete your purchase?`)) {
                 window.location.href = `login.html?bundle=${encodeURIComponent(name)}&price=${price}`;
             }
         }
