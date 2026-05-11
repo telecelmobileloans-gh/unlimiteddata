@@ -18,7 +18,7 @@
             color: #1e2937;
         }
 
-        /* Red Navbar */
+        /* Navbar - Red Theme */
         nav {
             background: var(--red);
             padding: 16px 5%;
@@ -39,11 +39,11 @@
             height: 82px;
         }
 
-        /* Hero - Mixed Telecel Colors */
+        /* Hero Section - Improved Mixed Colors */
         .hero {
-            background: linear-gradient(135deg, #E30613, #FF4D4D, #C8102E);
+            background: linear-gradient(135deg, #E30613, #FF1A1A, #C8102E);
             color: white;
-            padding: 110px 5% 90px;
+            padding: 120px 5% 100px;
             position: relative;
             overflow: hidden;
         }
@@ -53,7 +53,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
         }
         .hero-text {
@@ -61,18 +61,18 @@
             min-width: 300px;
         }
         .hero-text h1 {
-            font-size: 3.4rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            line-height: 1.12;
+            line-height: 1.1;
             margin-bottom: 16px;
         }
         .hero-text p {
-            font-size: 1.32rem;
+            font-size: 1.35rem;
             margin-bottom: 8px;
             opacity: 0.95;
         }
         .eligible {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             opacity: 0.9;
             margin-bottom: 30px;
         }
@@ -80,50 +80,51 @@
             background: white;
             color: var(--red);
             border: none;
-            padding: 16px 48px;
+            padding: 16px 52px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 12px;
+            transition: all 0.3s;
         }
         .explore-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
-        /* Floating Data */
+        /* Floating Data Icon */
         .floating-data {
             flex: 1;
             max-width: 380px;
             text-align: center;
-            animation: float 3s ease-in-out infinite;
+            animation: float 3.2s ease-in-out infinite;
         }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-25px); }
+            50% { transform: translateY(-28px); }
         }
         .data-icon {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             background: #00D4FF;
-            border-radius: 30px;
+            border-radius: 32px;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 25px 40px rgba(0, 212, 255, 0.4);
-            font-size: 4.5rem;
+            box-shadow: 0 25px 45px rgba(0, 212, 255, 0.45);
+            font-size: 5rem;
             color: white;
         }
 
         /* Plans */
         .section-title {
             text-align: center;
-            font-size: 2.7rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin: 90px 0 45px;
+            margin: 90px 0 50px;
             color: var(--red);
         }
         .tier-grid {
@@ -163,7 +164,7 @@
             font-weight: 700;
         }
         .plan-name { font-size: 1.95rem; font-weight: 800; text-align: center; color: var(--red); }
-        .data-highlight { font-size: 2.35rem; font-weight: 900; color: #22c55e; text-align: center; margin: 12px 0; }
+        .data-highlight { font-size: 2.4rem; font-weight: 900; color: #22c55e; text-align: center; margin: 12px 0; }
         .offer {
             background: #fff0f0;
             padding: 16px 20px;
@@ -233,32 +234,13 @@
             margin: 0 auto;
         }
 
-        /* Mobile Optimizations */
+        /* Mobile Improvements */
         @media (max-width: 768px) {
-            .hero {
-                padding: 90px 5% 70px;
-            }
-            .hero-text h1 {
-                font-size: 2.55rem;
-                line-height: 1.15;
-            }
-            .hero-content {
-                gap: 30px;
-                text-align: center;
-            }
-            .telecel-logo {
-                width: 68px;
-                height: 68px;
-            }
-            .floating-data {
-                max-width: 260px;
-                margin: 0 auto;
-            }
-            .data-icon {
-                width: 150px;
-                height: 150px;
-                font-size: 3.8rem;
-            }
+            .hero { padding: 90px 5% 70px; }
+            .hero-text h1 { font-size: 2.6rem; line-height: 1.15; }
+            .hero-content { gap: 35px; text-align: center; }
+            .telecel-logo { width: 68px; height: 68px; }
+            .data-icon { width: 155px; height: 155px; font-size: 4rem; }
         }
     </style>
 </head>
@@ -266,9 +248,9 @@
     <nav>
         <div class="logo">
             <!-- White Circle with Red T - Telecel Style -->
-            <svg width="78" height="78" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="telecel-logo">
+            <svg width="82" height="82" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="telecel-logo">
                 <circle cx="48" cy="48" r="46" fill="white"/>
-                <text x="48" y="52" font-family="Arial Black, sans-serif" font-size="52" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
+                <text x="48" y="53" font-family="Arial Black, sans-serif" font-size="54" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
             </svg>
         </div>
     </nav>
@@ -382,7 +364,7 @@
                 <div class="logo">
                     <svg width="52" height="52" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" class="telecel-logo">
                         <circle cx="48" cy="48" r="46" fill="white"/>
-                        <text x="48" y="52" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
+                        <text x="48" y="53" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
                     </svg>
                 </div>
             </div>
