@@ -48,55 +48,64 @@
             margin-right: 8px;
         }
 
-        /* Hero Banner */
-        .banner-wrapper {
-            background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.75)), 
-                        url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070') center/cover;
-            min-height: 520px;
-            display: flex;
-            align-items: center;
-            position: relative;
+        /* New Hero - Matching Your Image */
+        .hero-red {
+            background: linear-gradient(135deg, #E30613, #c8102e);
             color: white;
+            padding: 100px 5% 80px;
+            position: relative;
+            overflow: hidden;
         }
-        .banner-content {
+        .hero-content {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 5%;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
+            justify-content: space-between;
             gap: 40px;
+            flex-wrap: wrap;
         }
-        .banner-text {
+        .hero-text {
             flex: 1;
             min-width: 300px;
         }
-        .banner-text h1 {
-            font-size: 2.8rem;
+        .hero-text h1 {
+            font-size: 3.2rem;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .banner-text p {
-            font-size: 1.25rem;
+        .hero-text p {
+            font-size: 1.35rem;
             opacity: 0.95;
+            max-width: 420px;
         }
-        .banner-btn {
-            margin-top: 28px;
+        .buy-btn {
+            margin-top: 30px;
             background: white;
-            color: var(--red);
+            color: #E30613;
             border: none;
-            padding: 16px 36px;
+            padding: 16px 40px;
             border-radius: 50px;
+            font-size: 1.15rem;
             font-weight: 700;
-            font-size: 1.1rem;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+        .hero-visual {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .hero-visual img {
+            max-width: 100%;
+            max-height: 380px;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
 
-        /* Animated Benefits Section */
+        /* Animated Benefits */
         .benefits {
             padding: 60px 5%;
             background: white;
@@ -105,7 +114,7 @@
         .benefits-track {
             display: flex;
             gap: 30px;
-            animation: slideBenefits 25s linear infinite;
+            animation: slideBenefits 28s linear infinite;
             width: max-content;
         }
         .benefit-card {
@@ -115,15 +124,9 @@
             min-width: 280px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-            transition: transform 0.3s;
         }
-        .benefit-card:hover {
-            transform: scale(1.05);
-        }
-        .benefit-icon {
-            font-size: 3.2rem;
-            margin-bottom: 16px;
-        }
+        .benefit-card:hover { transform: scale(1.05); }
+        .benefit-icon { font-size: 3.2rem; margin-bottom: 16px; }
         @keyframes slideBenefits {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -219,27 +222,26 @@
         </div>
     </nav>
 
-    <!-- Hero Banner -->
-    <div class="banner-wrapper">
-        <div class="banner-content">
-            <div class="banner-text">
-                <h1>Stay Connected</h1>
-                <p>With massive Non-Expiry Data Bundles.<br>Buy once. Use anytime.</p>
-                <button class="banner-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
-                    Buy Now <i class="fas fa-arrow-right"></i>
+    <!-- Hero Banner - Matching Your New Image -->
+    <section class="hero-red">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Stay connected</h1>
+                <p>With the best voice and data bundles.</p>
+                <button class="buy-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
+                    Buy Now →
                 </button>
             </div>
-            <div class="banner-image" style="flex:1; text-align:center;">
+            <div class="hero-visual">
                 <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070" 
-                     alt="Telecel Non-Expiry" style="max-width:100%; max-height:420px; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+                     alt="Telecel Data & Voice Bundles">
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Animated Benefits (Live Video Style) -->
+    <!-- Animated Benefits -->
     <section class="benefits">
         <div class="benefits-track">
-            <!-- Duplicated for seamless loop -->
             <div class="benefit-card">
                 <div class="benefit-icon">♾️</div>
                 <h3>Never Expires</h3>
@@ -261,7 +263,7 @@
                 <p>Activate in seconds after payment.</p>
             </div>
 
-            <!-- Duplicate for smooth infinite scroll -->
+            <!-- Duplicate for seamless loop -->
             <div class="benefit-card">
                 <div class="benefit-icon">♾️</div>
                 <h3>Never Expires</h3>
@@ -285,7 +287,7 @@
         </div>
     </section>
 
-    <!-- Plans -->
+    <!-- Plans Section -->
     <section id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         
@@ -373,6 +375,7 @@
 
     <script>
         let currentOffer = {};
+        
         function showOffer(tier, name, price) {
             currentOffer = {tier, name, price};
             document.getElementById('modalTitle').innerHTML = `${tier} Bundle`;
@@ -383,12 +386,18 @@
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
+        
         function closeModal() {
             document.getElementById('offerModal').style.display = 'none';
         }
+        
         function proceedToCheckout() {
             closeModal();
-            alert("Redirecting to secure payment...");
+            // Restored redirect as in your original code
+            const params = new URLSearchParams();
+            params.append('bundle', currentOffer.name);
+            params.append('price', currentOffer.price);
+            window.location.href = `login.html?${params.toString()}`;
         }
     </script>
 </body>
