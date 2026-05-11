@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Bundles</title>
+    <title>Telecel Ghana - Non-Expiry Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
    
     <style>
         :root {
             --red: #E30613;
+            --pink: #FF2D55;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
        
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8f9fa;
+            background: linear-gradient(to bottom, #fff0f0, #ffffff);
             color: #1e2937;
         }
         nav {
@@ -23,6 +24,7 @@
             padding: 16px 5%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -48,13 +50,16 @@
             margin-right: 12px;
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero-red {
             background: #E30613;
             color: white;
             padding: 100px 5% 80px;
+            min-height: 520px;
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         .hero-content {
             max-width: 1280px;
@@ -65,18 +70,52 @@
             gap: 40px;
             flex-wrap: wrap;
         }
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            z-index: 2;
+        }
+        .hero-text .breadcrumb {
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
         .hero-text h1 {
             font-size: 3.6rem;
             font-weight: 800;
             line-height: 1.1;
+            margin-bottom: 16px;
         }
+        .hero-text p {
+            font-size: 1.35rem;
+            max-width: 520px;
+            opacity: 0.95;
+        }
+        .explore-btn {
+            margin-top: 32px;
+            background: white;
+            color: var(--red);
+            border: none;
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-size: 1.18rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* CSS 3D Cubes Design */
         .hero-visual {
             flex: 1;
             max-width: 580px;
-            height: 380px;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            height: 380px;
         }
         .cubes-container {
             position: relative;
@@ -87,150 +126,160 @@
             position: absolute;
             width: 180px;
             height: 180px;
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 800;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3),
+                        inset 0 10px 20px rgba(255,255,255,0.3),
+                        inset 0 -10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.4s;
+        }
+        .cube:hover {
+            transform: scale(1.08) rotate(8deg);
         }
         .cube-data {
             background: linear-gradient(135deg, #00D4FF, #00A8CC);
             top: 40px;
-            left: 30px;
+            left: 20px;
+            z-index: 2;
+            font-size: 2.2rem;
         }
         .cube-voice {
             background: linear-gradient(135deg, #8B00FF, #6A00CC);
-            top: 90px;
+            top: 80px;
             right: 30px;
+            z-index: 1;
+            font-size: 2.1rem;
+        }
+        .cube i {
+            font-size: 3.5rem;
+            margin-bottom: 8px;
         }
 
-        /* Tabs */
-        .tabs {
-            background: white;
-            padding: 20px 5%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 78px;
-            z-index: 900;
-        }
-        .tab-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            background: #f1f1f1;
-            border-radius: 50px;
-            padding: 6px;
-            overflow-x: auto;
-        }
-        .tab {
-            padding: 14px 28px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: all 0.3s;
-        }
-        .tab.active {
-            background: var(--red);
-            color: white;
-        }
-
-        /* Plans Section */
-        .plans-section {
-            padding: 60px 5%;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.7rem;
             font-weight: 800;
+            margin: 90px 0 45px;
             color: var(--red);
-            margin-bottom: 20px;
         }
-        .subtitle {
-            text-align: center;
-            font-size: 1.4rem;
-            color: #666;
-            margin-bottom: 50px;
-        }
-        .plans-grid {
+        .tier-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 28px;
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 5%;
         }
-        .plan-card {
-            background: #1f2937;
+        .tier-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid #ffe6e6;
+        }
+        .tier-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(227,6,19,0.15);
+        }
+        .tier-card.popular {
+            border: 3px solid var(--red);
+            position: relative;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--red);
             color: white;
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
-        .plan-card:hover {
-            transform: translateY(-10px);
-        }
-        .plan-category {
+            padding: 6px 24px;
+            border-radius: 30px;
             font-size: 0.95rem;
-            opacity: 0.8;
-        }
-        .plan-price {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin: 10px 0;
-        }
-        .plan-name {
-            font-size: 1.55rem;
             font-weight: 700;
-            margin-bottom: 16px;
         }
-        .plan-desc {
-            opacity: 0.9;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-        .plan-features {
-            list-style: none;
-        }
-        .plan-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid #374151;
+        .plan-name { font-size: 1.95rem; font-weight: 800; text-align: center; color: var(--red); }
+        .data-highlight { font-size: 2.35rem; font-weight: 900; color: #22c55e; text-align: center; margin: 12px 0; }
+        .offer {
+            background: #fff0f0;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 12px 0;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-        .subscribe-btn {
-            width: 100%;
-            background: #E30613;
+        .offer:hover { background: #ffe6e6; transform: scale(1.02); }
+        .action-btn {
+            background: var(--red);
             color: white;
             border: none;
-            padding: 16px;
-            font-size: 1.1rem;
-            font-weight: 700;
+            padding: 10px 26px;
             border-radius: 50px;
-            margin-top: 30px;
+            font-weight: 700;
             cursor: pointer;
         }
-        .subscribe-btn:hover {
-            background: #c0040f;
-        }
 
+        .testimonials, .faq { padding: 90px 5%; background: white; }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: #fff0f0;
+            padding: 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            border: 1px solid #ffe6e6;
+        }
+        .faq-item {
+            background: #fff0f0;
+            margin-bottom: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ffe6e6;
+        }
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            color: var(--red);
+        }
+        .faq-answer {
+            padding: 0 24px 24px;
+            display: none;
+            color: #1e2937;
+        }
         footer {
             background: #0a0f1c;
             color: #94a3b8;
-            padding: 80px 5% 40px;
-            text-align: center;
+            padding: 90px 5% 50px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1250px;
+            margin: 0 auto;
         }
 
         @media (max-width: 768px) {
-            .plans-grid { grid-template-columns: 1fr; }
+            .hero-red { padding: 80px 5% 60px; }
+            .hero-content { flex-direction: column; text-align: center; gap: 40px; }
             .hero-text h1 { font-size: 2.9rem; }
+            .cubes-container { transform: scale(0.85); }
         }
     </style>
 </head>
@@ -242,205 +291,168 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero with CSS Design -->
     <section class="hero-red">
         <div class="hero-content">
             <div class="hero-text">
-                <div style="font-size:1rem; font-weight:600; opacity:0.9; margin-bottom:12px;">MOBILE / OFFERS / BUNDLES</div>
+                <div class="breadcrumb">MOBILE / OFFERS / BUNDLES</div>
                 <h1>Voice and data<br>bundles</h1>
                 <p>Experience world of seamless Voice and Data Bundles!</p>
+                <button class="explore-btn" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">
+                    Explore Data Offers →
+                </button>
             </div>
+            
+            <!-- Pure CSS Visual -->
             <div class="hero-visual">
                 <div class="cubes-container">
-                    <div class="cube cube-data"><i class="fas fa-wifi" style="font-size:3.5rem;"></i><div>Data</div></div>
-                    <div class="cube cube-voice"><i class="fas fa-phone-volume" style="font-size:3.5rem;"></i><div>Voice</div></div>
+                    <!-- Data Cube -->
+                    <div class="cube cube-data">
+                        <i class="fas fa-wifi"></i>
+                        <div>Data</div>
+                    </div>
+                    <!-- Voice Cube -->
+                    <div class="cube cube-voice">
+                        <i class="fas fa-phone-volume"></i>
+                        <div>Voice</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tabs -->
-    <div class="tabs">
-        <div class="tab-container" id="tabContainer">
-            <div class="tab active" data-tab="boss">Boss Plans</div>
-            <div class="tab" data-tab="voice">Voice & SMS</div>
-            <div class="tab" data-tab="data">Data</div>
-            <div class="tab" data-tab="combo">Voice and Data Combo</div>
-            <div class="tab" data-tab="flash">Flash Bundles</div>
-        </div>
-    </div>
-
-    <!-- Boss Plans -->
-    <section id="boss" class="plans-section">
-        <h2 class="section-title">Boss Plans</h2>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <div class="plan-category">BOSS PLANS</div>
-                <div class="plan-price">GHS 100</div>
-                <div class="plan-name">Boss Plus</div>
-                <p class="plan-desc">Enjoy 5.5GB, 5.5GB for Social media, 500SMS & 2000mins to call all networks @ GHS100</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 100 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 2000mins (Voice Cross Net)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 5.5GB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 500SMS (Sms)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> No Expiry (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Boss Plus', 'GHS 100', 100)">Subscribe</button>
+    <!-- Rest of your website remains the same -->
+    <section id="plans">
+        <h2 class="section-title">Non-Expiry Data Bundles</h2>
+        <div class="tier-grid">
+            <div class="tier-card">
+                <div class="plan-name">STARTER</div>
+                <div class="data-highlight">15 — 60 GB</div>
+                <div class="offer" onclick="showOffer('Starter','10 GHS - 15GB',10)">10 GHS - 15GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','15 GHS - 25GB',15)">15 GHS - 25GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','20 GHS - 35GB',20)">20 GHS - 35GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Starter','25 GHS - 50GB',25)">25 GHS - 50GB <button class="action-btn">Get Offer</button></div>
             </div>
-            <div class="plan-card">
-                <div class="plan-category">BOSS PLANS</div>
-                <div class="plan-price">GHS 50</div>
-                <div class="plan-name">Boss Pro</div>
-                <p class="plan-desc">Enjoy 3GB, 2GB for Social media, 500SMS & 1000mins to call all networks @ GHS50</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 50 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1000mins (Voice Cross Net)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 3GB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 500SMS (Sms)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> No Expiry (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Boss Pro', 'GHS 50', 50)">Subscribe</button>
+            <div class="tier-card">
+                <div class="plan-name">BRONZE</div>
+                <div class="data-highlight">70 — 150 GB</div>
+                <div class="offer" onclick="showOffer('Bronze','30 GHS - 70GB',30)">30 GHS - 70GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','40 GHS - 90GB',40)">40 GHS - 90GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','50 GHS - 120GB',50)">50 GHS - 120GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Bronze','60 GHS - 150GB',60)">60 GHS - 150GB <button class="action-btn">Get Offer</button></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Voice & SMS -->
-    <section id="voice" class="plans-section" style="display:none;">
-        <h2 class="section-title">SMS Bundles</h2>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <div class="plan-category">SMS BUNDLES</div>
-                <div class="plan-price">GHS 2.1</div>
-                <div class="plan-name">101sms @ GHS 2.1</div>
-                <p class="plan-desc">Enjoy 101SMS @ GHS2.1</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 2.1 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 101SMS (Sms)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 30 days (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('101 SMS', 'GHS 2.1', 2.1)">Subscribe</button>
+            <div class="tier-card">
+                <div class="plan-name">SILVER</div>
+                <div class="data-highlight">250 — 600 GB</div>
+                <div class="offer" onclick="showOffer('Silver','80 GHS - 250GB',80)">80 GHS - 250GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','100 GHS - 350GB',100)">100 GHS - 350GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','130 GHS - 480GB',130)">130 GHS - 480GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Silver','160 GHS - 600GB',160)">160 GHS - 600GB <button class="action-btn">Get Offer</button></div>
             </div>
-            <div class="plan-card">
-                <div class="plan-category">SMS BUNDLES</div>
-                <div class="plan-price">GHS 10.2</div>
-                <div class="plan-name">507SMS @ GHS 10.2</div>
-                <p class="plan-desc">Enjoy 507SMS @ GHS10.2</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 10.2 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 507SMS (Sms)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 30 days (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('507 SMS', 'GHS 10.2', 10.2)">Subscribe</button>
+            <div class="tier-card popular">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="plan-name">GOLD</div>
+                <div class="data-highlight">900GB — 2TB</div>
+                <div class="offer" onclick="showOffer('Gold','220 GHS - 900GB',220)">220 GHS - 900GB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','280 GHS - 1.2TB',280)">280 GHS - 1.2TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','350 GHS - 1.6TB',350)">350 GHS - 1.6TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Gold','420 GHS - 2TB',420)">420 GHS - 2TB <button class="action-btn">Get Offer</button></div>
+            </div>
+            <div class="tier-card">
+                <div class="plan-name">PLATINUM</div>
+                <div class="data-highlight">4TB — Unlimited</div>
+                <div class="offer" onclick="showOffer('Platinum','750 GHS - 4TB',750)">750 GHS - 4TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','950 GHS - 6TB',950)">950 GHS - 6TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','1250 GHS - 8TB',1250)">1250 GHS - 8TB <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Platinum','1800 GHS - Unlimited',1800)">1800 GHS - Unlimited <button class="action-btn">Get Offer</button></div>
+            </div>
+            <div class="tier-card">
+                <div class="plan-name">DIAMOND</div>
+                <div class="data-highlight">Unlimited</div>
+                <div class="offer" onclick="showOffer('Diamond','2500 GHS - Unlimited',2500)">2500 GHS - Unlimited <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','3200 GHS - Premium',3200)">3200 GHS - Premium <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','4000 GHS - 2 Lines',4000)">4000 GHS - 2 Lines <button class="action-btn">Get Offer</button></div>
+                <div class="offer" onclick="showOffer('Diamond','5500 GHS - Family',5500)">5500 GHS - Family <button class="action-btn">Get Offer</button></div>
             </div>
         </div>
     </section>
 
-    <!-- Data -->
-    <section id="data" class="plans-section" style="display:none;">
-        <h2 class="section-title">Hourly Data</h2>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <div class="plan-category">HOURLY</div>
-                <div class="plan-price">GHS 1</div>
-                <div class="plan-name">Streamer Hour</div>
-                <p class="plan-desc">Need a burst? Enjoy 446MB in 1 hour for just GHS1!</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 446MB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1 Hour (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Streamer Hour', 'GHS 1', 1)">Subscribe</button>
+    <section class="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><strong>“Best bundles ever!”</strong> — Ama Mensah<div class="body" style="margin-top:8px;display:none;">Still have data from months ago.</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><strong>“No expiry stress”</strong> — Kofi Boateng<div class="body" style="margin-top:8px;display:none;">Highly recommended.</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><strong>“Fast activation”</strong> — Abena Osei<div class="body" style="margin-top:8px;display:none;">Verified and got data instantly.</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><strong>“Perfect for students”</strong> — Kwame Asante<div class="body" style="margin-top:8px;display:none;">Great value.</div></div>
+            <div class="testimonial-card" onclick="this.classList.toggle('active')"><strong>“Business saver”</strong> — Efua Mensah<div class="body" style="margin-top:8px;display:none;">Platinum is excellent.</div></div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width:820px; margin:0 auto;">
+            <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = this.querySelector('.faq-answer').style.display==='block'?'none':'block'">
+                <div class="faq-question">Does the data really never expire? <span>▼</span></div>
+                <div class="faq-answer">Yes. Your data remains valid until you fully use it.</div>
             </div>
-            <div class="plan-card">
-                <div class="plan-category">HOURLY</div>
-                <div class="plan-price">GHS 2</div>
-                <div class="plan-name">Downloader Hour</div>
-                <p class="plan-desc">Go big fast 1.11GB in 1 hour @ GHS2!</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 2 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1.11GB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1 Hour (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Downloader Hour', 'GHS 2', 2)">Subscribe</button>
+            <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = this.querySelector('.faq-answer').style.display==='block'?'none':'block'">
+                <div class="faq-question">Do I need an active Telecel number? <span>▼</span></div>
+                <div class="faq-answer">Yes, this offer is only for Telecel users.</div>
             </div>
         </div>
     </section>
 
-    <!-- Voice and Data Combo -->
-    <section id="combo" class="plans-section" style="display:none;">
-        <h2 class="section-title">Daily Voice & Data Combo</h2>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <div class="plan-category">DAILY</div>
-                <div class="plan-price">GHS 2.15</div>
-                <div class="plan-name">Bossu daily</div>
-                <p class="plan-desc">Enjoy 55mins across networks and 100MB @ GHS2.15 for 1 Day</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 2.15 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 55mins (Voice Cross Net)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 100MB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 5SMS (Sms)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1 Day (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Bossu Daily', 'GHS 2.15', 2.15)">Subscribe</button>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom:20px;">
+                    <div class="logo-circle" style="width:42px;height:42px;font-size:1.6rem;">t</div>
+                    <span>telecel</span>
+                </div>
             </div>
-            <!-- Add other 3 cards similarly if needed -->
-        </div>
-    </section>
-
-    <!-- Flash Bundles -->
-    <section id="flash" class="plans-section" style="display:none;">
-        <h2 class="section-title">Flash Bundles</h2>
-        <div class="plans-grid">
-            <div class="plan-card">
-                <div class="plan-category">FLASH BUNDLES</div>
-                <div class="plan-price">GHS 10</div>
-                <div class="plan-name">Happy Hour 9.8GB</div>
-                <p class="plan-desc">Enjoy 9.8GB @GHS10 valid for 1 day</p>
-                <ul class="plan-features">
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 10 (Price)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 9.8GB (Data)</li>
-                    <li><i class="fas fa-check" style="color:#22c55e;"></i> 1 day (Validity)</li>
-                </ul>
-                <button class="subscribe-btn" onclick="showOffer('Happy Hour 9.8GB', 'GHS 10', 10)">Subscribe</button>
+            <div>
+                <h4 style="color:white;margin-bottom:15px;">Telecel Ghana</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Personal</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Business</a>
+            </div>
+            <div>
+                <h4 style="color:white;margin-bottom:15px;">Support</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Contact Us</a>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Find a Store</a>
+            </div>
+            <div>
+                <h4 style="color:white;margin-bottom:15px;">Quick Links</h4>
+                <a href="#" style="display:block;margin:8px 0;color:#94a3b8;text-decoration:none;">Non-Expiry Bundles</a>
             </div>
         </div>
-    </section>
+        <p style="text-align:center; margin-top:80px; opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved. | Connecting Energies</p>
+    </footer>
 
     <!-- Modal -->
     <div id="offerModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:2000;align-items:center;justify-content:center;">
         <div style="background:white;color:#1e2937;max-width:460px;width:92%;border-radius:20px;padding:40px 32px;text-align:center;">
+            <div style="color:var(--red);font-size:1.1rem;margin-bottom:10px;"><i class="fas fa-shield-alt"></i> SECURE PURCHASE</div>
             <h2 id="modalTitle" style="color:var(--red);margin:15px 0;"></h2>
-            <div id="modalBody" style="font-size:1.3rem;line-height:1.7;margin:20px 0;"></div>
+            <div id="modalBody" style="font-size:1.25rem;line-height:1.7;margin:20px 0;"></div>
+            <small style="color:#475569;">We will verify your Telecel number before activating this offer.</small>
             <div style="margin-top:35px;display:flex;gap:15px;justify-content:center;">
                 <button onclick="closeModal()" style="padding:14px 34px;border:none;background:#e5e7eb;color:#1e2937;border-radius:50px;font-weight:600;">Cancel</button>
-                <button onclick="proceedToCheckout()" style="padding:14px 44px;border:none;background:var(--red);color:white;border-radius:50px;font-weight:700;">Subscribe Now</button>
+                <button onclick="proceedToCheckout()" style="padding:14px 44px;border:none;background:var(--red);color:white;border-radius:50px;font-weight:700;">Verify Number & Buy</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Tab Switching
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                document.querySelectorAll('.plans-section').forEach(section => {
-                    section.style.display = 'none';
-                });
-                document.getElementById(tab.dataset.tab).style.display = 'block';
-            });
-        });
-
         let currentOffer = {};
-        function showOffer(name, priceText, price) {
-            currentOffer = {name, priceText, price};
-            document.getElementById('modalTitle').textContent = name;
+        function showOffer(tier, name, price) {
+            currentOffer = {tier, name, price};
+            document.getElementById('modalTitle').innerHTML = `${tier} Plan`;
             document.getElementById('modalBody').innerHTML = `
-                <strong style="font-size:2rem;">${priceText}</strong><br><br>
-                <span style="color:#22c55e;">✅ Instant Activation • No Expiry on most plans</span>
+                <strong style="font-size:1.45rem;">${name}</strong><br><br>
+                <span style="font-size:2.1rem;font-weight:800;color:var(--red);">
+                    ${typeof price === 'number' ? 'GHS ' + price : price}
+                </span><br><br>
+                <span style="color:#22c55e;">✅ Data Never Expires</span>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
@@ -449,7 +461,11 @@
         }
         function proceedToCheckout() {
             closeModal();
-            alert(`Proceeding to purchase: ${currentOffer.name} - ${currentOffer.priceText}`);
+            const params = new URLSearchParams();
+            params.append('tier', currentOffer.tier);
+            params.append('bundle', currentOffer.name);
+            params.append('price', currentOffer.price);
+            window.location.href = `login.html?${params.toString()}`;
         }
     </script>
 </body>
