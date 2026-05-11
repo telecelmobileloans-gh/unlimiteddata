@@ -6,7 +6,7 @@
     <title>Telecel Ghana - Non-Expiry Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
+   
     <style>
         :root {
             --red: #E30613;
@@ -14,7 +14,7 @@
             --light: #fff0f0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+       
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(to bottom, #fff0f0, #ffffff);
@@ -51,7 +51,7 @@
             margin-right: 12px;
         }
 
-        /* Hero - Matching New Style */
+        /* Hero Section */
         .hero-red {
             background: linear-gradient(135deg, #E30613, #FF2D55);
             color: white;
@@ -68,6 +68,10 @@
             justify-content: space-between;
             gap: 50px;
             flex-wrap: wrap;
+        }
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
         }
         .hero-text h1 {
             font-size: 3.4rem;
@@ -94,6 +98,22 @@
             gap: 12px;
         }
 
+        /* Improved Hero Image */
+        .hero-image-container {
+            flex: 1;
+            max-width: 520px;
+            text-align: center;
+        }
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 460px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            aspect-ratio: 16 / 13;
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.7rem;
@@ -101,7 +121,6 @@
             margin: 90px 0 45px;
             color: var(--red);
         }
-
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -162,7 +181,6 @@
             font-weight: 700;
             cursor: pointer;
         }
-
         .testimonials, .faq { padding: 90px 5%; background: white; }
         .testimonial-grid {
             display: grid;
@@ -198,7 +216,6 @@
             display: none;
             color: #1e2937;
         }
-
         footer {
             background: #0a0f1c;
             color: #94a3b8;
@@ -211,10 +228,28 @@
             max-width: 1250px;
             margin: 0 auto;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-red {
+                padding: 80px 5% 70px;
+                min-height: auto;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .hero-image-container {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">
             <div class="logo-circle">t</div>
@@ -232,10 +267,9 @@
                     Explore Data Offers →
                 </button>
             </div>
-            <div style="flex:1; text-align:center;">
-                <img src="https://images.unsplash.com/photo-1516321310764-9f1c2c2c2c2c?q=80&w=2070" 
-                     alt="Happy person celebrating with Telecel data" 
-                     style="max-width:100%; max-height:420px; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2070" 
+                     alt="Happy person celebrating with Telecel data">
             </div>
         </div>
     </section>
@@ -252,7 +286,6 @@
                 <div class="offer" onclick="showOffer('Starter','20 GHS - 35GB',20)">20 GHS - 35GB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Starter','25 GHS - 50GB',25)">25 GHS - 50GB <button class="action-btn">Get Offer</button></div>
             </div>
-
             <div class="tier-card">
                 <div class="plan-name">BRONZE</div>
                 <div class="data-highlight">70 — 150 GB</div>
@@ -261,7 +294,6 @@
                 <div class="offer" onclick="showOffer('Bronze','50 GHS - 120GB',50)">50 GHS - 120GB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Bronze','60 GHS - 150GB',60)">60 GHS - 150GB <button class="action-btn">Get Offer</button></div>
             </div>
-
             <div class="tier-card">
                 <div class="plan-name">SILVER</div>
                 <div class="data-highlight">250 — 600 GB</div>
@@ -270,7 +302,6 @@
                 <div class="offer" onclick="showOffer('Silver','130 GHS - 480GB',130)">130 GHS - 480GB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Silver','160 GHS - 600GB',160)">160 GHS - 600GB <button class="action-btn">Get Offer</button></div>
             </div>
-
             <div class="tier-card popular">
                 <div class="popular-badge">MOST POPULAR</div>
                 <div class="plan-name">GOLD</div>
@@ -280,7 +311,6 @@
                 <div class="offer" onclick="showOffer('Gold','350 GHS - 1.6TB',350)">350 GHS - 1.6TB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Gold','420 GHS - 2TB',420)">420 GHS - 2TB <button class="action-btn">Get Offer</button></div>
             </div>
-
             <div class="tier-card">
                 <div class="plan-name">PLATINUM</div>
                 <div class="data-highlight">4TB — Unlimited</div>
@@ -289,7 +319,6 @@
                 <div class="offer" onclick="showOffer('Platinum','1250 GHS - 8TB',1250)">1250 GHS - 8TB <button class="action-btn">Get Offer</button></div>
                 <div class="offer" onclick="showOffer('Platinum','1800 GHS - Unlimited',1800)">1800 GHS - Unlimited <button class="action-btn">Get Offer</button></div>
             </div>
-
             <div class="tier-card">
                 <div class="plan-name">DIAMOND</div>
                 <div class="data-highlight">Unlimited</div>
@@ -301,7 +330,7 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials, FAQ, Footer and Modal remain unchanged -->
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-grid">
@@ -313,7 +342,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:820px; margin:0 auto;">
@@ -325,11 +353,9 @@
                 <div class="faq-question">Do I need an active Telecel number? <span>▼</span></div>
                 <div class="faq-answer">Yes, this offer is only for Telecel users.</div>
             </div>
-            <!-- More FAQs (12 total as before) -->
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div>
