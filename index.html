@@ -34,10 +34,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        .telecel-logo-nav {
-            width: 105px;
-            height: 105px;
-        }
+        .telecel-logo-nav { width: 105px; height: 105px; }
         .nav-title {
             font-size: 1.85rem;
             font-weight: 800;
@@ -72,14 +69,8 @@
         .hero h1 { font-size: 2.75rem; font-weight: 800; margin-bottom: 18px; line-height: 1.1; }
         .hero p { font-size: 1.3rem; max-width: 760px; margin: 0 auto 35px; }
         .hero-btn {
-            background: white;
-            color: #E30613;
-            padding: 18px 60px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.25rem;
-            border: none;
-            cursor: pointer;
+            background: white; color: #E30613; padding: 18px 60px; border-radius: 50px;
+            font-weight: 700; font-size: 1.25rem; border: none; cursor: pointer;
         }
 
         .section { padding: 80px 5%; }
@@ -116,43 +107,19 @@
             text-align: center;
             transition: all 0.3s;
         }
-        .bundle-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(227,6,19,0.18);
-        }
+        .bundle-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(227,6,19,0.18); }
         .bundle-badge {
-            background: #27AE60;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: inline-block;
+            background: #27AE60; color: white; padding: 6px 14px; border-radius: 20px;
+            font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; display: inline-block;
         }
-        .bundle-price { 
-            font-size: 2.4rem; 
-            font-weight: 800; 
-            color: var(--red); 
-            margin: 10px 0 12px; 
-        }
-        .bundle-data { 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            color: var(--blue); 
-        }
+        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin: 10px 0 12px; }
+        .bundle-data { font-size: 1.8rem; font-weight: 700; color: var(--blue); }
         .bundle-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #E30613, #0033A0);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #E30613, #0033A0);
+            color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;
         }
 
-        /* Testimonials & FAQ */
+        /* Testimonials Grid */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -167,6 +134,8 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             font-style: italic;
         }
+
+        /* FAQ */
         .faq-item {
             background: white;
             margin-bottom: 14px;
@@ -239,18 +208,7 @@
         </button>
     </section>
 
-    <!-- Benefits -->
-    <section class="section">
-        <h2 class="section-title">Why Choose Telecel Data?</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1200px;margin:0 auto;">
-            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">⏰</div><h3>Never Expires</h3><p>Your data never expires. Use it anytime.</p></div>
-            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">⚡</div><h3>Instant Activation</h3><p>Start browsing immediately.</p></div>
-            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">🔄</div><h3>Rollover Data</h3><p>Unused data carries over.</p></div>
-            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">🌐</div><h3>All Networks</h3><p>Works across Ghana.</p></div>
-        </div>
-    </section>
-
-    <!-- Data Offers - 6 Slides with Many Plans -->
+    <!-- DATA PLANS - 18 Plans in 6 Slides -->
     <section class="section" id="bundles">
         <h2 class="section-title">Choose Your Perfect Bundle</h2>
         <div class="plans-slider">
@@ -279,16 +237,16 @@
 
                 <!-- Slide 4 -->
                 <div class="plans-slide">
+                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 550</div><div class="bundle-data">1 TB</div><button class="bundle-btn" onclick="buyOffer('1TB',550)">Buy Now</button></div>
+                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 750</div><div class="bundle-data">1.5 TB</div><button class="bundle-btn" onclick="buyOffer('1.5TB',750)">Buy Now</button></div>
                     <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 950</div><div class="bundle-data">Unlimited Lite</div><button class="bundle-btn" onclick="buyOffer('Unlimited Lite',950)">Buy Now</button></div>
-                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,250</div><div class="bundle-data">Unlimited</div><button class="bundle-btn" onclick="buyOffer('Unlimited',1250)">Buy Now</button></div>
-                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,650</div><div class="bundle-data">Unlimited Plus</div><button class="bundle-btn" onclick="buyOffer('Unlimited Plus',1650)">Buy Now</button></div>
                 </div>
 
                 <!-- Slide 5 -->
                 <div class="plans-slide">
-                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 750</div><div class="bundle-data">1 TB</div><button class="bundle-btn" onclick="buyOffer('1TB',750)">Buy Now</button></div>
-                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,350</div><div class="bundle-data">2 TB</div><button class="bundle-btn" onclick="buyOffer('2TB',1350)">Buy Now</button></div>
-                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,950</div><div class="bundle-data">3 TB</div><button class="bundle-btn" onclick="buyOffer('3TB',1950)">Buy Now</button></div>
+                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,250</div><div class="bundle-data">Unlimited</div><button class="bundle-btn" onclick="buyOffer('Unlimited',1250)">Buy Now</button></div>
+                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 1,650</div><div class="bundle-data">Unlimited Plus</div><button class="bundle-btn" onclick="buyOffer('Unlimited Plus',1650)">Buy Now</button></div>
+                    <div class="bundle-card"><div class="bundle-badge">✓ Non-Expiry</div><div class="bundle-price">GHS 2,200</div><div class="bundle-data">2 TB</div><button class="bundle-btn" onclick="buyOffer('2TB',2200)">Buy Now</button></div>
                 </div>
 
                 <!-- Slide 6 -->
@@ -301,11 +259,21 @@
         </div>
     </section>
 
+    <!-- Why Choose Telecel (Benefits) -->
+    <section class="section">
+        <h2 class="section-title">Why Choose Telecel Data?</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1200px;margin:0 auto;">
+            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">⏰</div><h3>Never Expires</h3><p>Your data never expires. Use it anytime.</p></div>
+            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">⚡</div><h3>Instant Activation</h3><p>Start browsing immediately.</p></div>
+            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">🔄</div><h3>Rollover Data</h3><p>Unused data carries over.</p></div>
+            <div style="background:white;padding:28px;border-radius:16px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08);"><div style="font-size:3rem;margin-bottom:12px;">🌐</div><h3>All Networks</h3><p>Works across Ghana.</p></div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section class="section">
         <h2 class="section-title">What People Say</h2>
         <div class="testimonials-grid">
-            <!-- 15 Testimonials -->
             <div class="testimonial-card">"Best data bundles in Ghana! Never expires." — Ama Mensah, Accra</div>
             <div class="testimonial-card">"Truly unlimited and reliable." — Kofi Boateng, Kumasi</div>
             <div class="testimonial-card">"Instant activation every time." — Abena Osei, Takoradi</div>
