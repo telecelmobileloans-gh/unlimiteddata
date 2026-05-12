@@ -64,7 +64,7 @@
             color: white;
             text-decoration: none;
         }
-        .logo svg { width: 70px; height: 70px; }
+        .logo svg { width: 72px; height: 72px; }
         .logo-text { font-size: 2rem; font-weight: 800; }
 
         .nav-links { display: flex; gap: 30px; font-weight: 500; }
@@ -107,19 +107,19 @@
         .hero h1 { font-size: clamp(2.8rem, 6vw, 3.6rem); font-weight: 800; }
 
         /* SECTIONS */
-        .section { padding: 100px 5%; text-align: center; }
-        .section-label { color: var(--red); font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; }
-        .section-title { font-size: 2.8rem; font-weight: 800; color: white; margin-bottom: 20px; }
+        .section { padding: 100px 5%; }
+        .section-label { color: var(--red); font-weight: 700; text-align: center; letter-spacing: 2px; }
+        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; color: white; margin: 15px 0 20px; }
 
-        .bundles-grid, .benefits-grid, .ussd-grid, .testimonials-grid {
+        .bundles-grid, .benefits-grid, .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            gap: 28px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .bundle-card, .benefit-card, .ussd-card, .testimonial-card {
+        .bundle-card, .benefit-card, .testimonial-card {
             background: #1a1a1a;
             padding: 28px;
             border-radius: 20px;
@@ -130,8 +130,32 @@
             transform: translateY(-10px);
             border-color: var(--red);
         }
-        .bundle-data { font-size: 3.6rem; font-weight: 800; color: white; }
-        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin: 10px 0; }
+
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .bundle-data { font-size: 3.6rem; font-weight: 800; color: white; margin: 15px 0 8px; }
+        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin-bottom: 15px; }
+
+        .bundle-features {
+            text-align: left;
+            margin: 20px 0;
+            font-size: 0.98rem;
+        }
+        .bundle-features li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .bundle-btn {
             width: 100%;
             padding: 16px;
@@ -141,6 +165,7 @@
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -170,7 +195,6 @@
             <div class="nav-links" id="navLinks">
                 <a href="#bundles">Bundles</a>
                 <a href="#benefits">Why Us</a>
-                <a href="#ussd">Dial Codes</a>
                 <a href="#testimonials">Reviews</a>
                 <a href="#faq">FAQ</a>
             </div>
@@ -189,7 +213,7 @@
         </div>
     </section>
 
-    <!-- Bundles -->
+    <!-- Bundles - 12 Offers -->
     <section id="bundles" class="section">
         <span class="section-label">CHOOSE YOUR PLAN</span>
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
@@ -202,40 +226,161 @@
                 <div class="bundle-badge" style="background:#F59E0B;color:#000;">Night Only</div>
                 <div class="bundle-data">9GB</div>
                 <div class="bundle-price">GHS 3</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Night King',3)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
                 <div class="bundle-data">10GB</div>
                 <div class="bundle-price">GHS 10</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Starter',10)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
                 <div class="bundle-data">30GB</div>
                 <div class="bundle-price">GHS 20</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Standard',20)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
                 <div class="bundle-badge" style="background:var(--red);color:white;">Most Popular</div>
                 <div class="bundle-data">50GB</div>
                 <div class="bundle-price">GHS 30</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Popular',30)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
                 <div class="bundle-data">100GB</div>
                 <div class="bundle-price">GHS 50</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Value',50)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
                 <div class="bundle-badge" style="background:#F59E0B;color:#000;">Best Value</div>
                 <div class="bundle-data">250GB</div>
                 <div class="bundle-price">GHS 100</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Pro',100)">Get This Bundle</button>
             </div>
+
             <div class="bundle-card">
-                <div class="bundle-badge" style="background:var(--red);color:white;">Upgraded +32%</div>
+                <div class="bundle-badge" style="background:var(--red);color:white;">Super Value</div>
                 <div class="bundle-data">400GB</div>
                 <div class="bundle-price">GHS 400</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Ultra',400)">Get This Bundle</button>
+            </div>
+
+            <!-- Additional 5 bundles for 12 total -->
+            <div class="bundle-card">
+                <div class="bundle-data">15GB</div>
+                <div class="bundle-price">GHS 15</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Weekly',15)">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">150GB</div>
+                <div class="bundle-price">GHS 70</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Mega',70)">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">300GB</div>
+                <div class="bundle-price">GHS 120</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Supreme',120)">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">600GB</div>
+                <div class="bundle-price">GHS 550</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Titan',550)">Get This Bundle</button>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-data">2GB</div>
+                <div class="bundle-price">GHS 5</div>
+                <ul class="bundle-features">
+                    <li>✓ Non-Expiry</li>
+                    <li>✓ Instant Activation</li>
+                    <li>✓ Never Expires</li>
+                    <li>✓ Rollover Data</li>
+                    <li>✓ All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Daily',5)">Get This Bundle</button>
             </div>
         </div>
     </section>
@@ -252,19 +397,7 @@
         </div>
     </section>
 
-    <!-- USSD -->
-    <section id="ussd" class="section">
-        <span class="section-label">NO INTERNET? NO PROBLEM</span>
-        <h2 class="section-title">Buy Without The App</h2>
-        <div class="ussd-grid">
-            <div class="ussd-card"><div class="ussd-code">*700#</div><h3>Buy Data Bundles</h3></div>
-            <div class="ussd-card"><div class="ussd-code">*124#</div><h3>Check Balance</h3></div>
-            <div class="ussd-card"><div class="ussd-code">*126#</div><h3>Data Balance</h3></div>
-            <div class="ussd-card"><div class="ussd-code">100</div><h3>Customer Care</h3></div>
-        </div>
-    </section>
-
-    <!-- 15 Testimonials -->
+    <!-- Testimonials -->
     <section id="testimonials" class="section">
         <span class="section-label">TESTIMONIALS</span>
         <h2 class="section-title">What People Say</h2>
@@ -287,21 +420,51 @@
         </div>
     </section>
 
-    <!-- 10 FAQ -->
+    <!-- FAQ -->
     <section id="faq" class="section">
         <span class="section-label">FAQ</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width:850px; margin:0 auto;">
-            <div class="faq-item"><button class="faq-question">Do the bundles really never expire? <span>+</span></button><div class="faq-answer">Yes. Once purchased, your data never expires.</div></div>
-            <div class="faq-item"><button class="faq-question">How do I buy bundles? <span>+</span></button><div class="faq-answer">Dial *700# or use this website.</div></div>
-            <div class="faq-item"><button class="faq-question">How do I check my data balance? <span>+</span></button><div class="faq-answer">Dial *126# for data balance.</div></div>
-            <div class="faq-item"><button class="faq-question">Can unused data rollover? <span>+</span></button><div class="faq-answer">Yes, unused data automatically rolls over.</div></div>
-            <div class="faq-item"><button class="faq-question">Are Night bundles time restricted? <span>+</span></button><div class="faq-answer">Yes, valid only from 12AM to 5AM.</div></div>
-            <div class="faq-item"><button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button><div class="faq-answer">Yes, fully compatible.</div></div>
-            <div class="faq-item"><button class="faq-question">Can I gift bundles to others? <span>+</span></button><div class="faq-answer">Yes, you can buy for friends and family.</div></div>
-            <div class="faq-item"><button class="faq-question">Is data transfer possible? <span>+</span></button><div class="faq-answer">Not available for non-expiry bundles yet.</div></div>
-            <div class="faq-item"><button class="faq-question">What if I travel outside Ghana? <span>+</span></button><div class="faq-answer">Bundles work only within Ghana.</div></div>
-            <div class="faq-item"><button class="faq-question">How do I contact customer care? <span>+</span></button><div class="faq-answer">Call 100 (Free from Telecel).</div></div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Do the bundles really never expire? <span>+</span></button>
+                <div class="faq-answer">Yes. Once purchased, your data never expires.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">How do I buy bundles? <span>+</span></button>
+                <div class="faq-answer">Dial *700# or use this website.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">How do I check my data balance? <span>+</span></button>
+                <div class="faq-answer">Dial *126# for data balance.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Can unused data rollover? <span>+</span></button>
+                <div class="faq-answer">Yes, unused data automatically rolls over.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Are Night bundles time restricted? <span>+</span></button>
+                <div class="faq-answer">Yes, valid only from 12AM to 5AM.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button>
+                <div class="faq-answer">Yes, fully compatible.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Can I gift bundles to others? <span>+</span></button>
+                <div class="faq-answer">Yes, you can buy for friends and family.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">Is data transfer possible? <span>+</span></button>
+                <div class="faq-answer">Not available for non-expiry bundles yet.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">What if I travel outside Ghana? <span>+</span></button>
+                <div class="faq-answer">Bundles work only within Ghana.</div>
+            </div>
+            <div class="testimonial-card faq-card">
+                <button class="faq-question">How do I contact customer care? <span>+</span></button>
+                <div class="faq-answer">Call 100 (Free from Telecel).</div>
+            </div>
         </div>
     </section>
 
