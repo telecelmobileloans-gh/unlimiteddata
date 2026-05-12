@@ -38,12 +38,12 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
         }
-        .telecel-logo { width: 120px; height: 120px; }
+        .telecel-logo { width: 128px; height: 128px; }
         .telecel-play {
             color: white;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 800;
         }
         .telecel-play span { color: #60a5fa; }
@@ -52,55 +52,45 @@
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
-            padding: 100px 5% 80px;
+            padding: 110px 5% 90px;
             text-align: center;
             position: relative;
         }
-        .hero::before {
-            content: '📶';
-            font-size: 14rem;
-            opacity: 0.12;
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            animation: float 10s ease-in-out infinite;
-        }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-40px); } }
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
+            font-size: 3.7rem;
+            margin-bottom: 18px;
         }
 
         /* PLANS */
         .plans-section {
             background: var(--dark);
             color: white;
-            padding: 80px 5%;
+            padding: 90px 5%;
         }
         .section-title {
             text-align: center;
-            font-size: 2.7rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 50px;
+            margin-bottom: 55px;
             color: white;
         }
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
+            gap: 26px;
             max-width: 1400px;
             margin: 0 auto;
         }
         .tier-card {
             background: #111111;
             border-radius: 20px;
-            padding: 28px 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            padding: 30px 22px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
         }
         .tier-card h3 {
             text-align: center;
-            font-size: 1.45rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 22px;
             color: #f1f5f9;
         }
         .offer {
@@ -108,72 +98,93 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 16px;
-            margin: 8px 0;
+            margin: 9px 0;
             background: #1a1a1a;
             border-radius: 12px;
         }
-        .offer strong { font-size: 1.25rem; color: var(--accent); }
+        .offer strong { font-size: 1.28rem; color: var(--accent); }
         .price-tag { font-size: 1.4rem; font-weight: 700; color: #E30613; }
 
         .get-offer-btn {
-            width: 100%;
             background: var(--red);
             color: white;
             border: none;
-            padding: 13px;
+            padding: 10px 22px;
             border-radius: 50px;
             font-weight: 600;
-            margin-top: 8px;
+            font-size: 0.98rem;
             cursor: pointer;
+            white-space: nowrap;
         }
 
-        /* Testimonials & FAQ */
-        .testimonials, .faq {
-            padding: 80px 5%;
+        /* Testimonials */
+        .testimonials {
+            background: var(--dark);
+            color: white;
+            padding: 90px 5%;
         }
-        .testimonials { background: var(--dark); color: white; }
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 22px;
         }
         .testimonial-card {
             background: #1a1a1a;
             padding: 28px;
-            border-radius: 16px;
+            border-radius: 18px;
         }
 
-        .faq { background: #f8fafc; }
+        /* FAQ - Dark Theme */
+        .faq {
+            background: var(--dark);
+            color: white;
+            padding: 90px 5%;
+        }
         .faq-item {
-            background: white;
-            margin-bottom: 14px;
+            background: #1a1a1a;
+            margin-bottom: 16px;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #e2e8f0;
         }
         .faq-question {
-            padding: 20px;
+            padding: 22px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            padding: 0 22px 22px;
+            display: none;
+            color: #ccc;
         }
 
+        /* FOOTER */
         footer {
-            background: #05070f;
-            color: #94a3b8;
+            background: #111111;
+            color: #ccc;
             padding: 80px 5% 40px;
         }
         .footer-grid {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            text-align: center;
+        }
+        .footer-grid h4 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        .footer-grid a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        /* MODAL - Telecel Theme */
+        /* MODAL - Dark Telecel Theme */
         #offerModal {
             display: none;
             position: fixed;
@@ -185,22 +196,22 @@
             justify-content: center;
         }
         .modal-content {
-            background: white;
-            max-width: 480px;
+            background: #1a1a1a;
+            color: white;
+            max-width: 460px;
             width: 92%;
             border-radius: 24px;
-            padding: 45px 35px;
+            padding: 40px 35px;
             text-align: center;
-            box-shadow: 0 25px 60px rgba(227,6,19,0.4);
+            box-shadow: 0 25px 60px rgba(227,6,19,0.5);
         }
-
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.6rem; }
-            .telecel-logo { width: 95px; height: 95px; }
-            .tier-card { padding: 24px 18px; }
-            .offer { padding: 12px 14px; }
-            .get-offer-btn { padding: 12px; font-size: 0.95rem; }
+        .modal-content h2 {
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+        .modal-content strong {
+            color: var(--accent);
+            font-size: 2.6rem;
         }
     </style>
 </head>
@@ -224,7 +235,7 @@
     <!-- HERO -->
     <section class="hero">
         <h1>Telecel Unlimited Data Offer</h1>
-        <p>Data Never Expires • Instant Activation • Only for Telecel Users</p>
+        <p style="font-size:1.35rem; margin:20px 0 35px;">Data Never Expires • Instant Activation • Only for Telecel Users</p>
         <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })" 
                 style="background:white;color:var(--red);padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.25rem;border:none;cursor:pointer;">
             Unlock All Plans Now →
@@ -238,92 +249,50 @@
 
             <div class="tier-card">
                 <h3>STARTER</h3>
-                <div class="offer"><div><strong>10GB</strong></div><div class="price-tag">GHS 10</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Starter', '10GB', 10)">Get Offer</button>
-                
-                <div class="offer"><div><strong>25GB</strong></div><div class="price-tag">GHS 20</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Starter', '25GB', 20)">Get Offer</button>
-                
-                <div class="offer"><div><strong>40GB</strong></div><div class="price-tag">GHS 30</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Starter', '40GB', 30)">Get Offer</button>
-                
-                <div class="offer"><div><strong>70GB</strong></div><div class="price-tag">GHS 50</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Starter', '70GB', 50)">Get Offer</button>
+                <div class="offer"><div><strong>10GB</strong></div><div class="price-tag">GHS 10</div><button class="get-offer-btn" onclick="showOffer('Starter','10GB',10)">Get Offer</button></div>
+                <div class="offer"><div><strong>25GB</strong></div><div class="price-tag">GHS 20</div><button class="get-offer-btn" onclick="showOffer('Starter','25GB',20)">Get Offer</button></div>
+                <div class="offer"><div><strong>40GB</strong></div><div class="price-tag">GHS 30</div><button class="get-offer-btn" onclick="showOffer('Starter','40GB',30)">Get Offer</button></div>
+                <div class="offer"><div><strong>70GB</strong></div><div class="price-tag">GHS 50</div><button class="get-offer-btn" onclick="showOffer('Starter','70GB',50)">Get Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <h3>BRONZE</h3>
-                <div class="offer"><div><strong>70GB</strong></div><div class="price-tag">GHS 30</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Bronze', '70GB', 30)">Get Offer</button>
-                
-                <div class="offer"><div><strong>120GB</strong></div><div class="price-tag">GHS 50</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Bronze', '120GB', 50)">Get Offer</button>
-                
-                <div class="offer"><div><strong>200GB</strong></div><div class="price-tag">GHS 80</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Bronze', '200GB', 80)">Get Offer</button>
-                
-                <div class="offer"><div><strong>350GB</strong></div><div class="price-tag">GHS 120</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Bronze', '350GB', 120)">Get Offer</button>
+                <div class="offer"><div><strong>70GB</strong></div><div class="price-tag">GHS 30</div><button class="get-offer-btn" onclick="showOffer('Bronze','70GB',30)">Get Offer</button></div>
+                <div class="offer"><div><strong>120GB</strong></div><div class="price-tag">GHS 50</div><button class="get-offer-btn" onclick="showOffer('Bronze','120GB',50)">Get Offer</button></div>
+                <div class="offer"><div><strong>200GB</strong></div><div class="price-tag">GHS 80</div><button class="get-offer-btn" onclick="showOffer('Bronze','200GB',80)">Get Offer</button></div>
+                <div class="offer"><div><strong>350GB</strong></div><div class="price-tag">GHS 120</div><button class="get-offer-btn" onclick="showOffer('Bronze','350GB',120)">Get Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <h3>SILVER</h3>
-                <div class="offer"><div><strong>250GB</strong></div><div class="price-tag">GHS 80</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Silver', '250GB', 80)">Get Offer</button>
-                
-                <div class="offer"><div><strong>400GB</strong></div><div class="price-tag">GHS 120</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Silver', '400GB', 120)">Get Offer</button>
-                
-                <div class="offer"><div><strong>600GB</strong></div><div class="price-tag">GHS 180</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Silver', '600GB', 180)">Get Offer</button>
-                
-                <div class="offer"><div><strong>900GB</strong></div><div class="price-tag">GHS 250</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Silver', '900GB', 250)">Get Offer</button>
+                <div class="offer"><div><strong>250GB</strong></div><div class="price-tag">GHS 80</div><button class="get-offer-btn" onclick="showOffer('Silver','250GB',80)">Get Offer</button></div>
+                <div class="offer"><div><strong>400GB</strong></div><div class="price-tag">GHS 120</div><button class="get-offer-btn" onclick="showOffer('Silver','400GB',120)">Get Offer</button></div>
+                <div class="offer"><div><strong>600GB</strong></div><div class="price-tag">GHS 180</div><button class="get-offer-btn" onclick="showOffer('Silver','600GB',180)">Get Offer</button></div>
+                <div class="offer"><div><strong>900GB</strong></div><div class="price-tag">GHS 250</div><button class="get-offer-btn" onclick="showOffer('Silver','900GB',250)">Get Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <h3>GOLD <span style="background:var(--red);color:white;font-size:0.85rem;padding:4px 12px;border-radius:999px;">POPULAR</span></h3>
-                <div class="offer"><div><strong>900GB</strong></div><div class="price-tag">GHS 220</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Gold', '900GB', 220)">Get Offer</button>
-                
-                <div class="offer"><div><strong>1.5TB</strong></div><div class="price-tag">GHS 350</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Gold', '1.5TB', 350)">Get Offer</button>
-                
-                <div class="offer"><div><strong>2.5TB</strong></div><div class="price-tag">GHS 550</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Gold', '2.5TB', 550)">Get Offer</button>
-                
-                <div class="offer"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Gold', '4TB', 750)">Get Offer</button>
+                <div class="offer"><div><strong>900GB</strong></div><div class="price-tag">GHS 220</div><button class="get-offer-btn" onclick="showOffer('Gold','900GB',220)">Get Offer</button></div>
+                <div class="offer"><div><strong>1.5TB</strong></div><div class="price-tag">GHS 350</div><button class="get-offer-btn" onclick="showOffer('Gold','1.5TB',350)">Get Offer</button></div>
+                <div class="offer"><div><strong>2.5TB</strong></div><div class="price-tag">GHS 550</div><button class="get-offer-btn" onclick="showOffer('Gold','2.5TB',550)">Get Offer</button></div>
+                <div class="offer"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div><button class="get-offer-btn" onclick="showOffer('Gold','4TB',750)">Get Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <h3>PLATINUM</h3>
-                <div class="offer"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Platinum', '4TB', 750)">Get Offer</button>
-                
-                <div class="offer"><div><strong>7TB</strong></div><div class="price-tag">GHS 1200</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Platinum', '7TB', 1200)">Get Offer</button>
-                
-                <div class="offer"><div><strong>12TB</strong></div><div class="price-tag">GHS 1800</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Platinum', '12TB', 1800)">Get Offer</button>
-                
-                <div class="offer"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Platinum', 'Unlimited', 2500)">Get Offer</button>
+                <div class="offer"><div><strong>4TB</strong></div><div class="price-tag">GHS 750</div><button class="get-offer-btn" onclick="showOffer('Platinum','4TB',750)">Get Offer</button></div>
+                <div class="offer"><div><strong>7TB</strong></div><div class="price-tag">GHS 1200</div><button class="get-offer-btn" onclick="showOffer('Platinum','7TB',1200)">Get Offer</button></div>
+                <div class="offer"><div><strong>12TB</strong></div><div class="price-tag">GHS 1800</div><button class="get-offer-btn" onclick="showOffer('Platinum','12TB',1800)">Get Offer</button></div>
+                <div class="offer"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div><button class="get-offer-btn" onclick="showOffer('Platinum','Unlimited',2500)">Get Offer</button></div>
             </div>
 
             <div class="tier-card">
                 <h3>DIAMOND</h3>
-                <div class="offer"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Diamond', 'Unlimited', 2500)">Get Offer</button>
-                
-                <div class="offer"><div><strong>Unlimited Priority</strong></div><div class="price-tag">GHS 3500</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Diamond', 'Unlimited Priority', 3500)">Get Offer</button>
-                
-                <div class="offer"><div><strong>Family Unlimited</strong></div><div class="price-tag">GHS 5000</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Diamond', 'Family Unlimited', 5000)">Get Offer</button>
-                
-                <div class="offer"><div><strong>Enterprise Unlimited</strong></div><div class="price-tag">GHS 8000</div></div>
-                <button class="get-offer-btn" onclick="showOffer('Diamond', 'Enterprise Unlimited', 8000)">Get Offer</button>
+                <div class="offer"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 2500</div><button class="get-offer-btn" onclick="showOffer('Diamond','Unlimited',2500)">Get Offer</button></div>
+                <div class="offer"><div><strong>Unlimited Priority</strong></div><div class="price-tag">GHS 3500</div><button class="get-offer-btn" onclick="showOffer('Diamond','Unlimited Priority',3500)">Get Offer</button></div>
+                <div class="offer"><div><strong>Family Unlimited</strong></div><div class="price-tag">GHS 5000</div><button class="get-offer-btn" onclick="showOffer('Diamond','Family Unlimited',5000)">Get Offer</button></div>
+                <div class="offer"><div><strong>Enterprise Unlimited</strong></div><div class="price-tag">GHS 8000</div><button class="get-offer-btn" onclick="showOffer('Diamond','Enterprise Unlimited',8000)">Get Offer</button></div>
             </div>
         </div>
     </section>
@@ -339,7 +308,7 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ - Dark Theme -->
     <section class="section faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:900px; margin:0 auto;">
@@ -366,16 +335,39 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div class="logo" style="justify-content:center;">
-                    <svg width="70" height="70" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="48" cy="48" r="46" fill="white"/>
-                        <text x="48" y="53" font-family="Arial Black, sans-serif" font-size="54" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
-                    </svg>
+                <div style="margin-bottom:20px;">
+                    <strong style="color:white; font-size:1.8rem;">telecel</strong>
                 </div>
             </div>
-            <div><h4 style="color:white;">Telecel Ghana</h4><p>Connecting Ghana Better</p></div>
-            <div><h4 style="color:white;">Support</h4><p>100</p><p>support@telecel.com.gh</p></div>
-            <div><h4 style="color:white;">Quick Links</h4><p>Coverage • Terms • Privacy</p></div>
+            <div>
+                <h4>TELECEL GHANA</h4>
+                <a href="#">Personal</a>
+                <a href="#">Business</a>
+                <a href="#">About Us</a>
+                <a href="#">Vacancies</a>
+            </div>
+            <div>
+                <h4>HELP & SUPPORT</h4>
+                <a href="#">Find a shop</a>
+                <a href="#">Contact us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <div>
+                <h4>POPULAR</h4>
+                <a href="#">Mobile Bundles</a>
+                <a href="#">Apply for Broadband</a>
+                <a href="#">Your Business Online</a>
+                <a href="#">2 Moorch Business</a>
+            </div>
+            <div>
+                <h4>QUICKLINKS</h4>
+                <a href="#">Telecel Play</a>
+                <a href="#">Pay Bill</a>
+                <a href="#">Student Onboarding</a>
+                <a href="#">Wholesale Self-care</a>
+                <a href="#">Agent Portal</a>
+            </div>
         </div>
         <p style="text-align:center;margin-top:70px;opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
@@ -384,11 +376,11 @@
     <div id="offerModal">
         <div class="modal-content">
             <h2 id="modalTitle" style="color:var(--red);"></h2>
-            <div id="modalBody" style="margin:30px 0; font-size:1.35rem; line-height:1.7;"></div>
-            <button onclick="proceedToCheckout()" style="width:100%; padding:18px; background:var(--red); color:white; border:none; border-radius:50px; font-size:1.2rem; font-weight:700;">
+            <div id="modalBody" style="margin:25px 0; font-size:1.3rem; line-height:1.6;"></div>
+            <button onclick="proceedToCheckout()" style="width:100%; padding:17px; background:var(--red); color:white; border:none; border-radius:50px; font-size:1.15rem; font-weight:700; margin-bottom:12px;">
                 Verify My Number & Activate Now
             </button>
-            <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:#666; font-size:1.1rem; cursor:pointer;">
+            <button onclick="closeModal()" style="background:none; border:none; color:#aaa; font-size:1.05rem; cursor:pointer;">
                 Cancel
             </button>
         </div>
@@ -401,10 +393,10 @@
             currentOffer = {tier, data, price};
             document.getElementById('modalTitle').innerHTML = `${tier} - ${data}`;
             document.getElementById('modalBody').innerHTML = `
-                <strong style="font-size:2.8rem; color:#22c55e;">GHS ${price}</strong><br><br>
-                <span style="color:#22c55e">✅ Data Never Expires</span><br>
-                <span style="color:#22c55e">✅ Instant Activation</span><br><br>
-                <strong>We will verify your Telecel number before unlocking this offer.</strong>
+                <strong style="font-size:2.7rem; color:var(--accent);">GHS ${price}</strong><br><br>
+                <span style="color:var(--accent); font-size:1.2rem;">✅ Data Never Expires</span><br>
+                <span style="color:var(--accent); font-size:1.2rem;">✅ Instant Activation</span><br><br>
+                <strong style="font-size:1.1rem;">We will verify your Telecel number before unlocking this offer.</strong>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
