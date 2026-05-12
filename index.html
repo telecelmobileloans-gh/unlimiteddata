@@ -64,7 +64,7 @@
             color: white;
             text-decoration: none;
         }
-        .logo svg { width: 72px; height: 72px; }
+        .logo svg { width: 70px; height: 70px; }
         .logo-text { font-size: 2rem; font-weight: 800; }
 
         .nav-links { display: flex; gap: 30px; font-weight: 500; }
@@ -107,43 +107,31 @@
         .hero h1 { font-size: clamp(2.8rem, 6vw, 3.6rem); font-weight: 800; }
 
         /* SECTIONS */
-        .section { padding: 100px 5%; }
-        .section-label { color: var(--red); font-weight: 700; text-align: center; letter-spacing: 2px; }
-        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; color: white; margin: 15px 0 20px; }
+        .section { padding: 100px 5%; text-align: center; }
+        .section-label { color: var(--red); font-weight: 700; letter-spacing: 2px; margin-bottom: 10px; }
+        .section-title { font-size: 2.8rem; font-weight: 800; color: white; margin-bottom: 20px; }
 
-        .bundles-grid {
+        .bundles-grid, .benefits-grid, .ussd-grid, .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .bundle-card {
+        .bundle-card, .benefit-card, .ussd-card, .testimonial-card {
             background: #1a1a1a;
+            padding: 28px;
             border-radius: 20px;
-            padding: 28px 20px;
-            text-align: center;
-            border: 2px solid #333;
+            border: 1px solid #333;
             transition: all 0.4s;
-            position: relative;
         }
-        .bundle-card:hover {
-            transform: translateY(-12px);
+        .bundle-card:hover, .testimonial-card:hover {
+            transform: translateY(-10px);
             border-color: var(--red);
         }
-        .bundle-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-        .bundle-data { font-size: 3.8rem; font-weight: 800; color: white; margin: 20px 0 8px; }
-        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin-bottom: 20px; }
+        .bundle-data { font-size: 3.6rem; font-weight: 800; color: white; }
+        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin: 10px 0; }
         .bundle-btn {
             width: 100%;
             padding: 16px;
@@ -153,59 +141,6 @@
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .testimonial-card {
-            background: #1a1a1a;
-            padding: 28px;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #ddd;
-            line-height: 1.7;
-        }
-        .testimonial-author {
-            color: var(--red);
-            font-weight: 600;
-        }
-
-        /* FAQ */
-        .faq-item {
-            background: #1a1a1a;
-            margin-bottom: 16px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #333;
-        }
-        .faq-question {
-            width: 100%;
-            padding: 22px 28px;
-            text-align: left;
-            background: none;
-            border: none;
-            font-size: 1.08rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-        }
-        .faq-answer {
-            padding: 0 28px 28px;
-            color: #ccc;
-            display: none;
         }
     </style>
 </head>
@@ -428,4 +363,3 @@
     </script>
 </body>
 </html>
-Try this:
