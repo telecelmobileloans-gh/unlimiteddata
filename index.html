@@ -10,12 +10,11 @@
         :root {
             --red: #E30613;
             --dark: #0a0a0a;
-            --blue: #0033A0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #0f0f0f;
+            background: #0a0a0a;
             color: #e5e5e5;
             line-height: 1.6;
         }
@@ -49,7 +48,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .nav-content {
             max-width: 1400px;
@@ -66,7 +64,7 @@
             color: white;
             text-decoration: none;
         }
-        .logo svg { width: 70px; height: 70px; }
+        .logo svg { width: 72px; height: 72px; }
         .logo-text { font-size: 2rem; font-weight: 800; }
 
         .nav-links {
@@ -74,10 +72,7 @@
             gap: 30px;
             font-weight: 500;
         }
-        .nav-links a {
-            color: #ddd;
-            text-decoration: none;
-        }
+        .nav-links a { color: #ddd; text-decoration: none; }
         .nav-links a:hover { color: white; }
 
         .login-btn {
@@ -113,15 +108,12 @@
             padding: 140px 5% 110px;
             text-align: center;
         }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 3.6rem);
-            font-weight: 800;
-        }
+        .hero h1 { font-size: clamp(2.8rem, 6vw, 3.6rem); font-weight: 800; }
 
         /* SECTIONS */
         .section { padding: 100px 5%; }
         .section-label { color: var(--red); font-weight: 700; text-align: center; letter-spacing: 2px; }
-        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; color: white; margin: 15px 0; }
+        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; color: white; margin: 15px 0 60px; }
 
         .bundles-grid, .benefits-grid, .ussd-grid, .testimonials-grid {
             display: grid;
@@ -136,7 +128,6 @@
             padding: 30px;
             border-radius: 24px;
             border: 1px solid #333;
-            transition: all 0.4s;
         }
         .bundle-card:hover, .testimonial-card:hover {
             transform: translateY(-10px);
@@ -147,12 +138,38 @@
         .bundle-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, var(--red), var(--blue));
+            background: linear-gradient(135deg, var(--red), #0033A0);
             color: white;
             border: none;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: #1a1a1a;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 22px 28px;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+        .faq-answer {
+            padding: 0 28px 28px;
+            color: #ccc;
+            display: none;
         }
     </style>
 </head>
@@ -162,7 +179,7 @@
     <div class="ticker-wrap">
         <div class="ticker-inner">
             <span>🔥 10% MORE DATA on all bundles — July 2025</span>
-            <span>♾️ Non-Expiry Data — Buy Once, Use Forever</span>
+            <span>♾️ Non-Expiry Data — Buy once, use forever</span>
             <span>📱 Dial *700# — Instant Activation</span>
             <span>🇬🇭 Ghana's Most Trusted Network</span>
         </div>
@@ -195,9 +212,9 @@
     <!-- Hero -->
     <section class="hero">
         <h1>Data That <em>Never</em> Expires</h1>
-        <p>Ghana's fastest non-expiry data bundles. Buy once. Use whenever you want.</p>
+        <p>Ghana's fastest non-expiry data bundles. Buy once. Use anytime.</p>
         <div style="margin-top:40px;">
-            <a href="#bundles" style="background:white; color:var(--red); padding:18px 55px; border-radius:50px; font-weight:700; text-decoration:none;">Explore Bundles</a>
+            <a href="#bundles" style="background:white; color:var(--red); padding:18px 55px; border-radius:50px; font-weight:700; text-decoration:none;">🛒 Explore Bundles</a>
         </div>
     </section>
 
@@ -206,12 +223,12 @@
         <span class="section-label">NON-EXPIRY BUNDLES</span>
         <h2 class="section-title">Choose Your Power</h2>
         <div class="bundles-grid">
-            <div class="bundle-card"><div class="bundle-badge" style="background:#F59E0B;color:white;">NIGHT ONLY</div><div class="bundle-data">9GB</div><div class="bundle-price">GHS 3</div><button class="bundle-btn" onclick="buyOffer('Night King',3)">Get Bundle</button></div>
+            <div class="bundle-card"><div style="color:#F59E0B;font-weight:700;">🌙 NIGHT ONLY</div><div class="bundle-data">9GB</div><div class="bundle-price">GHS 3</div><button class="bundle-btn" onclick="buyOffer('Night King',3)">Get Bundle</button></div>
             <div class="bundle-card"><div class="bundle-data">10GB</div><div class="bundle-price">GHS 10</div><button class="bundle-btn" onclick="buyOffer('Starter',10)">Get Bundle</button></div>
             <div class="bundle-card"><div class="bundle-data">30GB</div><div class="bundle-price">GHS 20</div><button class="bundle-btn" onclick="buyOffer('Standard',20)">Get Bundle</button></div>
-            <div class="bundle-card"><div class="bundle-badge" style="background:var(--red);color:white;">MOST POPULAR</div><div class="bundle-data">50GB</div><div class="bundle-price">GHS 30</div><button class="bundle-btn" onclick="buyOffer('Popular',30)">Get Bundle</button></div>
+            <div class="bundle-card"><div style="color:var(--red);font-weight:700;">⭐ MOST POPULAR</div><div class="bundle-data">50GB</div><div class="bundle-price">GHS 30</div><button class="bundle-btn" onclick="buyOffer('Popular',30)">Get Bundle</button></div>
             <div class="bundle-card"><div class="bundle-data">100GB</div><div class="bundle-price">GHS 50</div><button class="bundle-btn" onclick="buyOffer('Value',50)">Get Bundle</button></div>
-            <div class="bundle-card"><div class="bundle-badge" style="background:#F59E0B;color:white;">BEST VALUE</div><div class="bundle-data">250GB</div><div class="bundle-price">GHS 100</div><button class="bundle-btn" onclick="buyOffer('Pro',100)">Get Bundle</button></div>
+            <div class="bundle-card"><div style="color:#F59E0B;font-weight:700;">🔥 BEST VALUE</div><div class="bundle-data">250GB</div><div class="bundle-price">GHS 100</div><button class="bundle-btn" onclick="buyOffer('Pro',100)">Get Bundle</button></div>
             <div class="bundle-card"><div class="bundle-data">400GB</div><div class="bundle-price">GHS 400</div><button class="bundle-btn" onclick="buyOffer('Ultra',400)">Get Bundle</button></div>
         </div>
     </section>
@@ -221,63 +238,63 @@
         <span class="section-label">WHY TELECEL</span>
         <h2 class="section-title">Why Choose Telecel?</h2>
         <div class="benefits-grid">
-            <div class="benefit-card"><h2 style="font-size:3rem;">♾️</h2><h3>Never Expires</h3><p>Your data remains valid forever.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;">⚡</h2><h3>Instant Activation</h3><p>Start using immediately.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;">🔄</h2><h3>Auto Rollover</h3><p>Unused data carries forward.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;">🌐</h2><h3>Nationwide 4G/5G</h3><p>Strong coverage across Ghana.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">♾️</h2><h3>Never Expires</h3><p>Your data stays valid until you use it.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">⚡</h2><h3>Instant Activation</h3><p>Buy and browse instantly.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">🔄</h2><h3>Automatic Rollover</h3><p>Unused data carries forward.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">🌐</h2><h3>Nationwide Coverage</h3><p>Reliable 4G across Ghana.</p></div>
         </div>
     </section>
 
     <!-- USSD -->
     <section id="ussd" class="section">
-        <span class="section-label">BUY WITHOUT APP</span>
-        <h2 class="section-title">Dial to Get Connected</h2>
+        <span class="section-label">NO INTERNET? NO PROBLEM</span>
+        <h2 class="section-title">Buy Without The App</h2>
         <div class="ussd-grid">
-            <div class="ussd-card"><div class="ussd-code">*700#</div><h3>Buy Bundles</h3></div>
+            <div class="ussd-card"><div class="ussd-code">*700#</div><h3>Buy Data Bundles</h3></div>
             <div class="ussd-card"><div class="ussd-code">*124#</div><h3>Check Balance</h3></div>
             <div class="ussd-card"><div class="ussd-code">*126#</div><h3>Data Balance</h3></div>
             <div class="ussd-card"><div class="ussd-code">100</div><h3>Customer Care</h3></div>
         </div>
     </section>
 
-    <!-- Testimonials - 15 -->
+    <!-- 15 Testimonials -->
     <section id="testimonials" class="section">
-        <span class="section-label">REAL STORIES</span>
+        <span class="section-label">TESTIMONIALS</span>
         <h2 class="section-title">What People Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">"Best network! Data from March still active." <br><strong>Ama Serwaa - Accra</strong></div>
-            <div class="testimonial-card">"Night bundle is a lifesaver." <br><strong>Kojo Mensah - Kumasi</strong></div>
-            <div class="testimonial-card">"Finally a network that doesn't waste money." <br><strong>Nana Yaa - Takoradi</strong></div>
-            <div class="testimonial-card">"400GB still strong after 2 months." <br><strong>Kwame Asante - Tamale</strong></div>
-            <div class="testimonial-card">"10% extra data made it sweeter." <br><strong>Efua Ofori - Accra</strong></div>
-            <div class="testimonial-card">"I refer all my friends to Telecel." <br><strong>Abdul Rahman - Kumasi</strong></div>
-            <div class="testimonial-card">"No more weekly data purchases." <br><strong>Abena Kwarteng - Cape Coast</strong></div>
-            <div class="testimonial-card">"Excellent coverage and value." <br><strong>Yaw Boateng - Sunyani</strong></div>
-            <div class="testimonial-card">"Customer service is fast." <br><strong>Grace Mensah - Ho</strong></div>
-            <div class="testimonial-card">"The rollover feature is perfect." <br><strong>Samuel Osei - Koforidua</strong></div>
+            <div class="testimonial-card">"Still using data I bought in February. This non-expiry is real!" <br><strong>Ama Serwaa - Accra</strong></div>
+            <div class="testimonial-card">"The Night King bundle for GHS 3 is unbeatable." <br><strong>Kojo Mensah - Kumasi</strong></div>
+            <div class="testimonial-card">"Finally a network that doesn't punish you for not using data daily." <br><strong>Nana Yaa - Takoradi</strong></div>
+            <div class="testimonial-card">"Bought 400GB and still have plenty left after 2 months." <br><strong>Kwame Asante - Tamale</strong></div>
+            <div class="testimonial-card">"The 10% extra data boost is excellent." <br><strong>Efua Ofori - Accra</strong></div>
+            <div class="testimonial-card">"I refer all my friends to Telecel now." <br><strong>Abdul Rahman - Kumasi</strong></div>
+            <div class="testimonial-card">"No more panic buying every week." <br><strong>Abena Kwarteng - Cape Coast</strong></div>
+            <div class="testimonial-card">"Excellent coverage and great value." <br><strong>Yaw Boateng - Sunyani</strong></div>
+            <div class="testimonial-card">"Customer service is very responsive." <br><strong>Grace Mensah - Ho</strong></div>
+            <div class="testimonial-card">"The rollover feature is a game changer." <br><strong>Samuel Osei - Koforidua</strong></div>
             <div class="testimonial-card">"Best decision I made this year." <br><strong>Comfort Addo - Tema</strong></div>
-            <div class="testimonial-card">"Affordable and reliable." <br><strong>Prince Laryea - Tarkwa</strong></div>
-            <div class="testimonial-card">"Student friendly bundles." <br><strong>Esther Nyarko - Legon</strong></div>
+            <div class="testimonial-card">"Very affordable and reliable." <br><strong>Prince Laryea - Tarkwa</strong></div>
+            <div class="testimonial-card">"Perfect for students like me." <br><strong>Esther Nyarko - Legon</strong></div>
             <div class="testimonial-card">"Never going back to other networks." <br><strong>Daniel Quaye - Ashaiman</strong></div>
-            <div class="testimonial-card">"Worth every cedi." <br><strong>Patricia Amoah - Kasoa</strong></div>
+            <div class="testimonial-card">"Worth every single cedi spent." <br><strong>Patricia Amoah - Kasoa</strong></div>
         </div>
     </section>
 
-    <!-- FAQ - 10 Items -->
+    <!-- 10 FAQ -->
     <section id="faq" class="section">
         <span class="section-label">FAQ</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:850px; margin:0 auto;">
-            <div class="faq-item"> <button class="faq-question">Do bundles really never expire? <span>+</span></button> <div class="faq-answer">Yes. They never expire.</div> </div>
-            <div class="faq-item"> <button class="faq-question">How do I buy a bundle? <span>+</span></button> <div class="faq-answer">Dial *700# or use this website.</div> </div>
-            <div class="faq-item"> <button class="faq-question">How do I check my data balance? <span>+</span></button> <div class="faq-answer">Dial *126#.</div> </div>
-            <div class="faq-item"> <button class="faq-question">Can I rollover unused data? <span>+</span></button> <div class="faq-answer">Yes, unused data automatically rolls over.</div> </div>
-            <div class="faq-item"> <button class="faq-question">Do Night bundles work only at night? <span>+</span></button> <div class="faq-answer">Yes, from 12AM to 5AM only.</div> </div>
-            <div class="faq-item"> <button class="faq-question">Is data transfer possible? <span>+</span></button> <div class="faq-answer">Not yet for non-expiry bundles.</div> </div>
-            <div class="faq-item"> <button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button> <div class="faq-answer">Yes, fully compatible.</div> </div>
-            <div class="faq-item"> <button class="faq-question">What if I travel outside Ghana? <span>+</span></button> <div class="faq-answer">Data works only within Ghana.</div> </div>
-            <div class="faq-item"> <button class="faq-question">Can I buy for someone else? <span>+</span></button> <div class="faq-answer">Yes, you can gift bundles.</div> </div>
-            <div class="faq-item"> <button class="faq-question">How do I contact customer care? <span>+</span></button> <div class="faq-answer">Call 100 (Free from Telecel).</div> </div>
+            <div class="faq-item"><button class="faq-question">Do the bundles really never expire? <span>+</span></button><div class="faq-answer">Yes. Once purchased, your data never expires.</div></div>
+            <div class="faq-item"><button class="faq-question">How do I buy bundles? <span>+</span></button><div class="faq-answer">Dial *700# or use this website.</div></div>
+            <div class="faq-item"><button class="faq-question">How do I check my data balance? <span>+</span></button><div class="faq-answer">Dial *126# for data balance.</div></div>
+            <div class="faq-item"><button class="faq-question">Can unused data rollover? <span>+</span></button><div class="faq-answer">Yes, unused data automatically rolls over.</div></div>
+            <div class="faq-item"><button class="faq-question">Are Night bundles time restricted? <span>+</span></button><div class="faq-answer">Yes, valid only from 12AM to 5AM.</div></div>
+            <div class="faq-item"><button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button><div class="faq-answer">Yes, fully compatible.</div></div>
+            <div class="faq-item"><button class="faq-question">Can I gift bundles to others? <span>+</span></button><div class="faq-answer">Yes, you can buy for friends and family.</div></div>
+            <div class="faq-item"><button class="faq-question">Is data transfer possible? <span>+</span></button><div class="faq-answer">Not available for non-expiry bundles yet.</div></div>
+            <div class="faq-item"><button class="faq-question">What if I travel outside Ghana? <span>+</span></button><div class="faq-answer">Bundles work only within Ghana.</div></div>
+            <div class="faq-item"><button class="faq-question">How do I contact support? <span>+</span></button><div class="faq-answer">Call 100 for free customer care.</div></div>
         </div>
     </section>
 
@@ -286,7 +303,7 @@
         <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:40px;">
             <div>
                 <h3 style="color:white;">Telecel Ghana</h3>
-                <p>Ghana's most trusted network with non-expiry data.</p>
+                <p>Ghana's leading network with non-expiry data bundles.</p>
             </div>
             <div>
                 <h4 style="color:white;">Quick Links</h4>
@@ -296,12 +313,12 @@
             </div>
             <div>
                 <h4 style="color:white;">Support</h4>
-                <p>Dial <strong>100</strong> (Free)</p>
-                <p>*700# for Bundles</p>
+                <p>Call <strong>100</strong> (Free)</p>
+                <p>Dial *700# for Bundles</p>
             </div>
         </div>
-        <div style="text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid #333;">
-            &copy; 2026 Telecel Ghana. All Rights Reserved.
+        <div style="text-align:center; margin-top:60px; padding-top:25px; border-top:1px solid #222; color:#666;">
+            © 2026 Telecel Ghana. All Rights Reserved.
         </div>
     </footer>
 
@@ -319,7 +336,7 @@
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const answer = btn.nextElementSibling;
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
             });
         });
     </script>
