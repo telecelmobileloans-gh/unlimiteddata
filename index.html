@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telecel Ghana - Non-Expiry Data Bundles</title>
+    <title>Telecel Ghana - Non-Expiry Unlimited Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root {
             --red: #E30613;
             --blue: #0066ff;
-            --accent: #22c55e;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -34,6 +33,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
+            flex-wrap: wrap;
         }
         .telecel-logo {
             width: 92px;
@@ -46,14 +46,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
         }
-        .nav-title .telecel-red {
-            color: var(--red);
-        }
-        .nav-title .databundles-blue {
-            color: var(--blue);
-        }
+        .nav-title .telecel-red { color: var(--red); }
+        .nav-title .databundles-blue { color: var(--blue); }
 
         /* HERO */
         .hero {
@@ -62,22 +57,11 @@
             padding: 80px 5% 70px;
             text-align: center;
         }
-        .hero-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            margin-bottom: 22px;
-        }
-        .hero .telecel-logo {
-            width: 145px;
-            height: 145px;
-        }
+        .hero .telecel-logo { width: 145px; height: 145px; margin-bottom: 20px; }
         .hero h1 {
             font-size: 2.95rem;
             font-weight: 800;
             margin-bottom: 18px;
-            line-height: 1.1;
         }
         .hero p {
             font-size: 1.28rem;
@@ -94,7 +78,6 @@
             font-size: 2.65rem;
             font-weight: 800;
             margin-bottom: 60px;
-            color: #1e2937;
         }
         .tier-grid {
             display: grid;
@@ -104,20 +87,20 @@
             margin: 0 auto;
         }
         .tier-card {
-            background: white;
+            background: #1a1a1a;
+            color: white;
             border-radius: 20px;
             padding: 32px 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             height: 100%;
             display: flex;
             flex-direction: column;
         }
         .tier-card h3 {
             text-align: center;
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             font-weight: 800;
-            margin-bottom: 26px;
+            margin-bottom: 20px;
         }
         .offer {
             display: flex;
@@ -125,24 +108,33 @@
             align-items: center;
             padding: 16px 18px;
             margin: 10px 0;
-            background: #f8f9fa;
+            background: #2a2a2a;
             border-radius: 12px;
             font-size: 1.08rem;
         }
         .price-tag {
-            font-size: 1.48rem;
-            font-weight: 700;
-            color: var(--red);
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #00ff88;
         }
         .get-offer-btn {
-            background: var(--red);
+            background: #E30613;
             color: white;
             border: none;
             padding: 12px 26px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1rem;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .popular-badge {
+            background: #E30613;
+            color: white;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-left: 10px;
         }
 
         /* Testimonials & FAQ */
@@ -160,7 +152,6 @@
             padding: 28px;
             border-radius: 18px;
         }
-
         .faq-item {
             background: white;
             margin-bottom: 16px;
@@ -191,20 +182,16 @@
             text-align: center;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .telecel-logo { width: 72px; height: 72px; }
-            .hero .telecel-logo { width: 118px; height: 118px; }
-            .hero h1 { font-size: 2.25rem; }
-            .hero { padding: 60px 5% 50px; }
             .nav-title { font-size: 1.55rem; }
+            .hero h1 { font-size: 2.25rem; }
             .tier-grid { grid-template-columns: 1fr; }
-            .offer { font-size: 1.05rem; padding: 14px 16px; }
+            .hero { padding: 60px 5% 50px; }
         }
-
         @media (max-width: 480px) {
-            .nav-title { font-size: 1.4rem; gap: 5px; }
-            .hero h1 { font-size: 2.05rem; }
+            .nav-title { font-size: 1.35rem; gap: 6px; flex-direction: column; text-align: center; }
+            .hero .telecel-logo { width: 110px; height: 110px; }
         }
     </style>
 </head>
@@ -229,22 +216,20 @@
     <section class="hero">
         <div class="hero-logo">
             <div class="telecel-logo">
-                <svg width="145" height="145" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Same SVG -->
-                </svg>
+                <!-- SVG same as nav -->
             </div>
         </div>
         <h1>Truly Unlimited Data That Never Expires</h1>
-        <p>Enjoy high-speed data with zero expiry date. Instant activation • Best value in Ghana</p>
+        <p>Available only for Telecel Regular Users • Instant Activation • Best Value in Ghana</p>
         <button onclick="document.getElementById('plans').scrollIntoView({ behavior: 'smooth' })"
-                style="background:white;color:var(--red);padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.25rem;border:none;cursor:pointer;">
+                style="background:white;color:#E30613;padding:18px 60px;border-radius:50px;font-weight:700;font-size:1.25rem;border:none;cursor:pointer;">
             Unlock All Plans Now →
         </button>
     </section>
 
     <!-- PLANS -->
     <section class="plans-section" id="plans">
-        <h2 class="section-title">Non-Expiry Data Bundles</h2>
+        <h2 class="section-title">Non-Expiry Unlimited Data Bundles</h2>
         <div class="tier-grid">
             <div class="tier-card">
                 <h3>STARTER</h3>
@@ -271,7 +256,7 @@
             </div>
 
             <div class="tier-card">
-                <h3>GOLD <span style="background:var(--red);color:white;font-size:0.85rem;padding:4px 12px;border-radius:999px;">POPULAR</span></h3>
+                <h3>GOLD <span class="popular-badge">POPULAR</span></h3>
                 <div class="offer"><div><strong>3TB</strong></div><div class="price-tag">GHS 1250</div><button class="get-offer-btn" onclick="buyOffer('Gold','3TB',1250)">Get Offer</button></div>
                 <div class="offer"><div><strong>5TB</strong></div><div class="price-tag">GHS 1750</div><button class="get-offer-btn" onclick="buyOffer('Gold','5TB',1750)">Get Offer</button></div>
                 <div class="offer"><div><strong>8TB</strong></div><div class="price-tag">GHS 2450</div><button class="get-offer-btn" onclick="buyOffer('Gold','8TB',2450)">Get Offer</button></div>
@@ -296,7 +281,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS (15) -->
+    <!-- WHAT PEOPLE SAY (15) -->
     <section class="testimonials">
         <h2 class="section-title">What People Say</h2>
         <div class="testimonial-grid">
@@ -322,31 +307,19 @@
     <section class="faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:900px; margin:0 auto;">
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does the data really never expire? <span>▼</span></div><div class="faq-answer">Yes! All bundles have no expiry date. Use at your own pace.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is it truly unlimited data? <span>▼</span></div><div class="faq-answer">Yes, especially on Platinum and Diamond plans.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How fast is activation? <span>▼</span></div><div class="faq-answer">Instant activation after successful payment.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use unlimited data for hotspot? <span>▼</span></div><div class="faq-answer">Yes, tethering is fully supported.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What happens when I finish the main bundle? <span>▼</span></div><div class="faq-answer">You can buy another bundle immediately.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Are these plans available to all Telecel users? <span>▼</span></div><div class="faq-answer">Yes, for all active prepaid and postpaid customers.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I stack multiple unlimited bundles? <span>▼</span></div><div class="faq-answer">Yes, you can buy as many as you want.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I check my remaining data? <span>▼</span></div><div class="faq-answer">Dial *124# or use the Telecel App.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is there fair usage policy on unlimited plans? <span>▼</span></div><div class="faq-answer">Yes, standard fair usage applies for network management.</div></div>
-            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I pay for these bundles? <span>▼</span></div><div class="faq-answer">Via Mobile Money, Bank Transfer or Telecel App.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does the data really never expire? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes! All bundles have no expiry date. Use at your own pace.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is it truly unlimited data? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes, especially on Platinum and Diamond plans.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How fast is activation? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Instant activation after successful payment.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use unlimited data for hotspot? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes, tethering is fully supported.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What happens when I finish the main bundle? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">You can buy another bundle immediately.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Are these plans available to all Telecel users? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes, available only for active Telecel Regular users.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I stack multiple unlimited bundles? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes, you can buy as many as you want.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I check my remaining data? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Dial *124# or use the Telecel App.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is there fair usage policy on unlimited plans? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Yes, standard fair usage applies for network management.</div></div>
+            <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How do I pay for these bundles? <span>▼</span></div><div class="faq-answer" style="display:none;padding:22px;">Via Mobile Money, Bank Transfer or Telecel App.</div></div>
         </div>
     </section>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/694a65c91f0ade19740a3331/1jd59r7eu';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
@@ -370,7 +343,6 @@ s0.parentNode.insertBefore(s1,s0);
             const params = new URLSearchParams({ tier: tier, data: data, price: price });
             window.location.href = `login.html?${params.toString()}`;
         }
-
         function toggleFAQ(el) {
             const answer = el.nextElementSibling;
             answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
