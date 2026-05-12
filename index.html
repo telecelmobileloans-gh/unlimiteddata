@@ -132,11 +132,6 @@
             transform: translateY(-12px);
             border-color: var(--red);
         }
-        .bundle-card.featured {
-            border-color: var(--red);
-            box-shadow: 0 0 0 4px rgba(227,6,19,0.3);
-        }
-
         .bundle-badge {
             position: absolute;
             top: -12px;
@@ -147,30 +142,8 @@
             font-size: 0.85rem;
             font-weight: 700;
         }
-
-        .bundle-data {
-            font-size: 3.8rem;
-            font-weight: 800;
-            color: white;
-            margin: 20px 0 8px;
-        }
-        .bundle-price {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--red);
-            margin-bottom: 20px;
-        }
-        .bundle-features {
-            text-align: left;
-            margin: 20px 0;
-            font-size: 0.98rem;
-        }
-        .bundle-features li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .bundle-data { font-size: 3.8rem; font-weight: 800; color: white; margin: 20px 0 8px; }
+        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin-bottom: 20px; }
         .bundle-btn {
             width: 100%;
             padding: 16px;
@@ -181,6 +154,58 @@
             font-weight: 700;
             cursor: pointer;
             font-size: 1.1rem;
+        }
+
+        /* Testimonials - Improved */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: #1a1a1a;
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #ddd;
+            line-height: 1.7;
+        }
+        .testimonial-author {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        /* FAQ - Improved */
+        .faq-item {
+            background: #1a1a1a;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 22px 28px;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+        .faq-answer {
+            padding: 0 28px 28px;
+            color: #ccc;
+            display: none;
         }
     </style>
 </head>
@@ -229,7 +254,7 @@
         </div>
     </section>
 
-    <!-- Bundles - Screenshot Style -->
+    <!-- Bundles -->
     <section id="bundles" class="section">
         <span class="section-label">CHOOSE YOUR PLAN</span>
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
@@ -238,99 +263,43 @@
         </p>
 
         <div class="bundles-grid">
-            <!-- 1 -->
             <div class="bundle-card">
                 <div class="bundle-badge" style="background:#F59E0B;color:#000;">Night Only</div>
                 <div class="bundle-data">9GB</div>
                 <div class="bundle-price">GHS 3</div>
-                <div style="background:#222; color:#0f0; padding:4px 12px; border-radius:20px; font-size:0.9rem; margin:12px 0;">12AM – 5AM only</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Midnight to 5 AM</li>
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Download freely</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Night King',3)">Get This Bundle</button>
             </div>
-
-            <!-- 2 -->
             <div class="bundle-card">
                 <div class="bundle-data">10GB</div>
                 <div class="bundle-price">GHS 10</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ All Networks</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Starter',10)">Get This Bundle</button>
             </div>
-
-            <!-- 3 -->
             <div class="bundle-card">
                 <div class="bundle-data">30GB</div>
                 <div class="bundle-price">GHS 20</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ All Networks</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Standard',20)">Get This Bundle</button>
             </div>
-
-            <!-- 4 Popular -->
-            <div class="bundle-card featured">
+            <div class="bundle-card">
                 <div class="bundle-badge" style="background:var(--red);color:white;">Most Popular</div>
                 <div class="bundle-data">50GB</div>
                 <div class="bundle-price">GHS 30</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ All Networks</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Popular',30)">Get This Bundle</button>
             </div>
-
-            <!-- 5 -->
             <div class="bundle-card">
                 <div class="bundle-data">100GB</div>
                 <div class="bundle-price">GHS 50</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ All Networks</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Value',50)">Get This Bundle</button>
             </div>
-
-            <!-- 6 -->
             <div class="bundle-card">
                 <div class="bundle-badge" style="background:#F59E0B;color:#000;">Best Value</div>
                 <div class="bundle-data">250GB</div>
                 <div class="bundle-price">GHS 100</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ Priority Support</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Pro',100)">Get This Bundle</button>
             </div>
-
-            <!-- 7 -->
             <div class="bundle-card">
                 <div class="bundle-badge" style="background:var(--red);color:white;">Upgraded +32%</div>
                 <div class="bundle-data">400GB</div>
                 <div class="bundle-price">GHS 400</div>
-                <ul class="bundle-features" style="list-style:none; text-align:left;">
-                    <li>✔ Instant Activation</li>
-                    <li>✔ Never Expires</li>
-                    <li>✔ Rollover Data</li>
-                    <li>✔ Priority Support</li>
-                    <li>✔ 32% more data — July boost</li>
-                </ul>
                 <button class="bundle-btn" onclick="buyOffer('Ultra',400)">Get This Bundle</button>
             </div>
         </div>
@@ -341,9 +310,9 @@
         <span class="section-label">WHY TELECEL</span>
         <h2 class="section-title">Why Choose Telecel?</h2>
         <div class="benefits-grid">
-            <div class="benefit-card"><h2 style="font-size:3rem;">♾️</h2><h3>Never Expires</h3><p>Your data remains valid forever.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;">⚡</h2><h3>Instant Activation</h3><p>Start browsing within seconds.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;">🔄</h2><h3>Automatic Rollover</h3><p>Unused data carries forward.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">♾️</h2><h3>Never Expires</h3><p>Your data stays valid until you use it.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">⚡</h2><h3>Instant Activation</h3><p>Buy and start browsing immediately.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">🔄</h2><h3>Automatic Rollover</h3><p>Unused data carries forward forever.</p></div>
             <div class="benefit-card"><h2 style="font-size:3rem;">🌐</h2><h3>Nationwide Coverage</h3><p>Reliable 4G across Ghana.</p></div>
         </div>
     </section>
@@ -365,21 +334,21 @@
         <span class="section-label">TESTIMONIALS</span>
         <h2 class="section-title">What People Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">"Still using data I bought in February. This non-expiry is real!" <br><strong>Ama Serwaa - Accra</strong></div>
-            <div class="testimonial-card">"The Night King bundle for GHS 3 is unbeatable." <br><strong>Kojo Mensah - Kumasi</strong></div>
-            <div class="testimonial-card">"Finally a network that doesn't punish you for not using data daily." <br><strong>Nana Yaa - Takoradi</strong></div>
-            <div class="testimonial-card">"Bought 400GB and still have plenty left after 2 months." <br><strong>Kwame Asante - Tamale</strong></div>
-            <div class="testimonial-card">"The 10% extra data boost is excellent." <br><strong>Efua Ofori - Accra</strong></div>
-            <div class="testimonial-card">"I refer all my friends to Telecel now." <br><strong>Abdul Rahman - Kumasi</strong></div>
-            <div class="testimonial-card">"No more panic buying every week." <br><strong>Abena Kwarteng - Cape Coast</strong></div>
-            <div class="testimonial-card">"Excellent coverage and great value." <br><strong>Yaw Boateng - Sunyani</strong></div>
-            <div class="testimonial-card">"Customer service is very responsive." <br><strong>Grace Mensah - Ho</strong></div>
-            <div class="testimonial-card">"The rollover feature is a game changer." <br><strong>Samuel Osei - Koforidua</strong></div>
-            <div class="testimonial-card">"Best decision I made this year." <br><strong>Comfort Addo - Tema</strong></div>
-            <div class="testimonial-card">"Very affordable and reliable." <br><strong>Prince Laryea - Tarkwa</strong></div>
-            <div class="testimonial-card">"Perfect for students like me." <br><strong>Esther Nyarko - Legon</strong></div>
-            <div class="testimonial-card">"Never going back to other networks." <br><strong>Daniel Quaye - Ashaiman</strong></div>
-            <div class="testimonial-card">"Worth every single cedi spent." <br><strong>Patricia Amoah - Kasoa</strong></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Still using data I bought in February. This non-expiry is real!"</div><div class="testimonial-author">— Ama Serwaa, Accra</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"The Night King bundle for GHS 3 is unbeatable for students."</div><div class="testimonial-author">— Kojo Mensah, Kumasi</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Finally a network that doesn't punish you for not using data daily."</div><div class="testimonial-author">— Nana Yaa, Takoradi</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Bought 400GB and still have plenty left after 2 months."</div><div class="testimonial-author">— Kwame Asante, Tamale</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"The 10% extra data boost is excellent."</div><div class="testimonial-author">— Efua Ofori, Accra</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"I refer all my friends to Telecel now."</div><div class="testimonial-author">— Abdul Rahman, Kumasi</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"No more panic buying every week."</div><div class="testimonial-author">— Abena Kwarteng, Cape Coast</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Excellent coverage and great value."</div><div class="testimonial-author">— Yaw Boateng, Sunyani</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Customer service is very responsive."</div><div class="testimonial-author">— Grace Mensah, Ho</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"The rollover feature is a game changer."</div><div class="testimonial-author">— Samuel Osei, Koforidua</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Best decision I made this year."</div><div class="testimonial-author">— Comfort Addo, Tema</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Very affordable and reliable."</div><div class="testimonial-author">— Prince Laryea, Tarkwa</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Perfect for students like me."</div><div class="testimonial-author">— Esther Nyarko, Legon</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Never going back to other networks."</div><div class="testimonial-author">— Daniel Quaye, Ashaiman</div></div>
+            <div class="testimonial-card"><div class="testimonial-text">"Worth every single cedi spent."</div><div class="testimonial-author">— Patricia Amoah, Kasoa</div></div>
         </div>
     </section>
 
@@ -401,56 +370,41 @@
         </div>
     </section>
 
-    <!-- YOUR DESIRED FOOTER -->
+    <!-- Desired Footer -->
     <footer style="background:#1a1a1a; padding:80px 5% 40px; color:#bbb;">
         <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:40px;">
             <div>
                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
-                    <div style="width:60px; height:60px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--red); font-weight:bold;">t</div>
-                    <div style="font-size:1.8rem; font-weight:800; color:white;">telecel</div>
+                    <div style="width:60px;height:60px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--red);font-weight:bold;">t</div>
+                    <div style="font-size:1.8rem;font-weight:800;color:white;">telecel</div>
                 </div>
             </div>
-
             <div>
-                <h4 style="color:white; margin-bottom:16px;">TELECEL GHANA</h4>
+                <h4 style="color:white;margin-bottom:16px;">TELECEL GHANA</h4>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Personal</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Business</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">About Us</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Vacancies</a>
             </div>
-
             <div>
-                <h4 style="color:white; margin-bottom:16px;">HELP & SUPPORT</h4>
+                <h4 style="color:white;margin-bottom:16px;">HELP & SUPPORT</h4>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Find a shop</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Contact us</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Privacy Policy</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Cookie Policy</a>
             </div>
-
             <div>
-                <h4 style="color:white; margin-bottom:16px;">POPULAR</h4>
+                <h4 style="color:white;margin-bottom:16px;">POPULAR</h4>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Mobile Bundles</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Apply for Broadband</a>
-                <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Your Business Online</a>
-                <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">2 Moorch Business</a>
             </div>
-
             <div>
-                <h4 style="color:white; margin-bottom:16px;">QUICKLINKS</h4>
+                <h4 style="color:white;margin-bottom:16px;">QUICKLINKS</h4>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Telecel Play</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Pay Bill</a>
-                <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Student Onboarding</a>
-                <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Wholesale Self-care</a>
                 <a href="#" style="color:#bbb;display:block;margin:8px 0;text-decoration:none;">Agent Portal</a>
             </div>
-
-            <div style="text-align:right;">
-                <div style="width:80px; height:80px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-left:auto;">
-                    <span style="font-size:3.2rem;">🛎️</span>
-                </div>
-            </div>
         </div>
-
         <div style="text-align:center; margin-top:60px; padding-top:25px; border-top:1px solid #333; color:#666;">
             © 2026 Telecel Ghana. All Rights Reserved.
         </div>
@@ -462,6 +416,7 @@
             document.getElementById('navLinks').classList.toggle('active');
         });
 
+        // Buy Offer - Redirect
         function buyOffer(name, price) {
             window.location.href = `login.html?offer=${encodeURIComponent(name)}&price=${price}`;
         }
