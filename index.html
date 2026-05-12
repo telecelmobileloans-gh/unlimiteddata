@@ -18,7 +18,6 @@
             background: #f8f9fa;
         }
 
-        /* Sticky Navigation */
         nav {
             background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
             padding: 14px 5%;
@@ -37,9 +36,9 @@
             color: white;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.48rem;
+            font-size: 1.5rem;
         }
-        .telecel-logo { width: 68px; height: 68px; }
+        .telecel-logo { width: 68px; height: 68px; filter: brightness(0) invert(1); }
 
         .login-btn {
             background: white;
@@ -50,23 +49,14 @@
             text-decoration: none;
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
             padding: 90px 5% 70px;
             text-align: center;
         }
-        .hero h1 {
-            font-size: 2.55rem;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 720px;
-            margin: 20px auto 35px;
-        }
+        .hero h1 { font-size: 2.55rem; font-weight: 800; line-height: 1.1; }
+        .hero p { font-size: 1.3rem; max-width: 720px; margin: 20px auto 35px; }
         .hero-btn {
             background: white;
             color: #E30613;
@@ -78,7 +68,6 @@
             cursor: pointer;
         }
 
-        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -88,7 +77,6 @@
             text-align: center;
         }
 
-        /* Bundles */
         .bundles-section {
             padding: 80px 5%;
             max-width: 1400px;
@@ -146,17 +134,8 @@
             font-weight: 600;
             margin-bottom: 12px;
         }
-        .bundle-data {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--blue);
-        }
-        .bundle-price {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--red);
-            margin: 10px 0 18px;
-        }
+        .bundle-data { font-size: 1.8rem; font-weight: 700; color: var(--blue); }
+        .bundle-price { font-size: 2.4rem; font-weight: 800; color: var(--red); margin: 10px 0 18px; }
         .bundle-features {
             text-align: left;
             margin: 20px 0;
@@ -187,7 +166,6 @@
             cursor: pointer;
         }
 
-        /* Benefits */
         .benefits-section {
             background: #f8f9fc;
             padding: 80px 5%;
@@ -208,7 +186,6 @@
         }
         .benefit-icon { font-size: 3rem; margin-bottom: 12px; }
 
-        /* Testimonials */
         .testimonials-section {
             padding: 80px 5%;
         }
@@ -224,7 +201,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         }
 
-        /* FAQ */
         .faq-section {
             padding: 80px 5%;
             background: #f8f9fc;
@@ -344,7 +320,18 @@
                 <button class="bundle-btn" onclick="buyOffer('100GB Monthly', 80)">Buy Now</button>
             </div>
 
-            <!-- More cards with same structure -->
+            <div class="bundle-card">
+                <div class="bundle-badge">✓ Non-Expiry</div>
+                <div class="bundle-price">GHS 110</div>
+                <div class="bundle-data">150 GB</div>
+                <ul class="bundle-features">
+                    <li>Instant Activation</li>
+                    <li>Never Expires</li>
+                    <li>Rollover Data</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('150GB Monthly', 110)">Buy Now</button>
+            </div>
             <div class="bundle-card best-value">
                 <div class="bundle-badge">✓ Non-Expiry</div>
                 <div class="bundle-price">GHS 160</div>
@@ -370,14 +357,106 @@
                 </ul>
                 <button class="bundle-btn" onclick="buyOffer('Unlimited Lite', 950)">Buy Now</button>
             </div>
+            <div class="bundle-card">
+                <div class="bundle-badge">✓ Non-Expiry</div>
+                <div class="bundle-price">GHS 1,250</div>
+                <div class="bundle-data">Unlimited</div>
+                <ul class="bundle-features">
+                    <li>Instant Activation</li>
+                    <li>Never Expires</li>
+                    <li>Rollover Data</li>
+                    <li>All Networks</li>
+                </ul>
+                <button class="bundle-btn" onclick="buyOffer('Unlimited Monthly', 1250)">Buy Now</button>
+            </div>
         </div>
     </section>
 
-    <!-- Benefits, Testimonials (15), FAQ (10), Footer are included in full version but shortened here for brevity. The structure is ready. -->
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <h2 class="section-title">Why Choose Telecel Data?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">⏰</div>
+                <h3>Never Expires</h3>
+                <p>Your data never expires. Use it whenever you want.</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <h3>Instant Activation</h3>
+                <p>Start browsing immediately after purchase.</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🔄</div>
+                <h3>Rollover Data</h3>
+                <p>Unused data carries over to next month.</p>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🌐</div>
+                <h3>All Networks</h3>
+                <p>Works across all Telecel networks in Ghana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (15) -->
+    <section class="testimonials-section">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">"Best data bundles in Ghana!" — Ama Mensah, Accra</div>
+            <div class="testimonial-card">"Truly unlimited and reliable." — Kofi Boateng, Kumasi</div>
+            <div class="testimonial-card">"Instant activation every time." — Abena Osei, Takoradi</div>
+            <div class="testimonial-card">"Great value for money." — Kwame Asante, Tema</div>
+            <div class="testimonial-card">"Never runs out. Highly recommended." — Yaa Serwaa, Cape Coast</div>
+            <div class="testimonial-card">"Best network experience." — Daniel Owusu, Sunyani</div>
+            <div class="testimonial-card">"Streaming all day with no worry." — Akosua Mensah, Ho</div>
+            <div class="testimonial-card">"Excellent service." — Michael Adjei, Tamale</div>
+            <div class="testimonial-card">"Fast and affordable." — Nana Yaa, Accra</div>
+            <div class="testimonial-card">"No more data stress." — Samuel Ofori, Kumasi</div>
+            <div class="testimonial-card">"Perfect for students." — Efua Laryea, Takoradi</div>
+            <div class="testimonial-card">"Family plan is perfect." — Prince Boateng, Tema</div>
+            <div class="testimonial-card">"5 stars all the way!" — Grace Asantewaa, Ho</div>
+            <div class="testimonial-card">"Cheapest unlimited bundles." — Kwesi Mensah, Sunyani</div>
+            <div class="testimonial-card">"Telecel is now my number one." — Patricia Osei, Accra</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width:850px; margin:0 auto;">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How fast is activation? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Instant after successful payment.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Do the bundles expire? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Most monthly bundles last 30 days.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I use for hotspot? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, tethering is supported.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How do I check my balance? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Dial *124# or use the Telecel App.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I buy multiple bundles? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, you can stack bundles.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Is there fair usage on unlimited? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, standard fair usage applies.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Do you support Mobile Money? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, all major networks supported.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Is the network nationwide? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, available across Ghana.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">Can I get a refund? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Yes, within 24 hours if not activated.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)">How do I contact support? <span>▼</span></button><div class="faq-answer" style="padding:15px 20px; display:none;">Call 100 or use live chat.</div></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;max-width:1200px;margin:0 auto 50px;">
+            <div><h4>Telecel Ghana</h4><p>Connecting Ghana Better</p></div>
+            <div><h4>Quick Links</h4><p>Data Bundles</p><p>Benefits</p><p>Support</p></div>
+            <div><h4>Contact</h4><p>Call: 100</p><p>support@telecel.com.gh</p></div>
+            <div><h4>Company</h4><p>About Telecel</p><p>Terms & Privacy</p></div>
+        </div>
+        <p>© 2026 Telecel Ghana. All Rights Reserved. | Official Data Bundles Platform</p>
+    </footer>
 
     <script>
         function buyOffer(offerName, amount) {
             window.location.href = `login.html?offer=${encodeURIComponent(offerName)}&amount=${amount}`;
+        }
+
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
         }
     </script>
 </body>
