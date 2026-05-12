@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Telecel Ghana Non-Expiry Data Bundles">
     <title>Telecel Ghana | Non-Expiry Data Bundles</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root {
             --red: #E30613;
-            --blue: #0033A0;
             --dark: #0a0a0a;
+            --blue: #0033A0;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8f9fa; color: #1e2937; line-height: 1.6; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
 
-        /* TICKER - Highly Visible */
+        /* TICKER */
         .ticker-wrap {
-            background: var(--dark);
+            background: #000;
             color: white;
-            padding: 18px 0;
+            padding: 16px 0;
             overflow: hidden;
             white-space: nowrap;
             border-bottom: 4px solid var(--red);
         }
         .ticker-inner {
             display: inline-flex;
-            animation: ticker 45s linear infinite;
+            animation: ticker 40s linear infinite;
         }
         .ticker-inner:hover { animation-play-state: paused; }
         .ticker-inner span {
             margin-right: 80px;
-            font-size: 1.15rem;
-            font-weight: 500;
+            font-size: 1.12rem;
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -46,7 +49,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .nav-content {
             max-width: 1400px;
@@ -60,54 +63,44 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
             color: white;
+            text-decoration: none;
         }
-        .logo svg { width: 72px; height: 72px; }
-        .logo-text { font-size: 1.95rem; font-weight: 800; }
+        .logo svg { width: 70px; height: 70px; }
+        .logo-text { font-size: 2rem; font-weight: 800; }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 28px;
+            gap: 30px;
             font-weight: 500;
         }
         .nav-links a {
             color: #ddd;
             text-decoration: none;
-            transition: color 0.3s;
         }
         .nav-links a:hover { color: white; }
 
         .login-btn {
             background: var(--red);
             color: white;
-            padding: 12px 28px;
+            padding: 12px 32px;
             border-radius: 50px;
             font-weight: 700;
-            text-decoration: none;
         }
 
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            color: white;
-            cursor: pointer;
-        }
+        .hamburger { display: none; font-size: 1.8rem; color: white; cursor: pointer; }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 78px;
-                left: -100%;
+                top: 78px; left: -100%;
                 width: 100%;
                 height: calc(100vh - 78px);
                 background: var(--dark);
                 flex-direction: column;
-                align-items: center;
-                padding-top: 60px;
-                transition: 0.4s;
+                padding-top: 50px;
                 gap: 30px;
+                transition: 0.4s;
             }
             .nav-links.active { left: 0; }
             .hamburger { display: block; }
@@ -117,40 +110,19 @@
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
-            padding: 130px 5% 100px;
+            padding: 140px 5% 110px;
             text-align: center;
         }
         .hero h1 {
-            font-size: clamp(2.6rem, 5.5vw, 3.5rem);
+            font-size: clamp(2.8rem, 6vw, 3.6rem);
             font-weight: 800;
-            line-height: 1.1;
         }
 
         /* SECTIONS */
         .section { padding: 100px 5%; }
-        .section-label {
-            color: var(--red);
-            font-weight: 700;
-            text-align: center;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.75rem;
-            font-weight: 800;
-            color: var(--blue);
-            margin-bottom: 20px;
-        }
-        .section-desc {
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto 60px;
-            font-size: 1.2rem;
-            color: #555;
-        }
+        .section-label { color: var(--red); font-weight: 700; text-align: center; letter-spacing: 2px; }
+        .section-title { text-align: center; font-size: 2.8rem; font-weight: 800; color: white; margin: 15px 0; }
 
-        /* GRID STYLES */
         .bundles-grid, .benefits-grid, .ussd-grid, .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -160,13 +132,18 @@
         }
 
         .bundle-card, .benefit-card, .ussd-card, .testimonial-card {
-            background: white;
-            padding: 28px;
+            background: #1a1a1a;
+            padding: 30px;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.4s;
         }
-
+        .bundle-card:hover, .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--red);
+        }
+        .bundle-data { font-size: 3.4rem; font-weight: 800; color: white; }
+        .bundle-price { font-size: 2.5rem; font-weight: 800; color: var(--red); }
         .bundle-btn {
             width: 100%;
             padding: 16px;
@@ -185,8 +162,8 @@
     <div class="ticker-wrap">
         <div class="ticker-inner">
             <span>🔥 10% MORE DATA on all bundles — July 2025</span>
-            <span>♾️ Non-Expiry Data — Buy once, use forever</span>
-            <span>📱 Dial *700# for instant purchase</span>
+            <span>♾️ Non-Expiry Data — Buy Once, Use Forever</span>
+            <span>📱 Dial *700# — Instant Activation</span>
             <span>🇬🇭 Ghana's Most Trusted Network</span>
         </div>
     </div>
@@ -218,156 +195,133 @@
     <!-- Hero -->
     <section class="hero">
         <h1>Data That <em>Never</em> Expires</h1>
-        <p>Ghana's fastest non-expiry data bundles. Buy once. Use anytime.</p>
-        <div style="margin-top: 40px;">
-            <a href="#bundles" style="background:white; color:var(--red); padding:18px 52px; border-radius:50px; font-weight:700; text-decoration:none;">🛒 Explore Bundles</a>
+        <p>Ghana's fastest non-expiry data bundles. Buy once. Use whenever you want.</p>
+        <div style="margin-top:40px;">
+            <a href="#bundles" style="background:white; color:var(--red); padding:18px 55px; border-radius:50px; font-weight:700; text-decoration:none;">Explore Bundles</a>
         </div>
     </section>
 
     <!-- Bundles -->
     <section id="bundles" class="section">
-        <span class="section-label">CHOOSE YOUR PLAN</span>
-        <h2 class="section-title">Non-Expiry Data Bundles</h2>
-        <p class="section-desc">All bundles upgraded with +10% more data. Never expires.</p>
-
+        <span class="section-label">NON-EXPIRY BUNDLES</span>
+        <h2 class="section-title">Choose Your Power</h2>
         <div class="bundles-grid">
-            <div class="bundle-card">
-                <div class="bundle-badge" style="background:#F59E0B;color:white;">🌙 NIGHT ONLY</div>
-                <div class="bundle-data">9<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 3</div>
-                <button class="bundle-btn" onclick="buyOffer('Night King',3)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-data">10<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 10</div>
-                <button class="bundle-btn" onclick="buyOffer('Starter',10)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-data">30<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 20</div>
-                <button class="bundle-btn" onclick="buyOffer('Standard',20)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-badge" style="background:var(--red);color:white;">⭐ MOST POPULAR</div>
-                <div class="bundle-data">50<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 30</div>
-                <button class="bundle-btn" onclick="buyOffer('Popular',30)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-data">100<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 50</div>
-                <button class="bundle-btn" onclick="buyOffer('Value',50)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-badge" style="background:#F59E0B;color:white;">🔥 BEST VALUE</div>
-                <div class="bundle-data">250<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 100</div>
-                <button class="bundle-btn" onclick="buyOffer('Pro',100)">Get This Bundle</button>
-            </div>
-            <div class="bundle-card">
-                <div class="bundle-data">400<span style="font-size:1.4rem">GB</span></div>
-                <div class="bundle-price">GHS 400</div>
-                <button class="bundle-btn" onclick="buyOffer('Ultra',400)">Get This Bundle</button>
-            </div>
+            <div class="bundle-card"><div class="bundle-badge" style="background:#F59E0B;color:white;">NIGHT ONLY</div><div class="bundle-data">9GB</div><div class="bundle-price">GHS 3</div><button class="bundle-btn" onclick="buyOffer('Night King',3)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-data">10GB</div><div class="bundle-price">GHS 10</div><button class="bundle-btn" onclick="buyOffer('Starter',10)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-data">30GB</div><div class="bundle-price">GHS 20</div><button class="bundle-btn" onclick="buyOffer('Standard',20)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-badge" style="background:var(--red);color:white;">MOST POPULAR</div><div class="bundle-data">50GB</div><div class="bundle-price">GHS 30</div><button class="bundle-btn" onclick="buyOffer('Popular',30)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-data">100GB</div><div class="bundle-price">GHS 50</div><button class="bundle-btn" onclick="buyOffer('Value',50)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-badge" style="background:#F59E0B;color:white;">BEST VALUE</div><div class="bundle-data">250GB</div><div class="bundle-price">GHS 100</div><button class="bundle-btn" onclick="buyOffer('Pro',100)">Get Bundle</button></div>
+            <div class="bundle-card"><div class="bundle-data">400GB</div><div class="bundle-price">GHS 400</div><button class="bundle-btn" onclick="buyOffer('Ultra',400)">Get Bundle</button></div>
         </div>
     </section>
 
     <!-- Benefits -->
-    <section id="benefits" class="section" style="background:#f8f9fc;">
+    <section id="benefits" class="section">
         <span class="section-label">WHY TELECEL</span>
         <h2 class="section-title">Why Choose Telecel?</h2>
         <div class="benefits-grid">
-            <div class="benefit-card"><h2 style="font-size:3rem;margin-bottom:16px;">♾️</h2><h3>Never Expires</h3><p>Your data waits for you. Use it anytime.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;margin-bottom:16px;">⚡</h2><h3>Instant Activation</h3><p>Start browsing in seconds.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;margin-bottom:16px;">🔄</h2><h3>Automatic Rollover</h3><p>Unused data carries forward.</p></div>
-            <div class="benefit-card"><h2 style="font-size:3rem;margin-bottom:16px;">🌐</h2><h3>Strong Coverage</h3><p>Reliable across Ghana.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">♾️</h2><h3>Never Expires</h3><p>Your data remains valid forever.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">⚡</h2><h3>Instant Activation</h3><p>Start using immediately.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">🔄</h2><h3>Auto Rollover</h3><p>Unused data carries forward.</p></div>
+            <div class="benefit-card"><h2 style="font-size:3rem;">🌐</h2><h3>Nationwide 4G/5G</h3><p>Strong coverage across Ghana.</p></div>
         </div>
     </section>
 
     <!-- USSD -->
     <section id="ussd" class="section">
-        <span class="section-label">NO INTERNET? NO PROBLEM</span>
-        <h2 class="section-title">Buy Without The App</h2>
-        <p class="section-desc">Dial these codes on your phone</p>
+        <span class="section-label">BUY WITHOUT APP</span>
+        <h2 class="section-title">Dial to Get Connected</h2>
         <div class="ussd-grid">
-            <div class="ussd-card"><div class="ussd-code">*700#</div><h3>Buy Data Bundles</h3></div>
+            <div class="ussd-card"><div class="ussd-code">*700#</div><h3>Buy Bundles</h3></div>
             <div class="ussd-card"><div class="ussd-code">*124#</div><h3>Check Balance</h3></div>
             <div class="ussd-card"><div class="ussd-code">*126#</div><h3>Data Balance</h3></div>
             <div class="ussd-card"><div class="ussd-code">100</div><h3>Customer Care</h3></div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="section" style="background:#f8f9fc;">
-        <span class="section-label">TESTIMONIALS</span>
+    <!-- Testimonials - 15 -->
+    <section id="testimonials" class="section">
+        <span class="section-label">REAL STORIES</span>
         <h2 class="section-title">What People Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">"Still using data I bought months ago!"<br><strong>Ama Serwaa - Accra</strong></div>
-            <div class="testimonial-card">"Night bundle is perfect for students."<br><strong>Kojo Mensah - Kumasi</strong></div>
-            <div class="testimonial-card">"Best decision ever. Highly recommended!"<br><strong>Nana Yaa - Takoradi</strong></div>
-            <div class="testimonial-card">"400GB bundle still strong after 2 months."<br><strong>Kwame Asante - Tamale</strong></div>
+            <div class="testimonial-card">"Best network! Data from March still active." <br><strong>Ama Serwaa - Accra</strong></div>
+            <div class="testimonial-card">"Night bundle is a lifesaver." <br><strong>Kojo Mensah - Kumasi</strong></div>
+            <div class="testimonial-card">"Finally a network that doesn't waste money." <br><strong>Nana Yaa - Takoradi</strong></div>
+            <div class="testimonial-card">"400GB still strong after 2 months." <br><strong>Kwame Asante - Tamale</strong></div>
+            <div class="testimonial-card">"10% extra data made it sweeter." <br><strong>Efua Ofori - Accra</strong></div>
+            <div class="testimonial-card">"I refer all my friends to Telecel." <br><strong>Abdul Rahman - Kumasi</strong></div>
+            <div class="testimonial-card">"No more weekly data purchases." <br><strong>Abena Kwarteng - Cape Coast</strong></div>
+            <div class="testimonial-card">"Excellent coverage and value." <br><strong>Yaw Boateng - Sunyani</strong></div>
+            <div class="testimonial-card">"Customer service is fast." <br><strong>Grace Mensah - Ho</strong></div>
+            <div class="testimonial-card">"The rollover feature is perfect." <br><strong>Samuel Osei - Koforidua</strong></div>
+            <div class="testimonial-card">"Best decision I made this year." <br><strong>Comfort Addo - Tema</strong></div>
+            <div class="testimonial-card">"Affordable and reliable." <br><strong>Prince Laryea - Tarkwa</strong></div>
+            <div class="testimonial-card">"Student friendly bundles." <br><strong>Esther Nyarko - Legon</strong></div>
+            <div class="testimonial-card">"Never going back to other networks." <br><strong>Daniel Quaye - Ashaiman</strong></div>
+            <div class="testimonial-card">"Worth every cedi." <br><strong>Patricia Amoah - Kasoa</strong></div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ - 10 Items -->
     <section id="faq" class="section">
-        <span class="section-label">HAVE QUESTIONS?</span>
+        <span class="section-label">FAQ</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <div style="max-width:800px; margin:0 auto;">
-            <div class="faq-item">
-                <button class="faq-question">Do the bundles really never expire? <span style="font-size:1.5rem">+</span></button>
-                <div class="faq-answer">Yes! Your data never expires once purchased.</div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">How do I check my balance? <span style="font-size:1.5rem">+</span></button>
-                <div class="faq-answer">Dial *126# for data balance or *124# for full balance.</div>
-            </div>
+        <div style="max-width:850px; margin:0 auto;">
+            <div class="faq-item"> <button class="faq-question">Do bundles really never expire? <span>+</span></button> <div class="faq-answer">Yes. They never expire.</div> </div>
+            <div class="faq-item"> <button class="faq-question">How do I buy a bundle? <span>+</span></button> <div class="faq-answer">Dial *700# or use this website.</div> </div>
+            <div class="faq-item"> <button class="faq-question">How do I check my data balance? <span>+</span></button> <div class="faq-answer">Dial *126#.</div> </div>
+            <div class="faq-item"> <button class="faq-question">Can I rollover unused data? <span>+</span></button> <div class="faq-answer">Yes, unused data automatically rolls over.</div> </div>
+            <div class="faq-item"> <button class="faq-question">Do Night bundles work only at night? <span>+</span></button> <div class="faq-answer">Yes, from 12AM to 5AM only.</div> </div>
+            <div class="faq-item"> <button class="faq-question">Is data transfer possible? <span>+</span></button> <div class="faq-answer">Not yet for non-expiry bundles.</div> </div>
+            <div class="faq-item"> <button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button> <div class="faq-answer">Yes, fully compatible.</div> </div>
+            <div class="faq-item"> <button class="faq-question">What if I travel outside Ghana? <span>+</span></button> <div class="faq-answer">Data works only within Ghana.</div> </div>
+            <div class="faq-item"> <button class="faq-question">Can I buy for someone else? <span>+</span></button> <div class="faq-answer">Yes, you can gift bundles.</div> </div>
+            <div class="faq-item"> <button class="faq-question">How do I contact customer care? <span>+</span></button> <div class="faq-answer">Call 100 (Free from Telecel).</div> </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
+    <footer style="background:#000; padding:80px 5% 40px; color:#aaa;">
+        <div style="max-width:1400px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:40px;">
             <div>
                 <h3 style="color:white;">Telecel Ghana</h3>
-                <p>Ghana's most trusted network.</p>
+                <p>Ghana's most trusted network with non-expiry data.</p>
             </div>
             <div>
                 <h4 style="color:white;">Quick Links</h4>
-                <a href="#bundles">Bundles</a><br>
-                <a href="#benefits">Why Us</a><br>
-                <a href="#ussd">Dial Codes</a>
+                <a href="#bundles" style="color:#aaa;display:block;margin:8px 0;">Bundles</a>
+                <a href="#benefits" style="color:#aaa;display:block;margin:8px 0;">Why Us</a>
+                <a href="#ussd" style="color:#aaa;display:block;margin:8px 0;">Dial Codes</a>
             </div>
             <div>
                 <h4 style="color:white;">Support</h4>
-                <a href="#">Customer Care (100)</a><br>
-                <a href="#">Contact Us</a>
+                <p>Dial <strong>100</strong> (Free)</p>
+                <p>*700# for Bundles</p>
             </div>
         </div>
-        <div style="text-align:center; padding-top:30px; color:#888; border-top:1px solid #333;">
+        <div style="text-align:center; margin-top:60px; padding-top:20px; border-top:1px solid #333;">
             &copy; 2026 Telecel Ghana. All Rights Reserved.
         </div>
     </footer>
 
     <script>
         // Mobile Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
         });
 
         function buyOffer(name, price) {
             window.location.href = `login.html?offer=${encodeURIComponent(name)}&price=${price}`;
         }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
     </script>
 </body>
 </html>
