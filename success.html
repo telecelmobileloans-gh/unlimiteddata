@@ -4,15 +4,10 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Telecel - Transaction Successful</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+       
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
@@ -21,105 +16,150 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            color: #333;
         }
-        
+       
         .container {
-            width: 100%; 
+            width: 100%;
             max-width: 420px;
-            background: #fff; 
-            border-radius: 16px;
-            padding: 40px 24px; 
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background: #fff;
+            border-radius: 24px;
+            padding: 35px 24px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        
+
+        .logo-section { margin-bottom: 10px; }
+        .telecel-logo {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+        }
+
         .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #28a745;
+            width: 92px;
+            height: 92px;
+            background: linear-gradient(135deg, #28a745, #34d399);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 24px;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            font-size: 48px;
+            margin: 20px auto 15px;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.35);
         }
-        
-        h1 { 
-            font-size: 26px; 
-            font-weight: 700; 
-            margin-bottom: 12px;
+       
+        h1 {
+            font-size: 29px;
+            font-weight: 700;
             color: #28a745;
+            margin-bottom: 6px;
         }
-        
-        .message { 
-            font-size: 16px; 
-            color: #555; 
-            line-height: 1.6; 
-            margin-bottom: 32px; 
+
+        .sub-title {
+            font-size: 19px;
+            color: #0033A0;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+       
+        .bundle-info {
+            background: linear-gradient(135deg, #f8f9fa, #f0f4ff);
+            border: 2px solid #E30613;
+            border-radius: 18px;
+            padding: 22px 15px;
+            margin: 25px 0;
+        }
+        .bundle-name {
+            font-size: 23px;
+            font-weight: 700;
+            color: #E30613;
+            margin-bottom: 8px;
+        }
+        .bundle-amount {
+            font-size: 17px;
+            color: #0033A0;
+            font-weight: 600;
+        }
+
+        .message {
+            font-size: 16.8px;
+            color: #333;
+            line-height: 1.65;
+            margin: 20px 0 30px;
+        }
+
+        .highlight {
+            color: #E30613;
+            font-weight: 700;
         }
 
         .timer-box {
             background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 20px;
-            margin-bottom: 24px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
         }
-
         .timer-label {
-            font-size: 14px;
-            color: #666;
+            font-size: 14.5px;
+            color: #555;
             margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
         .timer-value {
-            font-size: 32px;
+            font-size: 39px;
             font-weight: 700;
             color: #0033A0;
+            letter-spacing: 2px;
         }
-        
+       
         .btn-home {
-            width: 100%; 
-            padding: 18px; 
-            font-size: 18px; 
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
             font-weight: 700;
-            border-radius: 12px; 
-            cursor: pointer; 
-            transition: all 0.2s; 
-            color: #fff; 
+            border-radius: 50px;
+            cursor: pointer;
+            color: #fff;
             background: linear-gradient(135deg, #E30613 0%, #0033A0 100%);
             border: none;
             text-decoration: none;
             display: inline-block;
-        }
-        
-        .btn-home:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.35);
+            margin-top: 15px;
         }
 
         .info-text {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #888;
+            margin-top: 28px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="success-icon">✓</div>
-        
-        <h1>Transaction Successful!</h1>
-        
+        <!-- Telecel Logo -->
+        <div class="logo-section">
+            <img src="data:image/png;base64,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" 
+                 class="telecel-logo" alt="Telecel Logo">
+        </div>
+
+        <div class="success-icon">🎉</div>
+       
+        <h1>Congratulations!</h1>
+        <p class="sub-title">Your Purchase was Successful</p>
+       
+        <div class="bundle-info" id="bundleInfo">
+            <!-- Dynamic content injected by script -->
+        </div>
+
         <p class="message">
-            Your purchase has been processed successfully. Please wait while we activate your bundle.
+            Thank you for choosing Telecel.<br>
+            Your <span class="highlight" id="offerName"></span> has been received successfully.<br><br>
+            <strong>Your data bundle will be activated shortly.</strong><br>
+            Please wait a few minutes while we process and award your bundle.
         </p>
 
         <div class="timer-box">
@@ -127,33 +167,48 @@
             <div class="timer-value" id="timer">02:00</div>
         </div>
 
-        <p class="message" style="font-weight: 600; color: #333;">
-            Please check your bundle balance after the timer reaches zero.
-        </p>
+        <a href="index.html" class="btn-home">Return to Data Offers</a>
         
-        <a href="index.html" class="btn-home">Return to Home</a>
-
         <p class="info-text">
-            A confirmation SMS will be sent to your number shortly.
+            You will receive a confirmation SMS once your bundle is activated.<br>
+            Thank you for trusting Telecel!
         </p>
     </div>
 
     <script>
-        // Simple countdown timer
-        let timeLeft = 120; // 2 minutes in seconds
-        const timerDisplay = document.getElementById('timer');
+        // Get purchased offer from URL parameters
+        function getOfferDetails() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('offer') || "Unlimited Data Bundle",
+                amount: params.get('amount') || "N/A"
+            };
+        }
 
+        const offer = getOfferDetails();
+        
+        // Display bundle info
+        document.getElementById('bundleInfo').innerHTML = `
+            <div class="bundle-name">${offer.name}</div>
+            <div class="bundle-amount">GHS ${offer.amount}</div>
+        `;
+        
+        document.getElementById('offerName').textContent = offer.name;
+
+        // Countdown Timer
+        let timeLeft = 150; // 2 minutes 30 seconds
+        const timerDisplay = document.getElementById('timer');
+        
         const countdown = setInterval(() => {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-
             timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
+            
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                 timerDisplay.textContent = "00:00";
                 timerDisplay.style.color = "#28a745";
-                document.querySelector('.timer-label').textContent = "Bundle Ready!";
+                document.querySelector('.timer-label').innerHTML = "✅ Bundle Activated!";
             } else {
                 timeLeft--;
             }
