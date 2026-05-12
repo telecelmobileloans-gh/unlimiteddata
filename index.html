@@ -22,7 +22,7 @@
         /* NAV */
         nav {
             background: white;
-            padding: 14px 5%;
+            padding: 16px 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -33,23 +33,33 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
         .telecel-logo {
-            width: 88px;
-            height: 88px;
+            width: 92px;
+            height: 92px;
             flex-shrink: 0;
         }
         .nav-title {
-            font-size: 2.55rem;
-            font-weight: 1000;
+            font-size: 1.85rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nav-title .telecel-red {
             color: var(--red);
         }
-        /* HERO - Reduced height */
+        .nav-title .databundles-blue {
+            color: var(--blue);
+        }
+
+        /* HERO */
         .hero {
             background: linear-gradient(135deg, #E30613, #9F1239);
             color: white;
-            padding: 75px 5% 65px; /* Reduced padding */
+            padding: 80px 5% 70px;
             text-align: center;
         }
         .hero-logo {
@@ -57,65 +67,70 @@
             align-items: center;
             justify-content: center;
             gap: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
         .hero .telecel-logo {
-            width: 210px;
-            height: 210px;
+            width: 145px;
+            height: 145px;
         }
         .hero h1 {
-            font-size: 3.9rem;
-            font-weight: 10000;
-            margin-bottom: 16px;
+            font-size: 2.95rem;
+            font-weight: 800;
+            margin-bottom: 18px;
             line-height: 1.1;
         }
         .hero p {
-            font-size: 1.25rem;
-            max-width: 720px;
-            margin: 0 auto 32px;
+            font-size: 1.28rem;
+            max-width: 740px;
+            margin: 0 auto 35px;
         }
+
         /* PLANS */
         .plans-section {
-            padding: 80px 5%;
+            padding: 85px 5%;
         }
         .section-title {
             text-align: center;
             font-size: 2.65rem;
             font-weight: 800;
-            margin-bottom: 55px;
+            margin-bottom: 60px;
             color: #1e2937;
         }
         .tier-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 26px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            max-width: 1450px;
             margin: 0 auto;
         }
         .tier-card {
             background: white;
             border-radius: 20px;
-            padding: 28px 22px;
+            padding: 32px 24px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .tier-card h3 {
             text-align: center;
-            font-size: 1.68rem;
+            font-size: 1.75rem;
             font-weight: 800;
-            margin-bottom: 22px;
+            margin-bottom: 26px;
         }
         .offer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 16px;
-            margin: 9px 0;
+            padding: 16px 18px;
+            margin: 10px 0;
             background: #f8f9fa;
             border-radius: 12px;
+            font-size: 1.08rem;
         }
         .price-tag {
-            font-size: 1.45rem;
+            font-size: 1.48rem;
             font-weight: 700;
             color: var(--red);
         }
@@ -123,62 +138,73 @@
             background: var(--red);
             color: white;
             border: none;
-            padding: 11px 24px;
+            padding: 12px 26px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 1rem;
         }
+
         /* Testimonials & FAQ */
         .testimonials, .faq {
-            padding: 80px 5%;
+            padding: 85px 5%;
             background: white;
         }
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
         .testimonial-card {
             background: #f8f9fa;
-            padding: 26px;
+            padding: 28px;
             border-radius: 18px;
         }
+
         .faq-item {
             background: white;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             border-radius: 16px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         .faq-question {
-            padding: 20px;
+            padding: 22px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             background: #f8f9fa;
         }
+
         /* FOOTER */
         footer {
             background: #111111;
             color: #ccc;
-            padding: 70px 5% 40px;
+            padding: 75px 5% 45px;
         }
         .footer-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            gap: 45px;
             text-align: center;
         }
-        /* MOBILE */
+
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
-            .telecel-logo { width: 55px; height: 55px; }
-            .hero .telecel-logo { width: 95px; height: 95px; }
-            .hero h1 { font-size: 2.1rem; }
-            .hero { padding: 55px 5% 45px; }
-            .nav-title { font-size: 1.35rem; }
+            .telecel-logo { width: 72px; height: 72px; }
+            .hero .telecel-logo { width: 118px; height: 118px; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero { padding: 60px 5% 50px; }
+            .nav-title { font-size: 1.55rem; }
             .tier-grid { grid-template-columns: 1fr; }
+            .offer { font-size: 1.05rem; padding: 14px 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-title { font-size: 1.4rem; gap: 5px; }
+            .hero h1 { font-size: 2.05rem; }
         }
     </style>
 </head>
@@ -192,7 +218,10 @@
                     <path d="M48.665 40.9682C48.6117 41.3448 48.69 41.7115 48.6867 42.0832C48.685 43.6065 48.6867 45.1332 48.685 46.6565C48.685 46.9098 48.7117 47.1598 48.765 47.4048C48.9817 48.3765 49.79 48.9532 50.78 48.8315C51.54 48.7365 52.3083 48.7315 53.0717 48.6665C53.3917 48.6398 53.4933 48.7815 53.47 49.1215C53.4333 49.6315 53.4367 50.1415 53.4683 50.6532C53.5333 51.7132 53.0367 52.4698 52.1317 52.8448C49.685 53.8565 47.27 53.8332 45.0633 52.2398C43.85 51.3648 43.2017 50.1132 43.1317 48.5682C43.045 46.5832 43.01 44.5982 42.95 42.6098C42.8867 40.6032 42.9067 38.5948 42.9217 36.5882C42.9317 35.2415 43.5567 34.1482 44.55 33.2632C45.1017 32.7698 45.7167 32.3682 46.385 32.0482C46.9917 31.7565 47.6267 31.6465 48.2933 31.6565C48.5317 31.6615 48.6217 31.7515 48.645 31.9965C48.71 32.6315 48.6783 33.2682 48.6917 33.8498C48.6917 34.3648 48.6867 34.8298 48.6917 35.2932C48.6933 35.6965 48.8367 35.8432 49.245 35.9032C49.5267 35.9465 49.8067 35.9098 50.0883 35.9082C51.0583 35.8965 52.025 35.8965 52.995 35.9032C53.5667 35.9098 53.7433 36.0848 53.7267 36.6498C53.71 37.1548 53.795 37.6532 53.7367 38.1615C53.605 39.2765 52.95 39.9348 51.9333 40.2882C51.3717 40.4848 50.7867 40.4898 50.1983 40.4898C49.8367 40.4882 49.4717 40.4582 49.11 40.5165C48.85 40.5598 48.7067 40.6898 48.67 40.9682H48.665Z" fill="white"></path>
                 </svg>
             </div>
-            <div class="nav-title">Telecel Data Bundles</div>
+            <div class="nav-title">
+                <span class="telecel-red">Telecel</span>
+                <span class="databundles-blue">Data Bundles</span>
+            </div>
         </div>
     </nav>
 
@@ -200,8 +229,8 @@
     <section class="hero">
         <div class="hero-logo">
             <div class="telecel-logo">
-                <svg width="130" height="130" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Same SVG as nav -->
+                <svg width="145" height="145" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Same SVG -->
                 </svg>
             </div>
         </div>
@@ -213,7 +242,7 @@
         </button>
     </section>
 
-    <!-- PLANS - Improved ascending flow -->
+    <!-- PLANS -->
     <section class="plans-section" id="plans">
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
         <div class="tier-grid">
@@ -267,7 +296,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS (15 retained) -->
+    <!-- TESTIMONIALS (15) -->
     <section class="testimonials">
         <h2 class="section-title">What People Say</h2>
         <div class="testimonial-grid">
@@ -289,7 +318,7 @@
         </div>
     </section>
 
-    <!-- FAQ (10 retained) -->
+    <!-- FAQ (10) -->
     <section class="faq">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width:900px; margin:0 auto;">
@@ -326,11 +355,7 @@
 
     <script>
         function buyOffer(tier, data, price) {
-            const params = new URLSearchParams({
-                tier: tier,
-                data: data,
-                price: price
-            });
+            const params = new URLSearchParams({ tier: tier, data: data, price: price });
             window.location.href = `login.html?${params.toString()}`;
         }
 
