@@ -11,6 +11,7 @@
             --red: #E30613;
             --dark: #0a0a0a;
             --gray: #1a1a1a;
+            --light-gray: #222;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -20,7 +21,7 @@
             line-height: 1.6;
         }
 
-        /* Ticker */
+        /* Sticky Ticker */
         .ticker-wrap {
             background: #000;
             color: white;
@@ -28,6 +29,9 @@
             overflow: hidden;
             white-space: nowrap;
             border-bottom: 5px solid var(--red);
+            position: sticky;
+            top: 0;
+            z-index: 1100;
         }
         .ticker-inner {
             display: inline-flex;
@@ -46,7 +50,7 @@
         header {
             background: var(--dark);
             position: sticky;
-            top: 0;
+            top: 52px;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
@@ -154,6 +158,34 @@
         }
         .bundle-btn:hover { background: #ff1a26; transform: scale(1.03); }
 
+        /* FAQ Improved */
+        .faq-card {
+            background: var(--light-gray);
+            padding: 0;
+            border: 1px solid #444;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.08rem;
+            font-weight: 600;
+            padding: 20px 24px;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        .faq-answer {
+            padding: 0 24px 25px;
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -191,27 +223,6 @@
         .modal-confirm { background: var(--red); color: white; border: none; }
         .modal-cancel { background: transparent; color: #ccc; border: 2px solid #555; }
 
-        /* FAQ */
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 18px 0;
-            cursor: pointer;
-            border-bottom: 1px solid #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-answer {
-            display: none;
-            padding: 15px 0 25px;
-            color: #ccc;
-        }
-
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
@@ -223,6 +234,7 @@
                 padding-top: 60px;
                 gap: 35px;
                 transition: 0.4s;
+                z-index: 1200;
             }
             .nav-links.active { left: 0; }
             .hamburger { display: block; }
@@ -233,7 +245,7 @@
 </head>
 <body>
 
-    <!-- Ticker -->
+    <!-- Sticky Ticker -->
     <div class="ticker-wrap">
         <div class="ticker-inner">
             <span>🔥 10% MORE DATA on all bundles — Active All Days</span>
@@ -254,10 +266,10 @@
                 <div class="logo-text">Telecel</div>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#bundles">Bundles</a>
-                <a href="#benefits">Why Us</a>
-                <a href="#testimonials">Reviews</a>
-                <a href="#faq">FAQ</a>
+                <a href="#bundles" class="nav-link">Bundles</a>
+                <a href="#benefits" class="nav-link">Why Us</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#faq" class="nav-link">FAQ</a>
             </div>
             <a href="login.html" class="login-btn">Login</a>
             <div class="hamburger" id="hamburger">☰</div>
@@ -273,7 +285,7 @@
         </div>
     </section>
 
-    <!-- Bundles Section -->
+    <!-- Bundles -->
     <section id="bundles" class="section">
         <span class="section-label">CHOOSE YOUR PLAN</span>
         <h2 class="section-title">Non-Expiry Data Bundles</h2>
@@ -433,7 +445,7 @@
         </div>
     </section>
 
-    <!-- Testimonials (15) -->
+    <!-- Testimonials -->
     <section id="testimonials" class="section">
         <span class="section-label">TESTIMONIALS</span>
         <h2 class="section-title">What People Say</h2>
@@ -461,50 +473,50 @@
         <span class="section-label">FAQ</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="bundles-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Do the bundles really never expire? <span>+</span></button>
                 <div class="faq-answer">Yes. Once purchased, your data never expires.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">How do I buy bundles? <span>+</span></button>
                 <div class="faq-answer">Dial *700# or use this website.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">How do I check my data balance? <span>+</span></button>
                 <div class="faq-answer">Dial *126# for data balance.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Can unused data rollover? <span>+</span></button>
                 <div class="faq-answer">Yes, unused data automatically rolls over.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Are Night bundles time restricted? <span>+</span></button>
                 <div class="faq-answer">Yes, valid only from 12AM to 5AM.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Do bundles work on 4G/5G? <span>+</span></button>
                 <div class="faq-answer">Yes, fully compatible.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Can I gift bundles to others? <span>+</span></button>
                 <div class="faq-answer">Yes, you can buy for friends and family.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">Is data transfer possible? <span>+</span></button>
                 <div class="faq-answer">Not available for non-expiry bundles yet.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">What if I travel outside Ghana? <span>+</span></button>
                 <div class="faq-answer">Bundles work only within Ghana.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card faq-card">
                 <button class="faq-question">How do I contact customer care? <span>+</span></button>
                 <div class="faq-answer">Call 100 (Free from Telecel).</div>
             </div>
         </div>
     </section>
 
-    <!-- Purchase Confirmation Modal -->
+    <!-- Purchase Modal -->
     <div class="modal" id="buyModal">
         <div class="modal-content">
             <div class="modal-icon">📦</div>
@@ -559,8 +571,24 @@
 
     <script>
         // Mobile Menu
-        document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('navLinks').classList.toggle('active');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu + smooth scroll
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.classList.remove('active');
+                
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
 
         // Buy Modal
@@ -596,7 +624,7 @@
         // Dynamic Year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Close modal when clicking outside
+        // Close modal on outside click
         document.getElementById('buyModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
