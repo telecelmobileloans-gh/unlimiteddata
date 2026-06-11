@@ -6,975 +6,361 @@
   <title>Telecel Ghana | World Cup Flex Data</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --red: #D50404;
-      --red-dark: #A30000;
-      --red-light: #FEF0F0;
-      --red-border: #FCCACA;
-      --green: #16A34A;
-      --green-light: #F0FDF4;
+      --red: #E30613;
+      --red-dark: #C10510;
+      --red-soft: #FFF1F2;
       --white: #FFFFFF;
-      --bg: #F5F5F5;
-      --card: #FFFFFF;
-      --dark: #111111;
-      --mid: #444444;
-      --muted: #888888;
-      --border: #E5E5E5;
+      --dark: #0F172A;
+      --mid: #475569;
+      --muted: #94A3B8;
+      --border: #F1F5F9;
+      --green: #16A34A;
       --gold: #D97706;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      background: #F8FAFC;
       color: var(--dark);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font { font-family: 'Outfit', sans-serif; }
+
+    /* ── APP WRAPPER ── */
+    .app-container {
+      max-width: 500px; margin: 0 auto; min-height: 100vh;
+      background: var(--white); box-shadow: 0 0 50px rgba(0,0,0,0.05);
+      display: flex; flex-direction: column; position: relative;
     }
 
     /* ── HEADER ── */
     .header {
-      background: linear-gradient(135deg, #A30000 0%, #D50404 60%, #B50010 100%);
-      padding: 28px 16px 64px;
-      text-align: center;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
+      background: var(--red); padding: 24px; text-align: center; color: var(--white);
     }
-    .header::before {
-      content: '';
-      position: absolute;
-      width: 320px; height: 320px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-      top: -100px; right: -60px;
-      pointer-events: none;
-    }
-    .header::after {
-      content: '';
-      position: absolute;
-      width: 200px; height: 200px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 50%;
-      bottom: -40px; left: -40px;
-      pointer-events: none;
-    }
-    .header-logo {
-      height: 44px;
-      margin-bottom: 14px;
-      filter: brightness(0) invert(1);
-    }
-    .header-title {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.4px;
-      margin-bottom: 4px;
-    }
-    .header-sub {
-      font-size: 13px;
-      opacity: 0.85;
-      font-weight: 500;
-    }
+    .logo-svg { width: 120px; filter: brightness(0) invert(1); margin-bottom: 16px; }
+    .header h2 { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .header p { font-size: 13px; opacity: 0.9; font-weight: 500; }
 
-    /* ── LAYOUT ── */
-    .page {
-      max-width: 600px;
-      margin: -40px auto 48px;
-      padding: 0 15px;
-    }
+    /* ── MAIN CONTENT ── */
+    .main-body { padding: 24px; flex: 1; }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-      border: 1px solid var(--border);
+    .eligibility-banner {
+      background: var(--red-soft); border: 1.5px solid #FECACA;
+      border-radius: 20px; padding: 16px; margin-bottom: 24px;
+      display: flex; gap: 12px; align-items: flex-start;
     }
+    .eb-icon { font-size: 20px; }
+    .eb-body h4 { font-size: 13px; font-weight: 800; color: var(--red); text-transform: uppercase; margin-bottom: 4px; }
+    .eb-body p { font-size: 12px; color: #7F1D1D; line-height: 1.5; font-weight: 500; }
 
-    /* ── ELIGIBILITY BANNER ── */
-    .banner {
-      background: var(--red-light);
-      border: 1px solid var(--red-border);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 16px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
+    .hero-card { text-align: center; margin-bottom: 32px; padding: 10px 0; }
+    .wc-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #FEF9C3; color: var(--gold); border: 1px solid #FDE68A;
+      padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 800;
+      text-transform: uppercase; margin-bottom: 16px;
     }
-    .banner-icon {
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .banner-body { flex: 1; }
-    .banner-title {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--red);
-      margin-bottom: 4px;
-    }
-    .banner-text {
-      font-size: 12px;
-      color: #7f1d1d;
-      line-height: 1.55;
-      font-weight: 500;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 6px 0 4px;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #FEF9C3;
-      color: var(--gold);
-      border: 1px solid #FDE68A;
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-    }
-    .hero h1 {
-      font-size: clamp(24px, 6vw, 30px);
-      font-weight: 900;
-      letter-spacing: -0.6px;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .hero p {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 340px;
-      margin: 0 auto;
-      line-height: 1.55;
-    }
+    .hero-card h1 { font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; letter-spacing: -0.04em; }
+    .hero-card p { font-size: 15px; color: var(--mid); font-weight: 500; }
 
     /* ── CALCULATOR ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .calc-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 24px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      margin-bottom: 24px;
     }
-    .field-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .field-name {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-    .field-val {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--red);
-      letter-spacing: -0.5px;
-    }
-    .field-val.static {
-      font-size: 14px;
-      background: #F0FDF4;
-      color: var(--green);
-      border: 1px solid #BBF7D0;
-      padding: 4px 10px;
-      border-radius: 50px;
-      font-weight: 700;
-    }
+    .calc-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+    .calc-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .calc-val { font-size: 32px; font-weight: 900; color: var(--red); font-family: 'Outfit'; }
 
-    /* RANGE */
     input[type=range] {
-      width: 100%;
-      height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      margin-bottom: 14px;
-      cursor: pointer;
+      width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px;
+      outline: none; -webkit-appearance: none; appearance: none; cursor: pointer;
     }
     input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px; height: 22px;
-      background: var(--red);
-      border-radius: 50%;
-      border: 3px solid var(--white);
-      box-shadow: 0 2px 8px rgba(213,4,4,0.3);
-      cursor: pointer;
-    }
-    input[type=range]::-moz-range-thumb {
-      width: 22px; height: 22px;
-      background: var(--red);
-      border-radius: 50%;
-      border: 3px solid var(--white);
-      cursor: pointer;
+      -webkit-appearance: none; width: 28px; height: 28px; background: var(--red);
+      border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 10px 15px -3px rgba(227, 6, 19, 0.3);
     }
 
-    /* QUICK BUTTONS */
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 22px;
-    }
+    .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
     .quick-btn {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      padding: 10px 4px;
-      border-radius: 9px;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      color: var(--dark);
-      transition: all 0.2s;
-      font-family: 'Inter', sans-serif;
+      background: var(--white); border: 1.5px solid #E2E8F0; padding: 12px 4px;
+      border-radius: 14px; font-size: 12px; font-weight: 800; color: var(--dark);
+      cursor: pointer; transition: 0.2s;
     }
-    .quick-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
     .quick-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
 
-    /* SELECT */
-    .field-select {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      background: #FAFAFA;
-      color: var(--dark);
-      outline: none;
-      cursor: pointer;
-      -webkit-appearance: none;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
+    .validity-select {
+      width: 100%; padding: 16px; background: #F8FAFC; border: 2.2px solid #E2E8F0;
+      border-radius: 16px; font-size: 15px; font-weight: 700; color: var(--dark);
+      margin-top: 16px; outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
     }
-    .field-select:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(213,4,4,0.08); }
 
-    /* ── BREAKDOWN ── */
-    .breakdown {
-      background: var(--red-light);
-      border: 1px solid var(--red-border);
-      border-radius: 14px;
-      padding: 18px;
-      margin-top: 4px;
+    /* ── SUMMARY ── */
+    .summary-box {
+      background: var(--red-soft); border: 1.5px solid #FECACA; border-radius: 24px; padding: 24px; margin-bottom: 24px;
     }
-    .breakdown-title {
-      font-size: 10px;
-      font-weight: 900;
-      color: var(--red);
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      margin-bottom: 12px;
+    .sum-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; font-weight: 600; color: var(--mid); }
+    .sum-row.bonus { color: var(--green); font-weight: 800; }
+    .sum-row.total {
+      border-top: 1px dashed #FECACA; margin-top: 12px; padding-top: 16px;
+      font-size: 18px; font-weight: 900; color: var(--dark);
     }
-    .breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--mid);
-      border-bottom: 1px solid rgba(213,4,4,0.1);
-    }
-    .breakdown-row:last-child { border-bottom: none; }
-    .breakdown-row.bonus { color: var(--green); }
-    .breakdown-row.total {
-      color: var(--red);
-      font-size: 16px;
-      font-weight: 900;
-      border-top: 1.5px solid var(--red-border);
-      padding-top: 12px;
-      margin-top: 4px;
-    }
-    .breakdown-row.price {
-      color: var(--dark);
-      font-size: 15px;
-      font-weight: 900;
-      border-top: 1px solid rgba(213,4,4,0.12);
-    }
-    .breakdown-val { font-weight: 800; }
+    .sum-price { font-size: 28px; color: var(--red); font-family: 'Outfit'; }
 
     /* ── ACTIONS ── */
     .btn-primary {
-      width: 100%;
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      padding: 16px;
-      border-radius: 12px;
-      font-weight: 900;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 18px;
-      letter-spacing: 0.3px;
-      font-family: 'Inter', sans-serif;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 16px rgba(213,4,4,0.22);
+      width: 100%; background: var(--red); color: var(--white); border: none;
+      padding: 20px; border-radius: 20px; font-size: 16px; font-weight: 900;
+      cursor: pointer; transition: 0.3s; box-shadow: 0 15px 30px rgba(227, 6, 19, 0.3);
+      text-transform: uppercase; letter-spacing: 0.05em;
     }
-    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
-
-    .btn-outline {
-      width: 100%;
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      color: var(--mid);
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      margin-top: 10px;
-      font-family: 'Inter', sans-serif;
-      transition: background 0.2s, border-color 0.2s;
+    .btn-ghost {
+      width: 100%; background: transparent; color: var(--mid); border: 1.5px solid #E2E8F0;
+      padding: 16px; border-radius: 20px; font-size: 14px; font-weight: 700;
+      cursor: pointer; margin-top: 12px;
     }
-    .btn-outline:hover { background: #F5F5F5; border-color: #CCC; }
 
     /* ── FEATURES ── */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .feature {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 10px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    .feature-icon {
-      width: 36px; height: 36px;
-      background: var(--red-light);
-      border-radius: 10px;
-      margin: 0 auto 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 17px;
-    }
-    .feature-label {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--dark);
-    }
-    .feature-sub {
-      font-size: 10px;
-      color: var(--muted);
-      font-weight: 500;
-      margin-top: 2px;
-    }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
+    .f-card { background: var(--white); border: 1px solid #F1F5F9; border-radius: 16px; padding: 16px 8px; text-align: center; }
+    .f-icon { font-size: 24px; display: block; margin-bottom: 8px; }
+    .f-label { font-size: 11px; font-weight: 800; color: var(--dark); text-transform: uppercase; }
 
     /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 28px 0 40px;
-      font-size: 11.5px;
-      color: var(--muted);
-      font-weight: 500;
-      line-height: 1.7;
-    }
-    footer strong { color: var(--dark); }
+    .footer { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .footer strong { color: var(--dark); }
 
-    /* ── MODAL OVERLAY ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,10,0.75);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      z-index: 2000;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 0;
+    /* ── MODAL ── */
+    .overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px); z-index: 1000; align-items: flex-end; justify-content: center;
     }
-    .modal-overlay.active { display: flex; }
+    .overlay.active { display: flex; }
+    .sheet {
+      background: var(--white); width: 100%; max-width: 500px;
+      border-radius: 32px 32px 0 0; padding: 32px 24px 48px;
+      max-height: 90vh; overflow-y: auto;
+      animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-    .modal-sheet {
-      background: var(--white);
-      border-radius: 22px 22px 0 0;
-      width: 100%;
-      max-width: 600px;
-      max-height: 92vh;
-      overflow-y: auto;
-      animation: sheetUp 0.34s cubic-bezier(0.16,1,0.3,1);
-    }
-    @keyframes sheetUp {
-      from { transform: translateY(80px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
-    }
-    .modal-handle {
-      width: 38px; height: 4px;
-      background: #DDD;
-      border-radius: 2px;
-      margin: 12px auto 0;
-    }
-    .modal-header {
-      padding: 16px 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-title {
-      font-size: 17px;
-      font-weight: 900;
-      color: var(--dark);
-      letter-spacing: -0.3px;
-    }
-    .modal-close-btn {
-      width: 30px; height: 30px;
-      background: #F0F0F0;
-      border: none;
-      border-radius: 50%;
-      font-size: 17px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--mid);
-      font-family: 'Inter', sans-serif;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-    .modal-close-btn:hover { background: #E0E0E0; }
-    .modal-body { padding: 16px 20px 28px; }
+    .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .sheet-title { font-size: 20px; font-weight: 900; }
+    .close-btn { width: 32px; height: 32px; background: #F1F5F9; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; }
 
-    /* Step forms */
-    .step-label {
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 4px;
-    }
-    .step-desc {
-      font-size: 13.5px;
-      color: var(--mid);
-      margin-bottom: 18px;
-      line-height: 1.55;
-    }
-    .form-field { margin-bottom: 13px; }
-    .form-field label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 5px;
-    }
-    .form-input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      color: var(--dark);
-      outline: none;
-      background: var(--white);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(213,4,4,0.08); }
-    .form-input::placeholder { color: #BCBCBC; font-weight: 500; }
+    /* ── LEARN MORE CONTENT ── */
+    .info-sec { margin-bottom: 32px; }
+    .info-title { font-size: 13px; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .info-title::after { content: ''; flex: 1; height: 1px; background: var(--red-soft); }
 
-    /* Summary box */
-    .summary-box {
-      background: #FAFAFA;
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      margin: 14px 0;
-    }
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 7px 0;
-      font-size: 13px;
-      border-bottom: 1px solid var(--border);
-    }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-row span:first-child { color: var(--muted); font-weight: 600; }
-    .summary-row span:last-child { color: var(--dark); font-weight: 800; }
-    .summary-row .highlight { color: var(--red); font-size: 15px; }
+    .step-item { display: flex; gap: 16px; margin-bottom: 20px; }
+    .step-num { width: 32px; height: 32px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+    .step-body h5 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .step-body p { font-size: 13px; color: var(--mid); line-height: 1.5; }
 
-    /* Success state */
-    .success-wrap { text-align: center; padding: 10px 0 6px; }
-    .success-circle {
-      width: 64px; height: 64px;
-      background: linear-gradient(135deg, var(--red), var(--red-dark));
-      border-radius: 18px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-      font-size: 30px;
-      box-shadow: 0 8px 24px rgba(213,4,4,0.22);
-    }
-    .success-title { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
-    .success-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+    .faq-item { border-bottom: 1px solid #F1F5F9; padding: 16px 0; cursor: pointer; }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; color: var(--dark); }
+    .faq-a { font-size: 13px; color: var(--mid); margin-top: 8px; display: none; line-height: 1.5; }
+    .faq-item.active .faq-a { display: block; }
+    .faq-item.active .faq-q::after { content: '−'; }
+    .faq-q::after { content: '+'; font-size: 18px; color: var(--muted); }
 
-    .congrats-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--green-light);
-      border: 1px solid #BBF7D0;
-      color: var(--green);
-      padding: 8px 16px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 800;
-      margin: 10px 0 16px;
-    }
+    /* ── FORM ── */
+    .input-group { margin-bottom: 20px; }
+    .label-xs { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block; }
+    .input-field { width: 100%; padding: 16px; background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 16px; font-size: 15px; font-weight: 600; outline: none; transition: 0.2s; }
+    .input-field:focus { border-color: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
 
-    /* Modal two-btn row */
-    .modal-actions { display: grid; gap: 9px; margin-top: 16px; }
-    .modal-btn-primary {
-      width: 100%;
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      padding: 14px;
-      border-radius: 50px;
-      font-weight: 900;
-      font-size: 14px;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: background 0.2s;
-      box-shadow: 0 4px 14px rgba(213,4,4,0.2);
-    }
-    .modal-btn-primary:hover { background: var(--red-dark); }
-    .modal-btn-ghost {
-      width: 100%;
-      background: #F4F4F4;
-      color: var(--mid);
-      border: none;
-      padding: 12px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: background 0.2s;
-    }
-    .modal-btn-ghost:hover { background: #EAEAEA; }
-
-    /* Learn More */
-    .learn-section { margin-bottom: 22px; }
-    .learn-section-title {
-      font-size: 13px;
-      font-weight: 900;
-      color: var(--red);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--red-border);
-    }
-    .learn-list { list-style: none; }
-    .learn-list li {
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-      font-size: 13.5px;
-      color: var(--mid);
-      font-weight: 500;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-    .learn-list li .li-dot {
-      width: 6px; height: 6px;
-      background: var(--red);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-    .faq-item {
-      background: #F9F9F9;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-bottom: 8px;
-    }
-    .faq-q { font-size: 13px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-    .faq-a { font-size: 12.5px; color: var(--muted); font-weight: 500; line-height: 1.5; }
-
-    .divider { height: 1px; background: var(--border); margin: 18px 0; }
+    .prog-bar { display: flex; gap: 6px; margin-bottom: 24px; }
+    .p-seg { flex: 1; height: 4px; background: #E2E8F0; border-radius: 2px; overflow: hidden; }
+    .p-fill { height: 100%; background: var(--red); width: 0; transition: 0.4s; }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
-    <img src="https://telecelgroup.com/wp-content/uploads/2026/05/TGS-logooo-updated-copy.png"
-         alt="Telecel Ghana" class="header-logo"
-         onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block'">
-    <div id="fallback-logo" style="display:none; font-size:22px; font-weight:900; letter-spacing:-0.5px; margin-bottom:10px;">🔴 Telecel Ghana</div>
-    <div class="header-title">World Cup Flex Data</div>
-    <div class="header-sub">Stream every goal with Ghana's fastest non-expiry bundles</div>
+  <div class="app-container">
+    <header class="header">
+      <svg class="logo-svg" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M45.5,25.5c-11,0-20,9-20,20s9,20,20,20s20-9,20-20S56.5,25.5,45.5,25.5z M45.5,58.5c-7.2,0-13-5.8-13-13s5.8-13,13-13s13,5.8,13,13S52.7,58.5,45.5,58.5z" fill="white"/>
+        <text x="80" y="65" font-family="Outfit" font-size="55" font-weight="900" fill="white">telecel</text>
+      </svg>
+      <h2>World Cup Flex Data</h2>
+      <p>Stream every goal with Ghana's fastest non-expiry bundles</p>
+    </header>
+
+    <main class="main-body">
+      <div class="eligibility-banner">
+        <span class="eb-icon">✅</span>
+        <div class="eb-body">
+          <h4>Telecel Subscribers Only</h4>
+          <p>Only active Telecel Ghana subscribers qualify for the 2× World Cup Flex Bonus. The longer you have been with Telecel, the higher your bonus eligibility.</p>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="wc-pill">🏆 World Cup 2026 Offer</div>
+        <h1>Stream Every Goal ⚽</h1>
+        <p>Buy once, use anytime. Double your data instantly with every purchase.</p>
+      </div>
+
+      <section class="calc-card">
+        <div class="calc-header">
+          <span class="calc-label">Data Volume</span>
+          <span class="calc-val" id="valG">10 GB</span>
+        </div>
+        <input type="range" id="slider" min="0" max="7" step="1" value="0" oninput="sync()">
+        <div class="quick-grid">
+          <button class="quick-btn active" onclick="set(0)">10GB</button>
+          <button class="quick-btn" onclick="set(3)">30GB</button>
+          <button class="quick-btn" onclick="set(5)">100GB</button>
+          <button class="quick-btn" onclick="set(7)">250GB</button>
+        </div>
+
+        <span class="calc-label" style="margin-top:32px; display:block">Validity Period</span>
+        <select class="validity-select" id="vSel" onchange="sync()">
+          <option value="flex">Flexi Non-Expiry — Recommended ✓</option>
+          <option value="midnight">Until Midnight Pack</option>
+          <option value="24h">24 Hours Pack</option>
+          <option value="7d">7 Days Pack</option>
+          <option value="30d">30-Day Flexi Pack</option>
+        </select>
+
+        <div class="summary-box" style="margin-top:24px">
+          <div class="sum-row"><span>Standard Data</span><span id="resS">10 GB</span></div>
+          <div class="sum-row bonus"><span>🎁 World Cup Bonus (100%)</span><span id="resB">+10 GB</span></div>
+          <div class="sum-row total"><span>Total Data You Get</span><strong id="resT">20 GB</strong></div>
+          <div class="sum-row" style="margin-top:12px; padding-top:12px; border-top:1px dashed #FECACA">
+            <span class="calc-label">Total Price</span>
+            <span class="sum-price" id="resP">GHS 40.00</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="openGo(1)">Activate Now 🚀</button>
+        <button class="btn-ghost" onclick="openInfo()">Learn More</button>
+      </section>
+
+      <div class="features-grid">
+        <div class="f-card"><span class="f-icon">⚡</span><span class="f-label">Instant</span></div>
+        <div class="f-card"><span class="f-icon">♾️</span><span class="f-label">Non-Expiry</span></div>
+        <div class="f-card"><span class="f-icon">📡</span><span class="f-label">5G Ready</span></div>
+      </div>
+
+      <footer class="footer">
+        <strong>© 2026 Telecel Ghana Limited</strong><br>
+        Licensed Mobile Financial Services · Regulated by NCA Ghana<br>
+        Powered by Telecel Group
+      </footer>
+    </main>
   </div>
 
-  <!-- PAGE -->
-  <div class="page">
-
-    <!-- ELIGIBILITY BANNER -->
-    <div class="banner">
-      <div class="banner-icon">✅</div>
-      <div class="banner-body">
-        <div class="banner-title">Telecel Subscribers Only</div>
-        <div class="banner-text">
-          Only active Telecel Ghana subscribers qualify for the 2× World Cup Flex Bonus.
-          The longer you have been with Telecel, the higher your bonus eligibility.
-        </div>
-      </div>
-    </div>
-
-    <!-- HERO CARD -->
-    <div class="card hero">
-      <div class="hero-badge">🏆 World Cup 2026 Offer</div>
-      <h1>Stream Every Goal ⚽</h1>
-      <p>Buy once, use anytime. Double your data instantly with every purchase.</p>
-    </div>
-
-    <!-- CALCULATOR CARD -->
-    <div class="card">
-      <div class="section-label">📊 Data Bundle Calculator</div>
-
-      <div class="field-row">
-        <span class="field-name">Data Volume</span>
-        <span class="field-val" id="valData">10 GB</span>
-      </div>
-      <input type="range" id="rangeData" min="0" max="7" step="1" value="0" oninput="setVal(this.value)">
-
-      <div class="quick-grid">
-        <button class="quick-btn active" onclick="setVal(0)">10 GB</button>
-        <button class="quick-btn" onclick="setVal(3)">30 GB</button>
-        <button class="quick-btn" onclick="setVal(5)">100 GB</button>
-        <button class="quick-btn" onclick="setVal(7)">250 GB</button>
-      </div>
-
-      <div class="field-row" style="margin-bottom:8px;">
-        <span class="field-name">Validity Period</span>
-        <span class="field-val static">Non-Expiry</span>
-      </div>
-      <select class="field-select" id="validity">
-        <option value="non-expiry">Flexi Non-Expiry — Recommended ✓</option>
-        <option value="30day">30-Day Flexi Pack</option>
-      </select>
-
-      <!-- BREAKDOWN -->
-      <div class="breakdown">
-        <div class="breakdown-title">Bonus Breakdown</div>
-        <div class="breakdown-row">
-          <span>Standard Data</span>
-          <span class="breakdown-val" id="resStd">10 GB</span>
-        </div>
-        <div class="breakdown-row bonus">
-          <span>🎁 World Cup Bonus (100%)</span>
-          <span class="breakdown-val" id="resBonus">+ 10 GB</span>
-        </div>
-        <div class="breakdown-row total">
-          <span>Total Data You Get</span>
-          <span id="resTotal">20 GB</span>
-        </div>
-        <div class="breakdown-row price" style="margin-top:8px; padding-top:10px; border-top:1px solid rgba(213,4,4,0.12);">
-          <span style="font-size:13px; font-weight:700; color:var(--muted);">Total Price</span>
-          <span id="resPrice" style="font-size:20px; font-weight:900; color:var(--dark);">GHS 40.00</span>
-        </div>
-      </div>
-
-      <button class="btn-primary" onclick="openStep1()">Activate Now 🚀</button>
-      <button class="btn-outline" onclick="openLearnMore()">Learn More</button>
-    </div>
-
-    <!-- FEATURES -->
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-label">Instant</div>
-        <div class="feature-sub">Live in seconds</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">♾️</div>
-        <div class="feature-label">Non-Expiry</div>
-        <div class="feature-sub">Use anytime</div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📡</div>
-        <div class="feature-label">4G / 5G</div>
-        <div class="feature-sub">HD streaming</div>
-      </div>
-    </div>
-
-    <footer>
-      <strong>© 2026 Telecel Ghana Limited</strong><br>
-      Licensed Mobile Financial Services · Regulated by NCA Ghana<br>
-      Powered by Telecel
-    </footer>
-
-  </div><!-- /page -->
-
-  <!-- ── MODAL ── -->
-  <div class="modal-overlay" id="modal">
-    <div class="modal-sheet">
-      <div class="modal-handle"></div>
-      <div class="modal-header">
-        <div class="modal-title" id="modalTitle">Activate Bundle</div>
-        <button class="modal-close-btn" onclick="closeModal()">×</button>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
+  <div class="overlay" id="overlay">
+    <div class="sheet" id="sheet"></div>
   </div>
 
   <script>
-    const tiers = [
-      { g: 10,  p: 40  },
-      { g: 15,  p: 45  },
-      { g: 20,  p: 78  },
-      { g: 30,  p: 115 },
-      { g: 50,  p: 150 },
-      { g: 100, p: 250 },
-      { g: 150, p: 350 },
-      { g: 250, p: 550 }
-    ];
+    const tiers = [{"g":10,"p":40},{"g":15,"p":45},{"g":20,"p":78},{"g":30,"p":115},{"g":50,"p":150},{"g":100,"p":250},{"g":150,"p":350},{"g":250,"p":550}];
+    const mults = { 'midnight': 0.6, '24h': 0.7, '7d': 0.8, '30d': 0.9, 'flex': 1.0 };
+    let curT = 0;
 
-    const presetIdxMap = { 0: 0, 3: 3, 5: 5, 7: 7 };
-    let current = tiers[0];
-
-    function setVal(idx) {
-      idx = parseInt(idx);
-      current = tiers[idx];
-      document.getElementById('rangeData').value = idx;
-      document.getElementById('valData').textContent = current.g + ' GB';
-      document.getElementById('resStd').textContent = current.g + ' GB';
-      document.getElementById('resBonus').textContent = '+ ' + current.g + ' GB';
-      document.getElementById('resTotal').textContent = (current.g * 2) + ' GB';
-      document.getElementById('resPrice').textContent = 'GHS ' + current.p + '.00';
-
-      // Update quick buttons
-      const presets = [0, 3, 5, 7];
-      document.querySelectorAll('.quick-btn').forEach((btn, i) => {
-        btn.classList.toggle('active', presets[i] === idx);
-      });
+    function sync() {
+      curT = parseInt(document.getElementById('slider').value);
+      const t = tiers[curT], v = document.getElementById('vSel').value;
+      const p = Math.round(t.p * mults[v]);
+      document.getElementById('valG').innerText = t.g + ' GB';
+      document.getElementById('resS').innerText = t.g + ' GB';
+      document.getElementById('resB').innerText = '+' + t.g + ' GB';
+      document.getElementById('resT').innerText = (t.g * 2) + ' GB';
+      document.getElementById('resP').innerText = 'GHS ' + p + '.00';
+      document.querySelectorAll('.quick-btn').forEach((b, i) => b.classList.toggle('active', [0,3,5,7][i] === curT));
     }
 
-    function openModal(title) {
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
+    function set(i) { document.getElementById('slider').value = i; sync(); }
+
+    function openGo(s) {
+      const o = document.getElementById('overlay'), sh = document.getElementById('sheet');
+      o.classList.add('active');
+      const t = tiers[curT], v = document.getElementById('vSel').value, p = Math.round(t.p * mults[v]);
+
+      if(s === 1) {
+        sh.innerHTML = `
+          <div class="sheet-header"><h2 class="sheet-title">Activation</h2><div class="close-btn" onclick="cls()">×</div></div>
+          <div class="prog-bar"><div class="p-seg"><div class="p-fill" style="width:33%"></div></div><div class="p-seg"></div><div class="p-seg"></div></div>
+          <p style="color:var(--mid); font-size:14px; margin-bottom:24px">Enter your Telecel number to receive your <strong style="color:var(--red)">${t.g * 2} GB</strong> instantly.</p>
+          <div class="input-group"><label class="label-xs">Telecel Number</label><input type="tel" class="input-field" id="ph" placeholder="050 XXX XXXX" maxlength="10"></div>
+          <div class="input-group"><label class="label-xs">Full Name</label><input type="text" class="input-field" id="nm" placeholder="Enter full name"></div>
+          <button class="btn-primary" onclick="openGo(2)">Continue →</button>
+        `;
+      } else if(s === 2) {
+        const ph = document.getElementById('ph').value, nm = document.getElementById('nm').value;
+        if(!ph || ph.length < 10 || !nm) { alert('Please fill all details'); return; }
+        sh.innerHTML = `
+          <div class="sheet-header"><h2 class="sheet-title">Review</h2><div class="close-btn" onclick="cls()">×</div></div>
+          <div class="prog-bar"><div class="p-seg"><div class="p-fill" style="width:100%"></div></div><div class="p-seg"><div class="p-fill" style="width:66%"></div></div><div class="p-seg"></div></div>
+          <div class="summary-box" style="background:#F8FAFC; border-color:#E2E8F0; margin-bottom:24px">
+            <div class="sum-row"><span>Account</span><strong>${nm}</strong></div>
+            <div class="sum-row"><span>Number</span><strong>${ph}</strong></div>
+            <div class="sum-row"><span>Bundle</span><strong>${t.g * 2} GB</strong></div>
+            <div class="sum-row"><span>Total Due</span><strong style="color:var(--red)">GHS ${p}.00</strong></div>
+          </div>
+          <button class="btn-primary" onclick="openGo(3)">Confirm & Proceed →</button>
+          <button class="btn-ghost" onclick="openGo(1)">Back to Edit</button>
+        `;
+      } else if(s === 3) {
+        sh.innerHTML = `
+          <div style="text-align:center; padding:20px 0">
+            <div style="font-size:64px; margin-bottom:24px">🏆</div>
+            <h2 style="font-size:24px; margin-bottom:12px">Order Reserved!</h2>
+            <p style="color:var(--mid); margin-bottom:32px">Your bundle is ready. Complete the final verification to activate.</p>
+            <button class="btn-primary" onclick="window.location.href='login.html'">Complete Activation</button>
+          </div>
+        `;
+      }
     }
 
-    function closeModal() {
-      document.getElementById('modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    // Close on overlay click
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-
-    function openStep1() {
-      openModal('Activate Bundle');
-      document.getElementById('modalBody').innerHTML = `
-        <p class="step-label">Step 1 of 2 — Your Details</p>
-        <p class="step-desc">Enter your Telecel number to receive your <strong style="color:var(--red);">${current.g * 2} GB World Cup Bundle</strong> instantly.</p>
-
-        <div class="summary-box">
-          <div class="summary-row"><span>Bundle</span><span>${current.g * 2} GB (${current.g}GB + ${current.g}GB Bonus)</span></div>
-          <div class="summary-row"><span>Validity</span><span>Non-Expiry</span></div>
-          <div class="summary-row"><span>Price</span><span class="highlight">GHS ${current.p}.00</span></div>
+    function openInfo() {
+      const o = document.getElementById('overlay'), sh = document.getElementById('sheet');
+      o.classList.add('active');
+      sh.innerHTML = `
+        <div class="sheet-header"><h2 class="sheet-title">Info Centre</h2><div class="close-btn" onclick="cls()">×</div></div>
+        
+        <div class="info-sec">
+          <div class="info-title">📝 How to Apply</div>
+          <div class="step-item"><div class="step-num">1</div><div class="step-body"><h5>Calculate</h5><p>Choose your desired data volume and validity period.</p></div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-content"><h5>Submit</h5><p>Fill in your basic information and Telecel phone number.</p></div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-content"><h5>Verify</h5><p>Complete verification and receive data instantly on your line.</p></div></div>
         </div>
 
-        <div class="form-field">
-          <label>Telecel Phone Number</label>
-          <input class="form-input" type="tel" id="ph" placeholder="050 XXX XXXX" maxlength="10">
-        </div>
-        <div class="form-field">
-          <label>Full Name</label>
-          <input class="form-input" type="text" id="nm" placeholder="Enter your full name">
+        <div class="info-sec">
+          <div class="info-title">🌟 Key Benefits</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+            <div class="f-card"><h5>Double Data</h5><p style="font-size:11px; color:var(--mid)">100% bonus instantly.</p></div>
+            <div class="f-card"><h5>Secure</h5><p style="font-size:11px; color:var(--mid)">100% Protected.</p></div>
+          </div>
         </div>
 
-        <div class="modal-actions">
-          <button class="modal-btn-primary" onclick="openStep2()">Continue →</button>
-          <button class="modal-btn-ghost" onclick="closeModal()">Cancel</button>
+        <div class="info-sec">
+          <div class="info-title">❓ FAQ</div>
+          <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-q">Who can apply?</div><div class="faq-a">Active Telecel Ghana subscribers only.</div></div>
+          <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-q">Does it expire?</div><div class="faq-a">Non-expiry packs never expire as long as your line is active.</div></div>
         </div>
+
+        <button class="btn-primary" onclick="cls()">Got It</button>
       `;
     }
 
-    function openStep2() {
-      const ph = document.getElementById('ph').value.trim();
-      const nm = document.getElementById('nm').value.trim();
-      if (!ph || ph.length < 10) { alert('Please enter a valid 10-digit Telecel number.'); return; }
-      if (!nm) { alert('Please enter your full name.'); return; }
-
-      openModal('Confirm Your Order');
-      document.getElementById('modalBody').innerHTML = `
-        <p class="step-label">Step 2 of 2 — Review & Confirm</p>
-        <p class="step-desc">Please review your order below before proceeding to secure payment verification.</p>
-
-        <div class="summary-box">
-          <div class="summary-row"><span>Name</span><span>${nm}</span></div>
-          <div class="summary-row"><span>Telecel Number</span><span>${ph}</span></div>
-          <div class="summary-row"><span>Bundle</span><span>${current.g * 2} GB</span></div>
-          <div class="summary-row"><span>Bonus Included</span><span style="color:var(--green); font-weight:800;">✓ ${current.g} GB Free</span></div>
-          <div class="summary-row"><span>Validity</span><span>Non-Expiry</span></div>
-          <div class="summary-row"><span>Total to Pay</span><span class="highlight">GHS ${current.p}.00</span></div>
-        </div>
-
-        <div style="background:#FEF9C3; border:1px solid #FDE68A; border-radius:10px; padding:11px 14px; font-size:12.5px; color:#78350F; font-weight:600; margin-bottom:4px;">
-          🔒 You will verify your Telecel number securely on the next step before payment is processed.
-        </div>
-
-        <div class="modal-actions">
-          <button class="modal-btn-primary" onclick="finalRedirect('${nm}','${ph}')">Confirm & Proceed to Payment →</button>
-          <button class="modal-btn-ghost" onclick="openStep1()">← Back</button>
-        </div>
-      `;
-    }
-
-    function finalRedirect(name, phone) {
-      localStorage.setItem('telecelOrder', JSON.stringify({
-        name, phone,
-        data: (current.g * 2) + 'GB',
-        bonus: current.g + 'GB',
-        price: 'GHS ' + current.p
-      }));
-
-      // Show success popup before redirect
-      openModal('Order Submitted! 🎉');
-      document.getElementById('modalBody').innerHTML = `
-        <div class="success-wrap">
-          <div class="success-circle">🏆</div>
-          <div class="success-title">You're Almost Set!</div>
-          <div class="congrats-badge">🎉 ${current.g * 2} GB Bundle Reserved</div>
-          <div class="success-sub">
-            Great news, <strong>${name}</strong>! Your order for the
-            <strong>${current.g * 2} GB World Cup Flex Bundle</strong> has been submitted.
-            Complete the quick verification on the next page to activate your data instantly.
-          </div>
-        </div>
-
-        <div class="summary-box">
-          <div class="summary-row"><span>Telecel Number</span><span>${phone}</span></div>
-          <div class="summary-row"><span>Total Data</span><span style="color:var(--red); font-weight:900;">${current.g * 2} GB</span></div>
-          <div class="summary-row"><span>World Cup Bonus</span><span style="color:var(--green); font-weight:800;">+ ${current.g} GB FREE</span></div>
-          <div class="summary-row"><span>Amount</span><span style="font-weight:900;">GHS ${current.p}.00</span></div>
-        </div>
-
-        <div class="modal-actions">
-          <button class="modal-btn-primary" onclick="window.location.href='login.html'">Complete Verification →</button>
-          <button class="modal-btn-ghost" onclick="closeModal()">Close</button>
-        </div>
-      `;
-    }
-
-    function openLearnMore() {
-      openModal('Information Centre');
-      document.getElementById('modalBody').innerHTML = `
-        <div class="learn-section">
-          <div class="learn-section-title">🚀 How to Activate</div>
-          <ul class="learn-list">
-            <li><span class="li-dot"></span>Select your preferred data volume using the slider or quick buttons.</li>
-            <li><span class="li-dot"></span>Tap "Activate Now" and enter your Telecel number and name.</li>
-            <li><span class="li-dot"></span>Review your order and confirm your purchase details.</li>
-            <li><span class="li-dot"></span>Complete secure verification — your 2× bonus is credited instantly.</li>
-          </ul>
-        </div>
-
-        <div class="learn-section">
-          <div class="learn-section-title">💎 Why Flex Data?</div>
-          <ul class="learn-list">
-            <li><span class="li-dot"></span><strong>Non-Expiry:</strong> Your data never expires. Use it at your own pace.</li>
-            <li><span class="li-dot"></span><strong>2× Bonus:</strong> Get double data on every World Cup pack purchased.</li>
-            <li><span class="li-dot"></span><strong>4G/5G Speed:</strong> Optimised for seamless HD match streaming.</li>
-            <li><span class="li-dot"></span><strong>Instant Credit:</strong> No delays — your data is live within seconds.</li>
-            <li><span class="li-dot"></span><strong>Any Device:</strong> Works on phones, tablets, and routers with a Telecel SIM.</li>
-          </ul>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="learn-section">
-          <div class="learn-section-title">❓ Frequently Asked Questions</div>
-
-          <div class="faq-item">
-            <div class="faq-q">Is the data really non-expiry?</div>
-            <div class="faq-a">Yes. Once purchased, your data remains valid until you have used it all — no time limits.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">How do I check my data balance?</div>
-            <div class="faq-a">Dial *126# on your Telecel line to check your balance instantly at no charge.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Can I buy this for a friend?</div>
-            <div class="faq-a">Yes, simply enter their Telecel number during activation.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Does the 2× bonus apply to all packs?</div>
-            <div class="faq-a">Yes — every bundle in this World Cup offer includes a 100% data bonus.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Are there any hidden charges?</div>
-            <div class="faq-a">None. The price displayed is the exact amount you pay — no surprises.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">How long does activation take?</div>
-            <div class="faq-a">Activation is instant once you complete the verification step.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q">Is this available across Ghana?</div>
-            <div class="faq-a">Yes, all active Telecel Ghana subscribers nationwide are eligible.</div>
-          </div>
-        </div>
-
-        <div class="modal-actions">
-          <button class="modal-btn-primary" onclick="closeModal(); openStep1();">Activate My Bundle →</button>
-          <button class="modal-btn-ghost" onclick="closeModal()">Close</button>
-        </div>
-      `;
-    }
-  </script>
-
-  <!-- Tawk.to live chat -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/6a298ff514642b1c2dd28732/1jqp5kmi2';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
+    function cls() { document.getElementById('overlay').classList.remove('active'); }
+    sync();
   </script>
 </body>
 </html>
