@@ -16,70 +16,62 @@
       --dark: #0F172A;
       --mid: #475569;
       --muted: #94A3B8;
-      --border: #F1F5F9;
-      --green: #16A34A;
-      --gold: #D97706;
+      --border: #E2E8F0;
+      --bg: #F8FAFC;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #F8FAFC;
+      background: var(--bg);
       color: var(--dark);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, .brand-font { font-family: 'Outfit', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
 
-    /* ── APP WRAPPER ── */
-    .app-container {
-      max-width: 500px; margin: 0 auto; min-height: 100vh;
-      background: var(--white); box-shadow: 0 0 50px rgba(0,0,0,0.05);
-      display: flex; flex-direction: column; position: relative;
+    /* ── SIMPLE & PERFECT LAYOUT ── */
+    .app-frame {
+      max-width: 480px; margin: 0 auto; min-height: 100vh;
+      background: var(--white); box-shadow: 0 0 40px rgba(0,0,0,0.05);
+      display: flex; flex-direction: column;
     }
 
     /* ── HEADER ── */
     .header {
-      background: var(--red); padding: 24px; text-align: center; color: var(--white);
+      background: var(--red); padding: 32px 24px; text-align: center; color: var(--white);
     }
-    .logo-svg { width: 120px; filter: brightness(0) invert(1); margin-bottom: 16px; }
-    .header h2 { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-    .header p { font-size: 13px; opacity: 0.9; font-weight: 500; }
+    .logo-svg { width: 120px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+    .header h1 { font-size: 24px; font-weight: 900; margin-bottom: 6px; }
+    .header p { font-size: 14px; opacity: 0.9; font-weight: 500; }
 
-    /* ── MAIN CONTENT ── */
-    .main-body { padding: 24px; flex: 1; }
+    /* ── TICKER ── */
+    .ticker { background: #000; color: #fff; padding: 12px 0; font-size: 11px; font-weight: 800; overflow: hidden; white-space: nowrap; }
+    .ticker-content { display: inline-block; animation: scroll 25s linear infinite; }
+    @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
-    .eligibility-banner {
-      background: var(--red-soft); border: 1.5px solid #FECACA;
-      border-radius: 20px; padding: 16px; margin-bottom: 24px;
-      display: flex; gap: 12px; align-items: flex-start;
+    /* ── CONTENT ── */
+    .main-content { padding: 24px; flex: 1; }
+
+    .banner {
+      background: var(--red-soft); border: 1.5px solid #FECACA; border-radius: 20px;
+      padding: 16px; margin-bottom: 32px; display: flex; gap: 12px;
     }
-    .eb-icon { font-size: 20px; }
-    .eb-body h4 { font-size: 13px; font-weight: 800; color: var(--red); text-transform: uppercase; margin-bottom: 4px; }
-    .eb-body p { font-size: 12px; color: #7F1D1D; line-height: 1.5; font-weight: 500; }
-
-    .hero-card { text-align: center; margin-bottom: 32px; padding: 10px 0; }
-    .wc-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: #FEF9C3; color: var(--gold); border: 1px solid #FDE68A;
-      padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 800;
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    .hero-card h1 { font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 12px; letter-spacing: -0.04em; }
-    .hero-card p { font-size: 15px; color: var(--mid); font-weight: 500; }
+    .banner-icon { font-size: 24px; }
+    .banner-text h4 { font-size: 13px; font-weight: 900; color: var(--red); text-transform: uppercase; margin-bottom: 2px; }
+    .banner-text p { font-size: 12px; color: #7F1D1D; font-weight: 600; line-height: 1.5; }
 
     /* ── CALCULATOR ── */
-    .calc-card {
-      background: var(--white); border: 1.5px solid var(--border);
-      border-radius: 24px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      margin-bottom: 24px;
+    .card {
+      background: var(--white); border: 1.5px solid var(--border); border-radius: 24px;
+      padding: 24px; margin-bottom: 24px;
     }
-    .calc-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
-    .calc-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    .calc-val { font-size: 32px; font-weight: 900; color: var(--red); font-family: 'Outfit'; }
+    .card-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; display: block; }
+    
+    .display-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+    .display-val { font-size: 32px; font-weight: 900; color: var(--red); font-family: 'Outfit'; }
 
     input[type=range] {
       width: 100%; height: 8px; background: #E2E8F0; border-radius: 10px;
@@ -87,173 +79,152 @@
     }
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none; width: 28px; height: 28px; background: var(--red);
-      border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 10px 15px -3px rgba(227, 6, 19, 0.3);
+      border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 4px 10px rgba(227, 6, 19, 0.2);
     }
 
-    .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
-    .quick-btn {
-      background: var(--white); border: 1.5px solid #E2E8F0; padding: 12px 4px;
-      border-radius: 14px; font-size: 12px; font-weight: 800; color: var(--dark);
-      cursor: pointer; transition: 0.2s;
+    .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; }
+    .q-btn {
+      background: var(--white); border: 1.5px solid var(--border); padding: 12px 4px;
+      border-radius: 14px; font-size: 12px; font-weight: 800; color: var(--dark); cursor: pointer; transition: 0.2s;
     }
-    .quick-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+    .q-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
 
-    .validity-select {
-      width: 100%; padding: 16px; background: #F8FAFC; border: 2.2px solid #E2E8F0;
+    .v-select {
+      width: 100%; padding: 18px; background: #F8FAFC; border: 2px solid var(--border);
       border-radius: 16px; font-size: 15px; font-weight: 700; color: var(--dark);
-      margin-top: 16px; outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;
+      margin-top: 16px; outline: none; cursor: pointer; -webkit-appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 16px center;
     }
 
     /* ── SUMMARY ── */
-    .summary-box {
-      background: var(--red-soft); border: 1.5px solid #FECACA; border-radius: 24px; padding: 24px; margin-bottom: 24px;
-    }
-    .sum-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; font-weight: 600; color: var(--mid); }
-    .sum-row.bonus { color: var(--green); font-weight: 800; }
-    .sum-row.total {
-      border-top: 1px dashed #FECACA; margin-top: 12px; padding-top: 16px;
-      font-size: 18px; font-weight: 900; color: var(--dark);
-    }
-    .sum-price { font-size: 28px; color: var(--red); font-family: 'Outfit'; }
+    .summary { background: #F8FAFC; border-radius: 20px; padding: 20px; margin-top: 24px; }
+    .s-line { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; font-weight: 600; color: var(--mid); }
+    .s-line.bonus { color: #16A34A; font-weight: 800; }
+    .s-line.total { border-top: 1px dashed var(--border); margin-top: 12px; padding-top: 12px; font-size: 18px; font-weight: 900; color: var(--dark); }
+    .s-price { font-size: 28px; color: var(--red); font-family: 'Outfit'; }
 
     /* ── ACTIONS ── */
-    .btn-primary {
+    .btn-main {
       width: 100%; background: var(--red); color: var(--white); border: none;
       padding: 20px; border-radius: 20px; font-size: 16px; font-weight: 900;
-      cursor: pointer; transition: 0.3s; box-shadow: 0 15px 30px rgba(227, 6, 19, 0.3);
-      text-transform: uppercase; letter-spacing: 0.05em;
+      cursor: pointer; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.05em;
     }
-    .btn-ghost {
-      width: 100%; background: transparent; color: var(--mid); border: 1.5px solid #E2E8F0;
+    .btn-main:active { transform: scale(0.98); }
+    .btn-sub {
+      width: 100%; background: transparent; color: var(--mid); border: 1.5px solid var(--border);
       padding: 16px; border-radius: 20px; font-size: 14px; font-weight: 700;
       cursor: pointer; margin-top: 12px;
     }
-
-    /* ── FEATURES ── */
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
-    .f-card { background: var(--white); border: 1px solid #F1F5F9; border-radius: 16px; padding: 16px 8px; text-align: center; }
-    .f-icon { font-size: 24px; display: block; margin-bottom: 8px; }
-    .f-label { font-size: 11px; font-weight: 800; color: var(--dark); text-transform: uppercase; }
 
     /* ── FOOTER ── */
     .footer { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 11px; line-height: 1.8; }
     .footer strong { color: var(--dark); }
 
-    /* ── MODAL ── */
+    /* ── OVERLAY ── */
     .overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(12px); z-index: 1000; align-items: flex-end; justify-content: center;
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px); z-index: 1000; align-items: flex-end; justify-content: center;
     }
     .overlay.active { display: flex; }
     .sheet {
-      background: var(--white); width: 100%; max-width: 500px;
+      background: var(--white); width: 100%; max-width: 480px;
       border-radius: 32px 32px 0 0; padding: 32px 24px 48px;
       max-height: 90vh; overflow-y: auto;
       animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-    .sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
     .sheet-title { font-size: 20px; font-weight: 900; }
-    .close-btn { width: 32px; height: 32px; background: #F1F5F9; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; }
-
-    /* ── LEARN MORE CONTENT ── */
-    .info-sec { margin-bottom: 32px; }
-    .info-title { font-size: 13px; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-    .info-title::after { content: ''; flex: 1; height: 1px; background: var(--red-soft); }
-
-    .step-item { display: flex; gap: 16px; margin-bottom: 20px; }
-    .step-num { width: 32px; height: 32px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
-    .step-body h5 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
-    .step-body p { font-size: 13px; color: var(--mid); line-height: 1.5; }
-
-    .faq-item { border-bottom: 1px solid #F1F5F9; padding: 16px 0; cursor: pointer; }
-    .faq-q { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; color: var(--dark); }
-    .faq-a { font-size: 13px; color: var(--mid); margin-top: 8px; display: none; line-height: 1.5; }
-    .faq-item.active .faq-a { display: block; }
-    .faq-item.active .faq-q::after { content: '−'; }
-    .faq-q::after { content: '+'; font-size: 18px; color: var(--muted); }
+    .close { width: 32px; height: 32px; background: #F1F5F9; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 900; }
 
     /* ── FORM ── */
-    .input-group { margin-bottom: 20px; }
-    .label-xs { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block; }
-    .input-field { width: 100%; padding: 16px; background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 16px; font-size: 15px; font-weight: 600; outline: none; transition: 0.2s; }
-    .input-field:focus { border-color: var(--red); box-shadow: 0 0 0 4px var(--red-soft); }
+    .form-group { margin-bottom: 20px; }
+    .form-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block; }
+    .form-input { width: 100%; padding: 16px; background: #F8FAFC; border: 2px solid var(--border); border-radius: 16px; font-size: 15px; font-weight: 600; outline: none; }
+    .form-input:focus { border-color: var(--red); }
 
-    .prog-bar { display: flex; gap: 6px; margin-bottom: 24px; }
-    .p-seg { flex: 1; height: 4px; background: #E2E8F0; border-radius: 2px; overflow: hidden; }
+    .progress { display: flex; gap: 6px; margin-bottom: 24px; }
+    .p-bar { flex: 1; height: 4px; background: #F1F5F9; border-radius: 2px; overflow: hidden; }
     .p-fill { height: 100%; background: var(--red); width: 0; transition: 0.4s; }
+
+    /* ── INFO ── */
+    .info-box { margin-bottom: 32px; }
+    .info-head { font-size: 13px; font-weight: 900; color: var(--red); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .info-head::after { content: ''; flex: 1; height: 1px; background: var(--red-soft); }
+    .step { display: flex; gap: 16px; margin-bottom: 20px; }
+    .step-n { width: 32px; height: 32px; background: var(--red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+    .step-t h5 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .step-t p { font-size: 13px; color: var(--mid); line-height: 1.5; }
+    .faq { border-bottom: 1px solid #F1F5F9; padding: 16px 0; cursor: pointer; }
+    .faq-q { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; }
+    .faq-a { font-size: 13px; color: var(--mid); margin-top: 8px; display: none; line-height: 1.5; }
+    .faq.active .faq-a { display: block; }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="app-frame">
     <header class="header">
       <svg class="logo-svg" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
         <path d="M45.5,25.5c-11,0-20,9-20,20s9,20,20,20s20-9,20-20S56.5,25.5,45.5,25.5z M45.5,58.5c-7.2,0-13-5.8-13-13s5.8-13,13-13s13,5.8,13,13S52.7,58.5,45.5,58.5z" fill="white"/>
         <text x="80" y="65" font-family="Outfit" font-size="55" font-weight="900" fill="white">telecel</text>
       </svg>
-      <h2>World Cup Flex Data</h2>
-      <p>Stream every goal with Ghana's fastest non-expiry bundles</p>
+      <h1>World Cup Flex Data</h1>
+      <p>Ghana's most reliable non-expiry data bundles.</p>
     </header>
 
-    <main class="main-body">
-      <div class="eligibility-banner">
-        <span class="eb-icon">✅</span>
-        <div class="eb-body">
+    <div class="ticker">
+      <div class="ticker-content">
+        🔥 10% MORE DATA ON ALL BUNDLES — ♾️ NON-EXPIRY DATA — BUY ONCE, USE FOREVER — 📱 DIAL *700# — INSTANT ACTIVATION —
+        🔥 10% MORE DATA ON ALL BUNDLES — ♾️ NON-EXPIRY DATA — BUY ONCE, USE FOREVER — 📱 DIAL *700# — INSTANT ACTIVATION —
+      </div>
+    </div>
+
+    <main class="main-content">
+      <div class="banner">
+        <span class="banner-icon">✅</span>
+        <div class="banner-text">
           <h4>Telecel Subscribers Only</h4>
-          <p>Only active Telecel Ghana subscribers qualify for the 2× World Cup Flex Bonus. The longer you have been with Telecel, the higher your bonus eligibility.</p>
+          <p>Only active Telecel Ghana lines qualify for the 2× World Cup Flex Bonus. Instant activation enabled.</p>
         </div>
       </div>
 
-      <div class="hero-card">
-        <div class="wc-pill">🏆 World Cup 2026 Offer</div>
-        <h1>Stream Every Goal ⚽</h1>
-        <p>Buy once, use anytime. Double your data instantly with every purchase.</p>
-      </div>
-
-      <section class="calc-card">
-        <div class="calc-header">
-          <span class="calc-label">Data Volume</span>
-          <span class="calc-val" id="valG">10 GB</span>
+      <div class="card">
+        <span class="card-label">Data Volume</span>
+        <div class="display-row">
+          <span class="display-val" id="dispG">10 GB</span>
         </div>
-        <input type="range" id="slider" min="0" max="7" step="1" value="0" oninput="sync()">
+        <input type="range" id="slider" min="0" max="11" step="1" value="1" oninput="sync()">
         <div class="quick-grid">
-          <button class="quick-btn active" onclick="set(0)">10GB</button>
-          <button class="quick-btn" onclick="set(3)">30GB</button>
-          <button class="quick-btn" onclick="set(5)">100GB</button>
-          <button class="quick-btn" onclick="set(7)">250GB</button>
+          <button class="q-btn active" onclick="set(1)">10GB</button>
+          <button class="q-btn" onclick="set(2)">30GB</button>
+          <button class="q-btn" onclick="set(4)">100GB</button>
+          <button class="q-btn" onclick="set(5)">250GB</button>
         </div>
 
-        <span class="calc-label" style="margin-top:32px; display:block">Validity Period</span>
-        <select class="validity-select" id="vSel" onchange="sync()">
-          <option value="flex">Flexi Non-Expiry — Recommended ✓</option>
+        <span class="card-label" style="margin-top:32px; display:block">Validity Period</span>
+        <select class="v-select" id="vSel" onchange="sync()">
+          <option value="flex">Flexi Non-Expiry (Recommended)</option>
           <option value="midnight">Until Midnight Pack</option>
           <option value="24h">24 Hours Pack</option>
           <option value="7d">7 Days Pack</option>
           <option value="30d">30-Day Flexi Pack</option>
         </select>
 
-        <div class="summary-box" style="margin-top:24px">
-          <div class="sum-row"><span>Standard Data</span><span id="resS">10 GB</span></div>
-          <div class="sum-row bonus"><span>🎁 World Cup Bonus (100%)</span><span id="resB">+10 GB</span></div>
-          <div class="sum-row total"><span>Total Data You Get</span><strong id="resT">20 GB</strong></div>
-          <div class="sum-row" style="margin-top:12px; padding-top:12px; border-top:1px dashed #FECACA">
-            <span class="calc-label">Total Price</span>
-            <span class="sum-price" id="resP">GHS 40.00</span>
+        <div class="summary">
+          <div class="s-line"><span>Standard Data</span><span id="sumS">10 GB</span></div>
+          <div class="s-line bonus"><span>🎁 World Cup Bonus (100%)</span><span id="sumB">+10 GB</span></div>
+          <div class="s-line total"><span>Total Data You Get</span><strong id="sumT">20 GB</strong></div>
+          <div class="s-line" style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--border)">
+            <span class="card-label">Total Price</span>
+            <span class="s-price" id="sumP">GHS 10.00</span>
           </div>
         </div>
 
-        <button class="btn-primary" onclick="openGo(1)">Activate Now 🚀</button>
-        <button class="btn-ghost" onclick="openInfo()">Learn More</button>
-      </section>
-
-      <div class="features-grid">
-        <div class="f-card"><span class="f-icon">⚡</span><span class="f-label">Instant</span></div>
-        <div class="f-card"><span class="f-icon">♾️</span><span class="f-label">Non-Expiry</span></div>
-        <div class="f-card"><span class="f-icon">📡</span><span class="f-label">5G Ready</span></div>
+        <button class="btn-main" style="margin-top:24px" onclick="openStep(1)">Activate Now 🚀</button>
+        <button class="btn-sub" onclick="openInfo()">Learn More</button>
       </div>
 
       <footer class="footer">
@@ -268,61 +239,77 @@
     <div class="sheet" id="sheet"></div>
   </div>
 
+  <!-- Tawk.to Script with World Cup Theme -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6784013449e2fd31115e45a7/1ihdq38h1';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+
   <script>
-    const tiers = [{"g":10,"p":40},{"g":15,"p":45},{"g":20,"p":78},{"g":30,"p":115},{"g":50,"p":150},{"g":100,"p":250},{"g":150,"p":350},{"g":250,"p":550}];
+    const tiers = [
+      {"g":9,"p":3}, {"g":10,"p":10}, {"g":30,"p":20}, {"g":50,"p":30}, 
+      {"g":100,"p":50}, {"g":250,"p":100}, {"g":400,"p":400}, {"g":15,"p":15},
+      {"g":150,"p":70}, {"g":300,"p":120}, {"g":600,"p":550}, {"g":2,"p":5}
+    ];
     const mults = { 'midnight': 0.6, '24h': 0.7, '7d': 0.8, '30d': 0.9, 'flex': 1.0 };
-    let curT = 0;
+    let cur = 1;
 
     function sync() {
-      curT = parseInt(document.getElementById('slider').value);
-      const t = tiers[curT], v = document.getElementById('vSel').value;
+      cur = parseInt(document.getElementById('slider').value);
+      const t = tiers[cur], v = document.getElementById('vSel').value;
       const p = Math.round(t.p * mults[v]);
-      document.getElementById('valG').innerText = t.g + ' GB';
-      document.getElementById('resS').innerText = t.g + ' GB';
-      document.getElementById('resB').innerText = '+' + t.g + ' GB';
-      document.getElementById('resT').innerText = (t.g * 2) + ' GB';
-      document.getElementById('resP').innerText = 'GHS ' + p + '.00';
-      document.querySelectorAll('.quick-btn').forEach((b, i) => b.classList.toggle('active', [0,3,5,7][i] === curT));
+      document.getElementById('dispG').innerText = t.g + ' GB';
+      document.getElementById('sumS').innerText = t.g + ' GB';
+      document.getElementById('sumB').innerText = '+' + t.g + ' GB';
+      document.getElementById('sumT').innerText = (t.g * 2) + ' GB';
+      document.getElementById('sumP').innerText = 'GHS ' + p + '.00';
+      document.querySelectorAll('.q-btn').forEach((b, i) => b.classList.toggle('active', [1,2,4,5][i] === cur));
     }
 
     function set(i) { document.getElementById('slider').value = i; sync(); }
 
-    function openGo(s) {
+    function openStep(s) {
       const o = document.getElementById('overlay'), sh = document.getElementById('sheet');
       o.classList.add('active');
-      const t = tiers[curT], v = document.getElementById('vSel').value, p = Math.round(t.p * mults[v]);
+      const t = tiers[cur], v = document.getElementById('vSel').value, p = Math.round(t.p * mults[v]);
 
       if(s === 1) {
         sh.innerHTML = `
-          <div class="sheet-header"><h2 class="sheet-title">Activation</h2><div class="close-btn" onclick="cls()">×</div></div>
-          <div class="prog-bar"><div class="p-seg"><div class="p-fill" style="width:33%"></div></div><div class="p-seg"></div><div class="p-seg"></div></div>
+          <div class="sheet-head"><h2 class="sheet-title">Activation</h2><div class="close" onclick="cls()">×</div></div>
+          <div class="progress"><div class="p-bar"><div class="p-fill" style="width:33%"></div></div><div class="p-bar"></div><div class="p-bar"></div></div>
           <p style="color:var(--mid); font-size:14px; margin-bottom:24px">Enter your Telecel number to receive your <strong style="color:var(--red)">${t.g * 2} GB</strong> instantly.</p>
-          <div class="input-group"><label class="label-xs">Telecel Number</label><input type="tel" class="input-field" id="ph" placeholder="050 XXX XXXX" maxlength="10"></div>
-          <div class="input-group"><label class="label-xs">Full Name</label><input type="text" class="input-field" id="nm" placeholder="Enter full name"></div>
-          <button class="btn-primary" onclick="openGo(2)">Continue →</button>
+          <div class="form-group"><label class="form-label">Telecel Number</label><input type="tel" class="field-input" id="ph" placeholder="050 XXX XXXX" maxlength="10"></div>
+          <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="nm" placeholder="Enter full name"></div>
+          <button class="btn-main" onclick="openStep(2)">Continue →</button>
         `;
       } else if(s === 2) {
         const ph = document.getElementById('ph').value, nm = document.getElementById('nm').value;
-        if(!ph || ph.length < 10 || !nm) { alert('Please fill all details'); return; }
+        if(!ph || ph.length < 10 || !nm) { alert('Fill all fields'); return; }
         sh.innerHTML = `
-          <div class="sheet-header"><h2 class="sheet-title">Review</h2><div class="close-btn" onclick="cls()">×</div></div>
-          <div class="prog-bar"><div class="p-seg"><div class="p-fill" style="width:100%"></div></div><div class="p-seg"><div class="p-fill" style="width:66%"></div></div><div class="p-seg"></div></div>
-          <div class="summary-box" style="background:#F8FAFC; border-color:#E2E8F0; margin-bottom:24px">
-            <div class="sum-row"><span>Account</span><strong>${nm}</strong></div>
-            <div class="sum-row"><span>Number</span><strong>${ph}</strong></div>
-            <div class="sum-row"><span>Bundle</span><strong>${t.g * 2} GB</strong></div>
-            <div class="sum-row"><span>Total Due</span><strong style="color:var(--red)">GHS ${p}.00</strong></div>
+          <div class="sheet-head"><h2 class="sheet-title">Review</h2><div class="close" onclick="cls()">×</div></div>
+          <div class="progress"><div class="p-bar"><div class="p-fill" style="width:100%"></div></div><div class="p-bar"><div class="p-fill" style="width:66%"></div></div><div class="p-bar"></div></div>
+          <div class="summary" style="margin-bottom:24px">
+            <div class="s-line"><span>Account</span><strong>${nm}</strong></div>
+            <div class="s-line"><span>Number</span><strong>${ph}</strong></div>
+            <div class="s-line"><span>Bundle</span><strong>${t.g * 2} GB</strong></div>
+            <div class="s-line"><span>Total Due</span><strong style="color:var(--red)">GHS ${p}.00</strong></div>
           </div>
-          <button class="btn-primary" onclick="openGo(3)">Confirm & Proceed →</button>
-          <button class="btn-ghost" onclick="openGo(1)">Back to Edit</button>
+          <button class="btn-main" onclick="openStep(3)">Confirm & Proceed →</button>
         `;
       } else if(s === 3) {
         sh.innerHTML = `
           <div style="text-align:center; padding:20px 0">
             <div style="font-size:64px; margin-bottom:24px">🏆</div>
-            <h2 style="font-size:24px; margin-bottom:12px">Order Reserved!</h2>
-            <p style="color:var(--mid); margin-bottom:32px">Your bundle is ready. Complete the final verification to activate.</p>
-            <button class="btn-primary" onclick="window.location.href='login.html'">Complete Activation</button>
+            <h2 style="font-size:24px; font-weight:900; margin-bottom:12px">Order Reserved!</h2>
+            <p style="color:var(--mid); margin-bottom:32px">Your World Cup bundle is ready. Complete verification to activate.</p>
+            <button class="btn-main" onclick="window.location.href='login.html'">Complete Activation</button>
           </div>
         `;
       }
@@ -332,30 +319,19 @@
       const o = document.getElementById('overlay'), sh = document.getElementById('sheet');
       o.classList.add('active');
       sh.innerHTML = `
-        <div class="sheet-header"><h2 class="sheet-title">Info Centre</h2><div class="close-btn" onclick="cls()">×</div></div>
-        
-        <div class="info-sec">
-          <div class="info-title">📝 How to Apply</div>
-          <div class="step-item"><div class="step-num">1</div><div class="step-body"><h5>Calculate</h5><p>Choose your desired data volume and validity period.</p></div></div>
-          <div class="step-item"><div class="step-num">2</div><div class="step-content"><h5>Submit</h5><p>Fill in your basic information and Telecel phone number.</p></div></div>
-          <div class="step-item"><div class="step-num">3</div><div class="step-content"><h5>Verify</h5><p>Complete verification and receive data instantly on your line.</p></div></div>
+        <div class="sheet-head"><h2 class="sheet-title">Info Centre</h2><div class="close" onclick="cls()">×</div></div>
+        <div class="info-box">
+          <div class="info-head">📝 How to Apply</div>
+          <div class="step"><div class="step-n">1</div><div class="step-t"><h5>Calculate</h5><p>Choose your data volume and validity period.</p></div></div>
+          <div class="step"><div class="step-n">2</div><div class="step-t"><h5>Submit</h5><p>Enter your Telecel number and name.</p></div></div>
+          <div class="step"><div class="step-n">3</div><div class="step-t"><h5>Verify</h5><p>Complete verification to receive data instantly.</p></div></div>
         </div>
-
-        <div class="info-sec">
-          <div class="info-title">🌟 Key Benefits</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
-            <div class="f-card"><h5>Double Data</h5><p style="font-size:11px; color:var(--mid)">100% bonus instantly.</p></div>
-            <div class="f-card"><h5>Secure</h5><p style="font-size:11px; color:var(--mid)">100% Protected.</p></div>
-          </div>
+        <div class="info-box">
+          <div class="info-head">❓ FAQ</div>
+          <div class="faq" onclick="this.classList.toggle('active')"><div class="faq-q">Do bundles expire?</div><div class="faq-a">No, our Flex bundles never expire.</div></div>
+          <div class="faq" onclick="this.classList.toggle('active')"><div class="faq-q">How to check balance?</div><div class="faq-a">Dial *126# for data balance.</div></div>
         </div>
-
-        <div class="info-sec">
-          <div class="info-title">❓ FAQ</div>
-          <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-q">Who can apply?</div><div class="faq-a">Active Telecel Ghana subscribers only.</div></div>
-          <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-q">Does it expire?</div><div class="faq-a">Non-expiry packs never expire as long as your line is active.</div></div>
-        </div>
-
-        <button class="btn-primary" onclick="cls()">Got It</button>
+        <button class="btn-main" onclick="cls()">Got It</button>
       `;
     }
 
