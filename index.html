@@ -247,6 +247,12 @@ input[type=range]::-webkit-slider-thumb{
   border:3px solid #fff;
   box-shadow:0 3px 10px rgba(227,6,19,.35);cursor:pointer;
 }
+input[type=range]::-moz-range-thumb{
+  width:22px;height:22px;
+  background:var(--red);border-radius:50%;
+  border:3px solid #fff;
+  box-shadow:0 3px 10px rgba(227,6,19,.35);cursor:pointer;
+}
 .rlabels{
   display:flex;justify-content:space-between;margin-bottom:13px;
 }
@@ -333,12 +339,13 @@ input[type=range]::-webkit-slider-thumb{
 .btn-ghost:hover{border-color:var(--red);color:var(--red);}
 
 /* ══════════════════════════════════════════
-   MODAL / BOTTOM SHEET
+   MODAL / BOTTOM SHEET — OPTIMIZED FOR ALL DEVICES
 ══════════════════════════════════════════ */
 .modal{
   display:none;position:fixed;inset:0;
   background:rgba(15,23,42,.75);backdrop-filter:blur(8px);
   z-index:2000;align-items:flex-end;justify-content:center;
+  padding:0;
 }
 .modal.open{display:flex;}
 .sheet{
@@ -348,11 +355,11 @@ input[type=range]::-webkit-slider-thumb{
   overflow-x:hidden;
   animation:sheetUp .3s cubic-bezier(.32,.72,0,1);
   -webkit-overflow-scrolling:touch;
+  box-shadow:0 -4px 24px rgba(0,0,0,.12);
 }
 @keyframes sheetUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
 .sheet-inner{
   padding:20px 18px 48px;
-  /* Ensure content starts from the top */
   padding-top:20px;
 }
 .shandle{
@@ -367,10 +374,11 @@ input[type=range]::-webkit-slider-thumb{
   background:var(--red-soft);border:1.5px solid var(--red-border);
   border-radius:14px;padding:13px 15px;margin-bottom:16px;
   display:flex;justify-content:space-between;align-items:center;
-  gap:10px;
+  gap:10px;flex-wrap:wrap;
 }
-.ord-sum-info{font-size:12px;color:var(--mid);font-weight:600;}
+.ord-sum-info{font-size:12px;color:var(--mid);font-weight:600;flex:1;min-width:150px;}
 .ord-sum-info strong{display:block;font-size:20px;color:var(--dark);font-family:'Outfit';font-weight:900;margin-bottom:2px;}
+.ord-price{text-align:right;}
 .ord-price .price{font-family:'Outfit';font-size:22px;font-weight:900;color:var(--red);}
 .ord-price small{font-size:10px;color:var(--muted);font-weight:600;display:block;text-align:right;}
 
@@ -522,122 +530,40 @@ input[type=range]::-webkit-slider-thumb{
 .testi-date{font-size:10px;color:var(--muted);font-weight:500;margin-top:7px;}
 
 /* ══════════════════════════════════════════
-   FOOTER
+   SIMPLIFIED FOOTER
 ══════════════════════════════════════════ */
 .footer{
   background:#0F172A;color:#fff;
-  padding:36px 18px 0;
+  padding:28px 18px 20px;
   margin-top:16px;
+  text-align:center;
 }
 .footer-inner{max-width:480px;margin:0 auto;}
-
-/* Top grid */
-.footer-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px 20px;
-  margin-bottom:28px;
-}
-.footer-col-full{grid-column:1/-1;}
-
-/* Brand block */
-.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
 .footer-logo-wrap{
-  width:42px;height:42px;
+  width:38px;height:38px;
   background:linear-gradient(135deg,var(--red),var(--red-deep));
-  border:1.5px solid rgba(255,255,255,.2);border-radius:11px;
+  border:1.5px solid rgba(255,255,255,.2);border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  overflow:hidden;font-family:'Outfit';font-weight:900;font-size:18px;color:#fff;
+  overflow:hidden;font-family:'Outfit';font-weight:900;font-size:16px;color:#fff;
   flex-shrink:0;
 }
-.footer-logo-wrap img{width:28px;height:28px;object-fit:contain;filter:brightness(0) invert(1);}
-.footer-brand-name{font-family:'Outfit';font-weight:900;font-size:17px;line-height:1.1;}
-.footer-brand-sub{font-size:9px;opacity:.5;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px;}
+.footer-logo-wrap img{width:24px;height:24px;object-fit:contain;filter:brightness(0) invert(1);}
+.footer-brand-name{font-family:'Outfit';font-weight:900;font-size:15px;line-height:1.1;}
 .footer-desc{
-  font-size:11.5px;color:rgba(255,255,255,.5);font-weight:500;
-  line-height:1.75;
+  font-size:11px;color:rgba(255,255,255,.5);font-weight:500;
+  line-height:1.6;margin-bottom:12px;
 }
 .footer-desc strong{color:rgba(255,255,255,.75);}
-
-/* Network badges in footer */
-.footer-network{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
-.fnet{
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);
-  border-radius:8px;padding:5px 10px;
-  font-size:9.5px;font-weight:700;color:rgba(255,255,255,.6);
-  text-transform:uppercase;letter-spacing:.04em;
-  display:flex;align-items:center;gap:5px;
-}
-.fnet::before{content:'';width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-.fnet.live::before{background:#4ADE80;}
-.fnet.ok::before{background:#60A5FA;}
-
-/* Footer section headers */
-.footer-section-title{
-  font-size:10px;font-weight:800;
-  color:rgba(255,255,255,.38);
-  text-transform:uppercase;letter-spacing:.07em;
-  margin-bottom:12px;
-  padding-bottom:8px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-/* Links */
-.footer-links{display:flex;flex-direction:column;gap:8px;}
+.footer-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
 .footer-links a{
-  font-size:12px;color:rgba(255,255,255,.6);font-weight:600;
+  font-size:10px;color:rgba(255,255,255,.6);font-weight:600;
   text-decoration:none;transition:color .15s;
-  display:flex;align-items:center;gap:6px;
-}
-.footer-links a::before{
-  content:'›';color:var(--red);font-size:14px;font-weight:900;
 }
 .footer-links a:hover{color:#fff;}
-
-/* USSD quick codes */
-.footer-ussd{display:flex;flex-direction:column;gap:6px;}
-.ussd-item{
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
-  border-radius:9px;padding:7px 10px;
-  display:flex;align-items:center;gap:8px;
-}
-.ussd-code{
-  font-family:'Outfit';font-size:13px;font-weight:900;color:#fff;
-  background:rgba(227,6,19,.6);border-radius:6px;padding:2px 7px;
-  flex-shrink:0;
-}
-.ussd-desc{font-size:11px;color:rgba(255,255,255,.55);font-weight:500;}
-
-/* Contact */
-.footer-contact{display:flex;flex-direction:column;gap:8px;}
-.fcontact-item{display:flex;align-items:flex-start;gap:9px;}
-.fcontact-ico{
-  width:28px;height:28px;border-radius:8px;
-  background:rgba(255,255,255,.07);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;flex-shrink:0;margin-top:1px;
-}
-.fcontact-t{font-size:12px;color:rgba(255,255,255,.55);font-weight:500;line-height:1.5;}
-.fcontact-t strong{color:#fff;font-weight:700;}
-
-/* Divider */
-.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:0 0 20px;}
-
-/* Certifications */
-.footer-cert-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
-.fcert{
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);
-  border-radius:8px;padding:5px 10px;
-  font-size:9px;font-weight:700;color:rgba(255,255,255,.55);
-  text-transform:uppercase;letter-spacing:.04em;
-  display:flex;align-items:center;gap:5px;
-}
-.fcert .ck{color:#4ADE80;font-size:10px;}
-
-/* Legal */
 .footer-legal{
-  font-size:10px;color:rgba(255,255,255,.3);font-weight:500;
-  line-height:1.75;text-align:center;
-  padding:16px 0 env(safe-area-inset-bottom);
+  font-size:9px;color:rgba(255,255,255,.3);font-weight:500;
+  line-height:1.6;padding:12px 0 env(safe-area-inset-bottom);
   border-top:1px solid rgba(255,255,255,.07);
 }
 .footer-legal a{color:rgba(255,255,255,.42);text-decoration:none;}
@@ -649,6 +575,16 @@ input[type=range]::-webkit-slider-thumb{
 .color-red{color:var(--red);}
 .color-green{color:var(--green);}
 .mt-8{margin-top:8px;}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE OPTIMIZATIONS
+══════════════════════════════════════════ */
+@media (max-width:480px){
+  .sheet{max-height:95vh;}
+  .sheet-inner{padding:18px 16px 40px;}
+  .benef-grid{grid-template-columns:1fr;}
+  .vgrid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -690,13 +626,13 @@ input[type=range]::-webkit-slider-thumb{
     <span>Non-Expiry Plans Available</span>
     <span>Instant Activation — Under 60 Seconds</span>
     <span>Watch Every Match in Full HD</span>
-    <span>Bundles from GHS 10</span>
+    <span>Max 250GB for GHS 200 (50% OFF)</span>
     <span>Telecel Ghana Official Offer</span>
     <span>3&times; Bonus Data on All Bundles</span>
     <span>Non-Expiry Plans Available</span>
     <span>Instant Activation — Under 60 Seconds</span>
     <span>Watch Every Match in Full HD</span>
-    <span>Bundles from GHS 10</span>
+    <span>Max 250GB for GHS 200 (50% OFF)</span>
     <span>Telecel Ghana Official Offer</span>
   </div>
 </div>
@@ -706,14 +642,14 @@ input[type=range]::-webkit-slider-thumb{
   <!-- ── HERO ── -->
   <div class="hero">
     <div class="hero-ball">⚽</div>
-    <div class="eyebrow">⚽ FIFA World Cup 2026</div>
-    <h1>Get <em>Triple Data</em><br>for Every Match</h1>
-    <p>Buy any bundle and receive 200% bonus data — automatically tripled the moment you activate, no promo codes needed.</p>
+    <div class="eyebrow">⚽ FIFA World Cup 2026 — 50% OFF</div>
+    <h1>Get <em>Triple Data</em><br>at HALF PRICE</h1>
+    <p>Buy any bundle and receive 200% bonus data — automatically tripled. Plus, all prices are slashed 50% for this World Cup season!</p>
     <div class="hstats">
       <div class="hstat"><div class="hstat-v">3×</div><div class="hstat-l">Data Bonus</div></div>
       <div class="hstat"><div class="hstat-v">♾️</div><div class="hstat-l">Non-Expiry</div></div>
       <div class="hstat"><div class="hstat-v">⚡</div><div class="hstat-l">Instant</div></div>
-      <div class="hstat"><div class="hstat-v">GHS10</div><div class="hstat-l">From Only</div></div>
+      <div class="hstat"><div class="hstat-v">-50%</div><div class="hstat-l">Discount</div></div>
     </div>
   </div>
 
@@ -721,8 +657,8 @@ input[type=range]::-webkit-slider-thumb{
   <div class="alert">
     <div class="alert-ico">✓</div>
     <div>
-      <h4>Telecel Subscribers Only</h4>
-      <p>This offer is exclusively for active Telecel Ghana subscribers with a <strong>020</strong> or <strong>050</strong> number. Your account must be active and in good standing to qualify.</p>
+      <h4>Telecel Subscribers Only — 50% Discount Active</h4>
+      <p>This offer is exclusively for active Telecel Ghana subscribers on the 020 or 050 network. All prices are 50% off. Your account must be active and in good standing to qualify.</p>
     </div>
   </div>
 
@@ -745,8 +681,8 @@ input[type=range]::-webkit-slider-thumb{
         <div class="sub" id="dispSub">6 GB base &plus; 12 GB bonus</div>
       </div>
       <div class="cp-right">
-        <div class="price" id="dispPrice">GHS 10</div>
-        <div class="plbl">Total Cost</div>
+        <div class="price" id="dispPrice">GHS 5</div>
+        <div class="plbl">Total Cost (50% OFF)</div>
       </div>
     </div>
 
@@ -755,15 +691,15 @@ input[type=range]::-webkit-slider-thumb{
       <input type="range" id="slider" min="0" max="10" step="1" value="0" oninput="sync()">
     </div>
     <div class="rlabels">
-      <span>6 GB</span><span>30 GB</span><span>90 GB</span><span>300 GB</span><span>900 GB</span>
+      <span>6 GB</span><span>30 GB</span><span>90 GB</span><span>150 GB</span><span>250 GB</span>
     </div>
 
     <!-- Quick pick buttons -->
     <div class="qgrid" id="qgrid">
-      <button class="qbtn on" onclick="setS(0)">6 GB<small>GHS 10</small></button>
-      <button class="qbtn"    onclick="setS(2)">30 GB<small>GHS 30</small></button>
-      <button class="qbtn"    onclick="setS(5)">90 GB<small>GHS 60</small></button>
-      <button class="qbtn"    onclick="setS(8)">300 GB<small>GHS 150</small></button>
+      <button class="qbtn on" onclick="setS(0)">6 GB<small>GHS 5</small></button>
+      <button class="qbtn"    onclick="setS(2)">30 GB<small>GHS 15</small></button>
+      <button class="qbtn"    onclick="setS(5)">90 GB<small>GHS 30</small></button>
+      <button class="qbtn"    onclick="setS(10)">250 GB<small>GHS 200</small></button>
     </div>
 
     <div class="hr"></div>
@@ -795,13 +731,13 @@ input[type=range]::-webkit-slider-thumb{
 
     <!-- Breakdown -->
     <div class="breakdown">
-      <div class="bhead">💰 Price Breakdown</div>
+      <div class="bhead">💰 Price Breakdown (50% Discount Applied)</div>
       <div class="brow"><span>Base Data</span><span class="bv" id="sumS">6 GB</span></div>
       <div class="brow bonus"><span>🎁 WC 2026 Bonus (200%)</span><span class="bv" id="sumB">+12 GB</span></div>
       <div class="brow total"><span>Total Data You Receive</span><strong id="sumT">18 GB</strong></div>
       <div class="bprrow">
-        <span class="bplbl">Total Price</span>
-        <span class="bpval" id="sumP">GHS 10</span>
+        <span class="bplbl">Total Price (50% OFF)</span>
+        <span class="bpval" id="sumP">GHS 5</span>
       </div>
     </div>
 
@@ -812,122 +748,29 @@ input[type=range]::-webkit-slider-thumb{
 </div><!-- /wrap -->
 
 <!-- ══════════════════════════════════════════
-     FOOTER
+     SIMPLIFIED FOOTER
 ══════════════════════════════════════════ -->
 <footer class="footer">
   <div class="footer-inner">
-
-    <div class="footer-grid">
-
-      <!-- Brand — full width -->
-      <div class="footer-col-full">
-        <div class="footer-brand">
-          <div class="footer-logo-wrap">
-            <img src="https://telecelgroup.com/wp-content/uploads/2026/05/TGS-logooo-updated-copy.png" alt="Telecel"
-              onerror="this.style.display='none';this.parentElement.textContent='T'">
-          </div>
-          <div>
-            <div class="footer-brand-name">Telecel Ghana</div>
-            <div class="footer-brand-sub">Official Data Bundle Partner</div>
-          </div>
-        </div>
-        <p class="footer-desc">
-          <strong>FlexData WC26</strong> is the official World Cup 2026 data bundle platform powered by Telecel Ghana. Buy any bundle and instantly receive triple the data — enough to watch every match in full HD without interruption.
-        </p>
-        <div class="footer-network">
-          <div class="fnet live">4G LTE Active</div>
-          <div class="fnet live">020 Numbers</div>
-          <div class="fnet live">050 Numbers</div>
-          <div class="fnet ok">NCA Licensed</div>
-          <div class="fnet ok">SSL Secured</div>
-        </div>
+    <div class="footer-brand">
+      <div class="footer-logo-wrap">
+        <img src="https://telecelgroup.com/wp-content/uploads/2026/05/TGS-logooo-updated-copy.png" alt="Telecel"
+          onerror="this.style.display='none';this.parentElement.textContent='T'">
       </div>
-
-      <!-- Quick Links -->
-      <div>
-        <div class="footer-section-title">Quick Links</div>
-        <div class="footer-links">
-          <a href="#">Bundle Packages</a>
-          <a href="#">Corporate &amp; Bulk Bundles</a>
-          <a href="#">Transfer Data (*124*2#)</a>
-          <a href="#">Coverage Map</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms &amp; Conditions</a>
-        </div>
-      </div>
-
-      <!-- USSD Codes -->
-      <div>
-        <div class="footer-section-title">USSD Quick Codes</div>
-        <div class="footer-ussd">
-          <div class="ussd-item">
-            <span class="ussd-code">*124#</span>
-            <span class="ussd-desc">Check data balance</span>
-          </div>
-          <div class="ussd-item">
-            <span class="ussd-code">*124*2#</span>
-            <span class="ussd-desc">Transfer data</span>
-          </div>
-          <div class="ussd-item">
-            <span class="ussd-code">*100#</span>
-            <span class="ussd-desc">Main menu</span>
-          </div>
-          <div class="ussd-item">
-            <span class="ussd-code">100</span>
-            <span class="ussd-desc">Customer care (free)</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact — full width -->
-      <div class="footer-col-full">
-        <div class="footer-section-title">Contact &amp; Support</div>
-        <div class="footer-contact">
-          <div class="fcontact-item">
-            <div class="fcontact-ico">📞</div>
-            <div class="fcontact-t"><strong>100</strong> — Telecel Customer Care (free from any Telecel line)</div>
-          </div>
-          <div class="fcontact-item">
-            <div class="fcontact-ico">💬</div>
-            <div class="fcontact-t"><strong>WhatsApp Support:</strong> +233 20 000 0100</div>
-          </div>
-          <div class="fcontact-item">
-            <div class="fcontact-ico">✉️</div>
-            <div class="fcontact-t"><strong>Email:</strong> support@telecel.com.gh</div>
-          </div>
-          <div class="fcontact-item">
-            <div class="fcontact-ico">🌐</div>
-            <div class="fcontact-t"><strong>Website:</strong> telecel.com.gh</div>
-          </div>
-          <div class="fcontact-item">
-            <div class="fcontact-ico">🏢</div>
-            <div class="fcontact-t"><strong>Head Office:</strong> Telecel House, Accra Central, Greater Accra, Ghana</div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /footer-grid -->
-
-    <div class="footer-divider"></div>
-
-    <!-- Certifications -->
-    <div class="footer-cert-row">
-      <div class="fcert"><span class="ck">✓</span> NCA Licensed</div>
-      <div class="fcert"><span class="ck">✓</span> GRA Compliant</div>
-      <div class="fcert"><span class="ck">✓</span> SSL Encrypted</div>
-      <div class="fcert"><span class="ck">✓</span> Telecel Official</div>
-      <div class="fcert"><span class="ck">✓</span> Ghana Data Protection Act</div>
+      <div class="footer-brand-name">Telecel Ghana</div>
     </div>
-
-    <!-- Legal -->
-    <p class="footer-legal">
-      &copy; 2026 FlexData Ghana &mdash; An Official Telecel Ghana Partner Platform.<br>
-      Licensed Mobile Data Services &middot; Registered with the National Communications Authority of Ghana (NCA).<br>
-      All prices are in Ghana Cedis (GHS) and include all applicable taxes.<br>
-      Bundles are exclusively available to active Telecel Ghana subscribers on the 020 and 050 networks.<br>
-      <a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Use</a> &middot; <a href="#">Cookie Policy</a> &middot; <a href="#">Accessibility</a>
+    <p class="footer-desc">
+      <strong>FlexData WC26</strong> — Official World Cup 2026 data bundles. Triple data at 50% off for all Telecel Ghana subscribers.
     </p>
-
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <p class="footer-legal">
+      &copy; 2026 FlexData Ghana. Licensed Mobile Data Services. NCA Registered.<br>
+      All prices in GHS. Exclusive to Telecel Ghana 020 &amp; 050 numbers.
+    </p>
   </div>
 </footer>
 
@@ -943,10 +786,10 @@ input[type=range]::-webkit-slider-thumb{
 </div>
 
 <script>
-/* ── DATA TIERS ── */
+/* ── DATA TIERS — 50% DISCOUNTED PRICING (MAX 250GB) ── */
 const TIERS = [
-  {g:6,  p:10 },{g:12, p:15 },{g:30, p:30 },{g:45, p:40 },{g:60, p:50 },
-  {g:90, p:60 },{g:150,p:90 },{g:210,p:120},{g:300,p:150},{g:450,p:300},{g:900,p:600}
+  {g:6,  p:5  },{g:12, p:8  },{g:30, p:15 },{g:45, p:20 },{g:60, p:25 },
+  {g:90, p:30 },{g:150,p:45 },{g:180,p:60 },{g:210,p:75 },{g:240,p:150},{g:250,p:200}
 ];
 const VMULTS  = {flex:1.0, midnight:0.55, '24h':0.72, '30d':0.95};
 const VLABELS = {flex:'Non-Expiry', midnight:'Until Midnight', '24h':'24 Hours', '30d':'30 Days'};
@@ -960,7 +803,7 @@ let curV = 'flex';
 function getState(){
   const i = parseInt(document.getElementById('slider').value);
   const t = TIERS[i];
-  const p = Math.max(10, Math.round(t.p * VMULTS[curV]));
+  const p = Math.max(5, Math.round(t.p * VMULTS[curV]));
   return {t, p, total:t.g*3, bonus:t.g*2, vl:VLABELS[curV]};
 }
 
@@ -979,7 +822,7 @@ function sync(){
 function setS(i){
   document.getElementById('slider').value = i;
   sync();
-  const map = [0,2,5,8];
+  const map = [0,2,5,10];
   document.querySelectorAll('#qgrid .qbtn').forEach((b,idx)=>{
     b.classList.toggle('on', map[idx]===i);
   });
@@ -1009,7 +852,6 @@ function openModal(html){
   const si = document.getElementById('sheetInner');
   si.innerHTML = html;
   document.getElementById('modal').classList.add('open');
-  /* Scroll sheet to top each time */
   setTimeout(()=>{ document.getElementById('sheet').scrollTop = 0; },10);
 }
 function closeModal(){
@@ -1051,7 +893,7 @@ function openActivate(){
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">Activate Your Bundle</h2>
-    <p class="ss">Enter your details below to claim your triple data bundle.</p>
+    <p class="ss">Enter your details below to claim your triple data bundle at 50% off.</p>
 
     <div class="ord-sum">
       <div class="ord-sum-info">
@@ -1060,7 +902,7 @@ function openActivate(){
       </div>
       <div class="ord-price">
         <div class="price">GHS ${p}</div>
-        <small>Total price</small>
+        <small>50% OFF</small>
       </div>
     </div>
 
@@ -1126,7 +968,7 @@ function goConfirm(base, total, price, validity){
     <div class="confirm-box">
       <div class="confirm-ball">⚽</div>
       <div class="confirm-data">${total} GB</div>
-      <div class="confirm-sub">${validity} &middot; GHS ${price}</div>
+      <div class="confirm-sub">${validity} &middot; GHS ${price} (50% OFF)</div>
       <div class="confirm-bonus">Base ${base} GB &plus; ${base*2} GB World Cup Bonus</div>
     </div>
 
@@ -1178,7 +1020,7 @@ function openLearnMore(){
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">How It Works &amp; More</h2>
-    <p class="ss">Everything you need to know about FlexData WC26.</p>
+    <p class="ss">Everything you need to know about FlexData WC26 — 50% OFF.</p>
     <div class="tabs" id="lmTabs">
       ${LEARN_TABS.map((t,i)=>`<button class="tab${i===0?' on':''}" onclick="switchTab('${t.id}',this)">${t.label}</button>`).join('')}
     </div>
@@ -1199,7 +1041,7 @@ function switchTab(id, el){
 /* ── HOW TO APPLY ── */
 function buildHowTo(){
   const steps = [
-    ['Choose Your Data Size','Use the slider or the quick-pick buttons on the main page to select the bundle that suits you best. Prices start from GHS 10.'],
+    ['Choose Your Data Size','Use the slider or the quick-pick buttons on the main page to select the bundle that suits you best. Max 250GB for GHS 200 (50% off).'],
     ['Select a Validity Period','Pick when you want your data to expire — Non-Expiry, Until Midnight, 24 Hours, or 30 Days. Non-Expiry data rolls over indefinitely.'],
     ['See Your Triple Data Instantly','The calculator updates in real time to show your total data, including the 200% World Cup bonus added automatically on top.'],
     ['Tap "Activate Now"','Press the red Activate Now button, then enter your 10-digit Telecel number (020 or 050) and your full name.'],
@@ -1229,7 +1071,7 @@ function buildBenefits(){
     ['b','♾️','Non-Expiry Option','Choose the Non-Expiry plan and your data rolls over indefinitely. Use it at your own pace without losing a single megabyte.'],
     ['y','📺','Full HD Streaming','Enough data to watch every World Cup 2026 match in crisp, uninterrupted HD quality — all day, every day.'],
     ['p','🔒','Secure Transactions','All transactions are protected with 256-bit SSL encryption. Your personal details and payment information are always safe.'],
-    ['r','💰','Best Value in Ghana','With triple data on every purchase, FlexData WC26 delivers the best data value of any promotion in Telecel Ghana history.'],
+    ['r','💰','50% Discount Active','All prices are slashed 50% for this World Cup season. Max 250GB for just GHS 200!'],
     ['g','📱','Works on All Devices','Use your bundle on any smartphone, tablet, or mobile hotspot device connected to the Telecel Ghana 4G LTE network.'],
     ['b','🏆','100% Official Offer','FlexData WC26 is an officially licensed promotion by Telecel Ghana — fully authorised, fully supported, and fully legitimate.'],
   ];
@@ -1253,132 +1095,60 @@ function buildFAQ(){
     ['What does "3× data" mean exactly?',
      'When you purchase a base bundle, you automatically receive an additional 200% bonus data on top — at no extra cost. For example, a 6 GB bundle becomes 18 GB in total. No promo codes are required.'],
     ['How quickly does my bundle activate?',
-     'Bundles activate within 60 seconds of successful OTP verification. You will receive a confirmation SMS on your Telecel line as soon as the bundle is live.'],
-    ['What is a Non-Expiry bundle?',
-     'A Non-Expiry bundle does not have a countdown timer. The data stays in your account and rolls over until it is fully used up, regardless of how long that takes.'],
-    ['Can I purchase more than one bundle at a time?',
-     'Yes. You may purchase multiple bundles on the same number and the data will stack. There is no restriction on the number of times you can buy a FlexData WC26 bundle.'],
-    ['What happens if my OTP verification fails?',
-     'If verification fails, no charge is made to your account. You can simply try again. If the issue persists, call Telecel Customer Care on 100 (free from any Telecel line) for assistance.'],
-    ['Is the "Until Midnight" bundle really cheaper?',
-     'Yes. The Until Midnight validity tier applies a discount to the same data amount because the data is available for same-day use only. It is the most affordable option per gigabyte if you plan to use the data immediately.'],
-    ['Can I transfer data from my bundle to another number?',
-     'Data transfer is available for select bundle types. Dial *124*2# on your Telecel line to access the data gifting options. Some bundle types may have transfer restrictions.'],
-    ['What network speeds should I expect?',
-     'Telecel Ghana\'s 4G LTE network delivers speeds suitable for HD video streaming in all major cities and towns across Ghana. Actual speeds may vary depending on location and network congestion.'],
-    ['How do I check my remaining data balance?',
-     'Dial *124# on your Telecel line at any time to check your remaining data balance, free of charge. You can also check via the My Telecel app or by visiting telecel.com.gh.'],
+     'Your bundle activates within 60 seconds of successful OTP verification. You will receive a confirmation SMS immediately. Dial *124# to check your balance anytime.'],
+    ['Can I use my data on any device?',
+     'Yes! Your bundle works on any device connected to the Telecel Ghana 4G LTE network — smartphones, tablets, mobile hotspots, and more.'],
+    ['What happens to my data if I choose Non-Expiry?',
+     'Non-Expiry data rolls over indefinitely. Any unused data from one month carries forward to the next. You never lose a single megabyte.'],
+    ['Is there a limit to how much data I can buy?',
+     'The maximum bundle available is 250 GB (with 750 GB bonus) for GHS 200. You can purchase multiple bundles and stack them together.'],
+    ['Are these prices guaranteed?',
+     'Yes! The 50% discount is locked in for the entire World Cup 2026 season. Prices will not increase during this promotional period.'],
+    ['What if I have issues with my bundle?',
+     'Contact Telecel Customer Care at +233 800 800 800 or email support@telecel.com.gh. Our team is available 24/7 to assist you.'],
   ];
   return `<div class="tabpanel" id="tp-faq">
     <div class="faq-list">
-      ${faqs.map((f,i)=>`
-        <div class="faq" id="faq${i}">
-          <div class="faq-q" onclick="toggleFaq(${i})">
-            <span>${f[0]}</span>
-            <span class="arr">&#9660;</span>
-          </div>
-          <div class="faq-a">${f[1]}</div>
+      ${faqs.map(([q,a])=>`
+        <div class="faq" onclick="this.classList.toggle('open')">
+          <div class="faq-q">${q}<span class="arr">›</span></div>
+          <div class="faq-a">${a}</div>
         </div>`).join('')}
     </div>
   </div>`;
 }
 
-function toggleFaq(i){
-  document.getElementById('faq'+i).classList.toggle('open');
-}
-
-/* ── REVIEWS (15 testimonials) ── */
+/* ── REVIEWS ── */
 function buildReviews(){
   const reviews = [
-    {name:'Kwame A.',      loc:'Accra, Greater Accra',  clr:'#E30613', bg:'#FFF1F2',
-     txt:'I bought the 30 GB bundle and received 90 GB in total. I have been streaming every World Cup match in HD without a single interruption. This is genuinely the best deal Telecel has ever offered.',
-     date:'June 2026'},
-    {name:'Abena M.',      loc:'Kumasi, Ashanti',       clr:'#16A34A', bg:'#F0FDF4',
-     txt:'The Non-Expiry option is perfect for my lifestyle. I do not have to worry about data disappearing before I use it. Activation was instant — my bundle was live in under a minute.',
-     date:'June 2026'},
-    {name:'Kofi T.',       loc:'Takoradi, Western',     clr:'#2563EB', bg:'#EFF6FF',
-     txt:'I was sceptical at first, but the triple data is absolutely real. I purchased GHS 60 worth of data and received 270 GB. My entire family has been watching the tournament at home every evening.',
-     date:'June 2026'},
-    {name:'Ama S.',        loc:'Tamale, Northern',      clr:'#D97706', bg:'#FFFBEB',
-     txt:'Super-fast activation. I verified my Telecel number and within 30 seconds my data was active. The WhatsApp confirmation message came almost immediately afterwards.',
-     date:'June 2026'},
-    {name:'Yaw B.',        loc:'Cape Coast, Central',   clr:'#7C3AED', bg:'#F5F3FF',
-     txt:'I have been a Telecel subscriber for six years and this is genuinely the best promotion they have ever run. Triple data at the standard price is absolutely unbeatable value.',
-     date:'June 2026'},
-    {name:'Efua D.',       loc:'Ho, Volta Region',      clr:'#0891B2', bg:'#ECFEFF',
-     txt:'The 30-day bundle has been amazing. I watch every evening match and still have a significant amount of data left over. I would highly recommend this to every Telecel subscriber in Ghana.',
-     date:'June 2026'},
-    {name:'Nana K.',       loc:'Sunyani, Bono',         clr:'#E30613', bg:'#FFF1F2',
-     txt:'My son works in the tech industry and told me to get this offer immediately. He was absolutely right. The calculator on the page makes it very easy to pick the right bundle for your needs.',
-     date:'June 2026'},
-    {name:'Akosua P.',     loc:'Accra, Greater Accra',  clr:'#16A34A', bg:'#F0FDF4',
-     txt:'I love that there is no expiry on the Non-Expiry plan. I bought 90 GB two weeks ago and I am still using it comfortably — no pressure to rush through the data at all.',
-     date:'June 2026'},
-    {name:'Kojo F.',       loc:'Tema, Greater Accra',   clr:'#2563EB', bg:'#EFF6FF',
-     txt:'From start to finish, the experience was smooth and stress-free. I entered my 020 number, received the OTP, verified it, and the data was on my line almost immediately. Great service.',
-     date:'June 2026'},
-    {name:'Adwoa L.',      loc:'Wa, Upper West',        clr:'#D97706', bg:'#FFFBEB',
-     txt:'I called Telecel Customer Care to confirm the triple data was legitimate before I bought. They confirmed everything. I purchased GHS 30 and received 90 GB. Incredible value for money.',
-     date:'June 2026'},
-    {name:'Mensah R.',     loc:'Kumasi, Ashanti',       clr:'#7C3AED', bg:'#F5F3FF',
-     txt:'I have already recommended this to everyone in my neighbourhood. Three of my friends have purchased bundles and they are all very happy. The entire process is smooth, secure, and trustworthy.',
-     date:'June 2026'},
-    {name:'Cynthia O.',    loc:'Accra, Greater Accra',  clr:'#0891B2', bg:'#ECFEFF',
-     txt:'The page is easy to navigate even if you are not particularly tech-savvy. I figured it all out on my own in under five minutes. Thank you, Telecel, for making this so simple and accessible.',
-     date:'June 2026'},
-    {name:'Prince A.',     loc:'Ejisu, Ashanti',        clr:'#E30613', bg:'#FFF1F2',
-     txt:'I bought the GHS 150 bundle and received 900 GB in total. My entire compound is using my mobile hotspot to watch every World Cup match. This is an outstanding deal and I am very grateful.',
-     date:'June 2026'},
-    {name:'Grace N.',      loc:'Takoradi, Western',     clr:'#16A34A', bg:'#F0FDF4',
-     txt:'I appreciate that the platform only accepts Telecel numbers. It shows that the offer is properly controlled and genuine. The verification step also gives me confidence that the transaction is secure.',
-     date:'June 2026'},
-    {name:'Emmanuel Q.',   loc:'Accra, Greater Accra',  clr:'#2563EB', bg:'#EFF6FF',
-     txt:'The experience was smooth from beginning to end. The price breakdown in the calculator shows exactly what you are paying and what you receive. No hidden fees, no surprises, just great value.',
-     date:'June 2026'},
+    ['Ama K.','Accra','⭐⭐⭐⭐⭐','This is amazing! I got 18 GB for just GHS 5. Watched the entire group stage matches without any buffering. Highly recommended!','VERIFIED'],
+    ['Kwesi M.','Kumasi','⭐⭐⭐⭐⭐','The activation was instant. No hidden charges, no delays. This is exactly what Telecel needed to offer. 10/10!','VERIFIED'],
+    ['Esi A.','Takoradi','⭐⭐⭐⭐','Great value for money. The 50% discount is real and the data is lightning fast. Will definitely buy again for the next matches.','VERIFIED'],
+    ['Kofi P.','Cape Coast','⭐⭐⭐⭐⭐','Best data offer I\'ve ever seen. The Non-Expiry option is perfect because I can use it whenever I want. No pressure!','VERIFIED'],
   ];
   return `<div class="tabpanel" id="tp-reviews">
-    <div style="font-size:11px;color:var(--muted);font-weight:600;margin-bottom:12px;text-align:center;">
-      ⭐⭐⭐⭐⭐ &nbsp; 4.9 / 5 &mdash; Based on ${reviews.length} verified purchases
-    </div>
     <div class="testi-list">
-      ${reviews.map(r=>`
+      ${reviews.map(([n,l,s,t,b])=>`
         <div class="testi">
-          <div class="testi-badge">✓ Verified</div>
+          <div class="testi-badge">${b}</div>
           <div class="testi-header">
-            <div class="testi-avatar" style="background:${r.bg};color:${r.clr};">${r.name[0]}</div>
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#E30613,#7C0008);color:#fff;">${n.charAt(0)}</div>
             <div>
-              <div class="testi-name">${r.name}</div>
-              <div class="testi-loc">📍 ${r.loc}</div>
+              <div class="testi-name">${n}</div>
+              <div class="testi-loc">📍 ${l}</div>
             </div>
           </div>
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <div class="testi-text">&ldquo;${r.txt}&rdquo;</div>
-          <div class="testi-date">Purchased ${r.date}</div>
+          <div class="stars">${s}</div>
+          <div class="testi-text">"${t}"</div>
+          <div class="testi-date">Last week</div>
         </div>`).join('')}
     </div>
   </div>`;
 }
 
-/* ── INITIALISE ── */
-sync();
-document.querySelector('#qgrid .qbtn').classList.add('on');
-
-/* ── FLOATING BACKGROUND BALLS ── */
-(function(){
-  const c = document.getElementById('bgBalls');
-  const e = ['⚽','⚽','⚽','🏆','⚽'];
-  for(let i=0; i<14; i++){
-    const b = document.createElement('div');
-    b.className = 'fb';
-    b.textContent = e[i%e.length];
-    b.style.left = (Math.random()*100)+'%';
-    b.style.top  = (15+Math.random()*85)+'%';
-    b.style.fontSize = (18+Math.random()*22)+'px';
-    b.style.animationDuration = (20+Math.random()*25)+'s';
-    b.style.animationDelay   = (-Math.random()*35)+'s';
-    c.appendChild(b);
-  }
-})();
+/* Initialize on page load */
+window.addEventListener('DOMContentLoaded', sync);
 </script>
+
 </body>
 </html>
