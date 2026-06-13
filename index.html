@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Telecel Ghana FlexData WC26 — Official World Cup 2026 Triple Data Bundles</title>
+<title>Telecel Ghana FlexData — Double Your Data</title>
+<meta name="description" content="Buy any Telecel Ghana data bundle and receive 100% bonus data instantly. Double your data with FlexData.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,15 +18,9 @@
   --green:      #059669;
   --green-soft: #ECFDF5;
   --green-bdr:  #A7F3D0;
-  --amber:      #D97706;
-  --amber-soft: #FFFBEB;
-  --amber-bdr:  #FDE68A;
   --blue:       #2563EB;
   --blue-soft:  #EFF6FF;
   --blue-bdr:   #BFDBFE;
-  --violet:     #7C3AED;
-  --violet-soft:#F5F3FF;
-  --violet-bdr: #DDD6FE;
   --ink:        #0F172A;
   --mid:        #475569;
   --muted:      #94A3B8;
@@ -50,8 +45,9 @@ body {
 h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
 button { font-family: 'Inter', sans-serif; cursor: pointer; border: none; outline: none; }
 input { outline: none; }
+a { text-decoration: none; }
 
-/* BACKGROUND */
+/* ── BACKGROUND ── */
 .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .bg-grid {
   position: absolute; inset: 0;
@@ -59,22 +55,11 @@ input { outline: none; }
     linear-gradient(rgba(227,6,19,.022) 1px, transparent 1px),
     linear-gradient(90deg, rgba(227,6,19,.022) 1px, transparent 1px);
   background-size: 44px 44px;
-  animation: gridDrift 30s linear infinite;
-}
-@keyframes gridDrift { to { transform: translate(44px,44px); } }
-.bg-orb { position: absolute; border-radius: 50%; filter: blur(110px); animation: orbFloat ease-in-out infinite; }
-.bg-orb.o1 { width: 480px; height: 480px; background: #E30613; opacity: .04; top: -140px; left: -140px; animation-duration: 24s; }
-.bg-orb.o2 { width: 280px; height: 280px; background: #FF6B35; opacity: .03; top: 50%; right: -70px; animation-duration: 30s; animation-delay: -12s; }
-.bg-orb.o3 { width: 220px; height: 220px; background: #E30613; opacity: .03; bottom: 10%; left: 6%; animation-duration: 20s; animation-delay: -7s; }
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33%       { transform: translate(40px,-28px) scale(1.06); }
-  66%       { transform: translate(-18px,38px) scale(0.96); }
 }
 
 .pw { position: relative; z-index: 1; }
 
-/* TOPBAR */
+/* ── TOPBAR ── */
 .topbar {
   background: var(--red);
   color: #fff; height: 56px; padding: 0 16px;
@@ -92,15 +77,8 @@ input { outline: none; }
   overflow: hidden; flex-shrink: 0;
   font-family: 'Outfit'; font-size: 17px; font-weight: 900;
 }
-.limg img { width: 26px; height: 26px; object-fit: contain; filter: brightness(0) invert(1); }
-.ldiv { width: 1px; height: 28px; background: rgba(255,255,255,.2); }
 .lname { font-family: 'Outfit'; font-weight: 900; font-size: 15px; letter-spacing: -.2px; line-height: 1.1; }
-.ltag { font-size: 9px; opacity: .7; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
-.hright { display: flex; align-items: center; gap: 8px; }
-.hbadge {
-  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.22);
-  border-radius: 20px; padding: 4px 10px; font-size: 11px; font-weight: 800;
-}
+.ltag  { font-size: 9px; opacity: .7; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
 .ldot { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; }
 .ldot i { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; display: inline-block; animation: dotPulse 1.6s ease-out infinite; }
 @keyframes dotPulse {
@@ -109,35 +87,16 @@ input { outline: none; }
   100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
 }
 
-/* TICKER */
-.ticker {
-  background: var(--ink); color: #fff;
-  padding: 7px 0; overflow: hidden; white-space: nowrap;
-  font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
-  border-bottom: 2px solid var(--red);
-}
-.tinner { display: inline-block; animation: tick 34s linear infinite; }
-.tinner span { margin-right: 56px; }
-.tinner span::before { content: "⚽ "; color: var(--red); }
-@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
 .wrap { max-width: 480px; margin: 0 auto; padding: 16px 14px 0; }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
   background: linear-gradient(148deg, #E30613 0%, #9B0510 60%, #7C0008 100%);
-  border-radius: 22px; padding: 0;
-  color: #fff; margin: 14px 0 12px;
+  border-radius: 22px; color: #fff; margin: 14px 0 12px;
   position: relative; overflow: hidden;
   box-shadow: var(--shadow-red);
 }
-@keyframes hspin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .hero-inner { padding: 24px 20px 20px; position: relative; z-index: 1; }
-.hero-deco {
-  position: absolute; right: -20px; top: -20px;
-  font-size: 120px; opacity: .06; line-height: 1;
-  animation: hspin 28s linear infinite; pointer-events: none;
-}
 .eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2);
@@ -146,26 +105,10 @@ input { outline: none; }
   margin-bottom: 12px;
 }
 .hero h1 { font-size: 27px; font-weight: 900; line-height: 1.14; margin-bottom: 7px; }
-.hero h1 em { font-style: normal; background: rgba(255,255,255,.18); padding: 2px 8px; border-radius: 6px; }
-.hero-sub { font-size: 12px; opacity: .82; font-weight: 500; line-height: 1.65; max-width: 285px; }
-.hstats { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-top: 16px; }
-.hstat {
-  background: rgba(255,255,255,.11); border: 1px solid rgba(255,255,255,.16);
-  border-radius: 11px; padding: 9px 6px; text-align: center;
-}
-.hstat-v { font-family: 'Outfit'; font-size: 16px; font-weight: 900; line-height: 1; }
-.hstat-l { font-size: 8px; opacity: .65; font-weight: 600; text-transform: uppercase; margin-top: 3px; letter-spacing: .04em; }
-.elig-strip {
-  background: rgba(0,0,0,.18); border-top: 1px solid rgba(255,255,255,.1);
-  padding: 10px 20px;
-  display: flex; align-items: center; gap: 8px;
-}
-.elig-strip-ico { font-size: 13px; flex-shrink: 0; }
-.elig-strip-txt { font-size: 10.5px; opacity: .82; font-weight: 500; line-height: 1.5; }
-.elig-strip-txt strong { font-weight: 800; opacity: 1; }
+.hero-sub { font-size: 13px; opacity: .9; font-weight: 500; line-height: 1.6; }
 
-/* TRUST BAR */
-.tbar { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+/* ── TRUST BAR ── */
+.tbar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
 .titem {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 14px; padding: 12px 7px; text-align: center;
@@ -173,19 +116,14 @@ input { outline: none; }
 }
 .titem .ico { font-size: 18px; margin-bottom: 4px; }
 .titem .lbl { font-size: 10px; font-weight: 800; color: var(--ink); }
-.titem .sub { font-size: 9px; color: var(--muted); font-weight: 600; margin-top: 2px; }
 
-/* CARD */
+/* ── CARD ── */
 .card {
   background: var(--card); border-radius: 20px;
-  padding: 0; box-shadow: var(--shadow-md);
-  border: 1px solid var(--border); margin-bottom: 12px;
-  overflow: hidden;
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+  margin-bottom: 12px; overflow: hidden;
 }
-.card-head {
-  padding: 16px 18px 0;
-  display: flex; align-items: center; gap: 10px;
-}
+.card-head { padding: 16px 18px 0; display: flex; align-items: center; gap: 10px; }
 .ctico {
   background: var(--red-soft); width: 34px; height: 34px;
   border-radius: 9px; display: flex; align-items: center; justify-content: center;
@@ -195,125 +133,101 @@ input { outline: none; }
 .ctitle small { display: block; font-size: 10px; font-weight: 500; color: var(--muted); margin-top: 1px; }
 .card-body { padding: 14px 18px 18px; }
 
-/* CALCULATOR */
-.calc-wrap { display: flex; flex-direction: column; gap: 0; }
-.calc-section {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
+/* ── CALCULATOR ── */
+.calc-wrap { display: flex; flex-direction: column; }
+.calc-section { padding: 14px 0; border-bottom: 1px solid var(--border); }
 .calc-section:last-of-type { border-bottom: none; }
 .calc-row-label {
   font-size: 10px; font-weight: 800; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .06em;
-  margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px;
 }
-.ds-quick {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 7px;
-  margin-bottom: 12px;
-}
+.ds-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 12px; }
 .ds-qbtn {
   background: #F8FAFC; border: 1.5px solid var(--border);
   padding: 9px 4px; border-radius: 10px;
-  font-size: 11px; font-weight: 800;
-  transition: all .15s; color: var(--ink);
-  font-family: 'Inter', sans-serif; text-align: center; line-height: 1.25;
+  font-size: 11px; font-weight: 800; transition: all .15s;
+  color: var(--ink); font-family: 'Inter', sans-serif; text-align: center; line-height: 1.25;
 }
 .ds-qbtn small { display: block; font-size: 9px; font-weight: 600; color: var(--muted); margin-top: 2px; }
 .ds-qbtn:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
-.ds-qbtn.on {
-  border-color: var(--red); color: var(--red);
-  background: var(--red-soft); box-shadow: 0 2px 8px rgba(227,6,19,.12);
-}
-.ds-qbtn.on small { color: var(--red); }
+.ds-qbtn.on { border-color: var(--red); color: var(--red); background: var(--red-soft); box-shadow: 0 2px 8px rgba(227,6,19,.12); }
 .ds-slider-row { display: flex; align-items: center; gap: 10px; }
 .ds-slider {
   flex: 1; height: 5px; background: var(--border); border-radius: 10px;
   -webkit-appearance: none; appearance: none; cursor: pointer;
 }
 .ds-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px; height: 22px; background: var(--red); border-radius: 50%;
-  border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
+  -webkit-appearance: none; width: 22px; height: 22px; background: var(--red);
+  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
 }
 .ds-slider::-moz-range-thumb {
-  width: 22px; height: 22px; background: var(--red); border-radius: 50%;
-  border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
+  width: 22px; height: 22px; background: var(--red);
+  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
 }
 .ds-slider-val {
   font-family: 'Outfit'; font-size: 14px; font-weight: 900; color: var(--red);
   min-width: 54px; text-align: right; white-space: nowrap;
 }
-.period-inline {
-  display: grid; grid-template-columns: repeat(2,1fr); gap: 7px;
-}
+.period-inline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
 .period-pill {
   background: #F8FAFC; border: 1.5px solid var(--border);
-  border-radius: 10px; padding: 10px 8px; cursor: pointer;
-  transition: all .15s; text-align: center;
+  border-radius: 10px; padding: 10px 8px; cursor: pointer; transition: all .15s; text-align: center;
 }
 .period-pill:hover { border-color: var(--blue); background: var(--blue-soft); }
-.period-pill.on { border-color: var(--blue); background: var(--blue-soft); box-shadow: 0 2px 8px rgba(37,99,235,.12); }
-.period-pill-name { font-size: 11.5px; font-weight: 800; color: var(--ink); }
-.period-pill.on .period-pill-name { color: var(--blue); }
+.period-pill.on { border-color: var(--red); background: var(--red-soft); box-shadow: 0 2px 8px rgba(227,6,19,.12); }
+.period-pill-name  { font-size: 11.5px; font-weight: 800; color: var(--ink); }
+.period-pill.on .period-pill-name { color: var(--red); }
 .period-pill-price { font-family: 'Outfit'; font-size: 13px; font-weight: 900; color: var(--muted); margin-top: 3px; }
-.period-pill.on .period-pill-price { color: var(--blue); }
-.period-pill-desc { font-size: 9px; color: var(--muted); font-weight: 500; margin-top: 2px; line-height: 1.3; }
+.period-pill.on .period-pill-price { color: var(--red); }
+.period-pill-desc  { font-size: 9px; color: var(--muted); font-weight: 500; margin-top: 2px; line-height: 1.3; }
+
 .calc-result {
   background: linear-gradient(145deg, #E30613 0%, #7C0008 100%);
-  border-radius: 14px; padding: 16px;
-  color: #fff; margin-top: 14px;
-  display: grid; grid-template-columns: 1fr auto;
-  align-items: center; gap: 12px;
+  border-radius: 14px; padding: 16px; color: #fff; margin-top: 14px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
   box-shadow: var(--shadow-red);
 }
-.cr-left .cr-label { font-size: 9px; font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
-.cr-left .cr-big { font-family: 'Outfit'; font-size: 38px; font-weight: 900; line-height: 1; }
+.cr-left .cr-label  { font-size: 9px; font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+.cr-left .cr-big    { font-family: 'Outfit'; font-size: 38px; font-weight: 900; line-height: 1; }
 .cr-left .cr-big small { font-size: 17px; font-weight: 700; }
-.cr-left .cr-sub { font-size: 10px; opacity: .65; font-weight: 500; margin-top: 3px; }
-.cr-right { text-align: right; }
+.cr-left .cr-sub    { font-size: 10px; opacity: .85; font-weight: 500; margin-top: 3px; }
+.cr-right           { text-align: right; }
 .cr-right .cr-price { font-family: 'Outfit'; font-size: 26px; font-weight: 900; line-height: 1; }
-.cr-right .cr-plbl { font-size: 9px; opacity: .68; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
-.cr-right .cr-period { font-size: 10px; opacity: .72; font-weight: 600; margin-top: 2px; }
+.cr-right .cr-plbl  { font-size: 9px; opacity: .68; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
+.cr-right .cr-period{ font-size: 10px; opacity: .72; font-weight: 600; margin-top: 2px; }
+
 .breakdown {
   background: var(--red-soft); border: 1px solid var(--red-border);
   border-radius: 12px; padding: 12px 14px; margin-top: 10px;
 }
 .bd-row {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; font-weight: 600; color: var(--mid);
-  padding: 4px 0;
+  font-size: 12px; font-weight: 600; color: var(--mid); padding: 4px 0;
 }
 .bd-row .bd-val { font-weight: 700; color: var(--ink); }
 .bd-row.bd-bonus .bd-val { color: var(--red); font-weight: 800; }
-.bd-row.bd-total {
-  border-top: 1.5px dashed var(--red-border);
-  margin-top: 6px; padding-top: 8px;
-  font-weight: 800; color: var(--ink);
-}
-.bd-row.bd-total + .bd-row.bd-total { border-top: none; padding-top: 4px; margin-top: 0; }
+.bd-row.bd-total { border-top: 1.5px dashed var(--red-border); margin-top: 6px; padding-top: 8px; font-weight: 800; color: var(--ink); }
+
+/* ── CTA ── */
 .calc-cta { padding: 0 18px 18px; }
 .btn-red {
   width: 100%; background: var(--red); color: #fff;
-  padding: 15px; border-radius: 13px;
-  font-size: 14px; font-weight: 900;
-  box-shadow: var(--shadow-red);
-  text-transform: uppercase; letter-spacing: .05em;
+  padding: 15px; border-radius: 13px; font-size: 14px; font-weight: 900;
+  box-shadow: var(--shadow-red); text-transform: uppercase; letter-spacing: .05em;
   font-family: 'Outfit', sans-serif; transition: all .18s;
   display: flex; align-items: center; justify-content: center; gap: 7px;
 }
 .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 12px 30px rgba(227,6,19,.36); }
 .btn-red:active { transform: translateY(0); }
 .btn-ghost {
-  width: 100%; background: #fff; color: var(--mid);
-  border: 1.5px solid var(--border);
-  padding: 12px; border-radius: 13px;
-  font-size: 13px; font-weight: 700; margin-top: 8px;
+  width: 100%; background: #fff; color: var(--mid); border: 1.5px solid var(--border);
+  padding: 12px; border-radius: 13px; font-size: 13px; font-weight: 700; margin-top: 8px;
   display: flex; align-items: center; justify-content: center; gap: 7px;
   font-family: 'Inter', sans-serif; transition: all .15s;
 }
 .btn-ghost:hover { border-color: var(--red); color: var(--red); }
 
-/* MODAL */
+/* ── MODAL ── */
 .modal {
   display: none; position: fixed; inset: 0;
   background: rgba(15,23,42,.72); backdrop-filter: blur(8px);
@@ -322,310 +236,201 @@ input { outline: none; }
 .modal.open { display: flex; }
 .sheet {
   background: #fff; width: 100%; max-width: 480px;
-  border-radius: 24px 24px 0 0;
-  max-height: 92vh; overflow-y: auto; overflow-x: hidden;
+  border-radius: 24px 24px 0 0; max-height: 92vh;
+  overflow-y: auto; overflow-x: hidden;
   animation: sheetUp .28s cubic-bezier(.32,.72,0,1);
   -webkit-overflow-scrolling: touch;
   box-shadow: 0 -4px 30px rgba(0,0,0,.12);
 }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 .sheet-inner { padding: 20px 18px 52px; }
-.shandle { width: 36px; height: 4px; background: var(--border); border-radius: 4px; margin: 0 auto 16px; }
-.sh { font-size: 20px; font-weight: 900; margin-bottom: 4px; text-align: center; font-family: 'Outfit'; }
-.ss { font-size: 12px; color: var(--mid); text-align: center; font-weight: 500; margin-bottom: 18px; line-height: 1.6; }
-.ord-sum {
-  background: var(--red-soft); border: 1.5px solid var(--red-border);
-  border-radius: 13px; padding: 13px 15px; margin-bottom: 15px;
-  display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;
-}
-.ord-sum-info { font-size: 12px; color: var(--mid); font-weight: 600; flex: 1; min-width: 150px; }
-.ord-sum-info strong { display: block; font-size: 20px; color: var(--ink); font-family: 'Outfit'; font-weight: 900; margin-bottom: 2px; }
+.shandle { width: 36px; height: 4px; background: #E2E8F0; border-radius: 2px; margin: 0 auto 16px; }
+.sh { font-size: 20px; font-weight: 900; color: var(--ink); text-align: center; margin-bottom: 4px; }
+.ss { font-size: 13px; color: var(--mid); text-align: center; margin-bottom: 20px; }
+
+/* ── FORM ── */
+.igrp { margin-bottom: 16px; }
+.ilbl { display: block; font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+.ph-wrap { display: flex; align-items: center; background: #F8FAFC; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+.ph-prefix { padding: 0 12px; font-size: 13px; font-weight: 700; color: var(--mid); border-right: 1px solid var(--border); background: #F1F5F9; height: 48px; display: flex; align-items: center; }
+.ival { flex: 1; border: none; background: transparent; padding: 0 14px; font-size: 15px; font-weight: 700; color: var(--ink); height: 48px; width: 100%; }
+.ival.err { border-color: var(--red); background: var(--red-soft); }
+.err-msg { color: var(--red); font-size: 11px; font-weight: 600; margin-top: 4px; display: none; }
+.hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+.ord-sum { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.ord-sum-info strong { display: block; font-size: 18px; font-family: 'Outfit'; color: var(--red); }
+.ord-sum-info { font-size: 12px; color: var(--mid); }
 .ord-price { text-align: right; }
-.ord-price .price { font-family: 'Outfit'; font-size: 22px; font-weight: 900; color: var(--red); }
-.ord-price small { font-size: 10px; color: var(--muted); font-weight: 600; display: block; text-align: right; }
-.igrp { margin-bottom: 13px; }
-.ilbl { font-size: 10px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; display: block; }
-.ival {
-  width: 100%; padding: 12px 14px;
-  background: #F8FAFC; border: 2px solid var(--border);
-  border-radius: 12px; font-size: 14px; font-weight: 600;
-  font-family: 'Inter', sans-serif; transition: border-color .15s; color: var(--ink);
-}
-.ival:focus { border-color: var(--red); background: #fff; }
-.ival.err { border-color: #EF4444; background: #FFF8F8; }
-.err-msg { font-size: 11px; color: #EF4444; font-weight: 600; margin-top: 5px; display: none; line-height: 1.5; }
-.ph-prefix {
-  background: var(--red-soft); border: 2px solid var(--red-border);
-  color: var(--red); font-weight: 800; font-size: 12px;
-  padding: 12px 10px; border-radius: 12px 0 0 12px;
-  display: flex; align-items: center; white-space: nowrap; border-right: none;
-}
-.ph-wrap { display: flex; }
-.ph-wrap .ival { border-radius: 0 12px 12px 0; }
-.confirm-box {
-  background: var(--red-soft); border: 1.5px solid var(--red-border);
-  border-radius: 16px; padding: 18px; margin-bottom: 15px; text-align: center;
-}
-.confirm-ball { font-size: 48px; line-height: 1; margin-bottom: 10px; display: inline-block; animation: hspin 14s linear infinite; }
-.confirm-data { font-family: 'Outfit'; font-size: 40px; font-weight: 900; color: var(--red); line-height: 1; }
-.confirm-sub { font-size: 12px; color: var(--mid); font-weight: 600; margin-top: 5px; }
-.confirm-bonus { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 3px; }
-.confirm-details { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 13px 15px; margin-bottom: 15px; }
-.confirm-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; }
-.confirm-row:not(:last-child) { border-bottom: 1px solid var(--border); }
+.ord-price .price { font-size: 20px; font-weight: 900; color: var(--ink); font-family: 'Outfit'; }
+.ord-price small { font-size: 10px; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+
+.confirm-box { background: var(--red-soft); border: 2px solid var(--red-border); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 20px; }
+.confirm-ball { font-size: 32px; margin-bottom: 8px; }
+.confirm-data { font-family: 'Outfit'; font-size: 36px; font-weight: 900; color: var(--red); line-height: 1; }
+.confirm-sub { font-size: 13px; font-weight: 700; color: var(--red-deep); margin-top: 4px; }
+.confirm-details { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 20px; }
+.confirm-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; }
 .confirm-row span { color: var(--muted); font-weight: 600; }
 .confirm-row strong { color: var(--ink); font-weight: 800; }
 
-/* TABS */
-.tabs { display: flex; gap: 6px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 2px; }
-.tabs::-webkit-scrollbar { display: none; }
-.tab {
-  flex-shrink: 0; padding: 7px 13px; border-radius: 20px;
-  font-size: 11px; font-weight: 800;
-  border: 1.5px solid var(--border); background: #F8FAFC; color: var(--mid);
-  transition: all .15s; white-space: nowrap; font-family: 'Inter', sans-serif;
-}
-.tab.on { background: var(--red); color: #fff; border-color: var(--red); }
+/* ── TABS ── */
+.tabs { display: flex; gap: 6px; margin-bottom: 16px; border-bottom: 2px solid var(--border); overflow-x: auto; }
+.tab { padding: 10px 12px; font-size: 12px; font-weight: 800; color: var(--muted); cursor: pointer; border: none; background: transparent; white-space: nowrap; border-bottom: 3px solid transparent; transition: all .15s; }
+.tab.on { color: var(--red); border-bottom-color: var(--red); }
 .tabpanel { display: none; }
 .tabpanel.on { display: block; }
 
-/* Steps */
-.steps-list { display: flex; flex-direction: column; gap: 9px; }
-.step-item { background: #F8FAFC; border: 1px solid var(--border); border-radius: 13px; padding: 13px; display: flex; gap: 12px; align-items: flex-start; }
-.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--red); color: #fff; font-family: 'Outfit'; font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.step-body .step-t { font-size: 13px; font-weight: 800; margin-bottom: 3px; color: var(--ink); }
-.step-body .step-d { font-size: 12px; color: var(--mid); font-weight: 500; line-height: 1.6; }
+/* ── STEPS ── */
+.steps-list { display: flex; flex-direction: column; gap: 12px; }
+.step-item { display: flex; gap: 12px; }
+.step-num { width: 28px; height: 28px; background: var(--red-soft); border: 2px solid var(--red-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--red); flex-shrink: 0; font-size: 12px; }
+.step-body { flex: 1; }
+.step-t { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
+.step-d { font-size: 12px; color: var(--mid); line-height: 1.5; }
 
-/* Benefits */
-.benef-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.benef-item { border-radius: 13px; padding: 13px; border: 1px solid var(--border); }
-.benef-item.r { background: var(--red-soft);    border-color: var(--red-border); }
-.benef-item.g { background: var(--green-soft);  border-color: var(--green-bdr); }
-.benef-item.b { background: var(--blue-soft);   border-color: var(--blue-bdr); }
-.benef-item.y { background: var(--amber-soft);  border-color: var(--amber-bdr); }
-.benef-item.p { background: var(--violet-soft); border-color: var(--violet-bdr); }
-.benef-ico { font-size: 20px; margin-bottom: 7px; }
-.benef-t { font-size: 12px; font-weight: 800; margin-bottom: 3px; }
-.benef-d { font-size: 11px; color: var(--mid); font-weight: 500; line-height: 1.5; }
-.benef-item.r .benef-t { color: var(--red); }
-.benef-item.g .benef-t { color: var(--green); }
-.benef-item.b .benef-t { color: var(--blue); }
-.benef-item.y .benef-t { color: var(--amber); }
-.benef-item.p .benef-t { color: var(--violet); }
+/* ── BENEFITS ── */
+.benef-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.benef-item { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 12px; text-align: center; }
+.benef-item.r { border-color: var(--red-border); background: var(--red-soft); }
+.benef-item.g { border-color: var(--green-bdr); background: var(--green-soft); }
+.benef-item.b { border-color: var(--blue-bdr); background: var(--blue-soft); }
+.benef-ico { font-size: 24px; margin-bottom: 6px; }
+.benef-t { font-size: 12px; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
+.benef-d { font-size: 11px; color: var(--mid); line-height: 1.4; }
 
-/* FAQ */
-.faq-list { display: flex; flex-direction: column; gap: 7px; }
-.faq { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.faq-q { padding: 13px 14px; font-size: 13px; font-weight: 700; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; user-select: none; }
-.faq-q .arr { font-size: 11px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
-.faq.open .faq-q .arr { transform: rotate(180deg); }
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all .15s; }
+.faq.open { background: var(--red-soft); border-color: var(--red-border); }
+.faq-q { padding: 12px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 13px; color: var(--ink); }
 .faq.open .faq-q { color: var(--red); }
-.faq-a { display: none; padding: 0 14px 13px; font-size: 12px; color: var(--mid); font-weight: 500; line-height: 1.7; }
+.arr { font-size: 20px; transition: transform .15s; }
+.faq.open .arr { transform: rotate(90deg); }
+.faq-a { padding: 0 12px 12px; font-size: 12px; color: var(--mid); line-height: 1.6; display: none; }
 .faq.open .faq-a { display: block; }
 
-/* Testimonials */
-.testi-list { display: flex; flex-direction: column; gap: 10px; }
-.testi { background: #F8FAFC; border: 1px solid var(--border); border-radius: 14px; padding: 14px; position: relative; }
-.testi-header { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
-.testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; flex-shrink: 0; font-family: 'Outfit'; }
-.testi-name { font-size: 13px; font-weight: 800; color: var(--ink); }
-.testi-loc { font-size: 10px; color: var(--muted); font-weight: 500; margin-top: 1px; }
-.stars { font-size: 11px; margin-bottom: 5px; color: #FBBF24; }
-.testi-text { font-size: 12px; color: var(--mid); font-weight: 500; line-height: 1.7; }
-.testi-badge { position: absolute; top: 11px; right: 11px; background: var(--green-soft); border: 1px solid var(--green-bdr); border-radius: 7px; padding: 3px 7px; font-size: 9px; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: .04em; }
-.testi-date { font-size: 10px; color: var(--muted); font-weight: 500; margin-top: 7px; }
+/* ── TESTIMONIALS ── */
+.testi-list { display: flex; flex-direction: column; gap: 12px; }
+.testi { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 12px; position: relative; }
+.testi-badge { position: absolute; top: 8px; right: 8px; background: var(--green); color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 4px; }
+.testi-header { display: flex; gap: 10px; margin-bottom: 8px; }
+.testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+.testi-name { font-size: 12px; font-weight: 800; color: var(--ink); }
+.testi-loc { font-size: 11px; color: var(--muted); }
+.stars { font-size: 12px; margin-bottom: 6px; }
+.testi-text { font-size: 12px; color: var(--mid); line-height: 1.5; margin-bottom: 6px; font-style: italic; }
+.testi-date { font-size: 10px; color: var(--muted); }
 
-/* FOOTER */
-.footer { background: var(--ink); color: #fff; padding: 28px 18px 22px; margin-top: 14px; text-align: center; }
-.footer-inner { max-width: 480px; margin: 0 auto; }
-.footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
-.footer-logo-wrap { width: 36px; height: 36px; background: linear-gradient(135deg,var(--red),var(--red-deep)); border: 1.5px solid rgba(255,255,255,.18); border-radius: 9px; display: flex; align-items: center; justify-content: center; overflow: hidden; font-family: 'Outfit'; font-weight: 900; font-size: 16px; color: #fff; flex-shrink: 0; }
-.footer-logo-wrap img { width: 22px; height: 22px; object-fit: contain; filter: brightness(0) invert(1); }
-.footer-brand-name { font-family: 'Outfit'; font-weight: 900; font-size: 15px; line-height: 1.1; }
-.footer-desc { font-size: 11px; color: rgba(255,255,255,.48); font-weight: 500; line-height: 1.65; margin-bottom: 12px; }
-.footer-desc strong { color: rgba(255,255,255,.72); }
-.footer-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
-.footer-links a { font-size: 10px; color: rgba(255,255,255,.55); font-weight: 600; text-decoration: none; transition: color .15s; }
-.footer-links a:hover { color: #fff; }
-.footer-legal { font-size: 9px; color: rgba(255,255,255,.28); font-weight: 500; line-height: 1.65; padding: 12px 0 env(safe-area-inset-bottom); border-top: 1px solid rgba(255,255,255,.07); }
-.footer-legal a { color: rgba(255,255,255,.4); text-decoration: none; }
-.footer-legal a:hover { color: rgba(255,255,255,.7); }
+/* ── FOOTER ── */
+.footer { background: #fff; border-top: 1px solid var(--border); padding: 32px 16px; text-align: center; }
+.footer-brand { font-family: 'Outfit'; font-weight: 900; font-size: 18px; color: var(--red); margin-bottom: 8px; }
+.footer-legal { font-size: 11px; color: var(--muted); line-height: 1.6; }
 
-@media (max-width: 480px) {
-  .sheet { max-height: 95vh; }
-  .sheet-inner { padding: 18px 16px 44px; }
-  .benef-grid { grid-template-columns: 1fr; }
-}
 </style>
 </head>
 <body>
 
 <div class="bg-layer">
   <div class="bg-grid"></div>
-  <div class="bg-orb o1"></div>
-  <div class="bg-orb o2"></div>
-  <div class="bg-orb o3"></div>
 </div>
 
 <div class="pw">
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="lbox">
-    <div class="limg">
-      <img src="https://telecelgroup.com/wp-content/uploads/2026/05/TGS-logooo-updated-copy.png" alt="Telecel"
-        onerror="this.style.display='none';this.parentElement.textContent='T'">
+  <header class="topbar">
+    <div class="lbox">
+      <div class="limg">T</div>
+      <div style="width:1px;height:24px;background:rgba(255,255,255,0.2);margin:0 4px;"></div>
+      <div>
+        <div class="lname">Telecel Ghana</div>
+        <div class="ltag">FlexData</div>
+      </div>
     </div>
-    <div class="ldiv"></div>
-    <div>
-      <div class="lname">FlexData WC26</div>
-      <div class="ltag">Telecel Ghana · Official Bundles</div>
-    </div>
-  </div>
-  <div class="hright">
-    <div class="ldot"><i></i>&nbsp;LIVE</div>
-    <div class="hbadge">🏆 WC 2026</div>
-  </div>
-</header>
+    <div class="ldot"><i></i> LIVE</div>
+  </header>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="tinner">
-    <span>3× Bonus Data on All Bundles</span>
-    <span>Non-Expiry Plans Available</span>
-    <span>Instant Activation — Under 60 Seconds</span>
-    <span>Watch Every Match in Full HD</span>
-    <span>Up to 250 GB for GHS 200 — 50% OFF</span>
-    <span>Telecel Ghana Official World Cup Offer</span>
-    <span>3× Bonus Data on All Bundles</span>
-    <span>Non-Expiry Plans Available</span>
-    <span>Instant Activation — Under 60 Seconds</span>
-    <span>Watch Every Match in Full HD</span>
-    <span>Up to 250 GB for GHS 200 — 50% OFF</span>
-    <span>Telecel Ghana Official World Cup Offer</span>
+  <div class="wrap">
+    
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Exclusive Offer</div>
+        <h1>Double Your Data</h1>
+        <p class="hero-sub">Get 100% bonus data on every bundle you buy. More data, more freedom.</p>
+      </div>
+    </div>
+
+    <div class="tbar">
+      <div class="titem"><div class="ico">⚡</div><div class="lbl">Instant</div></div>
+      <div class="titem"><div class="ico">🔒</div><div class="lbl">Secure</div></div>
+      <div class="titem"><div class="ico">♾️</div><div class="lbl">No Expiry</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="ctico">🧮</div>
+        <div class="ctitle">Bundle Calculator<small>Set your data and see your bonus instantly</small></div>
+      </div>
+      <div class="card-body">
+        <div class="calc-wrap">
+          <div class="calc-section">
+            <div class="calc-row-label">Step 1 · Select Data Size</div>
+            <div class="ds-quick">
+              <button class="ds-qbtn on" data-idx="0" onclick="setByIdx(0)">6 GB<small>GHS 5</small></button>
+              <button class="ds-qbtn" data-idx="2" onclick="setByIdx(2)">30 GB<small>GHS 15</small></button>
+              <button class="ds-qbtn" data-idx="5" onclick="setByIdx(5)">90 GB<small>GHS 30</small></button>
+              <button class="ds-qbtn" data-idx="10" onclick="setByIdx(10)">250 GB<small>GHS 200</small></button>
+            </div>
+            <div class="ds-slider-row">
+              <input type="range" class="ds-slider" id="slider" min="0" max="10" step="1" value="0" oninput="onSlider()">
+              <div class="ds-slider-val" id="sliderValLabel">6 GB</div>
+            </div>
+          </div>
+
+          <div class="calc-section">
+            <div class="calc-row-label">Step 2 · Choose Validity</div>
+            <div class="period-inline" id="periodPills"></div>
+          </div>
+
+          <div class="calc-result">
+            <div class="cr-left">
+              <div class="cr-label">Total You Receive</div>
+              <div class="cr-big" id="dispTotal">12 <small>GB</small></div>
+              <div class="cr-sub" id="dispSub">6 GB base + 6 GB bonus</div>
+            </div>
+            <div class="cr-right">
+              <div class="cr-price" id="dispPrice">GHS 5</div>
+              <div class="cr-plbl">Total Cost</div>
+              <div class="cr-period" id="dispPeriod">Non-Expiry</div>
+            </div>
+          </div>
+
+          <div class="breakdown">
+            <div class="bd-row"><span>Base Data</span><span class="bd-val" id="sumS">6 GB</span></div>
+            <div class="bd-row bd-bonus"><span>🎁 100% Bonus</span><span class="bd-val" id="sumB">+6 GB</span></div>
+            <div class="bd-row bd-total"><span>Total Data</span><strong id="sumT">12 GB</strong></div>
+            <div class="bd-row bd-total"><span>Validity Period</span><strong id="sumV">Non-Expiry</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-cta">
+        <button class="btn-red" onclick="openActivate()">Activate Now 🚀</button>
+        <button class="btn-ghost" onclick="openLearnMore()">ℹ️ Learn More</button>
+      </div>
+    </div>
+
   </div>
+
+  <footer class="footer">
+    <div class="footer-brand">Telecel Ghana</div>
+    <p class="footer-legal">
+      &copy; 2026 Telecel Ghana. Licensed Mobile Data Services.<br>
+      All prices in GHS. Exclusive to 020 & 050 numbers.
+    </p>
+  </footer>
+
 </div>
 
-<div class="wrap">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-deco">⚽</div>
-    <div class="hero-inner">
-      <div class="eyebrow">⚽ Telecel Ghana · FIFA World Cup 2026</div>
-      <h1>FlexData WC26 —<br><em>Triple Your Data</em></h1>
-      <p class="hero-sub">Buy any bundle and receive 200% bonus data automatically. All prices cut 50% for the World Cup season.</p>
-      <div class="hstats">
-        <div class="hstat"><div class="hstat-v">3×</div><div class="hstat-l">Data Bonus</div></div>
-        <div class="hstat"><div class="hstat-v">♾️</div><div class="hstat-l">Non-Expiry</div></div>
-        <div class="hstat"><div class="hstat-v">⚡</div><div class="hstat-l">Instant</div></div>
-        <div class="hstat"><div class="hstat-v">−50%</div><div class="hstat-l">Discount</div></div>
-      </div>
-    </div>
-    <div class="elig-strip">
-      <div class="elig-strip-ico">📋</div>
-      <div class="elig-strip-txt"><strong>Telecel Ghana subscribers only.</strong> Exclusive to active 020 &amp; 050 numbers in good standing.</div>
-    </div>
-  </div>
-
-  <!-- TRUST BAR -->
-  <div class="tbar">
-    <div class="titem"><div class="ico">⚡</div><div class="lbl">Instant</div><div class="sub">Activation</div></div>
-    <div class="titem"><div class="ico">🔒</div><div class="lbl">Secure</div><div class="sub">SSL Encrypted</div></div>
-    <div class="titem"><div class="ico">♾️</div><div class="lbl">No Expiry</div><div class="sub">Flex Plans</div></div>
-  </div>
-
-  <!-- CALCULATOR CARD -->
-  <div class="card">
-    <div class="card-head">
-      <div class="ctico">🧮</div>
-      <div class="ctitle">Bundle Calculator<small>Adjust size &amp; period — your total updates live</small></div>
-    </div>
-    <div class="card-body">
-      <div class="calc-wrap">
-
-        <!-- Step 1: Data Size -->
-        <div class="calc-section">
-          <div class="calc-row-label">1 · Choose Data Size</div>
-          <div class="ds-quick">
-            <button class="ds-qbtn on" data-idx="0"  onclick="setByIdx(0)">6 GB<small>GHS 5</small></button>
-            <button class="ds-qbtn"    data-idx="2"  onclick="setByIdx(2)">30 GB<small>GHS 15</small></button>
-            <button class="ds-qbtn"    data-idx="5"  onclick="setByIdx(5)">90 GB<small>GHS 30</small></button>
-            <button class="ds-qbtn"    data-idx="10" onclick="setByIdx(10)">250 GB<small>GHS 200</small></button>
-          </div>
-          <div class="ds-slider-row">
-            <input type="range" class="ds-slider" id="slider" min="0" max="10" step="1" value="0" oninput="onSlider()">
-            <div class="ds-slider-val" id="sliderValLabel">6 GB</div>
-          </div>
-        </div>
-
-        <!-- Step 2: Period -->
-        <div class="calc-section">
-          <div class="calc-row-label">2 · Choose Validity Period</div>
-          <div class="period-inline" id="periodPills"></div>
-        </div>
-
-        <!-- Result -->
-        <div class="calc-result">
-          <div class="cr-left">
-            <div class="cr-label">You Receive</div>
-            <div class="cr-big" id="dispTotal">18 <small>GB</small></div>
-            <div class="cr-sub" id="dispSub">6 GB base + 12 GB bonus</div>
-          </div>
-          <div class="cr-right">
-            <div class="cr-price" id="dispPrice">GHS 5</div>
-            <div class="cr-plbl">Total Cost</div>
-            <div class="cr-period" id="dispPeriod">Non-Expiry</div>
-          </div>
-        </div>
-
-        <!-- Breakdown -->
-        <div class="breakdown">
-          <div class="bd-row"><span>Base Data</span><span class="bd-val" id="sumS">6 GB</span></div>
-          <div class="bd-row bd-bonus"><span>🎁 WC 2026 Bonus (200%)</span><span class="bd-val" id="sumB">+12 GB</span></div>
-          <div class="bd-row bd-total"><span>Total Data</span><strong id="sumT">18 GB</strong></div>
-          <div class="bd-row bd-total"><span>Validity</span><strong id="sumV">Non-Expiry</strong></div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="calc-cta">
-      <button class="btn-red" onclick="openActivate()">Activate Now 🚀</button>
-      <button class="btn-ghost" onclick="openLearnMore()">ℹ️ How It Works &amp; More</button>
-    </div>
-  </div>
-
-</div><!-- /.wrap -->
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo-wrap">
-        <img src="https://telecelgroup.com/wp-content/uploads/2026/05/TGS-logooo-updated-copy.png" alt="Telecel"
-          onerror="this.style.display='none';this.parentElement.textContent='T'">
-      </div>
-      <div class="footer-brand-name">Telecel Ghana</div>
-    </div>
-    <p class="footer-desc">
-      <strong>FlexData WC26</strong> — Official World Cup 2026 data bundles. Triple data at 50% off for all Telecel Ghana subscribers.
-    </p>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms &amp; Conditions</a>
-      <a href="#">Contact Us</a>
-    </div>
-    <p class="footer-legal">
-      &copy; 2026 FlexData Ghana. Licensed Mobile Data Services. NCA Registered.<br>
-      All prices in GHS. Exclusive to Telecel Ghana 020 &amp; 050 numbers.
-    </p>
-  </div>
-</footer>
-
-</div><!-- /.pw -->
-
-<!-- MODAL -->
 <div class="modal" id="modal" onclick="closeBg(event)">
   <div class="sheet" id="sheet">
     <div class="sheet-inner" id="sheetInner"></div>
@@ -633,46 +438,51 @@ input { outline: none; }
 </div>
 
 <script>
-/* ── DATA ── */
 const TIERS = [
-  {g:6,   p:5  },
-  {g:12,  p:8  },
-  {g:30,  p:15 },
-  {g:45,  p:20 },
-  {g:60,  p:25 },
-  {g:90,  p:30 },
-  {g:150, p:45 },
-  {g:180, p:60 },
-  {g:210, p:75 },
-  {g:240, p:150},
-  {g:250, p:200}
+  { g: 6,   p: 5   },
+  { g: 12,  p: 8   },
+  { g: 30,  p: 15  },
+  { g: 45,  p: 20  },
+  { g: 60,  p: 25  },
+  { g: 90,  p: 30  },
+  { g: 150, p: 45  },
+  { g: 180, p: 60  },
+  { g: 210, p: 75  },
+  { g: 240, p: 150 },
+  { g: 250, p: 200 }
 ];
-const PERIOD_ORDER = ['midnight','24h','30d','flex'];
-const PERIODS = {
-  midnight: { label:'Until Midnight', mult:0.55, desc:'Same-day plan' },
-  '24h':    { label:'24 Hours',       mult:0.72, desc:'Full-day access' },
-  '30d':    { label:'30 Days',        mult:0.95, desc:'Full-month coverage' },
-  flex:     { label:'Non-Expiry',     mult:1.0,  desc:'Data never expires' }
-};
-const TELECEL_PREFIXES = ['020','050'];
 
-let curIdx    = 0;
+const PERIOD_ORDER = ['midnight', '24h', '30d', 'flex'];
+const PERIODS = {
+  midnight: { label: 'Until Midnight', mult: 0.55, desc: 'Same-day data — expires at midnight' },
+  '24h':    { label: '24 Hours',       mult: 0.72, desc: 'Full-day access from activation' },
+  '30d':    { label: '30 Days',        mult: 0.95, desc: 'Full-month coverage' },
+  flex:     { label: 'Non-Expiry',     mult: 1.0,  desc: 'Your data never expires' }
+};
+
+const TELECEL_PREFIXES = ['020', '050'];
+let curIdx = 0;
 let curPeriod = 'flex';
 
 function computeState() {
-  const tier  = TIERS[curIdx];
+  const tier = TIERS[curIdx];
   const pmult = PERIODS[curPeriod].mult;
   const price = Math.max(5, Math.round(tier.p * pmult));
-  return { base:tier.g, bonus:tier.g*2, total:tier.g*3, price, period:PERIODS[curPeriod].label };
+  return {
+    base: tier.g,
+    bonus: tier.g, // Double data: 100% bonus
+    total: tier.g * 2,
+    price,
+    period: PERIODS[curPeriod].label
+  };
 }
 
 function buildPeriodPills() {
   const container = document.getElementById('periodPills');
-  if (!container) return;
   container.innerHTML = PERIOD_ORDER.map(p => {
-    const cfg   = PERIODS[p];
+    const cfg = PERIODS[p];
     const price = Math.max(5, Math.round(TIERS[curIdx].p * cfg.mult));
-    return `<div class="period-pill${curPeriod===p?' on':''}" onclick="pickPeriod('${p}')">
+    return `<div class="period-pill${curPeriod === p ? ' on' : ''}" onclick="pickPeriod('${p}')">
       <div class="period-pill-name">${cfg.label}</div>
       <div class="period-pill-price">GHS ${price}</div>
       <div class="period-pill-desc">${cfg.desc}</div>
@@ -682,15 +492,16 @@ function buildPeriodPills() {
 
 function sync() {
   const s = computeState();
-  document.getElementById('dispTotal').innerHTML  = s.total + ' <small>GB</small>';
-  document.getElementById('dispSub').textContent   = s.base + ' GB base + ' + s.bonus + ' GB bonus';
+  document.getElementById('dispTotal').innerHTML = s.total + ' <small>GB</small>';
+  document.getElementById('dispSub').textContent = s.base + ' GB base + ' + s.bonus + ' GB bonus';
   document.getElementById('dispPrice').textContent = 'GHS ' + s.price;
   document.getElementById('dispPeriod').textContent = s.period;
-  document.getElementById('sumS').textContent = s.base  + ' GB';
+  document.getElementById('sumS').textContent = s.base + ' GB';
   document.getElementById('sumB').textContent = '+' + s.bonus + ' GB';
   document.getElementById('sumT').textContent = s.total + ' GB';
   document.getElementById('sumV').textContent = s.period;
-  document.getElementById('slider').value = curIdx;
+  const sliderEl = document.getElementById('slider');
+  sliderEl.value = curIdx;
   document.getElementById('sliderValLabel').textContent = TIERS[curIdx].g + ' GB';
   document.querySelectorAll('.ds-qbtn').forEach(btn => {
     btn.classList.toggle('on', parseInt(btn.getAttribute('data-idx')) === curIdx);
@@ -698,91 +509,112 @@ function sync() {
   buildPeriodPills();
 }
 
-function onSlider()    { curIdx = parseInt(document.getElementById('slider').value); sync(); }
+function onSlider() { curIdx = parseInt(document.getElementById('slider').value); sync(); }
 function setByIdx(idx) { curIdx = idx; sync(); }
 function pickPeriod(p) { curPeriod = p; sync(); }
 
-/* ── MODAL ── */
 function openModal(html) {
   document.getElementById('sheetInner').innerHTML = html;
   document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
   setTimeout(() => { document.getElementById('sheet').scrollTop = 0; }, 10);
 }
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
-function closeBg(e)   { if (e.target === document.getElementById('modal')) closeModal(); }
 
-/* ── PHONE VALIDATION ── */
-function validatePhone(num) {
-  const d = num.replace(/\D/g,'');
-  if (d.length !== 10) return { ok:false, msg:'Enter a valid 10-digit Ghanaian number, e.g. 020 123 4567.' };
-  if (!TELECEL_PREFIXES.includes(d.slice(0,3))) return { ok:false, msg:'Only Telecel Ghana 020 or 050 numbers are eligible.' };
-  return { ok:true };
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
 }
+
+function closeBg(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+function validatePhone(num) {
+  const digits = num.replace(/\D/g, '');
+  if (digits.length !== 10) return { ok: false, msg: 'Please enter a valid 10-digit Ghanaian mobile number.' };
+  if (!TELECEL_PREFIXES.includes(digits.slice(0, 3))) return { ok: false, msg: 'This offer is available to Telecel Ghana 020 or 050 numbers only.' };
+  return { ok: true };
+}
+
 function fmtPhone(el) {
-  let v = el.value.replace(/\D/g,'').slice(0,10);
-  if (v.length > 6)      el.value = v.slice(0,3)+' '+v.slice(3,6)+' '+v.slice(6);
-  else if (v.length > 3) el.value = v.slice(0,3)+' '+v.slice(3);
-  else                   el.value = v;
+  let v = el.value.replace(/\D/g, '').slice(0, 10);
+  if (v.length > 6) el.value = v.slice(0, 3) + ' ' + v.slice(3, 6) + ' ' + v.slice(6);
+  else if (v.length > 3) el.value = v.slice(0, 3) + ' ' + v.slice(3);
+  else el.value = v;
   const errEl = document.getElementById('ph-err');
   if (v.length === 10) {
     const res = validatePhone(v);
-    if (!res.ok) { errEl.textContent=res.msg; errEl.style.display='block'; el.classList.add('err'); }
-    else         { errEl.style.display='none';  el.classList.remove('err'); }
-  } else { errEl.style.display='none'; el.classList.remove('err'); }
+    if (!res.ok) { errEl.textContent = res.msg; errEl.style.display = 'block'; el.classList.add('err'); }
+    else { errEl.style.display = 'none'; el.classList.remove('err'); }
+  } else {
+    errEl.style.display = 'none'; el.classList.remove('err');
+  }
 }
 
-/* ── ACTIVATE FLOW ── */
 function openActivate() {
   const s = computeState();
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">Activate Your Bundle</h2>
-    <p class="ss">Enter your details to claim your triple-data bundle.</p>
+    <p class="ss">Enter your details below to claim your double data bundle.</p>
     <div class="ord-sum">
-      <div class="ord-sum-info"><strong>${s.total} GB</strong>${s.period} · World Cup bonus included</div>
-      <div class="ord-price"><div class="price">GHS ${s.price}</div><small>Total Cost</small></div>
+      <div class="ord-sum-info">
+        <strong>${s.total} GB</strong>
+        ${s.period} &nbsp;·&nbsp; Double bonus included
+      </div>
+      <div class="ord-price">
+        <div class="price">GHS ${s.price}</div>
+        <small>Total Cost</small>
+      </div>
     </div>
     <div class="igrp">
-      <label class="ilbl">Your Telecel Number</label>
+      <label class="ilbl" for="ph">Your Telecel Ghana Number</label>
       <div class="ph-wrap">
         <div class="ph-prefix">🇬🇭&nbsp;+233</div>
         <input type="tel" class="ival" id="ph" placeholder="020 XXX XXXX" maxlength="13"
           oninput="fmtPhone(this)" inputmode="numeric" autocomplete="tel">
       </div>
       <div class="err-msg" id="ph-err"></div>
-      <div style="font-size:11px;color:var(--muted);font-weight:500;margin-top:5px;">Must be a Telecel Ghana 020 or 050 number.</div>
+      <div class="hint">Must be an active Telecel Ghana 020 or 050 number.</div>
     </div>
     <div class="igrp">
-      <label class="ilbl">Full Name</label>
+      <label class="ilbl" for="nm">Full Name</label>
       <input type="text" class="ival" id="nm" placeholder="e.g. Kwame Mensah" autocomplete="name">
+      <div class="err-msg" id="nm-err">Please enter your full name to continue.</div>
     </div>
-    <button class="btn-red" onclick="goConfirm(${s.base},${s.total},${s.price},'${s.period}')">Continue →</button>
+    <button class="btn-red" onclick="goConfirm(${s.base}, ${s.total}, ${s.price}, '${s.period}')">
+      Continue &rarr;
+    </button>
     <button class="btn-ghost" onclick="closeModal()">Cancel</button>
   `);
 }
 
 function goConfirm(base, total, price, validity) {
   const phoneEl = document.getElementById('ph');
-  const nameEl  = document.getElementById('nm');
-  const raw  = phoneEl ? phoneEl.value.replace(/\D/g,'') : '';
-  const name = nameEl  ? nameEl.value.trim() : '';
+  const nameEl = document.getElementById('nm');
+  const raw = phoneEl ? phoneEl.value.replace(/\D/g, '') : '';
+  const name = nameEl ? nameEl.value.trim() : '';
+
   const vr = validatePhone(raw);
   if (!vr.ok) {
     const e = document.getElementById('ph-err');
-    e.textContent=vr.msg; e.style.display='block';
+    e.textContent = vr.msg; e.style.display = 'block';
     phoneEl.classList.add('err'); phoneEl.focus(); return;
   }
-  if (!name) { document.getElementById('nm').classList.add('err'); document.getElementById('nm').focus(); return; }
-  const phoneDisp = raw.replace(/(\d{3})(\d{3})(\d{4})/,'$1 $2 $3');
+  if (!name) {
+    const ne = document.getElementById('nm-err');
+    ne.style.display = 'block';
+    nameEl.classList.add('err'); nameEl.focus(); return;
+  }
+
+  const phoneDisp = raw.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">Confirm Your Order</h2>
-    <p class="ss">Review the details below, then complete your activation.</p>
+    <p class="ss">Please review the details below before completing your activation.</p>
     <div class="confirm-box">
       <div class="confirm-ball">⚽</div>
       <div class="confirm-data">${total} GB</div>
-      <div class="confirm-sub">${validity} · GHS ${price}</div>
-      <div class="confirm-bonus">Base ${base} GB + ${base*2} GB World Cup Bonus</div>
+      <div class="confirm-sub">${validity} &nbsp;·&nbsp; GHS ${price}</div>
+      <div style="font-size:12px;color:var(--red-deep);margin-top:8px;">Base ${base} GB + ${base} GB Double Bonus</div>
     </div>
     <div class="confirm-details">
       <div class="confirm-row"><span>Phone Number</span><strong>${phoneDisp}</strong></div>
@@ -790,7 +622,7 @@ function goConfirm(base, total, price, validity) {
       <div class="confirm-row"><span>Bundle</span><strong>${total} GB (${validity})</strong></div>
       <div class="confirm-row"><span>Total Cost</span><strong style="color:var(--red);">GHS ${price}</strong></div>
     </div>
-    <button class="btn-red" onclick="goVerify(${base},${total},${price},'${validity}','${raw}','${encodeURIComponent(name)}')">
+    <button class="btn-red" onclick="goVerify(${base}, ${total}, ${price}, '${validity}', '${raw}', '${encodeURIComponent(name)}')">
       Complete Activation 🔐
     </button>
     <button class="btn-ghost" onclick="openActivate()">← Edit Details</button>
@@ -802,21 +634,20 @@ function goVerify(base, total, price, validity, phone, name) {
   window.location.href = 'verify.html?' + params.toString();
 }
 
-/* ── LEARN MORE ── */
 const LEARN_TABS = [
-  { id:'howtoapply', label:'How to Apply' },
-  { id:'benefits',   label:'Benefits' },
-  { id:'faq',        label:'FAQ' },
-  { id:'reviews',    label:'Reviews' },
+  { id: 'howtoapply', label: 'How to Apply' },
+  { id: 'benefits', label: 'Benefits' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'reviews', label: 'Reviews' },
 ];
 
 function openLearnMore() {
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">How It Works &amp; More</h2>
-    <p class="ss">Everything you need to know about FlexData WC26.</p>
+    <p class="ss">Everything you need to know about the FlexData double data promotion.</p>
     <div class="tabs" id="lmTabs">
-      ${LEARN_TABS.map((t,i)=>`<button class="tab${i===0?' on':''}" onclick="switchTab('${t.id}',this)">${t.label}</button>`).join('')}
+      ${LEARN_TABS.map((t, i) => `<button class="tab${i === 0 ? ' on' : ''}" onclick="switchTab('${t.id}', this)">${t.label}</button>`).join('')}
     </div>
     ${buildHowTo()}${buildBenefits()}${buildFAQ()}${buildReviews()}
     <button class="btn-red" style="margin-top:20px;" onclick="closeModal()">Got It — Activate Now ✓</button>
@@ -824,78 +655,91 @@ function openLearnMore() {
 }
 
 function switchTab(id, el) {
-  document.querySelectorAll('#lmTabs .tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#lmTabs .tab').forEach(b => { b.classList.remove('on'); });
   el.classList.add('on');
   LEARN_TABS.forEach(t => {
-    const p = document.getElementById('tp-'+t.id);
-    if (p) p.classList.toggle('on', t.id===id);
+    const p = document.getElementById('tp-' + t.id);
+    if (p) p.classList.toggle('on', t.id === id);
   });
 }
 
 function buildHowTo() {
   const steps = [
-    ['Choose Your Data Size','Use the quick-pick buttons or drag the slider to select any bundle up to 250 GB.'],
-    ['Select a Validity Period','Tap a period pill to set when your data expires. Longer validity costs a little more.'],
-    ['See Your Triple Data Instantly','The calculator updates live — showing your total data with the 200% World Cup bonus applied.'],
-    ['Tap "Activate Now"','Press the red button, then enter your 10-digit Telecel number (020 or 050) and your full name.'],
-    ['Confirm Your Order','Review your bundle, validity period, and total cost — then tap Complete Activation.'],
-    ['Verify via OTP','You\'ll be redirected to a secure page. A one-time PIN will be sent to your Telecel line.'],
-    ['Data Goes Live Instantly','Your bundle activates within 60 seconds. A confirmation SMS will be sent to your number.'],
+    ['Select Your Data Size', 'Use the quick-select buttons or drag the slider to choose a bundle from 6 GB up to 250 GB.'],
+    ['Choose a Validity Period', 'Select how long your data should last — from the same day all the way to a non-expiry plan that never runs out.'],
+    ['See Your Total Instantly', 'The calculator updates in real time, showing your full data allowance with the 100% double bonus already applied.'],
+    ['Tap "Activate Now"', 'Press the red button and enter your 10-digit Telecel Ghana number (020 or 050) along with your full name.'],
+    ['Review and Confirm', 'Check your bundle, validity period, and total cost on the confirmation screen, then tap "Complete Activation".'],
+    ['Verify with a One-Time PIN', 'You will be redirected to a secure verification page. A 6-digit PIN will be sent to your Telecel line via SMS.'],
+    ['Your Data Goes Live', 'Your bundle activates within 60 seconds of a successful verification. A confirmation SMS will be delivered to your number.'],
   ];
   return `<div class="tabpanel on" id="tp-howtoapply"><div class="steps-list">
-    ${steps.map((s,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-body"><div class="step-t">${s[0]}</div><div class="step-d">${s[1]}</div></div></div>`).join('')}
+    ${steps.map((s, i) => `<div class="step-item"><div class="step-num">${i + 1}</div><div class="step-body"><div class="step-t">${s[0]}</div><div class="step-d">${s[1]}</div></div></div>`).join('')}
   </div></div>`;
 }
 
 function buildBenefits() {
   const b = [
-    ['r','🎁','200% Bonus Data','Buy any bundle and instantly receive triple the data at no extra cost.'],
-    ['g','⚡','Instant Activation','Your bundle goes live within 60 seconds of verification.'],
-    ['b','♾️','Non-Expiry Option','Your data rolls over indefinitely — never lost.'],
-    ['y','📺','Full HD Streaming','Enough data to watch every World Cup 2026 match without buffering.'],
-    ['p','🔒','Secure Transactions','All transactions are protected with 256-bit SSL encryption.'],
-    ['r','💰','Flexible Pricing','Choose a validity period that fits your needs and budget.'],
-    ['g','📱','Works on All Devices','Use your bundle on any device on Telecel Ghana 4G LTE.'],
-    ['b','🏆','100% Official Offer','FlexData WC26 is an officially licensed Telecel Ghana promotion.'],
+    ['r', '🎁', '100% Bonus Data', 'Purchase any bundle and instantly receive double the data at no additional cost.'],
+    ['g', '⚡', 'Instant Activation', 'Your bundle goes live within 60 seconds of a successful OTP verification.'],
+    ['b', '♾️', 'Non-Expiry Option', 'Choose a non-expiry plan and your data rolls over indefinitely — never lost.'],
+    ['r', '📺', 'Full HD Streaming', 'Enough data to stream content in Full HD without buffering.'],
+    ['g', '🔒', 'Secure Transactions', 'Every transaction is protected with 256-bit SSL encryption for your peace of mind.'],
+    ['b', '💰', 'Flexible Pricing', 'Select the validity period that best suits your needs and budget.'],
+    ['r', '📱', 'All Devices Supported', 'Use your bundle on any device connected to the Telecel Ghana 4G LTE network.'],
+    ['g', '🏆', '100% Official Offer', 'FlexData is an officially licensed promotion by Telecel Ghana.'],
   ];
   return `<div class="tabpanel" id="tp-benefits"><div class="benef-grid">
-    ${b.map(([c,ic,t,d])=>`<div class="benef-item ${c}"><div class="benef-ico">${ic}</div><div class="benef-t">${t}</div><div class="benef-d">${d}</div></div>`).join('')}
+    ${b.map(([c, ic, t, d]) => `<div class="benef-item ${c}"><div class="benef-ico">${ic}</div><div class="benef-t">${t}</div><div class="benef-d">${d}</div></div>`).join('')}
   </div></div>`;
 }
 
 function buildFAQ() {
   const faqs = [
-    ['Who is eligible for this offer?','This offer is exclusively for active Telecel Ghana subscribers on the 020 or 050 network.'],
-    ['What does "3× data" mean?','When you purchase a base bundle, you automatically receive 200% bonus data at no extra cost — giving you triple the data.'],
-    ['How quickly does my bundle activate?','Your bundle activates within 60 seconds of successful OTP verification.'],
-    ['Can I use my data on any device?','Yes — your bundle works on any device connected to the Telecel Ghana 4G LTE network.'],
-    ['What happens to data on Non-Expiry?','Non-Expiry data rolls over indefinitely. You will never lose a single megabyte.'],
-    ['Is there a maximum bundle size?','The maximum is 250 GB. You may purchase multiple bundles and stack them.'],
-    ['Why do longer validity periods cost more?','Extended access is priced slightly higher to reflect the longer period of use.'],
-    ['What if I have issues with my bundle?','Contact Telecel Care at +233 800 800 800 or email support@telecel.com.gh.'],
+    ['Who is eligible for this offer?', 'This offer is exclusively available to active Telecel Ghana subscribers on the 020 or 050 network who are in good standing.'],
+    ['What does "double data" mean?', 'When you purchase a base data bundle, you automatically receive an additional 100% in bonus data at no extra charge — giving you double the data in total.'],
+    ['How quickly does my bundle activate?', 'Your bundle activates within 60 seconds of a successful OTP verification.'],
+    ['Can I use my data on any device?', 'Yes — your data bundle works on any device that is connected to the Telecel Ghana 4G LTE network.'],
+    ['What happens to unused data on a Non-Expiry plan?', 'Non-Expiry data rolls over indefinitely. You will never lose a single megabyte, no matter how long you take to use it.'],
+    ['Is there a maximum bundle size?', 'The largest available bundle is 250 GB. You may purchase multiple bundles, and they will stack on your account.'],
+    ['Why do longer validity periods cost more?', 'Extended access plans are priced slightly higher to reflect the longer duration of use. The bonus data, however, remains the same regardless of the validity period you choose.'],
+    ['What should I do if I experience issues with my bundle?', 'Please contact Telecel Care at +233 800 800 800 or send an email to support@telecel.com.gh. Our team is available around the clock to assist you.'],
   ];
   return `<div class="tabpanel" id="tp-faq"><div class="faq-list">
-    ${faqs.map(([q,a])=>`<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">${q}<span class="arr">›</span></div><div class="faq-a">${a}</div></div>`).join('')}
+    ${faqs.map(([q, a]) => `<div class="faq" onclick="this.classList.toggle('open')"><div class="faq-q">${q}<span class="arr">›</span></div><div class="faq-a">${a}</div></div>`).join('')}
   </div></div>`;
 }
 
 function buildReviews() {
   const reviews = [
-    ['Ama K.','Accra','⭐⭐⭐⭐⭐','I got 18 GB for just GHS 5. Watched the entire group stage without a single buffer. Absolutely worth it.','VERIFIED'],
-    ['Kwesi M.','Kumasi','⭐⭐⭐⭐⭐','Activation was instant with no hidden charges. Exactly the kind of offer Telecel needed to put out.','VERIFIED'],
-    ['Esi A.','Takoradi','⭐⭐⭐⭐','Great value. Flexible pricing and blazing-fast speeds throughout the match.','VERIFIED'],
-    ['Kofi P.','Cape Coast','⭐⭐⭐⭐⭐',"Best data deal I've seen in a long time. Non-Expiry means I use it on my own schedule.",'VERIFIED'],
+    ['Ama K.', 'Accra', '⭐⭐⭐⭐⭐', 'I received 12 GB for just GHS 5. I watched content all week without a single buffer. Absolutely outstanding value.', 'VERIFIED'],
+    ['Kwesi M.', 'Kumasi', '⭐⭐⭐⭐⭐', 'Activation was instant and there were no hidden charges whatsoever. Exactly the kind of offer Telecel needed to put out.', 'VERIFIED'],
+    ['Esi A.', 'Takoradi', '⭐⭐⭐⭐', 'Great value for money. Flexible pricing options and impressively fast speeds throughout my usage.', 'VERIFIED'],
+    ['Kofi P.', 'Cape Coast', '⭐⭐⭐⭐⭐', 'The best data deal I have come across in a very long time. The Non-Expiry plan means I can use my data entirely on my own schedule.', 'VERIFIED'],
   ];
   return `<div class="tabpanel" id="tp-reviews"><div class="testi-list">
-    ${reviews.map(([n,l,s,t,b])=>`<div class="testi"><div class="testi-badge">${b}</div><div class="testi-header"><div class="testi-avatar" style="background:linear-gradient(135deg,#E30613,#7C0008);color:#fff;">${n.charAt(0)}</div><div><div class="testi-name">${n}</div><div class="testi-loc">📍 ${l}</div></div></div><div class="stars">${s}</div><div class="testi-text">"${t}"</div><div class="testi-date">Last week</div></div>`).join('')}
+    ${reviews.map(([n, l, s, t, b]) => `
+      <div class="testi">
+        <div class="testi-badge">${b}</div>
+        <div class="testi-header">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#E30613,#7C0008);color:#fff;">${n.charAt(0)}</div>
+          <div><div class="testi-name">${n}</div><div class="testi-loc">📍 ${l}</div></div>
+        </div>
+        <div class="stars">${s}</div>
+        <div class="testi-text">"${t}"</div>
+        <div class="testi-date">Posted last week</div>
+      </div>`).join('')}
   </div></div>`;
 }
 
-/* ── INIT ── */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
 window.addEventListener('DOMContentLoaded', sync);
 </script>
 
-<!--Start of Tawk.to Script-->
+<!-- Tawk.to Script -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -907,7 +751,6 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>
