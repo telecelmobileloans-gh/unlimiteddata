@@ -72,9 +72,6 @@ button{font-family:'Inter',sans-serif;}
 .bg-orb.o2{width:340px;height:340px;background:#FF6B35;opacity:.04;top:45%;right:-100px;animation-duration:28s;animation-delay:-11s;}
 .bg-orb.o3{width:260px;height:260px;background:#E30613;opacity:.035;bottom:8%;left:5%;animation-duration:19s;animation-delay:-6s;}
 @keyframes orbFloat{0%{transform:translate(0,0) scale(1);}33%{transform:translate(50px,-35px) scale(1.07);}66%{transform:translate(-25px,45px) scale(0.95);}100%{transform:translate(0,0) scale(1);}}
-.bg-balls-wrap{position:absolute;inset:0;overflow:hidden;}
-.fb{position:absolute;opacity:0;animation:ballRise linear infinite;user-select:none;pointer-events:none;}
-@keyframes ballRise{0%{transform:translateY(0) rotate(0deg);opacity:0;}8%{opacity:.05;}92%{opacity:.05;}100%{transform:translateY(-105vh) rotate(700deg);opacity:0;}}
 
 /* ══════════════════════════════════════════
    PAGE WRAPPER
@@ -214,106 +211,111 @@ button{font-family:'Inter',sans-serif;}
 }
 
 /* ══════════════════════════════════════════
-   CALCULATOR — COMPACT & POLISHED
+   REDESIGNED CALCULATOR
 ══════════════════════════════════════════ */
 
-/* Summary pill at top of calculator */
-.calc-pill{
-  background:linear-gradient(135deg,#E30613 0%,#7C0008 100%);
-  border-radius:18px;padding:14px 16px;
-  color:#fff;margin-bottom:15px;
-  display:flex;justify-content:space-between;align-items:center;
-  box-shadow:0 6px 20px rgba(227,6,19,.25);
-}
-.cp-left .lbl{font-size:9px;font-weight:700;opacity:.72;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
-.cp-left .big{font-family:'Outfit';font-size:32px;font-weight:900;line-height:1;}
-.cp-left .big small{font-size:15px;font-weight:700;}
-.cp-left .sub{font-size:10px;opacity:.68;font-weight:500;margin-top:3px;}
-.cp-right{text-align:right;}
-.cp-right .price{font-family:'Outfit';font-size:22px;font-weight:900;line-height:1;}
-.cp-right .plbl{font-size:9px;opacity:.7;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:3px;}
+/* Main calculator layout */
+.calc-container{display:flex;flex-direction:column;gap:16px;}
 
-/* Slider */
-.sldr-wrap{margin-bottom:4px;}
-input[type=range]{
-  width:100%;height:5px;background:var(--border);
+/* Data size selector */
+.data-selector{
+  background:linear-gradient(135deg,#FFF1F2,#FFF8F8);
+  border:1.5px solid var(--red-border);
+  border-radius:18px;padding:18px;
+}
+.ds-label{font-size:10px;font-weight:900;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.ds-slider-wrap{margin-bottom:12px;}
+.ds-slider{
+  width:100%;height:6px;background:var(--border);
   border-radius:10px;outline:none;
   -webkit-appearance:none;appearance:none;cursor:pointer;
 }
-input[type=range]::-webkit-slider-thumb{
+.ds-slider::-webkit-slider-thumb{
   -webkit-appearance:none;
-  width:22px;height:22px;
+  width:24px;height:24px;
   background:var(--red);border-radius:50%;
   border:3px solid #fff;
-  box-shadow:0 3px 10px rgba(227,6,19,.35);cursor:pointer;
+  box-shadow:0 3px 12px rgba(227,6,19,.35);cursor:pointer;
 }
-input[type=range]::-moz-range-thumb{
-  width:22px;height:22px;
+.ds-slider::-moz-range-thumb{
+  width:24px;height:24px;
   background:var(--red);border-radius:50%;
   border:3px solid #fff;
-  box-shadow:0 3px 10px rgba(227,6,19,.35);cursor:pointer;
+  box-shadow:0 3px 12px rgba(227,6,19,.35);cursor:pointer;
 }
-.rlabels{
-  display:flex;justify-content:space-between;margin-bottom:13px;
-}
-.rlabels span{font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;}
-
-/* Quick pick buttons */
-.qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:14px;}
-.qbtn{
-  background:#F8FAFC;border:1.5px solid var(--border);
-  padding:8px 3px;border-radius:10px;
+.ds-range-labels{display:flex;justify-content:space-between;font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:14px;}
+.ds-quick{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.ds-qbtn{
+  background:#fff;border:1.5px solid var(--border);
+  padding:10px 6px;border-radius:11px;
   font-size:11px;font-weight:800;cursor:pointer;
   transition:all .15s;color:var(--dark);
   font-family:'Inter',sans-serif;text-align:center;
 }
-.qbtn small{display:block;font-size:9px;font-weight:600;color:var(--muted);margin-top:2px;}
-.qbtn:hover,.qbtn.on{border-color:var(--red);color:var(--red);background:var(--red-soft);}
-.qbtn.on small{color:var(--red);opacity:.75;}
+.ds-qbtn small{display:block;font-size:9px;font-weight:600;color:var(--muted);margin-top:3px;}
+.ds-qbtn:hover,.ds-qbtn.on{border-color:var(--red);color:var(--red);background:var(--red-soft);}
+.ds-qbtn.on small{color:var(--red);}
 
-.hr{border:none;border-top:1.5px dashed var(--border);margin:14px 0;}
-
-/* Validity selector */
-.vlabel{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:15px;}
-.vopt{
-  border:2px solid var(--border);border-radius:13px;padding:10px 11px;
-  cursor:pointer;transition:all .15s;background:#F8FAFC;
+/* Period selector button */
+.period-selector{
+  background:linear-gradient(135deg,#EFF6FF,#F0F9FF);
+  border:1.5px solid var(--blue-bdr);
+  border-radius:18px;padding:18px;
+  text-align:center;
 }
-.vopt.on{border-color:var(--red);background:var(--red-soft);}
-.vopt-name{font-size:12px;font-weight:800;color:var(--dark);margin-bottom:2px;}
-.vopt.on .vopt-name{color:var(--red);}
-.vopt-desc{font-size:10px;color:var(--muted);font-weight:500;line-height:1.4;}
-.vopt.on .vopt-desc{color:var(--red);opacity:.75;}
-.vopt-tag{
-  display:inline-block;font-size:8px;font-weight:800;
-  padding:2px 6px;border-radius:5px;margin-top:4px;
-  background:#E2E8F0;color:var(--mid);text-transform:uppercase;letter-spacing:.03em;
+.ps-label{font-size:10px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.ps-display{
+  background:#fff;border:2px solid var(--blue-bdr);
+  border-radius:14px;padding:14px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;transition:all .15s;
 }
-.vopt.on .vopt-tag{background:var(--red-border);color:var(--red);}
+.ps-display:hover{border-color:var(--blue);background:#F0F9FF;}
+.ps-display-left{text-align:left;}
+.ps-display-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;}
+.ps-display-value{font-family:'Outfit';font-size:18px;font-weight:900;color:var(--blue);}
+.ps-display-icon{font-size:18px;color:var(--blue);}
+.ps-btn{
+  width:100%;background:var(--blue);color:#fff;border:none;
+  padding:12px;border-radius:12px;font-size:13px;font-weight:800;
+  cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;
+}
+.ps-btn:hover{background:#1d4ed8;transform:translateY(-1px);}
+.ps-btn:active{transform:translateY(0);}
 
-/* Breakdown box */
-.breakdown{
+/* Summary pill */
+.calc-summary{
+  background:linear-gradient(135deg,#E30613 0%,#7C0008 100%);
+  border-radius:18px;padding:16px;
+  color:#fff;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 6px 20px rgba(227,6,19,.25);
+}
+.cs-left .lbl{font-size:9px;font-weight:700;opacity:.72;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.cs-left .big{font-family:'Outfit';font-size:36px;font-weight:900;line-height:1;}
+.cs-left .big small{font-size:16px;font-weight:700;}
+.cs-left .sub{font-size:10px;opacity:.68;font-weight:500;margin-top:3px;}
+.cs-right{text-align:right;}
+.cs-right .price{font-family:'Outfit';font-size:24px;font-weight:900;line-height:1;}
+.cs-right .plbl{font-size:9px;opacity:.7;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:3px;}
+.cs-right .period{font-size:10px;opacity:.75;font-weight:600;margin-top:2px;}
+
+/* Breakdown */
+.calc-breakdown{
   background:linear-gradient(135deg,#FFF1F2,#FFF8F8);
   border:1.5px solid var(--red-border);border-radius:16px;padding:14px;
 }
-.bhead{font-size:10px;font-weight:900;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:11px;}
-.brow{
+.cb-head{font-size:10px;font-weight:900;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:11px;}
+.cb-row{
   display:flex;justify-content:space-between;align-items:center;
   margin-bottom:7px;font-size:12px;font-weight:600;color:var(--mid);
 }
-.brow .bv{font-weight:700;color:var(--dark);}
-.brow.bonus .bv{color:var(--red);font-weight:800;}
-.brow.total{
+.cb-row .val{font-weight:700;color:var(--dark);}
+.cb-row.bonus .val{color:var(--red);font-weight:800;}
+.cb-row.total{
   border-top:1.5px dashed var(--red-border);margin-top:10px;padding-top:10px;
   font-size:12px;font-weight:900;color:var(--dark);
 }
-.bprrow{
-  border-top:1.5px dashed var(--red-border);margin-top:11px;padding-top:12px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.bplbl{font-size:12px;font-weight:900;color:var(--dark);}
-.bpval{font-family:'Outfit';font-size:26px;font-weight:900;color:var(--red);line-height:1;}
 
 /* ══════════════════════════════════════════
    BUTTONS
@@ -339,7 +341,7 @@ input[type=range]::-moz-range-thumb{
 .btn-ghost:hover{border-color:var(--red);color:var(--red);}
 
 /* ══════════════════════════════════════════
-   MODAL / BOTTOM SHEET — OPTIMIZED FOR ALL DEVICES
+   MODAL / BOTTOM SHEET
 ══════════════════════════════════════════ */
 .modal{
   display:none;position:fixed;inset:0;
@@ -368,6 +370,21 @@ input[type=range]::-moz-range-thumb{
 }
 .sh{font-size:20px;font-weight:900;margin-bottom:4px;text-align:center;font-family:'Outfit';}
 .ss{font-size:12px;color:var(--mid);text-align:center;font-weight:500;margin-bottom:18px;line-height:1.55;}
+
+/* Period selection modal */
+.period-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.period-card{
+  border:2px solid var(--border);border-radius:14px;padding:14px;
+  cursor:pointer;transition:all .15s;background:#F8FAFC;text-align:center;
+}
+.period-card:hover{border-color:var(--blue);background:#F0F9FF;}
+.period-card.on{border-color:var(--blue);background:var(--blue-soft);box-shadow:0 4px 12px rgba(37,99,235,.15);}
+.period-card-name{font-size:13px;font-weight:800;color:var(--dark);margin-bottom:4px;}
+.period-card.on .period-card-name{color:var(--blue);}
+.period-card-desc{font-size:10px;color:var(--muted);font-weight:500;line-height:1.4;margin-bottom:8px;}
+.period-card.on .period-card-desc{color:var(--blue);opacity:.8;}
+.period-card-price{font-family:'Outfit';font-size:16px;font-weight:900;color:var(--dark);}
+.period-card.on .period-card-price{color:var(--blue);}
 
 /* Order summary inside sheet */
 .ord-sum{
@@ -570,20 +587,13 @@ input[type=range]::-moz-range-thumb{
 .footer-legal a:hover{color:rgba(255,255,255,.7);}
 
 /* ══════════════════════════════════════════
-   UTILITY
-══════════════════════════════════════════ */
-.color-red{color:var(--red);}
-.color-green{color:var(--green);}
-.mt-8{margin-top:8px;}
-
-/* ══════════════════════════════════════════
    RESPONSIVE OPTIMIZATIONS
 ══════════════════════════════════════════ */
 @media (max-width:480px){
   .sheet{max-height:95vh;}
   .sheet-inner{padding:18px 16px 40px;}
   .benef-grid{grid-template-columns:1fr;}
-  .vgrid{grid-template-columns:1fr;}
+  .period-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -595,7 +605,6 @@ input[type=range]::-moz-range-thumb{
   <div class="bg-orb o1"></div>
   <div class="bg-orb o2"></div>
   <div class="bg-orb o3"></div>
-  <div class="bg-balls-wrap" id="bgBalls"></div>
 </div>
 
 <div class="pw">
@@ -669,76 +678,65 @@ input[type=range]::-moz-range-thumb{
     <div class="titem"><div class="ico">♾️</div><div class="lbl">No Expiry</div><div class="sub">Flex Plans</div></div>
   </div>
 
-  <!-- ── CALCULATOR CARD ── -->
+  <!-- ── REDESIGNED CALCULATOR CARD ── -->
   <div class="card">
     <div class="ctitle"><div class="ctico">🧮</div>Bundle Calculator</div>
 
-    <!-- Live summary pill -->
-    <div class="calc-pill">
-      <div class="cp-left">
-        <div class="lbl">You Receive</div>
-        <div class="big" id="dispTotal">18 <small>GB</small></div>
-        <div class="sub" id="dispSub">6 GB base &plus; 12 GB bonus</div>
-      </div>
-      <div class="cp-right">
-        <div class="price" id="dispPrice">GHS 5</div>
-        <div class="plbl">Total Cost (50% OFF)</div>
-      </div>
-    </div>
+    <div class="calc-container">
 
-    <!-- Slider -->
-    <div class="sldr-wrap">
-      <input type="range" id="slider" min="0" max="10" step="1" value="0" oninput="sync()">
-    </div>
-    <div class="rlabels">
-      <span>6 GB</span><span>30 GB</span><span>90 GB</span><span>150 GB</span><span>250 GB</span>
-    </div>
+      <!-- Data Size Selector -->
+      <div class="data-selector">
+        <div class="ds-label">📊 Select Data Size</div>
+        <div class="ds-slider-wrap">
+          <input type="range" class="ds-slider" id="slider" min="0" max="10" step="1" value="0" oninput="sync()">
+        </div>
+        <div class="ds-range-labels">
+          <span>6 GB</span><span>30 GB</span><span>90 GB</span><span>150 GB</span><span>250 GB</span>
+        </div>
+        <div class="ds-quick">
+          <button class="ds-qbtn on" onclick="setS(0)">6 GB<small>GHS 5</small></button>
+          <button class="ds-qbtn"    onclick="setS(2)">30 GB<small>GHS 15</small></button>
+          <button class="ds-qbtn"    onclick="setS(5)">90 GB<small>GHS 30</small></button>
+          <button class="ds-qbtn"    onclick="setS(10)">250 GB<small>GHS 200</small></button>
+        </div>
+      </div>
 
-    <!-- Quick pick buttons -->
-    <div class="qgrid" id="qgrid">
-      <button class="qbtn on" onclick="setS(0)">6 GB<small>GHS 5</small></button>
-      <button class="qbtn"    onclick="setS(2)">30 GB<small>GHS 15</small></button>
-      <button class="qbtn"    onclick="setS(5)">90 GB<small>GHS 30</small></button>
-      <button class="qbtn"    onclick="setS(10)">250 GB<small>GHS 200</small></button>
-    </div>
+      <!-- Period Selector (Hidden) -->
+      <div class="period-selector">
+        <div class="ps-label">📅 Validity Period</div>
+        <div class="ps-display" onclick="openPeriodModal()">
+          <div class="ps-display-left">
+            <div class="ps-display-label">Selected Period</div>
+            <div class="ps-display-value" id="periodDisplay">Non-Expiry</div>
+          </div>
+          <div class="ps-display-icon">▼</div>
+        </div>
+        <button class="ps-btn" onclick="openPeriodModal()">Choose Period ⏱️</button>
+      </div>
 
-    <div class="hr"></div>
+      <!-- Summary Pill -->
+      <div class="calc-summary">
+        <div class="cs-left">
+          <div class="lbl">You Receive</div>
+          <div class="big" id="dispTotal">18 <small>GB</small></div>
+          <div class="sub" id="dispSub">6 GB base + 12 GB bonus</div>
+        </div>
+        <div class="cs-right">
+          <div class="price" id="dispPrice">GHS 5</div>
+          <div class="plbl">Total Cost</div>
+          <div class="period" id="dispPeriod">Non-Expiry</div>
+        </div>
+      </div>
 
-    <!-- Validity period -->
-    <div class="vlabel">Validity Period</div>
-    <div class="vgrid">
-      <div class="vopt on" onclick="setV('flex',this)">
-        <div class="vopt-name">Non-Expiry</div>
-        <div class="vopt-desc">Use anytime — data rolls over</div>
-        <div class="vopt-tag">Standard</div>
+      <!-- Breakdown -->
+      <div class="calc-breakdown">
+        <div class="cb-head">💰 Price Breakdown</div>
+        <div class="cb-row"><span>Base Data</span><span class="val" id="sumS">6 GB</span></div>
+        <div class="cb-row bonus"><span>🎁 WC 2026 Bonus (200%)</span><span class="val" id="sumB">+12 GB</span></div>
+        <div class="cb-row total"><span>Total Data You Receive</span><strong id="sumT">18 GB</strong></div>
+        <div class="cb-row total"><span>Validity Period</span><strong id="sumV">Non-Expiry</strong></div>
       </div>
-      <div class="vopt" onclick="setV('midnight',this)">
-        <div class="vopt-name">Until Midnight</div>
-        <div class="vopt-desc">Best-value same-day plan</div>
-        <div class="vopt-tag">Cheapest</div>
-      </div>
-      <div class="vopt" onclick="setV('24h',this)">
-        <div class="vopt-name">24 Hours</div>
-        <div class="vopt-desc">Full-day bundle access</div>
-        <div class="vopt-tag">Daily</div>
-      </div>
-      <div class="vopt" onclick="setV('30d',this)">
-        <div class="vopt-name">30 Days</div>
-        <div class="vopt-desc">Full-month coverage</div>
-        <div class="vopt-tag">Monthly</div>
-      </div>
-    </div>
 
-    <!-- Breakdown -->
-    <div class="breakdown">
-      <div class="bhead">💰 Price Breakdown (50% Discount Applied)</div>
-      <div class="brow"><span>Base Data</span><span class="bv" id="sumS">6 GB</span></div>
-      <div class="brow bonus"><span>🎁 WC 2026 Bonus (200%)</span><span class="bv" id="sumB">+12 GB</span></div>
-      <div class="brow total"><span>Total Data You Receive</span><strong id="sumT">18 GB</strong></div>
-      <div class="bprrow">
-        <span class="bplbl">Total Price (50% OFF)</span>
-        <span class="bpval" id="sumP">GHS 5</span>
-      </div>
     </div>
 
     <button class="btn-red" onclick="openActivate()">Activate Now 🚀</button>
@@ -777,7 +775,7 @@ input[type=range]::-moz-range-thumb{
 </div><!-- /pw -->
 
 <!-- ══════════════════════════════════════════
-     MODAL / BOTTOM SHEET
+     MODALS
 ══════════════════════════════════════════ -->
 <div class="modal" id="modal" onclick="closeBg(event)">
   <div class="sheet" id="sheet">
@@ -786,87 +784,143 @@ input[type=range]::-moz-range-thumb{
 </div>
 
 <script>
-/* ── DATA TIERS — 50% DISCOUNTED PRICING (MAX 250GB) ── */
+/* ══════════════════════════════════════════
+   PRICING CONFIGURATION
+══════════════════════════════════════════ */
+
+/* Base prices for each data tier (50% discount already applied) */
 const TIERS = [
   {g:6,  p:5  },{g:12, p:8  },{g:30, p:15 },{g:45, p:20 },{g:60, p:25 },
   {g:90, p:30 },{g:150,p:45 },{g:180,p:60 },{g:210,p:75 },{g:240,p:150},{g:250,p:200}
 ];
-const VMULTS  = {flex:1.0, midnight:0.55, '24h':0.72, '30d':0.95};
-const VLABELS = {flex:'Non-Expiry', midnight:'Until Midnight', '24h':'24 Hours', '30d':'30 Days'};
+
+/* Validity periods with pricing multipliers (Longer = More Expensive) */
+const PERIODS = {
+  midnight: {label:'Until Midnight', mult:0.55, desc:'Best-value same-day plan'},
+  '24h':    {label:'24 Hours', mult:0.72, desc:'Full-day bundle access'},
+  '30d':    {label:'30 Days', mult:0.95, desc:'Full-month coverage'},
+  flex:     {label:'Non-Expiry', mult:1.0, desc:'Use anytime — data rolls over'}
+};
 
 /* Telecel Ghana accepted prefixes */
 const TELECEL_PREFIXES = ['020','050'];
 
-let curV = 'flex';
+let curPeriod = 'flex';
 
-/* ── STATE / SYNC ── */
+/* ══════════════════════════════════════════
+   STATE & SYNC
+══════════════════════════════════════════ */
 function getState(){
   const i = parseInt(document.getElementById('slider').value);
   const t = TIERS[i];
-  const p = Math.max(5, Math.round(t.p * VMULTS[curV]));
-  return {t, p, total:t.g*3, bonus:t.g*2, vl:VLABELS[curV]};
+  const p = Math.max(5, Math.round(t.p * PERIODS[curPeriod].mult));
+  return {
+    t,
+    p,
+    total: t.g * 3,
+    bonus: t.g * 2,
+    period: PERIODS[curPeriod].label
+  };
 }
 
 function sync(){
-  const {t,p,total,bonus} = getState();
-  document.getElementById('dispTotal').innerHTML = total+' <small>GB</small>';
-  document.getElementById('dispSub').textContent  = t.g+' GB base \u002B '+bonus+' GB bonus';
-  document.getElementById('dispPrice').textContent = 'GHS '+p;
-  document.getElementById('sumS').textContent = t.g+' GB';
-  document.getElementById('sumB').textContent = '+'+bonus+' GB';
-  document.getElementById('sumT').textContent = total+' GB';
-  document.getElementById('sumP').textContent = 'GHS '+p;
-  document.querySelectorAll('#qgrid .qbtn').forEach(b=>b.classList.remove('on'));
+  const {t, p, total, bonus, period} = getState();
+  document.getElementById('dispTotal').innerHTML = total + ' <small>GB</small>';
+  document.getElementById('dispSub').textContent = t.g + ' GB base + ' + bonus + ' GB bonus';
+  document.getElementById('dispPrice').textContent = 'GHS ' + p;
+  document.getElementById('dispPeriod').textContent = period;
+  document.getElementById('periodDisplay').textContent = period;
+  document.getElementById('sumS').textContent = t.g + ' GB';
+  document.getElementById('sumB').textContent = '+' + bonus + ' GB';
+  document.getElementById('sumT').textContent = total + ' GB';
+  document.getElementById('sumV').textContent = period;
+  document.querySelectorAll('.ds-qbtn').forEach(b => b.classList.remove('on'));
 }
 
 function setS(i){
   document.getElementById('slider').value = i;
   sync();
-  const map = [0,2,5,10];
-  document.querySelectorAll('#qgrid .qbtn').forEach((b,idx)=>{
-    b.classList.toggle('on', map[idx]===i);
+  const map = [0, 2, 5, 10];
+  document.querySelectorAll('.ds-qbtn').forEach((b, idx) => {
+    b.classList.toggle('on', map[idx] === i);
   });
 }
 
-function setV(v,el){
-  curV = v;
-  document.querySelectorAll('.vopt').forEach(o=>o.classList.remove('on'));
-  el.classList.add('on');
+function setPeriod(p){
+  curPeriod = p;
   sync();
 }
 
-/* ── PHONE VALIDATION ── */
-function validatePhone(num){
-  const d = num.replace(/\D/g,'');
-  if(d.length !== 10) return {ok:false, msg:'Please enter a valid 10-digit Ghanaian phone number (e.g. 020 1234 567).'};
-  const pfx = d.slice(0,3);
-  if(!TELECEL_PREFIXES.includes(pfx)) return {
-    ok:false,
-    msg:'Only Telecel Ghana numbers are accepted (020 or 050). Numbers on other networks are not eligible for this offer.'
-  };
-  return {ok:true};
-}
-
-/* ── MODAL HELPERS ── */
+/* ══════════════════════════════════════════
+   MODAL HELPERS
+══════════════════════════════════════════ */
 function openModal(html){
   const si = document.getElementById('sheetInner');
   si.innerHTML = html;
   document.getElementById('modal').classList.add('open');
-  setTimeout(()=>{ document.getElementById('sheet').scrollTop = 0; },10);
+  setTimeout(() => { document.getElementById('sheet').scrollTop = 0; }, 10);
 }
+
 function closeModal(){
   document.getElementById('modal').classList.remove('open');
 }
+
 function closeBg(e){
   if(e.target === document.getElementById('modal')) closeModal();
 }
 
+/* ══════════════════════════════════════════
+   PERIOD SELECTION MODAL
+══════════════════════════════════════════ */
+function openPeriodModal(){
+  const periodOrder = ['midnight', '24h', '30d', 'flex'];
+  openModal(`
+    <div class="shandle"></div>
+    <h2 class="sh">Choose Validity Period</h2>
+    <p class="ss">Select how long you want your data to last. Longer periods are more expensive.</p>
+    <div class="period-grid">
+      ${periodOrder.map(p => {
+        const cfg = PERIODS[p];
+        const {t} = getState();
+        const price = Math.max(5, Math.round(t.p * cfg.mult));
+        return `
+          <div class="period-card${curPeriod === p ? ' on' : ''}" onclick="setPeriodAndClose('${p}')">
+            <div class="period-card-name">${cfg.label}</div>
+            <div class="period-card-desc">${cfg.desc}</div>
+            <div class="period-card-price">GHS ${price}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    <button class="btn-red" onclick="closeModal()" style="margin-top:16px;">Confirm & Close</button>
+  `);
+}
+
+function setPeriodAndClose(p){
+  setPeriod(p);
+  closeModal();
+}
+
+/* ══════════════════════════════════════════
+   PHONE VALIDATION
+══════════════════════════════════════════ */
+function validatePhone(num){
+  const d = num.replace(/\D/g, '');
+  if(d.length !== 10) return {ok: false, msg: 'Please enter a valid 10-digit Ghanaian phone number (e.g. 020 1234 567).'};
+  const pfx = d.slice(0, 3);
+  if(!TELECEL_PREFIXES.includes(pfx)) return {
+    ok: false,
+    msg: 'Only Telecel Ghana numbers are accepted (020 or 050). Numbers on other networks are not eligible for this offer.'
+  };
+  return {ok: true};
+}
+
 /* ── PHONE FORMATTER ── */
 function fmtPhone(el){
-  let v = el.value.replace(/\D/g,'').slice(0,10);
+  let v = el.value.replace(/\D/g, '').slice(0, 10);
   let display = v;
-  if(v.length > 6) display = v.slice(0,3)+' '+v.slice(3,6)+' '+v.slice(6);
-  else if(v.length > 3) display = v.slice(0,3)+' '+v.slice(3);
+  if(v.length > 6) display = v.slice(0, 3) + ' ' + v.slice(3, 6) + ' ' + v.slice(6);
+  else if(v.length > 3) display = v.slice(0, 3) + ' ' + v.slice(3);
   el.value = display;
 
   const raw = v;
@@ -887,22 +941,24 @@ function fmtPhone(el){
   }
 }
 
-/* ── STEP 1: ACTIVATE FORM ── */
+/* ══════════════════════════════════════════
+   ACTIVATION FLOW
+══════════════════════════════════════════ */
 function openActivate(){
-  const {t,p,total,vl} = getState();
+  const {t, p, total, period} = getState();
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">Activate Your Bundle</h2>
-    <p class="ss">Enter your details below to claim your triple data bundle at 50% off.</p>
+    <p class="ss">Enter your details below to claim your triple data bundle.</p>
 
     <div class="ord-sum">
       <div class="ord-sum-info">
         <strong>${total} GB</strong>
-        ${vl} &middot; WC 2026 Bonus included
+        ${period} &middot; WC 2026 Bonus included
       </div>
       <div class="ord-price">
         <div class="price">GHS ${p}</div>
-        <small>50% OFF</small>
+        <small>Total Cost</small>
       </div>
     </div>
 
@@ -930,7 +986,7 @@ function openActivate(){
         autocomplete="name">
     </div>
 
-    <button class="btn-red" onclick="goConfirm(${t.g},${total},${p},'${vl}')">Continue &rarr;</button>
+    <button class="btn-red" onclick="goConfirm(${t.g}, ${total}, ${p}, '${period}')">Continue &rarr;</button>
     <button class="btn-ghost" onclick="closeModal()">Cancel</button>
   `);
 }
@@ -938,9 +994,9 @@ function openActivate(){
 /* ── STEP 2: CONFIRM ORDER ── */
 function goConfirm(base, total, price, validity){
   const phoneEl = document.getElementById('ph');
-  const nameEl  = document.getElementById('nm');
-  const raw     = (phoneEl ? phoneEl.value.replace(/\D/g,'') : '');
-  const name    = (nameEl ? nameEl.value.trim() : '');
+  const nameEl = document.getElementById('nm');
+  const raw = (phoneEl ? phoneEl.value.replace(/\D/g, '') : '');
+  const name = (nameEl ? nameEl.value.trim() : '');
 
   const vr = validatePhone(raw);
   if(!vr.ok){
@@ -968,7 +1024,7 @@ function goConfirm(base, total, price, validity){
     <div class="confirm-box">
       <div class="confirm-ball">⚽</div>
       <div class="confirm-data">${total} GB</div>
-      <div class="confirm-sub">${validity} &middot; GHS ${price} (50% OFF)</div>
+      <div class="confirm-sub">${validity} &middot; GHS ${price}</div>
       <div class="confirm-bonus">Base ${base} GB &plus; ${base*2} GB World Cup Bonus</div>
     </div>
 
@@ -991,7 +1047,7 @@ function goConfirm(base, total, price, validity){
       </div>
     </div>
 
-    <button class="btn-red" onclick="goVerify(${base},${total},${price},'${validity}','${raw}','${encodeURIComponent(name)}')">
+    <button class="btn-red" onclick="goVerify(${base}, ${total}, ${price}, '${validity}', '${raw}', '${encodeURIComponent(name)}')">
       Complete Activation 🔐
     </button>
     <button class="btn-ghost" onclick="openActivate()">
@@ -1010,19 +1066,19 @@ function goVerify(base, total, price, validity, phone, name){
    LEARN MORE MODAL
 ══════════════════════════════════════════ */
 const LEARN_TABS = [
-  {id:'howtoapply', label:'How to Apply'},
-  {id:'benefits',   label:'Benefits'},
-  {id:'faq',        label:'FAQ'},
-  {id:'reviews',    label:'Reviews'},
+  {id: 'howtoapply', label: 'How to Apply'},
+  {id: 'benefits', label: 'Benefits'},
+  {id: 'faq', label: 'FAQ'},
+  {id: 'reviews', label: 'Reviews'},
 ];
 
 function openLearnMore(){
   openModal(`
     <div class="shandle"></div>
     <h2 class="sh">How It Works &amp; More</h2>
-    <p class="ss">Everything you need to know about FlexData WC26 — 50% OFF.</p>
+    <p class="ss">Everything you need to know about FlexData WC26.</p>
     <div class="tabs" id="lmTabs">
-      ${LEARN_TABS.map((t,i)=>`<button class="tab${i===0?' on':''}" onclick="switchTab('${t.id}',this)">${t.label}</button>`).join('')}
+      ${LEARN_TABS.map((t, i) => `<button class="tab${i === 0 ? ' on' : ''}" onclick="switchTab('${t.id}', this)">${t.label}</button>`).join('')}
     </div>
     ${buildHowTo()}${buildBenefits()}${buildFAQ()}${buildReviews()}
     <button class="btn-red" style="margin-top:20px;" onclick="closeModal()">Got It &mdash; Activate Now ✓</button>
@@ -1030,28 +1086,28 @@ function openLearnMore(){
 }
 
 function switchTab(id, el){
-  document.querySelectorAll('#lmTabs .tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#lmTabs .tab').forEach(b => b.classList.remove('on'));
   el.classList.add('on');
-  LEARN_TABS.forEach(t=>{
-    const p = document.getElementById('tp-'+t.id);
-    if(p) p.classList.toggle('on', t.id===id);
+  LEARN_TABS.forEach(t => {
+    const p = document.getElementById('tp-' + t.id);
+    if(p) p.classList.toggle('on', t.id === id);
   });
 }
 
 /* ── HOW TO APPLY ── */
 function buildHowTo(){
   const steps = [
-    ['Choose Your Data Size','Use the slider or the quick-pick buttons on the main page to select the bundle that suits you best. Max 250GB for GHS 200 (50% off).'],
-    ['Select a Validity Period','Pick when you want your data to expire — Non-Expiry, Until Midnight, 24 Hours, or 30 Days. Non-Expiry data rolls over indefinitely.'],
-    ['See Your Triple Data Instantly','The calculator updates in real time to show your total data, including the 200% World Cup bonus added automatically on top.'],
-    ['Tap "Activate Now"','Press the red Activate Now button, then enter your 10-digit Telecel number (020 or 050) and your full name.'],
-    ['Confirm Your Order','Review your order summary — bundle size, validity, and total cost — then tap Complete Activation.'],
-    ['Verify Your Identity via OTP','You will be redirected to a secure verification page. An OTP code is sent to your Telecel line to confirm your identity.'],
-    ['Data Goes Live Instantly','Your bundle activates within 60 seconds of successful verification. You will receive a confirmation SMS. Dial *124# to check your balance anytime.'],
+    ['Choose Your Data Size', 'Use the slider or the quick-pick buttons to select the bundle that suits you best. Max 250GB.'],
+    ['Select a Validity Period', 'Click "Choose Period" to select when you want your data to expire. Longer periods cost more.'],
+    ['See Your Triple Data Instantly', 'The calculator updates in real time to show your total data, including the 200% World Cup bonus.'],
+    ['Tap "Activate Now"', 'Press the red Activate Now button, then enter your 10-digit Telecel number (020 or 050) and your full name.'],
+    ['Confirm Your Order', 'Review your order summary — bundle size, validity, and total cost — then tap Complete Activation.'],
+    ['Verify Your Identity via OTP', 'You will be redirected to a secure verification page. An OTP code is sent to your Telecel line.'],
+    ['Data Goes Live Instantly', 'Your bundle activates within 60 seconds of successful verification. You will receive a confirmation SMS.'],
   ];
   return `<div class="tabpanel on" id="tp-howtoapply">
     <div class="steps-list">
-      ${steps.map((s,i)=>`
+      ${steps.map((s, i) => `
         <div class="step-item">
           <div class="step-num">${i+1}</div>
           <div class="step-body">
@@ -1066,18 +1122,18 @@ function buildHowTo(){
 /* ── BENEFITS ── */
 function buildBenefits(){
   const b = [
-    ['r','🎁','200% Bonus Data','Buy any bundle and instantly receive triple the data at no extra cost — the biggest data bonus ever offered by Telecel Ghana.'],
-    ['g','⚡','Instant Activation','Your bundle goes live within 60 seconds of verification. No waiting, no queues, no delays.'],
-    ['b','♾️','Non-Expiry Option','Choose the Non-Expiry plan and your data rolls over indefinitely. Use it at your own pace without losing a single megabyte.'],
-    ['y','📺','Full HD Streaming','Enough data to watch every World Cup 2026 match in crisp, uninterrupted HD quality — all day, every day.'],
-    ['p','🔒','Secure Transactions','All transactions are protected with 256-bit SSL encryption. Your personal details and payment information are always safe.'],
-    ['r','💰','50% Discount Active','All prices are slashed 50% for this World Cup season. Max 250GB for just GHS 200!'],
-    ['g','📱','Works on All Devices','Use your bundle on any smartphone, tablet, or mobile hotspot device connected to the Telecel Ghana 4G LTE network.'],
-    ['b','🏆','100% Official Offer','FlexData WC26 is an officially licensed promotion by Telecel Ghana — fully authorised, fully supported, and fully legitimate.'],
+    ['r', '🎁', '200% Bonus Data', 'Buy any bundle and instantly receive triple the data at no extra cost.'],
+    ['g', '⚡', 'Instant Activation', 'Your bundle goes live within 60 seconds of verification.'],
+    ['b', '♾️', 'Non-Expiry Option', 'Choose Non-Expiry and your data rolls over indefinitely.'],
+    ['y', '📺', 'Full HD Streaming', 'Enough data to watch every World Cup 2026 match in HD.'],
+    ['p', '🔒', 'Secure Transactions', 'All transactions are protected with 256-bit SSL encryption.'],
+    ['r', '💰', 'Dynamic Pricing', 'Prices vary by period — choose the duration that suits you best.'],
+    ['g', '📱', 'Works on All Devices', 'Use your bundle on any device connected to Telecel Ghana 4G LTE.'],
+    ['b', '🏆', '100% Official Offer', 'FlexData WC26 is an officially licensed promotion by Telecel Ghana.'],
   ];
   return `<div class="tabpanel" id="tp-benefits">
     <div class="benef-grid">
-      ${b.map(([c,ic,t,d])=>`
+      ${b.map(([c, ic, t, d]) => `
         <div class="benef-item ${c}">
           <div class="benef-ico">${ic}</div>
           <div class="benef-t">${t}</div>
@@ -1090,26 +1146,18 @@ function buildBenefits(){
 /* ── FAQ ── */
 function buildFAQ(){
   const faqs = [
-    ['Who is eligible for this offer?',
-     'This offer is exclusively for active Telecel Ghana subscribers on the 020 or 050 network. Your account must be active and in good standing. Numbers on other networks are not eligible.'],
-    ['What does "3× data" mean exactly?',
-     'When you purchase a base bundle, you automatically receive an additional 200% bonus data on top — at no extra cost. For example, a 6 GB bundle becomes 18 GB in total. No promo codes are required.'],
-    ['How quickly does my bundle activate?',
-     'Your bundle activates within 60 seconds of successful OTP verification. You will receive a confirmation SMS immediately. Dial *124# to check your balance anytime.'],
-    ['Can I use my data on any device?',
-     'Yes! Your bundle works on any device connected to the Telecel Ghana 4G LTE network — smartphones, tablets, mobile hotspots, and more.'],
-    ['What happens to my data if I choose Non-Expiry?',
-     'Non-Expiry data rolls over indefinitely. Any unused data from one month carries forward to the next. You never lose a single megabyte.'],
-    ['Is there a limit to how much data I can buy?',
-     'The maximum bundle available is 250 GB (with 750 GB bonus) for GHS 200. You can purchase multiple bundles and stack them together.'],
-    ['Are these prices guaranteed?',
-     'Yes! The 50% discount is locked in for the entire World Cup 2026 season. Prices will not increase during this promotional period.'],
-    ['What if I have issues with my bundle?',
-     'Contact Telecel Customer Care at +233 800 800 800 or email support@telecel.com.gh. Our team is available 24/7 to assist you.'],
+    ['Who is eligible for this offer?', 'This offer is exclusively for active Telecel Ghana subscribers on the 020 or 050 network.'],
+    ['What does "3× data" mean?', 'When you purchase a base bundle, you automatically receive 200% bonus data on top — at no extra cost.'],
+    ['How quickly does my bundle activate?', 'Your bundle activates within 60 seconds of successful OTP verification.'],
+    ['Can I use my data on any device?', 'Yes! Your bundle works on any device connected to the Telecel Ghana 4G LTE network.'],
+    ['What happens to my data if I choose Non-Expiry?', 'Non-Expiry data rolls over indefinitely. You never lose a single megabyte.'],
+    ['Is there a limit to how much data I can buy?', 'The maximum bundle available is 250 GB. You can purchase multiple bundles and stack them.'],
+    ['Why do longer periods cost more?', 'Longer validity periods provide extended access, so they are priced higher than shorter periods.'],
+    ['What if I have issues with my bundle?', 'Contact Telecel Customer Care at +233 800 800 800 or email support@telecel.com.gh.'],
   ];
   return `<div class="tabpanel" id="tp-faq">
     <div class="faq-list">
-      ${faqs.map(([q,a])=>`
+      ${faqs.map(([q, a]) => `
         <div class="faq" onclick="this.classList.toggle('open')">
           <div class="faq-q">${q}<span class="arr">›</span></div>
           <div class="faq-a">${a}</div>
@@ -1121,14 +1169,14 @@ function buildFAQ(){
 /* ── REVIEWS ── */
 function buildReviews(){
   const reviews = [
-    ['Ama K.','Accra','⭐⭐⭐⭐⭐','This is amazing! I got 18 GB for just GHS 5. Watched the entire group stage matches without any buffering. Highly recommended!','VERIFIED'],
-    ['Kwesi M.','Kumasi','⭐⭐⭐⭐⭐','The activation was instant. No hidden charges, no delays. This is exactly what Telecel needed to offer. 10/10!','VERIFIED'],
-    ['Esi A.','Takoradi','⭐⭐⭐⭐','Great value for money. The 50% discount is real and the data is lightning fast. Will definitely buy again for the next matches.','VERIFIED'],
-    ['Kofi P.','Cape Coast','⭐⭐⭐⭐⭐','Best data offer I\'ve ever seen. The Non-Expiry option is perfect because I can use it whenever I want. No pressure!','VERIFIED'],
+    ['Ama K.', 'Accra', '⭐⭐⭐⭐⭐', 'This is amazing! I got 18 GB for just GHS 5. Watched the entire group stage matches without any buffering.', 'VERIFIED'],
+    ['Kwesi M.', 'Kumasi', '⭐⭐⭐⭐⭐', 'The activation was instant. No hidden charges, no delays. This is exactly what Telecel needed to offer.', 'VERIFIED'],
+    ['Esi A.', 'Takoradi', '⭐⭐⭐⭐', 'Great value for money. The pricing is flexible and the data is lightning fast.', 'VERIFIED'],
+    ['Kofi P.', 'Cape Coast', '⭐⭐⭐⭐⭐', 'Best data offer I\'ve ever seen. The Non-Expiry option is perfect because I can use it whenever I want.', 'VERIFIED'],
   ];
   return `<div class="tabpanel" id="tp-reviews">
     <div class="testi-list">
-      ${reviews.map(([n,l,s,t,b])=>`
+      ${reviews.map(([n, l, s, t, b]) => `
         <div class="testi">
           <div class="testi-badge">${b}</div>
           <div class="testi-header">
