@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Telecel Ghana FlexData — Double Your Data</title>
-<meta name="description" content="Buy any Telecel Ghana data bundle and receive 100% bonus data instantly. Double your data with FlexData.">
+<title>Telecel Ghana FlexData — Double Your Data | Exclusive for Telecel Users</title>
+<meta name="description" content="Telecel users only: Get 100% bonus data on every bundle. The more you use Telecel, the more offers you'll get. Exclusive FlexData rewards.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,6 +21,8 @@
   --blue:       #2563EB;
   --blue-soft:  #EFF6FF;
   --blue-bdr:   #BFDBFE;
+  --purple:     #7C3AED;
+  --purple-soft:#F5F3FF;
   --ink:        #0F172A;
   --mid:        #475569;
   --muted:      #94A3B8;
@@ -30,13 +32,14 @@
   --shadow-sm:  0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
   --shadow-md:  0 4px 20px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
   --shadow-red: 0 8px 28px rgba(227,6,19,.24);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,.12);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
+  background: linear-gradient(135deg, #F8FAFC 0%, #F0F4F8 100%);
   color: var(--ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -52,8 +55,8 @@ a { text-decoration: none; }
 .bg-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(227,6,19,.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(227,6,19,.022) 1px, transparent 1px);
+    linear-gradient(rgba(227,6,19,.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227,6,19,.015) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
@@ -61,24 +64,24 @@ a { text-decoration: none; }
 
 /* ── TOPBAR ── */
 .topbar {
-  background: var(--red);
+  background: linear-gradient(90deg, #E30613 0%, #B8050F 100%);
   color: #fff; height: 56px; padding: 0 16px;
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0; z-index: 900;
-  box-shadow: 0 2px 20px rgba(227,6,19,.32);
+  box-shadow: 0 4px 20px rgba(227,6,19,.25);
 }
 .lbox { display: flex; align-items: center; gap: 10px; }
 .limg {
   width: 36px; height: 36px;
-  background: rgba(255,255,255,.15);
-  border: 1.5px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.2);
+  border: 1.5px solid rgba(255,255,255,.3);
   border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden; flex-shrink: 0;
   font-family: 'Outfit'; font-size: 17px; font-weight: 900;
 }
 .lname { font-family: 'Outfit'; font-weight: 900; font-size: 15px; letter-spacing: -.2px; line-height: 1.1; }
-.ltag  { font-size: 9px; opacity: .7; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.ltag  { font-size: 9px; opacity: .75; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
 .ldot { display: flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; }
 .ldot i { width: 7px; height: 7px; background: #4ADE80; border-radius: 50%; display: inline-block; animation: dotPulse 1.6s ease-out infinite; }
 @keyframes dotPulse {
@@ -91,241 +94,328 @@ a { text-decoration: none; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(148deg, #E30613 0%, #9B0510 60%, #7C0008 100%);
-  border-radius: 22px; color: #fff; margin: 14px 0 12px;
+  background: linear-gradient(135deg, #E30613 0%, #9B0510 50%, #7C0008 100%);
+  border-radius: 24px; color: #fff; margin: 14px 0 12px;
   position: relative; overflow: hidden;
   box-shadow: var(--shadow-red);
+  padding: 28px 24px;
 }
-.hero-inner { padding: 24px 20px 20px; position: relative; z-index: 1; }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2);
-  border-radius: 20px; padding: 4px 11px;
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; padding: 5px 13px;
   font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
   margin-bottom: 12px;
 }
-.hero h1 { font-size: 27px; font-weight: 900; line-height: 1.14; margin-bottom: 7px; }
-.hero-sub { font-size: 13px; opacity: .9; font-weight: 500; line-height: 1.6; }
+.hero h1 { font-size: 28px; font-weight: 900; line-height: 1.15; margin-bottom: 8px; }
+.hero-sub { font-size: 13px; opacity: .92; font-weight: 500; line-height: 1.6; max-width: 320px; margin-bottom: 12px; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+}
 
 /* ── TRUST BAR ── */
-.tbar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.tbar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
 .titem {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; padding: 12px 7px; text-align: center;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 14px 8px; text-align: center;
   box-shadow: var(--shadow-sm);
+  transition: all .2s;
 }
-.titem .ico { font-size: 18px; margin-bottom: 4px; }
+.titem:hover { border-color: var(--red); background: var(--red-soft); }
+.titem .ico { font-size: 20px; margin-bottom: 6px; }
 .titem .lbl { font-size: 10px; font-weight: 800; color: var(--ink); }
 
 /* ── CARD ── */
 .card {
-  background: var(--card); border-radius: 20px;
-  box-shadow: var(--shadow-md); border: 1px solid var(--border);
-  margin-bottom: 12px; overflow: hidden;
+  background: var(--card); border-radius: 24px;
+  box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+  margin-bottom: 14px; overflow: hidden;
 }
-.card-head { padding: 16px 18px 0; display: flex; align-items: center; gap: 10px; }
+.card-head { padding: 20px 20px 0; display: flex; align-items: center; gap: 12px; }
 .ctico {
-  background: var(--red-soft); width: 34px; height: 34px;
-  border-radius: 9px; display: flex; align-items: center; justify-content: center;
-  font-size: 16px; flex-shrink: 0; border: 1px solid var(--red-border);
+  background: linear-gradient(135deg, #E30613 0%, #7C0008 100%);
+  width: 40px; height: 40px;
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0; color: #fff;
 }
-.ctitle { font-size: 14px; font-weight: 800; color: var(--ink); }
-.ctitle small { display: block; font-size: 10px; font-weight: 500; color: var(--muted); margin-top: 1px; }
-.card-body { padding: 14px 18px 18px; }
+.ctitle { font-size: 15px; font-weight: 900; color: var(--ink); }
+.ctitle small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+.card-body { padding: 18px 20px 20px; }
 
 /* ── CALCULATOR ── */
 .calc-wrap { display: flex; flex-direction: column; }
-.calc-section { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.calc-section { padding: 16px 0; border-bottom: 1px solid var(--border); }
 .calc-section:last-of-type { border-bottom: none; }
 .calc-row-label {
-  font-size: 10px; font-weight: 800; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px;
+  font-size: 10px; font-weight: 900; color: var(--red);
+  text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px;
 }
-.ds-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-bottom: 12px; }
+
+/* ── DATA SIZE BUTTONS ── */
+.ds-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
 .ds-qbtn {
-  background: #F8FAFC; border: 1.5px solid var(--border);
-  padding: 9px 4px; border-radius: 10px;
-  font-size: 11px; font-weight: 800; transition: all .15s;
-  color: var(--ink); font-family: 'Inter', sans-serif; text-align: center; line-height: 1.25;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 2px solid var(--border);
+  padding: 12px 6px; border-radius: 14px;
+  font-size: 11px; font-weight: 800; transition: all .2s;
+  color: var(--ink); font-family: 'Outfit', sans-serif; text-align: center; line-height: 1.2;
+  cursor: pointer;
 }
-.ds-qbtn small { display: block; font-size: 9px; font-weight: 600; color: var(--muted); margin-top: 2px; }
-.ds-qbtn:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
-.ds-qbtn.on { border-color: var(--red); color: var(--red); background: var(--red-soft); box-shadow: 0 2px 8px rgba(227,6,19,.12); }
-.ds-slider-row { display: flex; align-items: center; gap: 10px; }
+.ds-qbtn small { display: block; font-size: 9px; font-weight: 600; color: var(--muted); margin-top: 3px; }
+.ds-qbtn:hover {
+  border-color: var(--red);
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+  color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(227,6,19,.15);
+}
+.ds-qbtn.on {
+  border-color: var(--red);
+  background: linear-gradient(135deg, #E30613 0%, #B8050F 100%);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(227,6,19,.3);
+  transform: scale(1.02);
+}
+.ds-qbtn.on small { color: rgba(255,255,255,.85); }
+
+/* ── SLIDER ── */
+.ds-slider-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
 .ds-slider {
-  flex: 1; height: 5px; background: var(--border); border-radius: 10px;
+  flex: 1; height: 6px; background: linear-gradient(90deg, var(--border) 0%, var(--border) 100%);
+  border-radius: 10px;
   -webkit-appearance: none; appearance: none; cursor: pointer;
 }
 .ds-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 22px; height: 22px; background: var(--red);
-  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
+  -webkit-appearance: none; width: 24px; height: 24px;
+  background: linear-gradient(135deg, #E30613 0%, #B8050F 100%);
+  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 3px 12px rgba(227,6,19,.4);
+  cursor: pointer; transition: all .2s;
 }
+.ds-slider::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 5px 16px rgba(227,6,19,.5); }
 .ds-slider::-moz-range-thumb {
-  width: 22px; height: 22px; background: var(--red);
-  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(227,6,19,.35); cursor: pointer;
+  width: 24px; height: 24px;
+  background: linear-gradient(135deg, #E30613 0%, #B8050F 100%);
+  border-radius: 50%; border: 3px solid #fff; box-shadow: 0 3px 12px rgba(227,6,19,.4);
+  cursor: pointer;
 }
 .ds-slider-val {
-  font-family: 'Outfit'; font-size: 14px; font-weight: 900; color: var(--red);
-  min-width: 54px; text-align: right; white-space: nowrap;
+  font-family: 'Outfit'; font-size: 16px; font-weight: 900;
+  background: linear-gradient(135deg, #E30613 0%, #B8050F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 60px; text-align: right; white-space: nowrap;
 }
-.period-inline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+
+/* ── PERIOD PILLS ── */
+.period-inline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .period-pill {
-  background: #F8FAFC; border: 1.5px solid var(--border);
-  border-radius: 10px; padding: 10px 8px; cursor: pointer; transition: all .15s; text-align: center;
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 2px solid var(--border);
+  border-radius: 14px; padding: 12px 10px; cursor: pointer; transition: all .2s; text-align: center;
 }
-.period-pill:hover { border-color: var(--blue); background: var(--blue-soft); }
-.period-pill.on { border-color: var(--red); background: var(--red-soft); box-shadow: 0 2px 8px rgba(227,6,19,.12); }
-.period-pill-name  { font-size: 11.5px; font-weight: 800; color: var(--ink); }
+.period-pill:hover {
+  border-color: var(--blue);
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  transform: translateY(-2px);
+}
+.period-pill.on {
+  border-color: var(--red);
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+  box-shadow: 0 6px 16px rgba(227,6,19,.2);
+  transform: scale(1.01);
+}
+.period-pill-name { font-size: 12px; font-weight: 800; color: var(--ink); font-family: 'Outfit'; }
 .period-pill.on .period-pill-name { color: var(--red); }
-.period-pill-price { font-family: 'Outfit'; font-size: 13px; font-weight: 900; color: var(--muted); margin-top: 3px; }
+.period-pill-price { font-family: 'Outfit'; font-size: 14px; font-weight: 900; color: var(--muted); margin-top: 3px; }
 .period-pill.on .period-pill-price { color: var(--red); }
-.period-pill-desc  { font-size: 9px; color: var(--muted); font-weight: 500; margin-top: 2px; line-height: 1.3; }
+.period-pill-desc { font-size: 9px; color: var(--muted); font-weight: 500; margin-top: 2px; line-height: 1.3; }
 
+/* ── RESULT DISPLAY ── */
 .calc-result {
-  background: linear-gradient(145deg, #E30613 0%, #7C0008 100%);
-  border-radius: 14px; padding: 16px; color: #fff; margin-top: 14px;
-  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
-  box-shadow: var(--shadow-red);
+  background: linear-gradient(135deg, #E30613 0%, #B8050F 50%, #7C0008 100%);
+  border-radius: 18px; padding: 20px; color: #fff; margin-top: 16px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px;
+  box-shadow: 0 10px 30px rgba(227,6,19,.3);
+  position: relative; overflow: hidden;
 }
-.cr-left .cr-label  { font-size: 9px; font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
-.cr-left .cr-big    { font-family: 'Outfit'; font-size: 38px; font-weight: 900; line-height: 1; }
-.cr-left .cr-big small { font-size: 17px; font-weight: 700; }
-.cr-left .cr-sub    { font-size: 10px; opacity: .85; font-weight: 500; margin-top: 3px; }
-.cr-right           { text-align: right; }
-.cr-right .cr-price { font-family: 'Outfit'; font-size: 26px; font-weight: 900; line-height: 1; }
-.cr-right .cr-plbl  { font-size: 9px; opacity: .68; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
-.cr-right .cr-period{ font-size: 10px; opacity: .72; font-weight: 600; margin-top: 2px; }
+.calc-result::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cr-left { position: relative; z-index: 1; }
+.cr-label { font-size: 10px; font-weight: 700; opacity: .75; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+.cr-big { font-family: 'Outfit'; font-size: 42px; font-weight: 900; line-height: 1; letter-spacing: -.5px; }
+.cr-big small { font-size: 18px; font-weight: 700; opacity: .9; }
+.cr-sub { font-size: 11px; opacity: .85; font-weight: 600; margin-top: 4px; }
+.cr-right { text-align: right; position: relative; z-index: 1; }
+.cr-right .cr-price { font-family: 'Outfit'; font-size: 28px; font-weight: 900; line-height: 1; }
+.cr-right .cr-plbl { font-size: 9px; opacity: .7; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-top: 3px; }
 
+/* ── BREAKDOWN ── */
 .breakdown {
-  background: var(--red-soft); border: 1px solid var(--red-border);
-  border-radius: 12px; padding: 12px 14px; margin-top: 10px;
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+  border: 2px solid var(--red-border);
+  border-radius: 14px; padding: 14px 16px; margin-top: 12px;
 }
 .bd-row {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; font-weight: 600; color: var(--mid); padding: 4px 0;
+  font-size: 12px; font-weight: 600; color: var(--mid); padding: 5px 0;
 }
-.bd-row .bd-val { font-weight: 700; color: var(--ink); }
-.bd-row.bd-bonus .bd-val { color: var(--red); font-weight: 800; }
-.bd-row.bd-total { border-top: 1.5px dashed var(--red-border); margin-top: 6px; padding-top: 8px; font-weight: 800; color: var(--ink); }
+.bd-row .bd-val { font-weight: 800; color: var(--ink); font-family: 'Outfit'; }
+.bd-row.bd-bonus { margin: 6px 0; }
+.bd-row.bd-bonus .bd-val { color: var(--red); font-weight: 900; font-size: 13px; }
+.bd-row.bd-total { border-top: 2px dashed var(--red-border); margin-top: 8px; padding-top: 8px; font-weight: 900; color: var(--ink); font-size: 13px; }
 
 /* ── CTA ── */
-.calc-cta { padding: 0 18px 18px; }
+.calc-cta { padding: 0 20px 20px; }
 .btn-red {
-  width: 100%; background: var(--red); color: #fff;
-  padding: 15px; border-radius: 13px; font-size: 14px; font-weight: 900;
-  box-shadow: var(--shadow-red); text-transform: uppercase; letter-spacing: .05em;
-  font-family: 'Outfit', sans-serif; transition: all .18s;
-  display: flex; align-items: center; justify-content: center; gap: 7px;
+  width: 100%; background: linear-gradient(135deg, #E30613 0%, #B8050F 100%);
+  color: #fff;
+  padding: 16px; border-radius: 14px; font-size: 14px; font-weight: 900;
+  box-shadow: 0 8px 24px rgba(227,6,19,.3); text-transform: uppercase; letter-spacing: .06em;
+  font-family: 'Outfit', sans-serif; transition: all .2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer;
 }
-.btn-red:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 12px 30px rgba(227,6,19,.36); }
+.btn-red:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(227,6,19,.4); }
 .btn-red:active { transform: translateY(0); }
 .btn-ghost {
-  width: 100%; background: #fff; color: var(--mid); border: 1.5px solid var(--border);
-  padding: 12px; border-radius: 13px; font-size: 13px; font-weight: 700; margin-top: 8px;
+  width: 100%; background: #fff; color: var(--mid); border: 2px solid var(--border);
+  padding: 13px; border-radius: 14px; font-size: 13px; font-weight: 700; margin-top: 10px;
   display: flex; align-items: center; justify-content: center; gap: 7px;
-  font-family: 'Inter', sans-serif; transition: all .15s;
+  font-family: 'Inter', sans-serif; transition: all .2s;
+  cursor: pointer;
 }
-.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); background: var(--red-soft); }
 
 /* ── MODAL ── */
 .modal {
   display: none; position: fixed; inset: 0;
-  background: rgba(15,23,42,.72); backdrop-filter: blur(8px);
+  background: rgba(15,23,42,.75); backdrop-filter: blur(10px);
   z-index: 2000; align-items: flex-end; justify-content: center;
 }
 .modal.open { display: flex; }
 .sheet {
   background: #fff; width: 100%; max-width: 480px;
-  border-radius: 24px 24px 0 0; max-height: 92vh;
+  border-radius: 28px 28px 0 0; max-height: 92vh;
   overflow-y: auto; overflow-x: hidden;
   animation: sheetUp .28s cubic-bezier(.32,.72,0,1);
   -webkit-overflow-scrolling: touch;
-  box-shadow: 0 -4px 30px rgba(0,0,0,.12);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.15);
 }
 @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.sheet-inner { padding: 20px 18px 52px; }
-.shandle { width: 36px; height: 4px; background: #E2E8F0; border-radius: 2px; margin: 0 auto 16px; }
-.sh { font-size: 20px; font-weight: 900; color: var(--ink); text-align: center; margin-bottom: 4px; }
-.ss { font-size: 13px; color: var(--mid); text-align: center; margin-bottom: 20px; }
+.sheet-inner { padding: 22px 20px 52px; }
+.shandle { width: 40px; height: 4px; background: #E2E8F0; border-radius: 2px; margin: 0 auto 18px; }
+.sh { font-size: 22px; font-weight: 900; color: var(--ink); text-align: center; margin-bottom: 4px; }
+.ss { font-size: 13px; color: var(--mid); text-align: center; margin-bottom: 22px; }
 
 /* ── FORM ── */
-.igrp { margin-bottom: 16px; }
-.ilbl { display: block; font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
-.ph-wrap { display: flex; align-items: center; background: #F8FAFC; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
-.ph-prefix { padding: 0 12px; font-size: 13px; font-weight: 700; color: var(--mid); border-right: 1px solid var(--border); background: #F1F5F9; height: 48px; display: flex; align-items: center; }
-.ival { flex: 1; border: none; background: transparent; padding: 0 14px; font-size: 15px; font-weight: 700; color: var(--ink); height: 48px; width: 100%; }
+.igrp { margin-bottom: 18px; }
+.ilbl { display: block; font-size: 11px; font-weight: 900; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; }
+.ph-wrap { display: flex; align-items: center; background: #F8FAFC; border: 2px solid var(--border); border-radius: 14px; overflow: hidden; transition: all .2s; }
+.ph-wrap:focus-within { border-color: var(--red); background: var(--red-soft); }
+.ph-prefix { padding: 0 13px; font-size: 13px; font-weight: 700; color: var(--mid); border-right: 2px solid var(--border); background: #F1F5F9; height: 50px; display: flex; align-items: center; }
+.ival { flex: 1; border: none; background: transparent; padding: 0 15px; font-size: 15px; font-weight: 700; color: var(--ink); height: 50px; width: 100%; }
 .ival.err { border-color: var(--red); background: var(--red-soft); }
-.err-msg { color: var(--red); font-size: 11px; font-weight: 600; margin-top: 4px; display: none; }
-.hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.err-msg { color: var(--red); font-size: 11px; font-weight: 700; margin-top: 5px; display: none; }
+.hint { font-size: 11px; color: var(--muted); margin-top: 5px; }
 
-.ord-sum { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.ord-sum-info strong { display: block; font-size: 18px; font-family: 'Outfit'; color: var(--red); }
-.ord-sum-info { font-size: 12px; color: var(--mid); }
+.ord-sum { background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); border: 2px solid var(--border); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.ord-sum-info strong { display: block; font-size: 19px; font-family: 'Outfit'; color: var(--red); font-weight: 900; }
+.ord-sum-info { font-size: 12px; color: var(--mid); font-weight: 600; }
 .ord-price { text-align: right; }
-.ord-price .price { font-size: 20px; font-weight: 900; color: var(--ink); font-family: 'Outfit'; }
-.ord-price small { font-size: 10px; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+.ord-price .price { font-size: 22px; font-weight: 900; color: var(--ink); font-family: 'Outfit'; }
+.ord-price small { font-size: 10px; color: var(--muted); text-transform: uppercase; font-weight: 800; }
 
-.confirm-box { background: var(--red-soft); border: 2px solid var(--red-border); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 20px; }
-.confirm-ball { font-size: 32px; margin-bottom: 8px; }
-.confirm-data { font-family: 'Outfit'; font-size: 36px; font-weight: 900; color: var(--red); line-height: 1; }
-.confirm-sub { font-size: 13px; font-weight: 700; color: var(--red-deep); margin-top: 4px; }
-.confirm-details { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 20px; }
-.confirm-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; }
-.confirm-row span { color: var(--muted); font-weight: 600; }
-.confirm-row strong { color: var(--ink); font-weight: 800; }
+.confirm-box { background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%); border: 2px solid var(--red-border); border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 22px; }
+.confirm-ball { font-size: 36px; margin-bottom: 10px; }
+.confirm-data { font-family: 'Outfit'; font-size: 40px; font-weight: 900; color: var(--red); line-height: 1; }
+.confirm-sub { font-size: 13px; font-weight: 700; color: var(--red-deep); margin-top: 5px; }
+.confirm-details { background: #F8FAFC; border: 2px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 22px; }
+.confirm-row { display: flex; justify-content: space-between; font-size: 13px; padding: 7px 0; }
+.confirm-row span { color: var(--muted); font-weight: 700; }
+.confirm-row strong { color: var(--ink); font-weight: 900; font-family: 'Outfit'; }
 
 /* ── TABS ── */
-.tabs { display: flex; gap: 6px; margin-bottom: 16px; border-bottom: 2px solid var(--border); overflow-x: auto; }
-.tab { padding: 10px 12px; font-size: 12px; font-weight: 800; color: var(--muted); cursor: pointer; border: none; background: transparent; white-space: nowrap; border-bottom: 3px solid transparent; transition: all .15s; }
+.tabs { display: flex; gap: 8px; margin-bottom: 18px; border-bottom: 2px solid var(--border); overflow-x: auto; }
+.tab { padding: 12px 14px; font-size: 12px; font-weight: 800; color: var(--muted); cursor: pointer; border: none; background: transparent; white-space: nowrap; border-bottom: 3px solid transparent; transition: all .2s; }
 .tab.on { color: var(--red); border-bottom-color: var(--red); }
 .tabpanel { display: none; }
 .tabpanel.on { display: block; }
 
 /* ── STEPS ── */
-.steps-list { display: flex; flex-direction: column; gap: 12px; }
-.step-item { display: flex; gap: 12px; }
-.step-num { width: 28px; height: 28px; background: var(--red-soft); border: 2px solid var(--red-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--red); flex-shrink: 0; font-size: 12px; }
+.steps-list { display: flex; flex-direction: column; gap: 14px; }
+.step-item { display: flex; gap: 14px; }
+.step-num { width: 32px; height: 32px; background: linear-gradient(135deg, #E30613 0%, #B8050F 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; flex-shrink: 0; font-size: 13px; }
 .step-body { flex: 1; }
-.step-t { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
-.step-d { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.step-t { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 3px; }
+.step-d { font-size: 12px; color: var(--mid); line-height: 1.6; }
 
 /* ── BENEFITS ── */
-.benef-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.benef-item { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 12px; text-align: center; }
-.benef-item.r { border-color: var(--red-border); background: var(--red-soft); }
-.benef-item.g { border-color: var(--green-bdr); background: var(--green-soft); }
-.benef-item.b { border-color: var(--blue-bdr); background: var(--blue-soft); }
-.benef-ico { font-size: 24px; margin-bottom: 6px; }
-.benef-t { font-size: 12px; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
-.benef-d { font-size: 11px; color: var(--mid); line-height: 1.4; }
+.benef-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; }
+.benef-item { background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); border: 2px solid var(--border); border-radius: 14px; padding: 14px; text-align: center; transition: all .2s; }
+.benef-item:hover { transform: translateY(-2px); }
+.benef-item.r { border-color: var(--red-border); background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%); }
+.benef-item.g { border-color: var(--green-bdr); background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); }
+.benef-item.b { border-color: var(--blue-bdr); background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); }
+.benef-ico { font-size: 26px; margin-bottom: 7px; }
+.benef-t { font-size: 12px; font-weight: 800; color: var(--ink); margin-bottom: 3px; }
+.benef-d { font-size: 11px; color: var(--mid); line-height: 1.5; }
 
 /* ── FAQ ── */
-.faq-list { display: flex; flex-direction: column; gap: 8px; }
-.faq { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all .15s; }
-.faq.open { background: var(--red-soft); border-color: var(--red-border); }
-.faq-q { padding: 12px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 13px; color: var(--ink); }
+.faq-list { display: flex; flex-direction: column; gap: 9px; }
+.faq { background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); border: 2px solid var(--border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: all .2s; }
+.faq.open { background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%); border-color: var(--red-border); }
+.faq-q { padding: 13px; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 13px; color: var(--ink); }
 .faq.open .faq-q { color: var(--red); }
-.arr { font-size: 20px; transition: transform .15s; }
+.arr { font-size: 20px; transition: transform .2s; }
 .faq.open .arr { transform: rotate(90deg); }
-.faq-a { padding: 0 12px 12px; font-size: 12px; color: var(--mid); line-height: 1.6; display: none; }
+.faq-a { padding: 0 13px 13px; font-size: 12px; color: var(--mid); line-height: 1.7; display: none; }
 .faq.open .faq-a { display: block; }
 
 /* ── TESTIMONIALS ── */
-.testi-list { display: flex; flex-direction: column; gap: 12px; }
-.testi { background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 12px; position: relative; }
-.testi-badge { position: absolute; top: 8px; right: 8px; background: var(--green); color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 4px; }
-.testi-header { display: flex; gap: 10px; margin-bottom: 8px; }
-.testi-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0; }
+.testi-list { display: flex; flex-direction: column; gap: 13px; }
+.testi { background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); border: 2px solid var(--border); border-radius: 14px; padding: 14px; position: relative; }
+.testi-badge { position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #fff; font-size: 9px; font-weight: 800; padding: 4px 9px; border-radius: 6px; }
+.testi-header { display: flex; gap: 11px; margin-bottom: 9px; }
+.testi-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; flex-shrink: 0; }
 .testi-name { font-size: 12px; font-weight: 800; color: var(--ink); }
 .testi-loc { font-size: 11px; color: var(--muted); }
-.stars { font-size: 12px; margin-bottom: 6px; }
-.testi-text { font-size: 12px; color: var(--mid); line-height: 1.5; margin-bottom: 6px; font-style: italic; }
+.stars { font-size: 12px; margin-bottom: 7px; }
+.testi-text { font-size: 12px; color: var(--mid); line-height: 1.6; margin-bottom: 7px; font-style: italic; }
 .testi-date { font-size: 10px; color: var(--muted); }
 
 /* ── FOOTER ── */
-.footer { background: #fff; border-top: 1px solid var(--border); padding: 32px 16px; text-align: center; }
-.footer-brand { font-family: 'Outfit'; font-weight: 900; font-size: 18px; color: var(--red); margin-bottom: 8px; }
-.footer-legal { font-size: 11px; color: var(--muted); line-height: 1.6; }
+.footer { background: linear-gradient(135deg, #fff 0%, #F8FAFC 100%); border-top: 2px solid var(--border); padding: 36px 20px; text-align: center; }
+.footer-brand { font-family: 'Outfit'; font-weight: 900; font-size: 20px; background: linear-gradient(135deg, #E30613 0%, #B8050F 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+.footer-legal { font-size: 11px; color: var(--muted); line-height: 1.7; }
 
 </style>
 </head>
@@ -340,7 +430,7 @@ a { text-decoration: none; }
   <header class="topbar">
     <div class="lbox">
       <div class="limg">T</div>
-      <div style="width:1px;height:24px;background:rgba(255,255,255,0.2);margin:0 4px;"></div>
+      <div style="width:1px;height:24px;background:rgba(255,255,255,0.25);margin:0 5px;"></div>
       <div>
         <div class="lname">Telecel Ghana</div>
         <div class="ltag">FlexData</div>
@@ -355,7 +445,8 @@ a { text-decoration: none; }
       <div class="hero-inner">
         <div class="eyebrow">Exclusive Offer</div>
         <h1>Double Your Data</h1>
-        <p class="hero-sub">Get 100% bonus data on every bundle you buy. More data, more freedom.</p>
+        <p class="hero-sub">Telecel users only: Get 100% bonus data on every bundle. The more you use Telecel, the more offers you'll get.</p>
+        <div class="hero-badge">✓ Eligible for Active Telecel Users</div>
       </div>
     </div>
 
@@ -368,12 +459,12 @@ a { text-decoration: none; }
     <div class="card">
       <div class="card-head">
         <div class="ctico">🧮</div>
-        <div class="ctitle">Bundle Calculator<small>Set your data and see your bonus instantly</small></div>
+        <div class="ctitle">Smart Calculator<small>Adjust data and see your bonus instantly</small></div>
       </div>
       <div class="card-body">
         <div class="calc-wrap">
           <div class="calc-section">
-            <div class="calc-row-label">Step 1 · Select Data Size</div>
+            <div class="calc-row-label">📊 Step 1 · Select Your Data Size</div>
             <div class="ds-quick">
               <button class="ds-qbtn on" data-idx="0" onclick="setByIdx(0)">6 GB<small>GHS 5</small></button>
               <button class="ds-qbtn" data-idx="2" onclick="setByIdx(2)">30 GB<small>GHS 15</small></button>
@@ -387,26 +478,25 @@ a { text-decoration: none; }
           </div>
 
           <div class="calc-section">
-            <div class="calc-row-label">Step 2 · Choose Validity</div>
+            <div class="calc-row-label">⏱️ Step 2 · Choose Your Validity</div>
             <div class="period-inline" id="periodPills"></div>
           </div>
 
           <div class="calc-result">
             <div class="cr-left">
-              <div class="cr-label">Total You Receive</div>
+              <div class="cr-label">You Receive</div>
               <div class="cr-big" id="dispTotal">12 <small>GB</small></div>
               <div class="cr-sub" id="dispSub">6 GB base + 6 GB bonus</div>
             </div>
             <div class="cr-right">
               <div class="cr-price" id="dispPrice">GHS 5</div>
               <div class="cr-plbl">Total Cost</div>
-              <div class="cr-period" id="dispPeriod">Non-Expiry</div>
             </div>
           </div>
 
           <div class="breakdown">
             <div class="bd-row"><span>Base Data</span><span class="bd-val" id="sumS">6 GB</span></div>
-            <div class="bd-row bd-bonus"><span>🎁 100% Bonus</span><span class="bd-val" id="sumB">+6 GB</span></div>
+            <div class="bd-row bd-bonus"><span>🎁 100% Double Bonus</span><span class="bd-val" id="sumB">+6 GB</span></div>
             <div class="bd-row bd-total"><span>Total Data</span><strong id="sumT">12 GB</strong></div>
             <div class="bd-row bd-total"><span>Validity Period</span><strong id="sumV">Non-Expiry</strong></div>
           </div>
@@ -425,7 +515,7 @@ a { text-decoration: none; }
     <div class="footer-brand">Telecel Ghana</div>
     <p class="footer-legal">
       &copy; 2026 Telecel Ghana. Licensed Mobile Data Services.<br>
-      All prices in GHS. Exclusive to 020 & 050 numbers.
+      Exclusive to active Telecel 020 & 050 users. The more you use Telecel, the more offers you'll get.
     </p>
   </footer>
 
@@ -495,7 +585,6 @@ function sync() {
   document.getElementById('dispTotal').innerHTML = s.total + ' <small>GB</small>';
   document.getElementById('dispSub').textContent = s.base + ' GB base + ' + s.bonus + ' GB bonus';
   document.getElementById('dispPrice').textContent = 'GHS ' + s.price;
-  document.getElementById('dispPeriod').textContent = s.period;
   document.getElementById('sumS').textContent = s.base + ' GB';
   document.getElementById('sumB').textContent = '+' + s.bonus + ' GB';
   document.getElementById('sumT').textContent = s.total + ' GB';
@@ -558,7 +647,7 @@ function openActivate() {
     <div class="ord-sum">
       <div class="ord-sum-info">
         <strong>${s.total} GB</strong>
-        ${s.period} &nbsp;·&nbsp; Double bonus included
+        ${s.period}
       </div>
       <div class="ord-price">
         <div class="price">GHS ${s.price}</div>
@@ -577,7 +666,7 @@ function openActivate() {
     </div>
     <div class="igrp">
       <label class="ilbl" for="nm">Full Name</label>
-      <input type="text" class="ival" id="nm" placeholder="e.g. Kwame Mensah" autocomplete="name">
+      <input type="text" class="ival" id="nm" placeholder="e.g. Kwame Mensah" autocomplete="name" style="border:2px solid var(--border);border-radius:14px;background:#F8FAFC;padding:0 15px;height:50px;">
       <div class="err-msg" id="nm-err">Please enter your full name to continue.</div>
     </div>
     <button class="btn-red" onclick="goConfirm(${s.base}, ${s.total}, ${s.price}, '${s.period}')">
@@ -613,8 +702,8 @@ function goConfirm(base, total, price, validity) {
     <div class="confirm-box">
       <div class="confirm-ball">⚽</div>
       <div class="confirm-data">${total} GB</div>
-      <div class="confirm-sub">${validity} &nbsp;·&nbsp; GHS ${price}</div>
-      <div style="font-size:12px;color:var(--red-deep);margin-top:8px;">Base ${base} GB + ${base} GB Double Bonus</div>
+      <div class="confirm-sub">${validity} · GHS ${price}</div>
+      <div style="font-size:12px;color:var(--red-deep);margin-top:8px;font-weight:700;">Base ${base} GB + ${base} GB Double Bonus</div>
     </div>
     <div class="confirm-details">
       <div class="confirm-row"><span>Phone Number</span><strong>${phoneDisp}</strong></div>
@@ -680,7 +769,7 @@ function buildHowTo() {
 
 function buildBenefits() {
   const b = [
-    ['r', '🎁', '100% Bonus Data', 'Purchase any bundle and instantly receive double the data at no additional cost.'],
+    ['r', '🎁', '100% Double Bonus', 'Purchase any bundle and instantly receive double the data at no additional cost.'],
     ['g', '⚡', 'Instant Activation', 'Your bundle goes live within 60 seconds of a successful OTP verification.'],
     ['b', '♾️', 'Non-Expiry Option', 'Choose a non-expiry plan and your data rolls over indefinitely — never lost.'],
     ['r', '📺', 'Full HD Streaming', 'Enough data to stream content in Full HD without buffering.'],
@@ -696,7 +785,7 @@ function buildBenefits() {
 
 function buildFAQ() {
   const faqs = [
-    ['Who is eligible for this offer?', 'This offer is exclusively available to active Telecel Ghana subscribers on the 020 or 050 network who are in good standing.'],
+    ['Who is eligible for this offer?', 'This offer is exclusively available to active Telecel Ghana subscribers on the 020 or 050 network who are in good standing. The more you use Telecel, the more offers you will get.'],
     ['What does "double data" mean?', 'When you purchase a base data bundle, you automatically receive an additional 100% in bonus data at no extra charge — giving you double the data in total.'],
     ['How quickly does my bundle activate?', 'Your bundle activates within 60 seconds of a successful OTP verification.'],
     ['Can I use my data on any device?', 'Yes — your data bundle works on any device that is connected to the Telecel Ghana 4G LTE network.'],
